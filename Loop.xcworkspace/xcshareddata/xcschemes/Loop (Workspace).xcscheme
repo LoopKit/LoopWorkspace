@@ -70,7 +70,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A95EC229225E603D0066B1C6"
+               BlueprintIdentifier = "A9E6758022713F4700E25293"
                BuildableName = "LoopKit.framework"
                BlueprintName = "LoopKit watchOS"
                ReferencedContainer = "container:LoopKit/LoopKit.xcodeproj">
@@ -434,14 +434,134 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "43D8FDD41C728FDF0073BE78"
+               BuildableName = "LoopKitTests.xctest"
+               BlueprintName = "LoopKitTests"
+               ReferencedContainer = "container:LoopKit/LoopKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4301580B1C7EC03B00B64B63"
+               BuildableName = "LoopKit ExampleUITests.xctest"
+               BlueprintName = "LoopKit ExampleUITests"
+               ReferencedContainer = "container:LoopKit/LoopKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C10D9BC91C8269D500378342"
+               BuildableName = "MinimedKitTests.xctest"
+               BlueprintName = "MinimedKitTests"
+               ReferencedContainer = "container:rileylink_ios/RileyLink.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C1B383131CD0665D00CE7782"
+               BuildableName = "NightscoutUploadKitTests.xctest"
+               BlueprintName = "NightscoutUploadKitTests"
+               ReferencedContainer = "container:rileylink_ios/RileyLink.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "431CE7761F98564200255374"
+               BuildableName = "RileyLinkBLEKitTests.xctest"
+               BlueprintName = "RileyLinkBLEKitTests"
+               ReferencedContainer = "container:rileylink_ios/RileyLink.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "43722FB61CB9F7640038B7F2"
+               BuildableName = "RileyLinkKitTests.xctest"
+               BlueprintName = "RileyLinkKitTests"
+               ReferencedContainer = "container:rileylink_ios/RileyLink.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C12EA251198B436800309FA4"
+               BuildableName = "RileyLinkTests.xctest"
+               BlueprintName = "RileyLinkTests"
+               ReferencedContainer = "container:rileylink_ios/RileyLink.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "432B0E911CDFC3C50045347B"
+               BuildableName = "ShareClientTests.xctest"
+               BlueprintName = "ShareClientTests"
+               ReferencedContainer = "container:dexcom-share-client-swift/ShareClient.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4DCEF2591D41A2A200724BCD"
+               BuildableName = "G4ShareSpyTests.xctest"
+               BlueprintName = "G4ShareSpyTests"
+               ReferencedContainer = "container:G4ShareSpy/G4ShareSpy.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "43CABDFC1C3506F100005705"
+               BuildableName = "CGMBLEKitTests.xctest"
+               BlueprintName = "CGMBLEKitTests"
+               ReferencedContainer = "container:CGMBLEKit/CGMBLEKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "43E2D8D01D20BF42004DA55F"
+               BuildableName = "DoseMathTests.xctest"
+               BlueprintName = "DoseMathTests"
+               ReferencedContainer = "container:Loop/Loop.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "43E2D90A1D20C581004DA55F"
+               BuildableName = "LoopTests.xctest"
+               BlueprintName = "LoopTests"
+               ReferencedContainer = "container:Loop/Loop.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "343AB4161CC99F4F00962943"
-            BuildableName = "Amplitude.framework"
-            BlueprintName = "AmplitudeFramework"
-            ReferencedContainer = "container:Amplitude-iOS/Amplitude.xcodeproj">
+            BlueprintIdentifier = "43776F8B1B8022E90074EA36"
+            BuildableName = "Loop.app"
+            BlueprintName = "Loop"
+            ReferencedContainer = "container:Loop/Loop.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
