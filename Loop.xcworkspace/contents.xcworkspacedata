@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Loop/Loop.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:LoopKit/LoopKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:CGMBLEKit/CGMBLEKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SwiftCharts/SwiftCharts.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:dexcom-share-client-swift/ShareClient.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:G4ShareSpy/G4ShareSpy.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:rileylink_ios/RileyLink.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Amplitude-iOS/Amplitude.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:MKRingProgressView/MKRingProgressView.xcodeproj">
+   </FileRef>
+</Workspace>
