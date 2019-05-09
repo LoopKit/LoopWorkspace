@@ -72,7 +72,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A9E6758022713F4700E25293"
                BuildableName = "LoopKit.framework"
-               BlueprintName = "LoopKit watchOS"
+               BlueprintName = "LoopKit-watchOS"
                ReferencedContainer = "container:LoopKit/LoopKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -254,7 +254,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A9ED4D91225EB4D30080DEBA"
                BuildableName = "ShareClient.framework"
-               BlueprintName = "ShareClient watchOS"
+               BlueprintName = "ShareClient-watchOS"
                ReferencedContainer = "container:dexcom-share-client-swift/ShareClient.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -310,7 +310,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A9AD37DE225EEE850058C179"
                BuildableName = "CGMBLEKit.framework"
-               BlueprintName = "CGMBLEKit watchOS"
+               BlueprintName = "CGMBLEKit-watchOS"
                ReferencedContainer = "container:CGMBLEKit/CGMBLEKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
