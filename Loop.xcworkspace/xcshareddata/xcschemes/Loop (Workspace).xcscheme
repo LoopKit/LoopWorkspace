@@ -336,6 +336,90 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A9C7BE4422B9A7C0001F3FB4"
+               BuildableName = "AmplitudeServiceKit.framework"
+               BlueprintName = "AmplitudeServiceKit"
+               ReferencedContainer = "container:AmplitudeService/AmplitudeService.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A9927C8F22BC29940006B7E9"
+               BuildableName = "AmplitudeServiceKitUI.framework"
+               BlueprintName = "AmplitudeServiceKitUI"
+               ReferencedContainer = "container:AmplitudeService/AmplitudeService.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A9C7BE6822B9A812001F3FB4"
+               BuildableName = "LogglyServiceKit.framework"
+               BlueprintName = "LogglyServiceKit"
+               ReferencedContainer = "container:LogglyService/LogglyService.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A9927CAB22BC29CC0006B7E9"
+               BuildableName = "LogglyServiceKitUI.framework"
+               BlueprintName = "LogglyServiceKitUI"
+               ReferencedContainer = "container:LogglyService/LogglyService.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A91BAC1A22BC691A00ABF1BB"
+               BuildableName = "NightscoutServiceKit.framework"
+               BlueprintName = "NightscoutServiceKit"
+               ReferencedContainer = "container:NightscoutService/NightscoutService.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A91BAC3922BC69B500ABF1BB"
+               BuildableName = "NightscoutServiceKitUI.framework"
+               BlueprintName = "NightscoutServiceKitUI"
+               ReferencedContainer = "container:NightscoutService/NightscoutService.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "43D9FFCE21EAE05D00AF44BF"
                BuildableName = "LoopCore.framework"
                BlueprintName = "LoopCore"
@@ -538,19 +622,69 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "43E2D8D01D20BF42004DA55F"
-               BuildableName = "DoseMathTests.xctest"
-               BlueprintName = "DoseMathTests"
-               ReferencedContainer = "container:Loop/Loop.xcodeproj">
+               BlueprintIdentifier = "A9C7BE4D22B9A7C0001F3FB4"
+               BuildableName = "AmplitudeServiceKitTests.xctest"
+               BlueprintName = "AmplitudeServiceKitTests"
+               ReferencedContainer = "container:AmplitudeService/AmplitudeService.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "43E2D90A1D20C581004DA55F"
-               BuildableName = "LoopTests.xctest"
-               BlueprintName = "LoopTests"
+               BlueprintIdentifier = "A9927C9722BC29940006B7E9"
+               BuildableName = "AmplitudeServiceKitUITests.xctest"
+               BlueprintName = "AmplitudeServiceKitUITests"
+               ReferencedContainer = "container:AmplitudeService/AmplitudeService.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A9C7BE7122B9A812001F3FB4"
+               BuildableName = "LogglyServiceKitTests.xctest"
+               BlueprintName = "LogglyServiceKitTests"
+               ReferencedContainer = "container:LogglyService/LogglyService.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A9927CB322BC29CC0006B7E9"
+               BuildableName = "LogglyServiceKitUITests.xctest"
+               BlueprintName = "LogglyServiceKitUITests"
+               ReferencedContainer = "container:LogglyService/LogglyService.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A91BAC2322BC691A00ABF1BB"
+               BuildableName = "NightscoutServiceKitTests.xctest"
+               BlueprintName = "NightscoutServiceKitTests"
+               ReferencedContainer = "container:NightscoutService/NightscoutService.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A91BAC4122BC69B500ABF1BB"
+               BuildableName = "NightscoutServiceKitUITests.xctest"
+               BlueprintName = "NightscoutServiceKitUITests"
+               ReferencedContainer = "container:NightscoutService/NightscoutService.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "43E2D8D01D20BF42004DA55F"
+               BuildableName = "DoseMathTests.xctest"
+               BlueprintName = "DoseMathTests"
                ReferencedContainer = "container:Loop/Loop.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -576,7 +710,8 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "YES">
+      allowLocationSimulation = "YES"
+      showNonLocalizedStrings = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference

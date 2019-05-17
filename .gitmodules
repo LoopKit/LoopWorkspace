@@ -25,3 +25,12 @@
 [submodule "MKRingProgressView"]
 	path = MKRingProgressView
 	url = https://github.com/maxkonovalov/MKRingProgressView.git
+[submodule "AmplitudeService"]
+	path = AmplitudeService
+	url = https://github.com/tidepool-org/AmplitudeService.git
+[submodule "LogglyService"]
+	path = LogglyService
+	url = https://github.com/tidepool-org/LogglyService.git
+[submodule "NightscoutService"]
+	path = NightscoutService
+	url = https://github.com/tidepool-org/NightscoutService.git

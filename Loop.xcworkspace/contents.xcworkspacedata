@@ -28,4 +28,13 @@
    <FileRef
       location = "group:MKRingProgressView/MKRingProgressView.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:AmplitudeService/AmplitudeService.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:LogglyService/LogglyService.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:NightscoutService/NightscoutService.xcodeproj">
+   </FileRef>
 </Workspace>
