@@ -1,5 +1,5 @@
 //
 
-MAIN_APP_BUNDLE_IDENTIFIER = com.tidepool.org
+MAIN_APP_BUNDLE_IDENTIFIER = org.tidepool
 MAIN_APP_DISPLAY_NAME = Tidepool Loop
 
