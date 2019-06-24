@@ -1,0 +1,14 @@
+//
+
+MAIN_APP_BUNDLE_IDENTIFIER = org.tidepool
+MAIN_APP_DISPLAY_NAME = Tidepool Loop
+
+
+// Features
+SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) FEATURE_OVERRIDES_DISABLED
+
+// Assets
+INCLUDED_SOURCE_FILE_NAMES = AdditionalAssets.xcassets
+
+APPICON_NAME = TidepoolLoopIcon
+
