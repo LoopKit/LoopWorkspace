@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:LoopConfigOverride.xcconfig">
+   </FileRef>
+   <FileRef
       location = "group:Loop/Loop.xcodeproj">
    </FileRef>
    <FileRef

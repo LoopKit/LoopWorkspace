@@ -224,6 +224,34 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C1FFAF77213323CC00C50C1D"
+               BuildableName = "OmniKit.framework"
+               BlueprintName = "OmniKit"
+               ReferencedContainer = "container:rileylink_ios/RileyLink.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C1FFAFD8213323F900C50C1D"
+               BuildableName = "OmniKitUI.framework"
+               BlueprintName = "OmniKitUI"
+               ReferencedContainer = "container:rileylink_ios/RileyLink.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "C1B3830A1CD0665D00CE7782"
                BuildableName = "NightscoutUploadKit.framework"
                BlueprintName = "NightscoutUploadKit"
@@ -378,6 +406,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "43776F8B1B8022E90074EA36"
+               BuildableName = "Loop.app"
+               BlueprintName = "Loop"
+               ReferencedContainer = "container:Loop/Loop.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "43A9437D1B926B7B0051FA24"
                BuildableName = "WatchApp Extension.appex"
                BlueprintName = "WatchApp Extension"
@@ -409,20 +451,6 @@
                BlueprintIdentifier = "4F70C1DB1DE8DCA7006380B7"
                BuildableName = "Loop Status Extension.appex"
                BlueprintName = "Loop Status Extension"
-               ReferencedContainer = "container:Loop/Loop.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "43776F8B1B8022E90074EA36"
-               BuildableName = "Loop.app"
-               BlueprintName = "Loop"
                ReferencedContainer = "container:Loop/Loop.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
