@@ -24,4 +24,4 @@
 	url = https://github.com/LoopKit/Amplitude-iOS.git
 [submodule "MKRingProgressView"]
 	path = MKRingProgressView
-	url = https://github.com/maxkonovalov/MKRingProgressView.git
+	url = https://github.com/LoopKit/MKRingProgressView.git

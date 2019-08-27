@@ -154,9 +154,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "431CE76E1F98564100255374"
-               BuildableName = "RileyLinkBLEKit.framework"
-               BlueprintName = "RileyLinkBLEKit"
+               BlueprintIdentifier = "C136AA5D231187B0008A320D"
+               BuildableName = "MinimedKitPlugin.loopplugin"
+               BlueprintName = "MinimedKitPlugin"
                ReferencedContainer = "container:rileylink_ios/RileyLink.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -168,79 +168,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "43722FAD1CB9F7630038B7F2"
-               BuildableName = "RileyLinkKit.framework"
-               BlueprintName = "RileyLinkKit"
-               ReferencedContainer = "container:rileylink_ios/RileyLink.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "43D5E78D1FAF7BFB004ACDB7"
-               BuildableName = "RileyLinkKitUI.framework"
-               BlueprintName = "RileyLinkKitUI"
-               ReferencedContainer = "container:rileylink_ios/RileyLink.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C10D9BC01C8269D500378342"
-               BuildableName = "MinimedKit.framework"
-               BlueprintName = "MinimedKit"
-               ReferencedContainer = "container:rileylink_ios/RileyLink.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4352A72420DEC9B700CAC200"
-               BuildableName = "MinimedKitUI.framework"
-               BlueprintName = "MinimedKitUI"
-               ReferencedContainer = "container:rileylink_ios/RileyLink.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C1FFAF77213323CC00C50C1D"
-               BuildableName = "OmniKit.framework"
-               BlueprintName = "OmniKit"
-               ReferencedContainer = "container:rileylink_ios/RileyLink.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C1FFAFD8213323F900C50C1D"
-               BuildableName = "OmniKitUI.framework"
-               BlueprintName = "OmniKitUI"
+               BlueprintIdentifier = "C136AA2923116E32008A320D"
+               BuildableName = "OmniKitPlugin.loopplugin"
+               BlueprintName = "OmniKitPlugin"
                ReferencedContainer = "container:rileylink_ios/RileyLink.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -516,26 +446,6 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "43722FB61CB9F7640038B7F2"
-               BuildableName = "RileyLinkKitTests.xctest"
-               BlueprintName = "RileyLinkKitTests"
-               ReferencedContainer = "container:rileylink_ios/RileyLink.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C12EA251198B436800309FA4"
-               BuildableName = "RileyLinkTests.xctest"
-               BlueprintName = "RileyLinkTests"
-               ReferencedContainer = "container:rileylink_ios/RileyLink.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "432B0E911CDFC3C50045347B"
                BuildableName = "ShareClientTests.xctest"
                BlueprintName = "ShareClientTests"
@@ -580,6 +490,16 @@
                BuildableName = "LoopTests.xctest"
                BlueprintName = "LoopTests"
                ReferencedContainer = "container:Loop/Loop.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C1FFAF7F213323CC00C50C1D"
+               BuildableName = "OmniKitTests.xctest"
+               BlueprintName = "OmniKitTests"
+               ReferencedContainer = "container:rileylink_ios/RileyLink.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
