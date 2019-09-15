@@ -336,9 +336,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "43A943711B926B7B0051FA24"
-               BuildableName = "WatchApp.app"
-               BlueprintName = "WatchApp"
+               BlueprintIdentifier = "43A9437D1B926B7B0051FA24"
+               BuildableName = "WatchApp Extension.appex"
+               BlueprintName = "WatchApp Extension"
                ReferencedContainer = "container:Loop/Loop.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -350,9 +350,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "43A9437D1B926B7B0051FA24"
-               BuildableName = "WatchApp Extension.appex"
-               BlueprintName = "WatchApp Extension"
+               BlueprintIdentifier = "43A943711B926B7B0051FA24"
+               BuildableName = "WatchApp.app"
+               BlueprintName = "WatchApp"
                ReferencedContainer = "container:Loop/Loop.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
