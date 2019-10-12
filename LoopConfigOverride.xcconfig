@@ -12,4 +12,4 @@ MAIN_APP_DISPLAY_NAME = Loop
 // Assets
 INCLUDED_SOURCE_FILE_NAMES = AdditionalAssets.xcassets
 
-//APPICON_NAME = CustomLoopIcon
+APPICON_NAME = CustomLoopIcon

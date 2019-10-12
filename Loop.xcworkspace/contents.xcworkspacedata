@@ -5,6 +5,12 @@
       location = "group:LoopConfigOverride.xcconfig">
    </FileRef>
    <FileRef
+      location = "group:AdditionalAssets.xcassets">
+   </FileRef>
+   <FileRef
+      location = "group:AdditionalWatchAssets.xcassets">
+   </FileRef>
+   <FileRef
       location = "group:Loop/Loop.xcodeproj">
    </FileRef>
    <FileRef
