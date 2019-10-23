@@ -294,10 +294,66 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "38F61398234F3066003FB95D"
+               BuildableName = "NightscoutAPIClient.framework"
+               BlueprintName = "NightscoutAPIClient"
+               ReferencedContainer = "container:NightscoutAPIClient/NightscoutAPIClient.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "384D8EF9236085C300B1DD29"
+               BuildableName = "NightscoutAPIClient.framework"
+               BlueprintName = "NightscoutAPIClient-watchOS"
+               ReferencedContainer = "container:NightscoutAPIClient/NightscoutAPIClient.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "38E30FB42358C25000DAB3A0"
+               BuildableName = "NightscoutAPIClientUI.framework"
+               BlueprintName = "NightscoutAPIClientUI"
+               ReferencedContainer = "container:NightscoutAPIClient/NightscoutAPIClient.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "43776F8B1B8022E90074EA36"
                BuildableName = "Loop.app"
                BlueprintName = "Loop"
                ReferencedContainer = "container:Loop/Loop.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "38F613A1234F3067003FB95D"
+               BuildableName = "NightscoutAPIClientTests.xctest"
+               BlueprintName = "NightscoutAPIClientTests"
+               ReferencedContainer = "container:NightscoutAPIClient/NightscoutAPIClient.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
