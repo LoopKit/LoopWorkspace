@@ -1,13 +1,9 @@
 [submodule "Loop"]
 	path = Loop
-	url = https://github.com/LoopKit/Loop.git
-	branch = dev
 	url = https://github.com/dm61/LoopKit.git
 	branch = irc-pe-wip
 [submodule "LoopKit"]
 	path = LoopKit
-	url = https://github.com/LoopKit/LoopKit.git
-	branch = dev
 	url = https://github.com/dm61/LoopKit.git
 	branch = nonlinear-carb-model
 [submodule "CGMBLEKit"]
