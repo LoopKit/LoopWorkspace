@@ -1,5 +1,8 @@
 [submodule "Loop"]
 	path = Loop
+	url = https://github.com/LoopKit/Loop.git
+	branch = dev
+	path = Loop
 	url = https://github.com/dm61/Loop.git
 	branch = irc-pe-wip
 [submodule "LoopKit"]
