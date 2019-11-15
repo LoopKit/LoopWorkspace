@@ -16,6 +16,7 @@ class Fastfile: LaneFile {
 
         incrementVersionNumber(versionNumber: "2.0", xcodeproj: project)
         incrementBuildNumber(buildNumber: buildNumber, xcodeproj: project)
-        uploadToTestflight(username: appleID, distributeExternal: true)
+        buildApp(scheme: "Loop (Workspace)", clean: true)
+        uploadToTestflight(username: appleID, distributeExternal: true, teamId: teamID)
 	}
 }
