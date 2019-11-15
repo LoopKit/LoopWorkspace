@@ -1,7 +1,7 @@
 [submodule "Loop"]
 	path = Loop
 	url=https://github.com/ivalkou/Loop.git
-	branch = dev-ivan
+	branch = freeaps
 [submodule "LoopKit"]
 	path = LoopKit
 	url = https://github.com/LoopKit/LoopKit.git
