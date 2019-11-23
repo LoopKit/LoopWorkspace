@@ -6,6 +6,8 @@
 // Customize this to change the app name displayed
 MAIN_APP_DISPLAY_NAME = FreeAPS
 
+MAIN_APP_PRODUCT_NAME = FreeAPS
+
 // Features
 // SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) FEATURE_OVERRIDES_DISABLED
 
