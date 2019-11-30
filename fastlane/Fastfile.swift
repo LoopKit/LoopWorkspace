@@ -34,6 +34,6 @@ class Fastfile: LaneFile {
         incrementVersionNumber(versionNumber: version, xcodeproj: project)
         incrementBuildNumber(buildNumber: buildNumber, xcodeproj: project)
         buildApp(scheme: scheme, clean: true)
-        uploadToTestflight(username: appleID, changelog: changelog, distributeExternal: true, groups: groups, teamId: teamID)
+        uploadToTestflight(username: appleID, changelog: changelog, distributeExternal: true, groups: groups, teamId: itcTeam)
 	}
 }
