@@ -5,22 +5,24 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: number_of_commits" time="0.046071">
+      <testcase classname="fastlane.lanes" name="0: number_of_commits" time="0.06217">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: increment_version_number" time="1.293277">
+      <testcase classname="fastlane.lanes" name="1: increment_version_number" time="2.466142">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: increment_build_number" time="0.846676">
+      <testcase classname="fastlane.lanes" name="2: increment_build_number" time="0.861466">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: build_app" time="410.188054">
+      <testcase classname="fastlane.lanes" name="3: build_app" time="382.537583">
+        
+          <failure message="/Library/Ruby/Gems/2.6.0/gems/fastlane-2.137.0/fastlane/lib/fastlane/actions/actions_helper.rb:48:in `execute_action'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.137.0/fastlane/lib/fastlane/runner.rb:235:in `block in execute_action'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.137.0/fastlane/lib/fastlane/runner.rb:227:in `chdir'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.137.0/fastlane/lib/fastlane/runner.rb:227:in `execute_action'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.137.0/fastlane/lib/fastlane/server/socket_server_action_command_executor.rb:73:in `run'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.137.0/fastlane/lib/fastlane/server/socket_server_action_command_executor.rb:42:in `execute'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.137.0/fastlane/lib/fastlane/server/socket_server.rb:181:in `execute_action_command'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.137.0/fastlane/lib/fastlane/server/socket_server.rb:176:in `process_action_command'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.137.0/fastlane/lib/fastlane/server/socket_server.rb:123:in `handle_action_command'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.137.0/fastlane/lib/fastlane/server/socket_server.rb:86:in `parse_and_execute_command'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.137.0/fastlane/lib/fastlane/server/socket_server.rb:62:in `block in receive_and_process_commands'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.137.0/fastlane/lib/fastlane/server/socket_server.rb:49:in `loop'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.137.0/fastlane/lib/fastlane/server/socket_server.rb:49:in `receive_and_process_commands'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.137.0/fastlane/lib/fastlane/server/socket_server.rb:158:in `listen'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.137.0/fastlane/lib/fastlane/server/socket_server.rb:38:in `start'&#10;/Library/Ruby/Gems/2.6.0/gems/fastlane-2.137.0/fastlane/lib/fastlane/swift_lane_manager.rb:231:in `block in start_socket_thread'&#10;&#10;Error packaging up the application" />
         
       </testcase>
     

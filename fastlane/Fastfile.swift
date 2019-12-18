@@ -10,7 +10,7 @@ import Foundation
 
 class Fastfile: LaneFile {
 	func archiveLane() {
-        desc("Archeve")
+        desc("Archieve")
 
         let project = "Loop/Loop.xcodeproj"
         let scheme = "Loop (Workspace)"
@@ -22,14 +22,14 @@ class Fastfile: LaneFile {
         buildApp(scheme: scheme, clean: true)
 	}
 
-    func uploadLane() {
-        desc("Upload")
-
-        let groups = ["Loopers"]
-        let changelog =
-"""
-Changelog
-"""
-        uploadToTestflight(username: appleID, changelog: changelog, distributeExternal: true, groups: groups, teamId: itcTeam)
-    }
+//    func uploadLane() {
+//        desc("Upload")
+//
+//        let groups = ["Loopers"]
+//        let changelog =
+//"""
+//Changelog
+//"""
+//        uploadToTestflight(username: appleID, changelog: changelog, distributeExternal: true, groups: groups, teamId: itcTeam)
+//    }
 }
