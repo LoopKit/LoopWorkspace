@@ -10,7 +10,7 @@ import Foundation
 
 class Fastfile: LaneFile {
 	func archiveLane() {
-        desc("Archieve")
+        desc("Archive")
 
         let project = "Loop/Loop.xcodeproj"
         let scheme = "Loop (Workspace)"
