@@ -19,17 +19,6 @@ class Fastfile: LaneFile {
 
         incrementVersionNumber(versionNumber: version, xcodeproj: project)
         incrementBuildNumber(buildNumber: buildNumber, xcodeproj: project)
-        buildApp(scheme: scheme, clean: true)
+        buildApp(scheme: scheme, clean: true, skipPackageIpa: true)
 	}
-
-//    func uploadLane() {
-//        desc("Upload")
-//
-//        let groups = ["Loopers"]
-//        let changelog =
-//"""
-//Changelog
-//"""
-//        uploadToTestflight(username: appleID, changelog: changelog, distributeExternal: true, groups: groups, teamId: itcTeam)
-//    }
 }
