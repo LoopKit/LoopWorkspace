@@ -337,7 +337,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "43776F8B1B8022E90074EA36"
-               BuildableName = ".app"
+               BuildableName = "FreeAPS.app"
                BlueprintName = "Loop"
                ReferencedContainer = "container:Loop/Loop.xcodeproj">
             </BuildableReference>
@@ -367,7 +367,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "43776F8B1B8022E90074EA36"
-            BuildableName = ".app"
+            BuildableName = "FreeAPS.app"
             BlueprintName = "Loop"
             ReferencedContainer = "container:Loop/Loop.xcodeproj">
          </BuildableReference>
@@ -500,7 +500,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "43776F8B1B8022E90074EA36"
-            BuildableName = ".app"
+            BuildableName = "FreeAPS.app"
             BlueprintName = "Loop"
             ReferencedContainer = "container:Loop/Loop.xcodeproj">
          </BuildableReference>
