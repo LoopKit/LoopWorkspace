@@ -5,22 +5,22 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: number_of_commits" time="0.048028">
+      <testcase classname="fastlane.lanes" name="0: number_of_commits" time="0.037949">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: increment_version_number" time="1.871068">
+      <testcase classname="fastlane.lanes" name="1: increment_version_number" time="1.775239">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: increment_build_number" time="0.762042">
+      <testcase classname="fastlane.lanes" name="2: increment_build_number" time="0.971262">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: build_app" time="309.301161">
+      <testcase classname="fastlane.lanes" name="3: build_app" time="379.751656">
         
       </testcase>
     
