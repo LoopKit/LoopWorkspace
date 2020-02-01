@@ -7,10 +7,9 @@ This repository uses git submodules to pull in the various workspace dependencie
 To clone this repo:
 
 ```
-git clone --branch=<branch> --recurse-submodules https://github.com/ivalkou/LoopWorkspace
+git clone --branch=freeaps --recurse-submodules https://github.com/ivalkou/LoopWorkspace
 ```
 
-Replace `<branch>` with the initial LoopWorkspace repository branch you wish to checkout.
 
 ## Open
 

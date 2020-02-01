@@ -27,3 +27,6 @@ xcuserdata/
 *.playground
 playground.xcworkspace
 timeline.xctimeline
+
+## fastlane temporary profiling data
+fastlane/report.xml
