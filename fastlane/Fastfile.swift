@@ -14,7 +14,7 @@ class Fastfile: LaneFile {
 
         let project = "Loop/Loop.xcodeproj"
         let scheme = "Loop (Workspace)"
-        let version = "2.0"
+        let version = "2.1"
         let buildNumber = numberOfCommits()
 
         incrementVersionNumber(versionNumber: version, xcodeproj: project)
