@@ -1,4 +1,4 @@
-Don't modify the structure of this group including but not limited to:
+ Don't modify the structure of this group including but not limited to:
 - renaming this group
 - adding sub groups
 - removing sub groups
