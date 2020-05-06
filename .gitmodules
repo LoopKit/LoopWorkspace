@@ -23,8 +23,8 @@
 	branch = dev
 [submodule "rileylink_ios"]
 	path = rileylink_ios
-	url = https://github.com/ps2/rileylink_ios.git
-	branch = dev
+	url = https://github.com/itsmojo/rileylink_ios.git
+	branch = update-bundle
 [submodule "Amplitude-iOS"]
 	path = Amplitude-iOS
 	url = https://github.com/LoopKit/Amplitude-iOS.git
