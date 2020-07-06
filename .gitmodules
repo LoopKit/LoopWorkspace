@@ -34,4 +34,7 @@
 	url = https://github.com/LoopKit/MKRingProgressView.git
 [submodule "NightscoutAPIClient"]
 	path = NightscoutAPIClient
-	url = https://github.com/ivalkou/NightscoutAPIClient.git
+	url = https://github.com/ivalkou/NightscoutAPIClient.
+[submodule "bubble-client-swift"]
+	path = bubble-client-swift
+	url = https://github.com/bubbledevteam/bubble-client-swift

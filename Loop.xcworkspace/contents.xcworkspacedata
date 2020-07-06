@@ -38,6 +38,9 @@
       location = "group:MKRingProgressView/MKRingProgressView.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:bubble-client-swift/BubbleClient.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:NightscoutAPIClient/NightscoutAPIClient.xcodeproj">
    </FileRef>
 </Workspace>

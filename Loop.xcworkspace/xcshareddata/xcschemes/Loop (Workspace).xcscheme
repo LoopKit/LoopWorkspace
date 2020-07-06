@@ -336,6 +336,34 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "432B0E871CDFC3C50045347B"
+               BuildableName = "BubbleClient.framework"
+               BlueprintName = "BubbleClient"
+               ReferencedContainer = "container:bubble-client-swift/BubbleClient.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "43A8EC81210E664300A81379"
+               BuildableName = "BubbleClientUI.framework"
+               BlueprintName = "BubbleClientUI"
+               ReferencedContainer = "container:bubble-client-swift/BubbleClient.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "43776F8B1B8022E90074EA36"
                BuildableName = "FreeAPS.app"
                BlueprintName = "Loop"
