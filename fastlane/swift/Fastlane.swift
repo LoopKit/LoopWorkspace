@@ -455,9 +455,9 @@ func appledoc(input: Any,
    - itcProvider: The provider short name to be used with the iTMSTransporter to identify your team. This value will override the automatically detected provider short name. To get provider short name run `pathToXcode.app/Contents/Applications/Application\ Loader.app/Contents/itms/bin/iTMSTransporter -m provider -u 'USERNAME' -p 'PASSWORD' -account_type itunes_connect -v off`. The short names of providers should be listed in the second column
    - runPrecheckBeforeSubmit: Run precheck before submitting to app review
    - precheckDefaultRuleLevel: The default precheck rule level unless otherwise configured
-   - individualMetadataItems: An array of localized metadata items to upload individually by language so that errors can be identified. E.g. ['name', 'keywords', 'description']. Note: slow
-   - appIcon: Metadata: The path to the app icon
-   - appleWatchAppIcon: Metadata: The path to the Apple Watch app icon
+   - individualMetadataItems: **DEPRECATED!** Removed after the migration to the new App Store Connect API in June 2020 - An array of localized metadata items to upload individually by language so that errors can be identified. E.g. ['name', 'keywords', 'description']. Note: slow
+   - appIcon: **DEPRECATED!** Removed after the migration to the new App Store Connect API in June 2020 - Metadata: The path to the app icon
+   - appleWatchAppIcon: **DEPRECATED!** Removed after the migration to the new App Store Connect API in June 2020 - Metadata: The path to the Apple Watch app icon
    - copyright: Metadata: The copyright notice
    - primaryCategory: Metadata: The english name of the primary category (e.g. `Business`, `Books`)
    - secondaryCategory: Metadata: The english name of the secondary category (e.g. `Business`, `Books`)
@@ -515,7 +515,7 @@ func appstore(username: String,
               resetRatings: Bool = false,
               priceTier: Any? = nil,
               appRatingConfigPath: String? = nil,
-              submissionInformation: Any? = nil,
+              submissionInformation: [String : Any]? = nil,
               teamId: Any? = nil,
               teamName: String? = nil,
               devPortalTeamId: String? = nil,
@@ -1491,7 +1491,7 @@ func captureIosScreenshots(workspace: String? = nil,
                            appIdentifier: String? = nil,
                            addPhotos: [String]? = nil,
                            addVideos: [String]? = nil,
-                           htmlTemplate: String = "/Users/josh/Projects/fastlane/fastlane/snapshot/lib/snapshot/page.html.erb",
+                           htmlTemplate: String? = nil,
                            buildlogPath: String = "~/Library/Logs/snapshot",
                            clean: Bool = false,
                            testWithoutBuilding: Bool? = nil,
@@ -1625,7 +1625,7 @@ func captureScreenshots(workspace: String? = nil,
                         appIdentifier: String? = nil,
                         addPhotos: [String]? = nil,
                         addVideos: [String]? = nil,
-                        htmlTemplate: String = "/Users/josh/Projects/fastlane/fastlane/snapshot/lib/snapshot/page.html.erb",
+                        htmlTemplate: String? = nil,
                         buildlogPath: String = "~/Library/Logs/snapshot",
                         clean: Bool = false,
                         testWithoutBuilding: Bool? = nil,
@@ -2039,7 +2039,7 @@ func cocoapods(repoUpdate: Bool = false,
                ansi: Bool = true,
                useBundleExec: Bool = true,
                podfile: String? = nil,
-               errorCallback: Any? = nil,
+               errorCallback: ((String) -> Void)? = nil,
                tryRepoUpdateOnError: Bool = false,
                deployment: Bool = false,
                clean: Bool = true,
@@ -2051,7 +2051,7 @@ func cocoapods(repoUpdate: Bool = false,
                                                                                            RubyCommand.Argument(name: "ansi", value: ansi),
                                                                                            RubyCommand.Argument(name: "use_bundle_exec", value: useBundleExec),
                                                                                            RubyCommand.Argument(name: "podfile", value: podfile),
-                                                                                           RubyCommand.Argument(name: "error_callback", value: errorCallback),
+                                                                                           RubyCommand.Argument(name: "error_callback", value: errorCallback, type: .stringClosure),
                                                                                            RubyCommand.Argument(name: "try_repo_update_on_error", value: tryRepoUpdateOnError),
                                                                                            RubyCommand.Argument(name: "deployment", value: deployment),
                                                                                            RubyCommand.Argument(name: "clean", value: clean),
@@ -2248,7 +2248,7 @@ func createAppOnManagedPlayStore(jsonKey: String? = nil,
    - sku: SKU Number (e.g. '1234')
    - platform: The platform to use (optional)
    - platforms: The platforms to use (optional)
-   - language: Primary Language (e.g. 'English', 'German')
+   - language: Primary Language (e.g. 'en-US', 'fr-FR')
    - companyName: The name of your company. Only required if it's the first app you create
    - skipItc: Skip the creation of the app on App Store Connect
    - itcUsers: Array of App Store Connect users. If provided, you can limit access to this newly created app for users with the App Manager, Developer, Marketer or Sales roles
@@ -2505,9 +2505,9 @@ func deleteKeychain(name: String? = nil,
    - itcProvider: The provider short name to be used with the iTMSTransporter to identify your team. This value will override the automatically detected provider short name. To get provider short name run `pathToXcode.app/Contents/Applications/Application\ Loader.app/Contents/itms/bin/iTMSTransporter -m provider -u 'USERNAME' -p 'PASSWORD' -account_type itunes_connect -v off`. The short names of providers should be listed in the second column
    - runPrecheckBeforeSubmit: Run precheck before submitting to app review
    - precheckDefaultRuleLevel: The default precheck rule level unless otherwise configured
-   - individualMetadataItems: An array of localized metadata items to upload individually by language so that errors can be identified. E.g. ['name', 'keywords', 'description']. Note: slow
-   - appIcon: Metadata: The path to the app icon
-   - appleWatchAppIcon: Metadata: The path to the Apple Watch app icon
+   - individualMetadataItems: **DEPRECATED!** Removed after the migration to the new App Store Connect API in June 2020 - An array of localized metadata items to upload individually by language so that errors can be identified. E.g. ['name', 'keywords', 'description']. Note: slow
+   - appIcon: **DEPRECATED!** Removed after the migration to the new App Store Connect API in June 2020 - Metadata: The path to the app icon
+   - appleWatchAppIcon: **DEPRECATED!** Removed after the migration to the new App Store Connect API in June 2020 - Metadata: The path to the Apple Watch app icon
    - copyright: Metadata: The copyright notice
    - primaryCategory: Metadata: The english name of the primary category (e.g. `Business`, `Books`)
    - secondaryCategory: Metadata: The english name of the secondary category (e.g. `Business`, `Books`)
@@ -2565,7 +2565,7 @@ func deliver(username: Any = deliverfile.username,
              resetRatings: Bool = deliverfile.resetRatings,
              priceTier: Any? = deliverfile.priceTier,
              appRatingConfigPath: Any? = deliverfile.appRatingConfigPath,
-             submissionInformation: Any? = deliverfile.submissionInformation,
+             submissionInformation: [String : Any]? = deliverfile.submissionInformation,
              teamId: Any? = deliverfile.teamId,
              teamName: Any? = deliverfile.teamName,
              devPortalTeamId: Any? = deliverfile.devPortalTeamId,
@@ -3054,7 +3054,7 @@ func frameScreenshots(white: Bool? = nil,
                       useLegacyIphonexr: Bool = false,
                       useLegacyIphonexs: Bool = false,
                       useLegacyIphonexsmax: Bool = false,
-                      forceOrientationBlock: String? = nil,
+                      forceOrientationBlock: ((String) -> Void)? = nil,
                       debugMode: Bool = false,
                       resume: Bool = false,
                       usePlatform: String = "IOS",
@@ -3071,7 +3071,7 @@ func frameScreenshots(white: Bool? = nil,
                                                                                                    RubyCommand.Argument(name: "use_legacy_iphonexr", value: useLegacyIphonexr),
                                                                                                    RubyCommand.Argument(name: "use_legacy_iphonexs", value: useLegacyIphonexs),
                                                                                                    RubyCommand.Argument(name: "use_legacy_iphonexsmax", value: useLegacyIphonexsmax),
-                                                                                                   RubyCommand.Argument(name: "force_orientation_block", value: forceOrientationBlock),
+                                                                                                   RubyCommand.Argument(name: "force_orientation_block", value: forceOrientationBlock, type: .stringClosure),
                                                                                                    RubyCommand.Argument(name: "debug_mode", value: debugMode),
                                                                                                    RubyCommand.Argument(name: "resume", value: resume),
                                                                                                    RubyCommand.Argument(name: "use_platform", value: usePlatform),
@@ -3116,7 +3116,7 @@ func frameit(white: Bool? = nil,
              useLegacyIphonexr: Bool = false,
              useLegacyIphonexs: Bool = false,
              useLegacyIphonexsmax: Bool = false,
-             forceOrientationBlock: String? = nil,
+             forceOrientationBlock: ((String) -> Void)? = nil,
              debugMode: Bool = false,
              resume: Bool = false,
              usePlatform: String = "IOS",
@@ -3133,7 +3133,7 @@ func frameit(white: Bool? = nil,
                                                                                          RubyCommand.Argument(name: "use_legacy_iphonexr", value: useLegacyIphonexr),
                                                                                          RubyCommand.Argument(name: "use_legacy_iphonexs", value: useLegacyIphonexs),
                                                                                          RubyCommand.Argument(name: "use_legacy_iphonexsmax", value: useLegacyIphonexsmax),
-                                                                                         RubyCommand.Argument(name: "force_orientation_block", value: forceOrientationBlock),
+                                                                                         RubyCommand.Argument(name: "force_orientation_block", value: forceOrientationBlock, type: .stringClosure),
                                                                                          RubyCommand.Argument(name: "debug_mode", value: debugMode),
                                                                                          RubyCommand.Argument(name: "resume", value: resume),
                                                                                          RubyCommand.Argument(name: "use_platform", value: usePlatform),
@@ -3636,6 +3636,42 @@ func githubApi(serverUrl: String = "https://api.github.com",
                                                                                             RubyCommand.Argument(name: "error_handlers", value: errorHandlers),
                                                                                             RubyCommand.Argument(name: "headers", value: headers),
                                                                                             RubyCommand.Argument(name: "secure", value: secure)])
+  _ = runner.executeCommand(command)
+}
+
+/**
+ Retrieves release names for a Google Play track
+
+ - parameters:
+   - packageName: The package name of the application to use
+   - track: The track of the application to use. The default available tracks are: production, beta, alpha, internal
+   - key: **DEPRECATED!** Use `--json_key` instead - The p12 File used to authenticate with Google
+   - issuer: **DEPRECATED!** Use `--json_key` instead - The issuer of the p12 file (email address of the service account)
+   - jsonKey: The path to a file containing service account JSON, used to authenticate with Google
+   - jsonKeyData: The raw service account JSON data used to authenticate with Google
+   - rootUrl: Root URL for the Google Play API. The provided URL will be used for API calls in place of https://www.googleapis.com/
+   - timeout: Timeout for read, open, and send (in seconds)
+
+ - returns: Array of strings representing the release names for the given Google Play track
+
+ More information: [https://docs.fastlane.tools/actions/supply/](https://docs.fastlane.tools/actions/supply/)
+*/
+func googlePlayTrackReleaseNames(packageName: String,
+                                 track: String = "production",
+                                 key: String? = nil,
+                                 issuer: String? = nil,
+                                 jsonKey: String? = nil,
+                                 jsonKeyData: String? = nil,
+                                 rootUrl: String? = nil,
+                                 timeout: Int = 300) {
+  let command = RubyCommand(commandID: "", methodName: "google_play_track_release_names", className: nil, args: [RubyCommand.Argument(name: "package_name", value: packageName),
+                                                                                                                 RubyCommand.Argument(name: "track", value: track),
+                                                                                                                 RubyCommand.Argument(name: "key", value: key),
+                                                                                                                 RubyCommand.Argument(name: "issuer", value: issuer),
+                                                                                                                 RubyCommand.Argument(name: "json_key", value: jsonKey),
+                                                                                                                 RubyCommand.Argument(name: "json_key_data", value: jsonKeyData),
+                                                                                                                 RubyCommand.Argument(name: "root_url", value: rootUrl),
+                                                                                                                 RubyCommand.Argument(name: "timeout", value: timeout)])
   _ = runner.executeCommand(command)
 }
 
@@ -5307,7 +5343,7 @@ func println(message: String? = nil) {
    - sku: SKU Number (e.g. '1234')
    - platform: The platform to use (optional)
    - platforms: The platforms to use (optional)
-   - language: Primary Language (e.g. 'English', 'German')
+   - language: Primary Language (e.g. 'en-US', 'fr-FR')
    - companyName: The name of your company. Only required if it's the first app you create
    - skipItc: Skip the creation of the app on App Store Connect
    - itcUsers: Array of App Store Connect users. If provided, you can limit access to this newly created app for users with the App Manager, Developer, Marketer or Sales roles
@@ -6520,10 +6556,10 @@ func setupTravis(force: Bool = false) {
 */
 @discardableResult func sh(command: String,
                            log: Bool = true,
-                           errorCallback: Any? = nil) -> String {
+                           errorCallback: ((String) -> Void)? = nil) -> String {
   let command = RubyCommand(commandID: "", methodName: "sh", className: nil, args: [RubyCommand.Argument(name: "command", value: command),
                                                                                     RubyCommand.Argument(name: "log", value: log),
-                                                                                    RubyCommand.Argument(name: "error_callback", value: errorCallback)])
+                                                                                    RubyCommand.Argument(name: "error_callback", value: errorCallback, type: .stringClosure)])
   return runner.executeCommand(command)
 }
 
@@ -6721,6 +6757,7 @@ func slackTrainStart(distance: Int = 5,
    - coberturaXml: Tell slather that it should output results as Cobertura XML format
    - sonarqubeXml: Tell slather that it should output results as SonarQube Generic XML format
    - llvmCov: Tell slather that it should output results as llvm-cov show format
+   - json: Tell slather that it should output results as static JSON report
    - html: Tell slather that it should output results as static HTML pages
    - show: Tell slather that it should open static html pages automatically
    - sourceDirectory: Tell slather the location of your source files
@@ -6755,6 +6792,7 @@ func slather(buildDirectory: String? = nil,
              coberturaXml: Bool? = nil,
              sonarqubeXml: Bool? = nil,
              llvmCov: Any? = nil,
+             json: Bool? = nil,
              html: Bool? = nil,
              show: Bool = false,
              sourceDirectory: String? = nil,
@@ -6785,6 +6823,7 @@ func slather(buildDirectory: String? = nil,
                                                                                          RubyCommand.Argument(name: "cobertura_xml", value: coberturaXml),
                                                                                          RubyCommand.Argument(name: "sonarqube_xml", value: sonarqubeXml),
                                                                                          RubyCommand.Argument(name: "llvm_cov", value: llvmCov),
+                                                                                         RubyCommand.Argument(name: "json", value: json),
                                                                                          RubyCommand.Argument(name: "html", value: html),
                                                                                          RubyCommand.Argument(name: "show", value: show),
                                                                                          RubyCommand.Argument(name: "source_directory", value: sourceDirectory),
@@ -6868,7 +6907,7 @@ func snapshot(workspace: Any? = snapshotfile.workspace,
               appIdentifier: Any? = snapshotfile.appIdentifier,
               addPhotos: [String]? = snapshotfile.addPhotos,
               addVideos: [String]? = snapshotfile.addVideos,
-              htmlTemplate: Any = snapshotfile.htmlTemplate,
+              htmlTemplate: Any? = snapshotfile.htmlTemplate,
               buildlogPath: Any = snapshotfile.buildlogPath,
               clean: Bool = snapshotfile.clean,
               testWithoutBuilding: Bool? = snapshotfile.testWithoutBuilding,
@@ -7061,6 +7100,7 @@ func splunkmint(dsym: String? = nil,
    - packagePath: Change working directory before any other operation
    - xcconfig: Use xcconfig file to override swift package generate-xcodeproj defaults
    - configuration: Build with configuration (debug|release) [default: debug]
+   - disableSandbox: Disable using the sandbox when executing subprocesses
    - xcprettyOutput: Specifies the output type for xcpretty. eg. 'test', or 'simple'
    - xcprettyArgs: Pass in xcpretty additional command line arguments (e.g. '--test --no-color' or '--tap --no-utf'), requires xcpretty_output to be specified also
    - verbose: Increase verbosity of informational output
@@ -7070,6 +7110,7 @@ func spm(command: String = "build",
          packagePath: String? = nil,
          xcconfig: String? = nil,
          configuration: String? = nil,
+         disableSandbox: Bool = false,
          xcprettyOutput: String? = nil,
          xcprettyArgs: String? = nil,
          verbose: Bool = false) {
@@ -7078,6 +7119,7 @@ func spm(command: String = "build",
                                                                                      RubyCommand.Argument(name: "package_path", value: packagePath),
                                                                                      RubyCommand.Argument(name: "xcconfig", value: xcconfig),
                                                                                      RubyCommand.Argument(name: "configuration", value: configuration),
+                                                                                     RubyCommand.Argument(name: "disable_sandbox", value: disableSandbox),
                                                                                      RubyCommand.Argument(name: "xcpretty_output", value: xcprettyOutput),
                                                                                      RubyCommand.Argument(name: "xcpretty_args", value: xcprettyArgs),
                                                                                      RubyCommand.Argument(name: "verbose", value: verbose)])
@@ -8063,9 +8105,9 @@ func uploadSymbolsToSentry(apiHost: String = "https://app.getsentry.com/api/0",
    - itcProvider: The provider short name to be used with the iTMSTransporter to identify your team. This value will override the automatically detected provider short name. To get provider short name run `pathToXcode.app/Contents/Applications/Application\ Loader.app/Contents/itms/bin/iTMSTransporter -m provider -u 'USERNAME' -p 'PASSWORD' -account_type itunes_connect -v off`. The short names of providers should be listed in the second column
    - runPrecheckBeforeSubmit: Run precheck before submitting to app review
    - precheckDefaultRuleLevel: The default precheck rule level unless otherwise configured
-   - individualMetadataItems: An array of localized metadata items to upload individually by language so that errors can be identified. E.g. ['name', 'keywords', 'description']. Note: slow
-   - appIcon: Metadata: The path to the app icon
-   - appleWatchAppIcon: Metadata: The path to the Apple Watch app icon
+   - individualMetadataItems: **DEPRECATED!** Removed after the migration to the new App Store Connect API in June 2020 - An array of localized metadata items to upload individually by language so that errors can be identified. E.g. ['name', 'keywords', 'description']. Note: slow
+   - appIcon: **DEPRECATED!** Removed after the migration to the new App Store Connect API in June 2020 - Metadata: The path to the app icon
+   - appleWatchAppIcon: **DEPRECATED!** Removed after the migration to the new App Store Connect API in June 2020 - Metadata: The path to the Apple Watch app icon
    - copyright: Metadata: The copyright notice
    - primaryCategory: Metadata: The english name of the primary category (e.g. `Business`, `Books`)
    - secondaryCategory: Metadata: The english name of the secondary category (e.g. `Business`, `Books`)
@@ -8123,7 +8165,7 @@ func uploadToAppStore(username: String,
                       resetRatings: Bool = false,
                       priceTier: Any? = nil,
                       appRatingConfigPath: String? = nil,
-                      submissionInformation: Any? = nil,
+                      submissionInformation: [String : Any]? = nil,
                       teamId: Any? = nil,
                       teamName: String? = nil,
                       devPortalTeamId: String? = nil,
@@ -8924,4 +8966,4 @@ let snapshotfile: Snapshotfile = Snapshotfile()
 
 // Please don't remove the lines below
 // They are used to detect outdated files
-// FastlaneRunnerAPIVersion [0.9.77]
+// FastlaneRunnerAPIVersion [0.9.73]
