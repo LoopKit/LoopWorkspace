@@ -84,6 +84,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8687AEE71C66F322005D9419"
+               BuildableName = "Minizip.framework"
+               BlueprintName = "Minizip-iOS"
+               ReferencedContainer = "container:Minizip/Minizip.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "43BA7153201E484D0058961E"
                BuildableName = "LoopKitUI.framework"
                BlueprintName = "LoopKitUI"
