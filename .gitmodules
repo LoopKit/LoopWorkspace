@@ -28,12 +28,6 @@
 [submodule "NightscoutService"]
 	path = NightscoutService
 	url = https://github.com/ps2/NightscoutService.git
-[submodule "TidepoolService"]
-	path = TidepoolService
-	url = https://github.com/tidepool-org/TidepoolService.git
-[submodule "TidepoolKit"]
-	path = TidepoolKit
-	url = https://github.com/tidepool-org/TidepoolKit.git
 [submodule "Minizip"]
 	path = Minizip
 	url = https://github.com/dexman/Minizip.git
