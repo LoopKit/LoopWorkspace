@@ -35,6 +35,12 @@
       location = "group:Amplitude-iOS/Amplitude.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:NightscoutService/NightscoutService.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:MKRingProgressView/MKRingProgressView.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Minizip/Minizip.xcodeproj">
    </FileRef>
 </Workspace>

@@ -25,3 +25,9 @@
 [submodule "MKRingProgressView"]
 	path = MKRingProgressView
 	url = https://github.com/LoopKit/MKRingProgressView.git
+[submodule "NightscoutService"]
+	path = NightscoutService
+	url = https://github.com/ps2/NightscoutService.git
+[submodule "Minizip"]
+	path = Minizip
+	url = https://github.com/dexman/Minizip.git
