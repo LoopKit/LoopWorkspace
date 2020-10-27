@@ -1,0 +1,29 @@
+## Build
+DerivedData/
+
+## Settings
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+
+## Other
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
+*.xcuserstate
+.DS_Store
+
+## Obj-C/Swift specific
+*.hmap
+*.ipa
+
+## Playgrounds
+*.playground
+playground.xcworkspace
+timeline.xctimeline
