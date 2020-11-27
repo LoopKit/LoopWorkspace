@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:LoopConfigOverride.xcconfig">
+      location = "group:/Users/pete/dev/LoopWorkspace/LoopConfigOverride.xcconfig">
    </FileRef>
    <FileRef
       location = "group:AdditionalAssets.xcassets">
@@ -42,5 +42,8 @@
    </FileRef>
    <FileRef
       location = "group:Minizip/Minizip.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:TrueTime.swift/TrueTime.xcodeproj">
    </FileRef>
 </Workspace>
