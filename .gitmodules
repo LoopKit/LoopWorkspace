@@ -33,4 +33,4 @@
 	url = https://github.com/dexman/Minizip.git
 [submodule "TrueTime.swift"]
 	path = TrueTime.swift
-	url = git@github.com:instacart/TrueTime.swift.git
+	url = https://github.com/instacart/TrueTime.swift.git
