@@ -38,3 +38,6 @@
 [submodule "bubble-client-swift"]
 	path = bubble-client-swift
 	url = https://github.com/bubbledevteam/bubble-client-swift
+[submodule "xdrip-client-swift"]
+	path = xdrip-client-swift
+	url = https://github.com/alekst1d/xdrip-client-swift
