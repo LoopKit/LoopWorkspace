@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:xdrip-client-swift/xDripClient.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:LoopConfigOverride.xcconfig">
    </FileRef>
    <FileRef
