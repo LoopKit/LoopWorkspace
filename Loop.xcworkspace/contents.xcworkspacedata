@@ -2,13 +2,13 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/pete/dev/LoopWorkspace/LoopConfigOverride.xcconfig">
+      location = "container:LoopConfigOverride.xcconfig">
    </FileRef>
    <FileRef
-      location = "group:/Users/pete/dev/LoopWorkspace/OverrideAssetsLoop.xcassets">
+      location = "container:OverrideAssetsLoop.xcassets">
    </FileRef>
    <FileRef
-      location = "group:/Users/pete/dev/LoopWorkspace/OverrideAssetsWatchApp.xcassets">
+      location = "container:OverrideAssetsWatchApp.xcassets">
    </FileRef>
    <FileRef
       location = "group:Loop/Loop.xcodeproj">
