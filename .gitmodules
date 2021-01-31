@@ -24,7 +24,6 @@
 [submodule "rileylink_ios"]
 	path = rileylink_ios
 	url = https://github.com/ps2/rileylink_ios.git
-	branch = carthage-pin
 [submodule "Amplitude-iOS"]
 	path = Amplitude-iOS
 	url = https://github.com/LoopKit/Amplitude-iOS.git
@@ -37,7 +36,8 @@
 	url = https://github.com/ivalkou/NightscoutAPIClient.git
 [submodule "bubble-client-swift"]
 	path = bubble-client-swift
-	url = https://github.com/bubbledevteam/bubble-client-swift
+	url = https://github.com/alekst1d/bubble-client-swift
 [submodule "xdrip-client-swift"]
 	path = xdrip-client-swift
 	url = https://github.com/alekst1d/xdrip-client-swift
+        branch = master
