@@ -17,6 +17,9 @@
       location = "group:LoopKit/LoopKit.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:LoopOnboarding/LoopOnboarding.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:CGMBLEKit/CGMBLEKit.xcodeproj">
    </FileRef>
    <FileRef
