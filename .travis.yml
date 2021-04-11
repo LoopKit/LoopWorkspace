@@ -6,4 +6,4 @@ script:
   - carthage version
   - set -o pipefail && time xcodebuild -workspace Loop.xcworkspace -scheme 'Loop (Workspace)' -destination 'name=iPhone 8' build | xcpretty
   - set -o pipefail && time xcodebuild -workspace Loop.xcworkspace -scheme 'Learn (Workspace)' -destination 'name=iPhone 8' build | xcpretty
-  - set -o pipefail && time xcodebuild -workspace Loop.xcworkspace -scheme 'Loop (Workspace)' -destination 'name=iPhone 8' test 
+  - set -o pipefail && time xcodebuild -workspace Loop.xcworkspace -scheme 'Loop (Workspace)' -destination 'name=iPhone 8' test | xcpretty
