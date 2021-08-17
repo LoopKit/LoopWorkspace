@@ -41,6 +41,9 @@
       location = "group:Amplitude-iOS/Amplitude.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:LogglyService/LogglyService.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:NightscoutService/NightscoutService.xcodeproj">
    </FileRef>
    <FileRef

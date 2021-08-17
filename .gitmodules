@@ -40,3 +40,6 @@
 [submodule "AmplitudeService"]
 	path = AmplitudeService
 	url = https://github.com/LoopKit/AmplitudeService.git
+[submodule "LogglyService"]
+	path = LogglyService
+	url = https://github.com/LoopKit/LogglyService.git
