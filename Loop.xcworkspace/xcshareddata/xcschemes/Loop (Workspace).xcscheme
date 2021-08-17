@@ -14,20 +14,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "343AB4161CC99F4F00962943"
-               BuildableName = "Amplitude.framework"
-               BlueprintName = "AmplitudeFramework"
-               ReferencedContainer = "container:Amplitude-iOS/Amplitude.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "5085266D1E52FDC000D611F4"
                BuildableName = "MKRingProgressView.framework"
                BlueprintName = "MKRingProgressView"
@@ -266,6 +252,34 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "12C972CA24105C3600E9CDDB"
+               BuildableName = "Amplitude.framework"
+               BlueprintName = "Amplitude_iOS"
+               ReferencedContainer = "container:Amplitude-iOS/Amplitude.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A9FC98DB2333EFE10010CBD2"
+               BuildableName = "AmplitudeServiceKitPlugin.loopplugin"
+               BlueprintName = "AmplitudeServiceKitPlugin"
+               ReferencedContainer = "container:AmplitudeService/AmplitudeService.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "B4D40D3D23A428BC00D7ECB5"
                BuildableName = "CGMBLEKitG5Plugin.loopplugin"
                BlueprintName = "CGMBLEKitG5Plugin"
@@ -463,10 +477,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "343AB4161CC99F4F00962943"
-            BuildableName = "Amplitude.framework"
-            BlueprintName = "AmplitudeFramework"
-            ReferencedContainer = "container:Amplitude-iOS/Amplitude.xcodeproj">
+            BlueprintIdentifier = "5085266D1E52FDC000D611F4"
+            BuildableName = "MKRingProgressView.framework"
+            BlueprintName = "MKRingProgressView"
+            ReferencedContainer = "container:MKRingProgressView/MKRingProgressView.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

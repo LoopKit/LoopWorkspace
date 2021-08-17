@@ -37,3 +37,6 @@
 [submodule "LoopOnboarding"]
 	path = LoopOnboarding
 	url = https://github.com/LoopKit/LoopOnboarding.git
+[submodule "AmplitudeService"]
+	path = AmplitudeService
+	url = https://github.com/LoopKit/AmplitudeService.git
