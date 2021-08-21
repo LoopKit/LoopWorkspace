@@ -40,3 +40,6 @@
 [submodule "OneTimePassword"]
 	path = OneTimePassword
 	url = https://github.com/gestrich/OneTimePassword.git 
+[submodule "Base32"]
+	path = Base32
+	url = https://github.com/gestrich/Base32.git

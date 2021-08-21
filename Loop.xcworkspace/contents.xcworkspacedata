@@ -52,4 +52,7 @@
    <FileRef
       location = "group:OneTimePassword/OneTimePassword.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Base32/Base32.xcodeproj">
+   </FileRef>
 </Workspace>

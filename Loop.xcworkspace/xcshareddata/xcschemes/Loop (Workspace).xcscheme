@@ -28,6 +28,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C996EC621A74F2180076B105"
+               BuildableName = "Base32.framework"
+               BlueprintName = "Base32 (iOS)"
+               ReferencedContainer = "container:Base32/Base32.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "5085266D1E52FDC000D611F4"
                BuildableName = "MKRingProgressView.framework"
                BlueprintName = "MKRingProgressView"
