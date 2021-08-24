@@ -14,20 +14,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "343AB4161CC99F4F00962943"
-               BuildableName = "Amplitude.framework"
-               BlueprintName = "AmplitudeFramework"
-               ReferencedContainer = "container:Amplitude-iOS/Amplitude.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "5085266D1E52FDC000D611F4"
                BuildableName = "MKRingProgressView.framework"
                BlueprintName = "MKRingProgressView"
