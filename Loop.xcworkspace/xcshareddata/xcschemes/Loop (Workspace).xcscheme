@@ -28,20 +28,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C996EC621A74F2180076B105"
-               BuildableName = "Base32.framework"
-               BlueprintName = "Base32 (iOS)"
-               ReferencedContainer = "container:Base32/Base32.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "5085266D1E52FDC000D611F4"
                BuildableName = "MKRingProgressView.framework"
                BlueprintName = "MKRingProgressView"
@@ -210,6 +196,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C996EC621A74F2180076B105"
+               BuildableName = "Base32.framework"
+               BlueprintName = "Base32 (iOS)"
+               ReferencedContainer = "container:Base32/Base32.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "C97C82371946E51D00FD9F4C"
                BuildableName = "OneTimePassword.framework"
                BlueprintName = "OneTimePassword (iOS)"
@@ -284,6 +284,48 @@
                BuildableName = "G4ShareSpyPlugin.loopplugin"
                BlueprintName = "G4ShareSpyPlugin"
                ReferencedContainer = "container:G4ShareSpy/G4ShareSpy.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "12C972CA24105C3600E9CDDB"
+               BuildableName = "Amplitude.framework"
+               BlueprintName = "Amplitude_iOS"
+               ReferencedContainer = "container:Amplitude-iOS/Amplitude.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A9FC98DB2333EFE10010CBD2"
+               BuildableName = "AmplitudeServiceKitPlugin.loopplugin"
+               BlueprintName = "AmplitudeServiceKitPlugin"
+               ReferencedContainer = "container:AmplitudeService/AmplitudeService.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A99C711A233965F000AB9035"
+               BuildableName = "LogglyServiceKitPlugin.loopplugin"
+               BlueprintName = "LogglyServiceKitPlugin"
+               ReferencedContainer = "container:LogglyService/LogglyService.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -491,10 +533,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "343AB4161CC99F4F00962943"
-            BuildableName = "Amplitude.framework"
-            BlueprintName = "AmplitudeFramework"
-            ReferencedContainer = "container:Amplitude-iOS/Amplitude.xcodeproj">
+            BlueprintIdentifier = "5085266D1E52FDC000D611F4"
+            BuildableName = "MKRingProgressView.framework"
+            BlueprintName = "MKRingProgressView"
+            ReferencedContainer = "container:MKRingProgressView/MKRingProgressView.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
