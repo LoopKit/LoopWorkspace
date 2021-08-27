@@ -43,3 +43,6 @@
 [submodule "LogglyService"]
 	path = LogglyService
 	url = https://github.com/LoopKit/LogglyService.git
+[submodule "NightscoutAPIClient"]
+	path = NightscoutAPIClient
+	url = https://github.com/gestrich/NightscoutAPIClient.git 
