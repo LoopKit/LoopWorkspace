@@ -1,6 +1,8 @@
 # Attention please!
 
-Dear friends! The FreeAPS project (ivalkou github site) is frozen. All the forces of Ivan's team are aimed at developing a new project FreeAPS X based on OpenAPS. There are so many people who rely on the FreeAPS fork of Loop that it has been forked again to the loopnlearn github site.
+There are so many people who rely on the FreeAPS fork of Loop that it has been forked again to the loopnlearn github site. There are no guarantees as to how long this support can be maintained, but the loopnlearn team will do their best and are willing to accept pull requests.
+
+Ivan - the originator of the FreeAPS project (ivalkou github site) has frozen his repository. All the forces of Ivan's team are aimed at developing a new project FreeAPS X based on OpenAPS. 
 
 
 # LoopWorkspace
