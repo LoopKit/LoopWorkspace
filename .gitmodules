@@ -5,22 +5,18 @@
 [submodule "LoopKit"]
 	path = LoopKit
 	url = https://github.com/LoopKit/LoopKit.git
-	branch = dev
 [submodule "CGMBLEKit"]
 	path = CGMBLEKit
 	url = https://github.com/LoopKit/CGMBLEKit.git
-	branch = dev
 [submodule "SwiftCharts"]
 	path = SwiftCharts
 	url = https://github.com/i-schuetz/SwiftCharts.git
 [submodule "dexcom-share-client-swift"]
 	path = dexcom-share-client-swift
 	url = https://github.com/LoopKit/dexcom-share-client-swift.git
-	branch = dev
 [submodule "G4ShareSpy"]
 	path = G4ShareSpy
 	url = https://github.com/LoopKit/G4ShareSpy.git
-	branch = dev
 [submodule "rileylink_ios"]
 	path = rileylink_ios
 	url = https://github.com/ps2/rileylink_ios.git
