@@ -2,18 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:xdrip-client-swift/xDripClient.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:LoopConfigOverride.xcconfig">
-   </FileRef>
-   <FileRef
-      location = "group:AdditionalAssets.xcassets">
-   </FileRef>
-   <FileRef
-      location = "group:AdditionalWatchAssets.xcassets">
-   </FileRef>
-   <FileRef
       location = "group:Loop/Loop.xcodeproj">
    </FileRef>
    <FileRef
@@ -42,5 +30,17 @@
    </FileRef>
    <FileRef
       location = "group:NightscoutAPIClient/NightscoutAPIClient.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:xdrip-client-swift/xDripClient.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:AdditionalWatchAssets.xcassets">
+   </FileRef>
+   <FileRef
+      location = "group:AdditionalAssets.xcassets">
+   </FileRef>
+   <FileRef
+      location = "group:LoopConfigOverride.xcconfig">
    </FileRef>
 </Workspace>
