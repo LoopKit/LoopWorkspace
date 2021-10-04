@@ -1,0 +1,12 @@
+jobs:
+  build-and-test:
+    macos:
+      xcode: 13.0
+    steps:
+      - checkout
+      - run:
+          name: Build app
+          command: set -o pipefail && time xcodebuild -workspace Loop.xcworkspace -scheme 'Loop (Workspace)' -destination 'name=iPhone 8' build | xcpretty
+          environment:
+            SCAN_DEVICE: iPhone 8
+            SCAN_SCHEME: WebTest
