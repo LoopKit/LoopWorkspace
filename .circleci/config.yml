@@ -1,5 +1,5 @@
 jobs:
-  build-and-test:
+  build_and_test:
     macos:
       xcode: 13.0
     steps:
