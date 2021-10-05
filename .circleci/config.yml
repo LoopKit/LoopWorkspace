@@ -1,12 +1,19 @@
 jobs:
-  build_and_test:
+  build:
     macos:
-      xcode: 13.0
+      xcode: 13.0.0
     steps:
       - checkout
       - run:
-          name: Build app
+          name: Checkout submodules
+          command: git submodule update --init --recursive --depth 1
+      - run:
+          name: Build Loop
           command: set -o pipefail && time xcodebuild -workspace Loop.xcworkspace -scheme 'Loop (Workspace)' -destination 'name=iPhone 8' build | xcpretty
-          environment:
-            SCAN_DEVICE: iPhone 8
-            SCAN_SCHEME: WebTest
+      - run:
+          name: Build Learn
+          command: set -o pipefail && time xcodebuild -workspace Loop.xcworkspace -scheme 'Learn (Workspace)' -destination 'name=iPhone 8' build | xcpretty
+      - run:
+          name: Run Tests
+          command: set -o pipefail && time xcodebuild -workspace Loop.xcworkspace -scheme 'Loop (Workspace)' -destination 'name=iPhone 8' test | xcpretty
+
