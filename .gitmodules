@@ -19,7 +19,7 @@
 	url = https://github.com/LoopKit/G4ShareSpy.git
 [submodule "rileylink_ios"]
 	path = rileylink_ios
-	url = https://github.com/ps2/rileylink_ios.git
+	url = https://github.com/loopnlearn/rileylink_ios.git
 [submodule "Amplitude-iOS"]
 	path = Amplitude-iOS
 	url = https://github.com/LoopKit/Amplitude-iOS.git
@@ -33,4 +33,4 @@
 [submodule "xdrip-client-swift"]
 	path = xdrip-client-swift
 	url = https://github.com/alekst1d/xdrip-client-swift
-        branch = master
+  branch = master
