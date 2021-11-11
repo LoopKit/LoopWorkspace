@@ -17,7 +17,7 @@ There is a copy button located by hovering on the right-hand side of the text bl
 
 ## Run Script - Answer the Questions
 
-First time users should run the script and answer the questions. Copy, paste and hit enter in a terminal.
+First time users should run the script and answer the questions. Copy and paste in a terminal.
 
 ``` title="Execute Utilities to Clean Profiles and Derived Data"
 /bin/bash -c "$(curl -fsSL https://git.io/JImiE)"
@@ -27,7 +27,6 @@ First time users should run the script and answer the questions. Copy, paste and
 
 For experienced users who have already verified their macOS and Xcode versions, two one-step copy blocks are provided to perform the two actions required for a rebuild. Paste each set of commands into a terminal. Review output for errors - if there are errors, please use the LoopDocs link.
 
-The # symbol is simply there so you do not need to hit enter after the final input in this buffer. There will be a # showing in the terminal window when done.  You can either hit return or backspace to clear it.
 
 ### Clean Profiles and Derived Data
 
@@ -38,7 +37,6 @@ This starts the script and answers the questions to run the utility to give you 
 1
 3
 3
-#
 ```
 
 ### Download FreeAPS and Open Xcode
@@ -55,7 +53,6 @@ Once downloaded (in the ~/Downloads/BuildLoop folder), the script:
 1
 2
 1
-#
 ```
 
 # LoopWorkspace - Manual Build
