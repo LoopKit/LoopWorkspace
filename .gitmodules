@@ -4,7 +4,7 @@
 	branch = freeaps
 [submodule "LoopKit"]
 	path = LoopKit
-	url = https://github.com/LoopKit/LoopKit.git
+	url = https://github.com/loopnlearn/LoopKit.git
 [submodule "CGMBLEKit"]
 	path = CGMBLEKit
 	url = https://github.com/LoopKit/CGMBLEKit.git
