@@ -33,4 +33,4 @@
 [submodule "xdrip-client-swift"]
 	path = xdrip-client-swift
 	url = https://github.com/alekst1d/xdrip-client-swift
-  branch = master
+	branch = master
