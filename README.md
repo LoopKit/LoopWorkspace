@@ -2,7 +2,7 @@
 
 There are so many people who rely on the FreeAPS fork of Loop that it has been forked again to the loopnlearn github site. There are no guarantees as to how long this support can be maintained, but the loopnlearn team will do their best and are willing to accept pull requests.
 
-With the advent of maintenance by loopnlearn, the [FreeAPS crowdin])https://crowdin.com/project/freeaps-settings) has been expanded to cover more strings.
+With the advent of maintenance by loopnlearn, the [FreeAPS crowdin](https://crowdin.com/project/freeaps-settings) has been expanded to cover more strings.
 
 Ivan - the originator of the FreeAPS project (ivalkou github site) has frozen his repository. All the forces of Ivan's team are aimed at developing a new project FreeAPS X based on OpenAPS.
 
