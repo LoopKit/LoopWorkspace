@@ -34,3 +34,7 @@
 	path = xdrip-client-swift
 	url = https://github.com/loopnlearn/xdrip-client-swift
 	branch = master
+[submodule "libre-direct-client-swift"]
+	path = libre-direct-client-swift
+	url = https://github.com/Jon-b-m/libre-direct-client-swift.git
+	branch = integration
