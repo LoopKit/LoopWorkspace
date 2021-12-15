@@ -1,7 +1,6 @@
 [submodule "Loop"]
 	path = Loop
 	url=https://github.com/loopnlearn/Loop.git
-	branch = freeaps
 [submodule "LoopKit"]
 	path = LoopKit
 	url = https://github.com/loopnlearn/LoopKit.git
@@ -33,8 +32,6 @@
 [submodule "xdrip-client-swift"]
 	path = xdrip-client-swift
 	url = https://github.com/loopnlearn/xdrip-client-swift
-	branch = master
 [submodule "libre-direct-client-swift"]
 	path = libre-direct-client-swift
-	url = https://github.com/Jon-b-m/libre-direct-client-swift.git
-	branch = integration
+	url = https://github.com/loopnlearn/libre-direct-client-swift.git
