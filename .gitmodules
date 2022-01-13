@@ -43,3 +43,6 @@
 [submodule "LogglyService"]
 	path = LogglyService
 	url = https://github.com/LoopKit/LogglyService.git
+[submodule "OmniBLE"]
+	path = OmniBLE
+	url = https://github.com/randallknutson/OmniBLE.git
