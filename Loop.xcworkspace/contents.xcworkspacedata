@@ -29,9 +29,6 @@
       location = "group:dexcom-share-client-swift/ShareClient.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:G4ShareSpy/G4ShareSpy.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:rileylink_ios/RileyLink.xcodeproj">
    </FileRef>
    <FileRef
