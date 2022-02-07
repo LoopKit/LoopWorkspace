@@ -27,7 +27,7 @@
 	url = https://github.com/ps2/NightscoutService.git
 [submodule "Minizip"]
 	path = Minizip
-	url = https://github.com/dexman/Minizip.git
+	url = https://github.com/LoopKit/Minizip.git
 [submodule "TrueTime.swift"]
 	path = TrueTime.swift
 	url = https://github.com/instacart/TrueTime.swift.git
