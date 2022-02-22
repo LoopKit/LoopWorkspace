@@ -112,20 +112,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A936A8F625BC99470085119C"
-               BuildableName = "LoopOnboardingPlugin.loopplugin"
-               BlueprintName = "LoopOnboardingPlugin"
-               ReferencedContainer = "container:LoopOnboarding/LoopOnboarding.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "89D2047121CC7BD7001238CC"
                BuildableName = "MockKit.framework"
                BlueprintName = "MockKit"
@@ -312,6 +298,20 @@
                BuildableName = "CGMBLEKitG6Plugin.loopplugin"
                BlueprintName = "CGMBLEKitG6Plugin"
                ReferencedContainer = "container:CGMBLEKit/CGMBLEKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A936A8F625BC99470085119C"
+               BuildableName = "LoopOnboardingPlugin.loopplugin"
+               BlueprintName = "LoopOnboardingPlugin"
+               ReferencedContainer = "container:LoopOnboarding/LoopOnboarding.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
