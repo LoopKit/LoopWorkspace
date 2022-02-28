@@ -38,6 +38,9 @@
       location = "group:libre-direct-client-swift/LibreDirectClient.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:OmniBLE/OmniBLE.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:AdditionalWatchAssets.xcassets">
    </FileRef>
    <FileRef
