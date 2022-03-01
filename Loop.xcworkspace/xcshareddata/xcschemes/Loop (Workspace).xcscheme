@@ -238,20 +238,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B40BF24B23ABCE0400A43CEE"
-               BuildableName = "G4ShareSpyPlugin.loopplugin"
-               BlueprintName = "G4ShareSpyPlugin"
-               ReferencedContainer = "container:G4ShareSpy/G4ShareSpy.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "12C972CA24105C3600E9CDDB"
                BuildableName = "Amplitude.framework"
                BlueprintName = "Amplitude_iOS"
@@ -421,16 +407,6 @@
                BuildableName = "ShareClientTests.xctest"
                BlueprintName = "ShareClientTests"
                ReferencedContainer = "container:dexcom-share-client-swift/ShareClient.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4DCEF2591D41A2A200724BCD"
-               BuildableName = "G4ShareSpyTests.xctest"
-               BlueprintName = "G4ShareSpyTests"
-               ReferencedContainer = "container:G4ShareSpy/G4ShareSpy.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
