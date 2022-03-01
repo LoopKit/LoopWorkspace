@@ -210,10 +210,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B40BF25D23ABD47400A43CEE"
-               BuildableName = "ShareClientPlugin.loopplugin"
-               BlueprintName = "ShareClientPlugin"
-               ReferencedContainer = "container:dexcom-share-client-swift/ShareClient.xcodeproj">
+               BlueprintIdentifier = "C187C196279086A8006E3557"
+               BuildableName = "OmniBLEPlugin.loopplugin"
+               BlueprintName = "OmniBLEPlugin"
+               ReferencedContainer = "container:OmniBLE/OmniBLE.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -224,10 +224,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B40BF24B23ABCE0400A43CEE"
-               BuildableName = "G4ShareSpyPlugin.loopplugin"
-               BlueprintName = "G4ShareSpyPlugin"
-               ReferencedContainer = "container:G4ShareSpy/G4ShareSpy.xcodeproj">
+               BlueprintIdentifier = "B40BF25D23ABD47400A43CEE"
+               BuildableName = "ShareClientPlugin.loopplugin"
+               BlueprintName = "ShareClientPlugin"
+               ReferencedContainer = "container:dexcom-share-client-swift/ShareClient.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -308,10 +308,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A936A8F625BC99470085119C"
-               BuildableName = "LoopOnboardingPlugin.loopplugin"
-               BlueprintName = "LoopOnboardingPlugin"
-               ReferencedContainer = "container:LoopOnboarding/LoopOnboarding.xcodeproj">
+               BlueprintIdentifier = "28482DC11D314E7B003491D9"
+               BuildableName = "TrueTime.framework"
+               BlueprintName = "TrueTime-iOS"
+               ReferencedContainer = "container:TrueTime.swift/TrueTime.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -322,10 +322,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "28482DC11D314E7B003491D9"
-               BuildableName = "TrueTime.framework"
-               BlueprintName = "TrueTime-iOS"
-               ReferencedContainer = "container:TrueTime.swift/TrueTime.xcodeproj">
+               BlueprintIdentifier = "A936A8F625BC99470085119C"
+               BuildableName = "LoopOnboardingPlugin.loopplugin"
+               BlueprintName = "LoopOnboardingPlugin"
+               ReferencedContainer = "container:LoopOnboarding/LoopOnboarding.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -407,16 +407,6 @@
                BuildableName = "ShareClientTests.xctest"
                BlueprintName = "ShareClientTests"
                ReferencedContainer = "container:dexcom-share-client-swift/ShareClient.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4DCEF2591D41A2A200724BCD"
-               BuildableName = "G4ShareSpyTests.xctest"
-               BlueprintName = "G4ShareSpyTests"
-               ReferencedContainer = "container:G4ShareSpy/G4ShareSpy.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
