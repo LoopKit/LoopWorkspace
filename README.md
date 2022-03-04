@@ -8,6 +8,8 @@ Ivan - the originator of the FreeAPS project (ivalkou github site) has frozen hi
 
 # LoopWorkspace - Build Using Script
 
+**You must do a manual build for any branch other than the released code, i.e., freeaps branch**
+
 To simplify building FreeAPS, the loopnlearn team developed a script. It works for Loop and for FreeAPS and is documented in two places. (LoopDocs has more details and graphics - both sites have the same information.)
 
 You can use the copy buttons below on this page to access the same script if you choose.
@@ -22,6 +24,8 @@ There is a copy button located by hovering on the right-hand side of the text bl
 ## Run Script - Answer the Questions
 
 First time users should run the script and answer the questions. Copy and paste in a terminal.
+
+**This is ONLY for freeaps branch (released code)**
 
 ``` title="Execute Utilities to Clean Profiles and Derived Data"
 /bin/bash -c "$(curl -fsSL https://git.io/JImiE)"
@@ -47,6 +51,8 @@ This starts the script and answers the questions to run the utility to give you 
 
 This starts the script and answers the questions to download the FreeAPS code (LoopWorkspace branch=freeaps).
 
+**This is ONLY for freeaps branch (released code)**
+
 Once downloaded (in the ~/Downloads/BuildLoop folder), the script:
 * Opens Xcode in the correct directory
 * Opens browser showing a helpful graphic of build steps
@@ -63,15 +69,29 @@ Once downloaded (in the ~/Downloads/BuildLoop folder), the script:
 
 This section has the manual steps if you do not choose to use the script.
 
+**For any branch other than freeaps, you must use the Manual Build steps**
+
 ## Clone
 
 This repository uses git submodules to pull in the various workspace dependencies.
 
+Note - you have to be in a folder that does not already have a LoopWorkspace folder in it.
+Typically, you should create a separate folder for each clone - using a descriptor and date is helpful.
+
+Example:
+```
+cd ~/Downloads
+mkdir FreeAPS_<info>_<date>
+cd FreeAPS_<info>_<date>
+```
+where you should modify \<info\> and \<date\> to something you prefer.
+
 To clone this repo:
 
 ```
-git clone --branch=freeaps --recurse-submodules https://github.com/loopnlearn/LoopWorkspace
+git clone --branch=<branch> --recurse-submodules https://github.com/loopnlearn/LoopWorkspace
 ```
+where you must modify \<branch\> to be the branch you want to clone, e.g., freeaps_dev.
 
 
 ## Open
