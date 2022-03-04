@@ -35,3 +35,6 @@
 [submodule "libre-direct-client-swift"]
 	path = libre-direct-client-swift
 	url = https://github.com/loopnlearn/libre-direct-client-swift.git
+[submodule "OmniBLE"]
+	path = OmniBLE
+	url = https://github.com/loopnlearn/OmniBLE.git
