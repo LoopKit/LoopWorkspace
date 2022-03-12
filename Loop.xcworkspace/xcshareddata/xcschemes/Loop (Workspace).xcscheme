@@ -3,8 +3,8 @@
    LastUpgradeVersion = "1100"
    version = "1.3">
    <BuildAction
-      parallelizeBuildables = "NO"
-      buildImplicitDependencies = "NO">
+      parallelizeBuildables = "YES"
+      buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -140,6 +140,34 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "12C972CA24105C3600E9CDDB"
+               BuildableName = "Amplitude.framework"
+               BlueprintName = "Amplitude_iOS"
+               ReferencedContainer = "container:Amplitude-iOS/Amplitude.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A9FC98DB2333EFE10010CBD2"
+               BuildableName = "AmplitudeServiceKitPlugin.loopplugin"
+               BlueprintName = "AmplitudeServiceKitPlugin"
+               ReferencedContainer = "container:AmplitudeService/AmplitudeService.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "43C246921D8918AE0031F8D1"
                BuildableName = "Crypto.framework"
                BlueprintName = "Crypto"
@@ -228,34 +256,6 @@
                BuildableName = "ShareClientPlugin.loopplugin"
                BlueprintName = "ShareClientPlugin"
                ReferencedContainer = "container:dexcom-share-client-swift/ShareClient.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "12C972CA24105C3600E9CDDB"
-               BuildableName = "Amplitude.framework"
-               BlueprintName = "Amplitude_iOS"
-               ReferencedContainer = "container:Amplitude-iOS/Amplitude.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A9FC98DB2333EFE10010CBD2"
-               BuildableName = "AmplitudeServiceKitPlugin.loopplugin"
-               BlueprintName = "AmplitudeServiceKitPlugin"
-               ReferencedContainer = "container:AmplitudeService/AmplitudeService.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
