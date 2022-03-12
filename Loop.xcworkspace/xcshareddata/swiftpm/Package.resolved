@@ -9,6 +9,15 @@
           "revision": "4b0565384d3c4c588af09e660535b2c7c9bf5b39",
           "version": "1.4.2"
         }
+      },
+      {
+        "package": "OneTimePassword",
+        "repositoryURL": "https://github.com/mattrubin/OneTimePassword",
+        "state": {
+          "branch": null,
+          "revision": "8e4022f2852d77240d0a17482cbfe325354aac70",
+          "version": null
+        }
       }
     ]
   },
