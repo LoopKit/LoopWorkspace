@@ -1,32 +1,34 @@
 {
-  "pins" : [
-    {
-      "identity" : "base32",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/mattrubin/Base32.git",
-      "state" : {
-        "branch" : "1.1.2+spm",
-        "revision" : "d185e44c8b355d34d5c6c6ad502c60cba4599f69"
+  "object": {
+    "pins": [
+      {
+        "package": "Base32",
+        "repositoryURL": "https://github.com/mattrubin/Base32.git",
+        "state": {
+          "branch": "1.1.2+spm",
+          "revision": "d185e44c8b355d34d5c6c6ad502c60cba4599f69",
+          "version": null
+        }
+      },
+      {
+        "package": "CryptoSwift",
+        "repositoryURL": "https://github.com/krzyzanowskim/CryptoSwift",
+        "state": {
+          "branch": null,
+          "revision": "12f2389aca4a07e0dd54c86ec23d0721ed88b8db",
+          "version": "1.4.3"
+        }
+      },
+      {
+        "package": "OneTimePassword",
+        "repositoryURL": "https://github.com/mattrubin/OneTimePassword",
+        "state": {
+          "branch": "develop",
+          "revision": "8e4022f2852d77240d0a17482cbfe325354aac70",
+          "version": null
+        }
       }
-    },
-    {
-      "identity" : "cryptoswift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/krzyzanowskim/CryptoSwift",
-      "state" : {
-        "revision" : "4b0565384d3c4c588af09e660535b2c7c9bf5b39",
-        "version" : "1.4.2"
-      }
-    },
-    {
-      "identity" : "onetimepassword",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/mattrubin/OneTimePassword",
-      "state" : {
-        "branch" : "develop",
-        "revision" : "8e4022f2852d77240d0a17482cbfe325354aac70"
-      }
-    }
-  ],
-  "version" : 2
+    ]
+  },
+  "version": 1
 }
