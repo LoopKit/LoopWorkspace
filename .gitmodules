@@ -22,10 +22,9 @@
 [submodule "Amplitude-iOS"]
 	path = Amplitude-iOS
 	url = https://github.com/LoopKit/Amplitude-iOS.git
-	branch = decreepify
 [submodule "MKRingProgressView"]
 	path = MKRingProgressView
-	url = https://github.com/LoopKit/MKRingProgressView.git
+	url = https://github.com/loopnlearn/MKRingProgressView.git
 [submodule "NightscoutAPIClient"]
 	path = NightscoutAPIClient
 	url = https://github.com/ivalkou/NightscoutAPIClient.git
