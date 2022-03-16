@@ -1,22 +1,21 @@
 [submodule "Loop"]
 	path = Loop
 	url=https://github.com/loopnlearn/Loop.git
-	branch = freeaps
 [submodule "LoopKit"]
 	path = LoopKit
 	url = https://github.com/loopnlearn/LoopKit.git
 [submodule "CGMBLEKit"]
 	path = CGMBLEKit
-	url = https://github.com/LoopKit/CGMBLEKit.git
+	url = https://github.com/loopnlearn/CGMBLEKit.git
 [submodule "SwiftCharts"]
 	path = SwiftCharts
-	url = https://github.com/i-schuetz/SwiftCharts.git
+	url = https://github.com/ps2/SwiftCharts.git
 [submodule "dexcom-share-client-swift"]
 	path = dexcom-share-client-swift
 	url = https://github.com/loopnlearn/dexcom-share-client-swift.git
 [submodule "G4ShareSpy"]
 	path = G4ShareSpy
-	url = https://github.com/LoopKit/G4ShareSpy.git
+	url = https://github.com/loopnlearn/G4ShareSpy.git
 [submodule "rileylink_ios"]
 	path = rileylink_ios
 	url = https://github.com/loopnlearn/rileylink_ios.git
@@ -32,5 +31,4 @@
 	url = https://github.com/ivalkou/NightscoutAPIClient.git
 [submodule "xdrip-client-swift"]
 	path = xdrip-client-swift
-	url = https://github.com/alekst1d/xdrip-client-swift
-	branch = master
+	url = https://github.com/loopnlearn/xdrip-client-swift
