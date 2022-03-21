@@ -44,6 +44,9 @@
       location = "group:NightscoutService/NightscoutService.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:NightscoutAPIClient/NightscoutAPIClient.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:MKRingProgressView/MKRingProgressView.xcodeproj">
    </FileRef>
    <FileRef
