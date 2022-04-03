@@ -4,7 +4,7 @@
 // MAIN_APP_BUNDLE_IDENTIFIER = com.myname.loop
 
 // Customize this to change the app name displayed
-MAIN_APP_DISPLAY_NAME = Loop
+//MAIN_APP_DISPLAY_NAME = Loop
 
 // Features
 SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) ALLOW_SIMULATORS_ENABLED //ALLOW_DEBUG_FEATURES_ENABLED
