@@ -1,7 +1,7 @@
 jobs:
   build:
     macos:
-      xcode: 13.2.1
+      xcode: 13.3.0
     steps:
       - checkout
       - run:
