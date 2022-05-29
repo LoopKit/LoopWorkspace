@@ -526,15 +526,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5085266D1E52FDC000D611F4"
-            BuildableName = "MKRingProgressView.framework"
-            BlueprintName = "MKRingProgressView"
-            ReferencedContainer = "container:MKRingProgressView/MKRingProgressView.xcodeproj">
+            BlueprintIdentifier = "43776F8B1B8022E90074EA36"
+            BuildableName = "Loop.app"
+            BlueprintName = "Loop"
+            ReferencedContainer = "container:Loop/Loop.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
