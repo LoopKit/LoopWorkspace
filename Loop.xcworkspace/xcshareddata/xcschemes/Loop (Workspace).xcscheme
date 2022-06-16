@@ -370,6 +370,20 @@
                ReferencedContainer = "container:OmniBLE/OmniBLE.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A91BAC2322BC691A00ABF1BB"
+               BuildableName = "NightscoutServiceKitTests.xctest"
+               BlueprintName = "NightscoutServiceKitTests"
+               ReferencedContainer = "container:NightscoutService/NightscoutService.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -495,6 +509,16 @@
                BuildableName = "MockKitTests.xctest"
                BlueprintName = "MockKitTests"
                ReferencedContainer = "container:LoopKit/LoopKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A91BAC2322BC691A00ABF1BB"
+               BuildableName = "NightscoutServiceKitTests.xctest"
+               BlueprintName = "NightscoutServiceKitTests"
+               ReferencedContainer = "container:NightscoutService/NightscoutService.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
