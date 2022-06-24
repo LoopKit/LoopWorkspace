@@ -445,16 +445,6 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "432B0E911CDFC3C50045347B"
-               BuildableName = "ShareClientTests.xctest"
-               BlueprintName = "ShareClientTests"
-               ReferencedContainer = "container:dexcom-share-client-swift/ShareClient.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "43CABDFC1C3506F100005705"
                BuildableName = "CGMBLEKitTests.xctest"
                BlueprintName = "CGMBLEKitTests"
