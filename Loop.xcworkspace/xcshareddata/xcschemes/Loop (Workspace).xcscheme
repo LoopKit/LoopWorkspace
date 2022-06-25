@@ -28,20 +28,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "06405DA51B8AA74700A689FF"
-               BuildableName = "SwiftCharts.framework"
-               BlueprintName = "SwiftCharts"
-               ReferencedContainer = "container:SwiftCharts/SwiftCharts.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "43D8FDCA1C728FDF0073BE78"
                BuildableName = "LoopKit.framework"
                BlueprintName = "LoopKit"
