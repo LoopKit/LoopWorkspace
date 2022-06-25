@@ -23,9 +23,6 @@
       location = "group:CGMBLEKit/CGMBLEKit.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:SwiftCharts/SwiftCharts.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:dexcom-share-client-swift/ShareClient.xcodeproj">
    </FileRef>
    <FileRef
