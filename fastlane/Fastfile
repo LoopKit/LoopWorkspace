@@ -1,0 +1,127 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+default_platform(:ios)
+
+TEAMID = ENV["TEAMID"]
+GH_PAT = ENV["GH_PAT"]
+GITHUB_WORKSPACE = ENV["GITHUB_WORKSPACE"]
+GITHUB_REPOSITORY_OWNER = ENV["GITHUB_REPOSITORY_OWNER"]
+FASTLANE_KEY_ID = ENV["FASTLANE_KEY_ID"]
+FASTLANE_ISSUER_ID = ENV["FASTLANE_ISSUER_ID"]
+FASTLANE_KEY = ENV["FASTLANE_KEY"]
+DEVICE_NAME = ENV["DEVICE_NAME"]
+DEVICE_ID = ENV["DEVICE_ID"]
+
+platform :ios do
+  desc "Build Loop"
+  lane :build_loop do
+    setup_ci if ENV['CI']
+    
+    update_project_team(
+      path: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
+      teamid: "#{TEAMID}"
+    )
+    
+    match(
+      type: "development",
+      git_basic_authorization: Base64.strict_encode64("#{GITHUB_REPOSITORY_OWNER}:#{GH_PAT}"),
+      app_identifier: ["com.#{TEAMID}.loopkit.Loop", "com.#{TEAMID}.loopkit.Loop.statuswidget", "com.#{TEAMID}.loopkit.Loop.LoopWatch.watchkitextension", "com.#{TEAMID}.loopkit.Loop.LoopWatch"]
+    )
+    
+    mapping = Actions.lane_context[
+      SharedValues::MATCH_PROVISIONING_PROFILE_MAPPING
+    ]
+    
+    update_code_signing_settings(
+      path: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
+      profile_name: mapping["com.#{TEAMID}.loopkit.Loop"],
+      targets: ["Loop"]
+    )
+    
+    update_code_signing_settings(
+      path: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
+      profile_name: mapping["com.#{TEAMID}.loopkit.Loop.statuswidget"],
+      targets: ["Loop Status Extension"]
+    )
+    
+    update_code_signing_settings(
+      path: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
+      profile_name: mapping["com.#{TEAMID}.loopkit.Loop.LoopWatch.watchkitextension"],
+      targets: ["WatchApp Extension"]
+    )
+    
+    update_code_signing_settings(
+      path: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
+      profile_name: mapping["com.#{TEAMID}.loopkit.Loop.LoopWatch"],
+      targets: ["WatchApp"]
+    )
+    
+    gym(
+      export_method: "development",
+      scheme: "Loop (Workspace)",
+      output_name: "Loop.ipa"
+    )
+  end
+  desc "Create/Update Certs"
+  lane :certs do
+    setup_ci if ENV['CI']
+    ENV["MATCH_READONLY"] = false.to_s
+    
+    app_store_connect_api_key(
+      key_id: "#{FASTLANE_KEY_ID}",
+      issuer_id: "#{FASTLANE_ISSUER_ID}",
+      key_content: "#{FASTLANE_KEY}"
+    )
+    
+    match(
+      type: "development",
+      force: true,
+      git_basic_authorization: Base64.strict_encode64("#{GITHUB_REPOSITORY_OWNER}:#{GH_PAT}"),
+      app_identifier: ["com.#{TEAMID}.loopkit.Loop", "com.#{TEAMID}.loopkit.Loop.statuswidget", "com.#{TEAMID}.loopkit.Loop.LoopWatch.watchkitextension", "com.#{TEAMID}.loopkit.Loop.LoopWatch"]
+    )
+  end
+  desc "Nuke Certs"
+  lane :nuke_certs do
+    setup_ci if ENV['CI']
+    ENV["MATCH_READONLY"] = false.to_s
+    
+    app_store_connect_api_key(
+      key_id: "#{FASTLANE_KEY_ID}",
+      issuer_id: "#{FASTLANE_ISSUER_ID}",
+      key_content: "#{FASTLANE_KEY}"
+    )
+    
+    match_nuke(
+      type: "development",
+      team_id: "#{TEAMID}",
+      skip_confirmation: true,
+      git_basic_authorization: Base64.strict_encode64("#{GITHUB_REPOSITORY_OWNER}:#{GH_PAT}")
+    )
+  end
+  desc "Add Device"
+  lane :add_device do
+    setup_ci if ENV['CI']
+    
+    app_store_connect_api_key(
+      key_id: "#{FASTLANE_KEY_ID}",
+      issuer_id: "#{FASTLANE_ISSUER_ID}",
+      key_content: "#{FASTLANE_KEY}"
+    )
+    
+    register_devices(
+      devices: {
+        "#{DEVICE_NAME}" => "#{DEVICE_ID}"
+      }
+    )
+  end
+end
