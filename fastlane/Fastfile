@@ -35,7 +35,7 @@ platform :ios do
     match(
       type: "development",
       git_basic_authorization: Base64.strict_encode64("#{GITHUB_REPOSITORY_OWNER}:#{GH_PAT}"),
-      app_identifier: ["com.#{TEAMID}.loopkit.Loop", "com.#{TEAMID}.loopkit.Loop.statuswidget", "com.#{TEAMID}.loopkit.Loop.LoopWatch.watchkitextension", "com.#{TEAMID}.loopkit.Loop.LoopWatch"]
+      app_identifier: ["com.#{TEAMID}.loopkit.Loop", "com.#{TEAMID}.loopkit.Loop.statuswidget", "com.#{TEAMID}.loopkit.Loop.LoopWatch.watchkitextension", "com.#{TEAMID}.loopkit.Loop.LoopWatch", "com.#{TEAMID}.loopkit.Loop.Loop-Intent-Extension"]
     )
     
     mapping = Actions.lane_context[
@@ -66,6 +66,12 @@ platform :ios do
       targets: ["WatchApp"]
     )
     
+    update_code_signing_settings(
+      path: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
+      profile_name: mapping["com.#{TEAMID}.loopkit.Loop.Loop-Intent-Extension"],
+      targets: ["Loop Intent Extension"]
+    )
+    
     gym(
       export_method: "development",
       scheme: "Loop (Workspace)",
@@ -87,7 +93,7 @@ platform :ios do
       type: "development",
       force: true,
       git_basic_authorization: Base64.strict_encode64("#{GITHUB_REPOSITORY_OWNER}:#{GH_PAT}"),
-      app_identifier: ["com.#{TEAMID}.loopkit.Loop", "com.#{TEAMID}.loopkit.Loop.statuswidget", "com.#{TEAMID}.loopkit.Loop.LoopWatch.watchkitextension", "com.#{TEAMID}.loopkit.Loop.LoopWatch"]
+      app_identifier: ["com.#{TEAMID}.loopkit.Loop", "com.#{TEAMID}.loopkit.Loop.statuswidget", "com.#{TEAMID}.loopkit.Loop.LoopWatch.watchkitextension", "com.#{TEAMID}.loopkit.Loop.LoopWatch", "com.#{TEAMID}.loopkit.Loop.Loop-Intent-Extension"]
     )
   end
   desc "Nuke Certs"
