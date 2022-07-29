@@ -322,6 +322,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A936A97325BC9A230085119C"
+               BuildableName = "LoopSupportPlugin.loopplugin"
+               BlueprintName = "LoopSupportPlugin"
+               ReferencedContainer = "container:LoopSupport/LoopSupport.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "A9BAC72626CDB7A5001C9493"
                BuildableName = "NightscoutAPIClientPlugin.loopplugin"
                BlueprintName = "NightscoutAPIClientPlugin"

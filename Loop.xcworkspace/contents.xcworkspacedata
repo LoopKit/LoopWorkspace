@@ -17,9 +17,6 @@
       location = "group:LoopKit/LoopKit.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:LoopOnboarding/LoopOnboarding.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:CGMBLEKit/CGMBLEKit.xcodeproj">
    </FileRef>
    <FileRef
@@ -54,5 +51,11 @@
    </FileRef>
    <FileRef
       location = "group:OmniBLE/OmniBLE.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:LoopSupport/LoopSupport.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:LoopOnboarding/LoopOnboarding.xcodeproj">
    </FileRef>
 </Workspace>

@@ -43,3 +43,6 @@
 [submodule "NightscoutAPIClient"]
 	path = NightscoutAPIClient
 	url = https://github.com/LoopKit/NightscoutAPIClient.git
+[submodule "LoopSupport"]
+	path = LoopSupport
+	url = https://github.com/LoopKit/LoopSupport
