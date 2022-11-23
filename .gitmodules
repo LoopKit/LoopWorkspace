@@ -46,3 +46,6 @@
 [submodule "LoopSupport"]
 	path = LoopSupport
 	url = https://github.com/LoopKit/LoopSupport
+[submodule "G7SensorKit"]
+	path = G7SensorKit
+	url = https://github.com/LoopKit/G7SensorKit.git

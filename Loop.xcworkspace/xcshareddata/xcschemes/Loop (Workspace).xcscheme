@@ -322,6 +322,34 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C1BA045D28DF89FD00CD6BA4"
+               BuildableName = "CGMBLEKitG7Plugin.loopplugin"
+               BlueprintName = "CGMBLEKitG7Plugin"
+               ReferencedContainer = "container:CGMBLEKit/CGMBLEKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C17F511C291EACCD00555EB5"
+               BuildableName = "G7SensorPlugin.loopplugin"
+               BlueprintName = "G7SensorPlugin"
+               ReferencedContainer = "container:G7SensorKit/G7SensorKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "A936A97325BC9A230085119C"
                BuildableName = "LoopSupportPlugin.loopplugin"
                BlueprintName = "LoopSupportPlugin"
@@ -353,6 +381,20 @@
                BlueprintIdentifier = "43776F8B1B8022E90074EA36"
                BuildableName = "Loop.app"
                BlueprintName = "Loop"
+               ReferencedContainer = "container:Loop/Loop.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "14B1735B28AED9EC006CCD7C"
+               BuildableName = "SmallStatusWidgetExtension.appex"
+               BlueprintName = "SmallStatusWidgetExtension"
                ReferencedContainer = "container:Loop/Loop.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -509,6 +551,16 @@
                BuildableName = "NightscoutServiceKitTests.xctest"
                BlueprintName = "NightscoutServiceKitTests"
                ReferencedContainer = "container:NightscoutService/NightscoutService.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C17F50CD291EAC3800555EB5"
+               BuildableName = "G7SensorKitTests.xctest"
+               BlueprintName = "G7SensorKitTests"
+               ReferencedContainer = "container:G7SensorKit/G7SensorKit.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
