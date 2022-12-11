@@ -1,0 +1,33 @@
+name: Add Device
+on:
+  workflow_dispatch:
+    inputs:
+      deviceName:
+        description: 'Device Name'     
+        required: true
+      deviceID:
+        description: 'Device ID'     
+        required: true
+
+jobs:
+  build:
+    runs-on: macos-12
+    steps:
+      # Uncomment to manually select latest Xcode if needed
+      #- name: Select Latest Xcode
+      #  run: "sudo xcode-select --switch /Applications/Xcode_13.0.app/Contents/Developer"
+      
+      # Checks-out the repo
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+        
+      # Add device to Apple developer account
+      - name: Fastlane Add Device
+        run: fastlane add_device
+        env:
+          DEVICE_NAME: ${{ github.event.inputs.deviceName }}
+          DEVICE_ID: ${{ github.event.inputs.deviceID }}
+          FASTLANE_KEY_ID: ${{ secrets.FASTLANE_KEY_ID }}
+          FASTLANE_ISSUER_ID: ${{ secrets.FASTLANE_ISSUER_ID }}
+          FASTLANE_KEY: ${{ secrets.FASTLANE_KEY }}
+          FASTLANE_SKIP_ALL_LANE_SUMMARIES: "true"
