@@ -31,9 +31,15 @@ platform :ios do
       path: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
       teamid: "#{TEAMID}"
     )
+
+    app_store_connect_api_key(
+      key_id: "#{FASTLANE_KEY_ID}",
+      issuer_id: "#{FASTLANE_ISSUER_ID}",
+      key_content: "#{FASTLANE_KEY}"
+    )
     
     match(
-      type: "development",
+      type: "appstore",
       git_basic_authorization: Base64.strict_encode64("#{GITHUB_REPOSITORY_OWNER}:#{GH_PAT}"),
       app_identifier: ["com.#{TEAMID}.loopkit.Loop", "com.#{TEAMID}.loopkit.Loop.statuswidget", "com.#{TEAMID}.loopkit.Loop.LoopWatch.watchkitextension", "com.#{TEAMID}.loopkit.Loop.LoopWatch", "com.#{TEAMID}.loopkit.Loop.Loop-Intent-Extension"]
     )
@@ -73,11 +79,14 @@ platform :ios do
     )
     
     gym(
-      export_method: "development",
+      export_method: "app-store",
       scheme: "Loop (Workspace)",
-      output_name: "Loop.ipa"
+      output_name: "Loop.ipa",
+      configuration: "Release",
+      destination: 'generic/platform=iOS'
     )
   end
+
   desc "Create/Update Certs"
   lane :certs do
     setup_ci if ENV['CI']
@@ -96,6 +105,7 @@ platform :ios do
       app_identifier: ["com.#{TEAMID}.loopkit.Loop", "com.#{TEAMID}.loopkit.Loop.statuswidget", "com.#{TEAMID}.loopkit.Loop.LoopWatch.watchkitextension", "com.#{TEAMID}.loopkit.Loop.LoopWatch", "com.#{TEAMID}.loopkit.Loop.Loop-Intent-Extension"]
     )
   end
+
   desc "Nuke Certs"
   lane :nuke_certs do
     setup_ci if ENV['CI']
@@ -114,6 +124,7 @@ platform :ios do
       git_basic_authorization: Base64.strict_encode64("#{GITHUB_REPOSITORY_OWNER}:#{GH_PAT}")
     )
   end
+
   desc "Add Device"
   lane :add_device do
     setup_ci if ENV['CI']
