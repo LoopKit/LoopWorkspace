@@ -88,6 +88,13 @@ platform :ios do
       targets: ["Loop Intent Extension"]
     )
     
+    update_code_signing_settings(
+      path: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
+      profile_name: mapping["com.#{TEAMID}.loopkit.Loop.SmallStatusWidget"],
+      code_sign_identity: "iPhone Distribution",
+      targets: ["SmallStatusWidgetExtension"]
+    )
+
     gym(
       export_method: "app-store",
       scheme: "Loop (Workspace)",
