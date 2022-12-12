@@ -32,7 +32,7 @@ jobs:
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
       
       # Upload encrypted output as artifact
-      - name: Fastlane Build & Archive
+      - name: Fastlane upload to TestFlight
         run: fastlane release
         env:
           TEAMID: ${{ secrets.TEAMID }}
