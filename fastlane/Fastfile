@@ -93,7 +93,6 @@ platform :ios do
       scheme: "Loop (Workspace)",
       output_name: "Loop.ipa",
       configuration: "Release",
-      codesigning_identity: "iPhone Distribution",
       destination: 'generic/platform=iOS'
     )
   end
