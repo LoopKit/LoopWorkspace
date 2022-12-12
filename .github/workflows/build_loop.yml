@@ -30,18 +30,14 @@ jobs:
           FASTLANE_ISSUER_ID: ${{ secrets.FASTLANE_ISSUER_ID }}
           FASTLANE_KEY: ${{ secrets.FASTLANE_KEY }}
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-          FASTLANE_SKIP_ALL_LANE_SUMMARIES: "true"
-
-      # Encrypt output with GPG
-      - name: Encrypt Artifact
-        run: 'gpg -c -o "Loop.ipa.gpg" --pinentry-mode=loopback --passphrase "$GPG_PASSWORD" "Loop.ipa"'
-        env:
-          GPG_PASSWORD: ${{ secrets.GPG_PASSWORD }}
-          
       
       # Upload encrypted output as artifact
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: Loop
-          path: "Loop.ipa.gpg"
+      - name: Fastlane Build & Archive
+        run: fastlane release
+        env:
+          TEAMID: ${{ secrets.TEAMID }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+          FASTLANE_KEY_ID: ${{ secrets.FASTLANE_KEY_ID }}
+          FASTLANE_ISSUER_ID: ${{ secrets.FASTLANE_ISSUER_ID }}
+          FASTLANE_KEY: ${{ secrets.FASTLANE_KEY }}
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
