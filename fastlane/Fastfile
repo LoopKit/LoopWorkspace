@@ -126,7 +126,14 @@ platform :ios do
       type: "appstore",
       force: true,
       git_basic_authorization: Base64.strict_encode64("#{GITHUB_REPOSITORY_OWNER}:#{GH_PAT}"),
-      app_identifier: ["com.#{TEAMID}.loopkit.Loop", "com.#{TEAMID}.loopkit.Loop.statuswidget", "com.#{TEAMID}.loopkit.Loop.LoopWatch.watchkitextension", "com.#{TEAMID}.loopkit.Loop.LoopWatch", "com.#{TEAMID}.loopkit.Loop.Loop-Intent-Extension"]
+      app_identifier: [
+        "com.#{TEAMID}.loopkit.Loop", 
+        "com.#{TEAMID}.loopkit.Loop.statuswidget", 
+        "com.#{TEAMID}.loopkit.Loop.LoopWatch.watchkitextension", 
+        "com.#{TEAMID}.loopkit.Loop.LoopWatch", 
+        "com.#{TEAMID}.loopkit.Loop.Loop-Intent-Extension",
+        "com.#{TEAMID}.loopkit.Loop.SmallStatusWidget",
+      ]
     )
   end
 
