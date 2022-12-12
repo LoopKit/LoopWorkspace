@@ -55,30 +55,35 @@ platform :ios do
     update_code_signing_settings(
       path: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
       profile_name: mapping["com.#{TEAMID}.loopkit.Loop"],
+      code_sign_identity: "iPhone Distribution",
       targets: ["Loop"]
     )
     
     update_code_signing_settings(
       path: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
       profile_name: mapping["com.#{TEAMID}.loopkit.Loop.statuswidget"],
+      code_sign_identity: "iPhone Distribution",
       targets: ["Loop Status Extension"]
     )
     
     update_code_signing_settings(
       path: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
       profile_name: mapping["com.#{TEAMID}.loopkit.Loop.LoopWatch.watchkitextension"],
+      code_sign_identity: "iPhone Distribution",
       targets: ["WatchApp Extension"]
     )
     
     update_code_signing_settings(
       path: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
       profile_name: mapping["com.#{TEAMID}.loopkit.Loop.LoopWatch"],
+      code_sign_identity: "iPhone Distribution",
       targets: ["WatchApp"]
     )
     
     update_code_signing_settings(
       path: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
       profile_name: mapping["com.#{TEAMID}.loopkit.Loop.Loop-Intent-Extension"],
+      code_sign_identity: "iPhone Distribution",
       targets: ["Loop Intent Extension"]
     )
     
