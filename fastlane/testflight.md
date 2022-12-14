@@ -47,6 +47,7 @@ The setup steps are somewhat involved, but nearly all are one time steps. Subseq
 
 ## Create App Group
 
+1. If you have already built Loop via Xcode, you can skip on to the next section.
 1. Go to [Register an App Group](https://developer.apple.com/account/resources/identifiers/applicationGroup/add/) on the apple developer site.
 1. For Description, use "Loop App Group"
 1. For Identifier, enter "group.com.TEAMID.loopkit.LoopGroup", subsituting your team id for `TEAMID`
@@ -75,7 +76,6 @@ The setup steps are somewhat involved, but nearly all are one time steps. Subseq
 1. Tap the check box to enable Time Sensitive Notifications.
 1. Click "Save".
 1. Click "Confirm".
-1. Remember to do this for each of the identifiers above.
 
 ## Create Loop App in App Store Connect
 
