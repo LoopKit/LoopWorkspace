@@ -23,7 +23,7 @@ You don't need much!
 1. Download the API key itself, and open it in a text editor. The contents of this file will be used for `FASTLANE_KEY`
 
 ## Setup Github
-1. Create a new empty repository titled `Match-Secrets`
+1. Create a [new empty repository](https://github.com/new) titled `Match-Secrets`
 1. Fork https://github.com/LoopKit/LoopWorkspace into your account.
 1. Create a [new personal access token](https://github.com/settings/tokens/new):
     * Enter a name for your token. Something like "FastLane Access Token".
