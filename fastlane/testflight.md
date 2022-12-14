@@ -6,8 +6,6 @@ The setup steps are somewhat involved, but nearly all are one time steps. Subseq
 
 ## Prerequisites.
 
-You don't need much!
-
 * A [github account](https://github.com/signup). The free level comes with plenty of storage and free compute time to build loop, multiple times a day, if you wanted to.
 * A paid [Apple Developer account](https://developer.apple.com). You may be able to use the free version, but that has not been tested.
 * Some time. Set aside a couple of hours to perform the setup.
