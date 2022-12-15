@@ -47,7 +47,7 @@ The setup steps are somewhat involved, but nearly all are one time steps. Subseq
 
 ## Create App Group
 
-1. If you have already built Loop via Xcode, you can skip on to the next section.
+1. If you have already built Loop via Xcode, you can skip on to [Create Loop App in App Store Connect](#create-loop-app-in-app-store-connect).
 1. Go to [Register an App Group](https://developer.apple.com/account/resources/identifiers/applicationGroup/add/) on the apple developer site.
 1. For Description, use "Loop App Group"
 1. For Identifier, enter "group.com.TEAMID.loopkit.LoopGroup", subsituting your team id for `TEAMID`
@@ -56,7 +56,7 @@ The setup steps are somewhat involved, but nearly all are one time steps. Subseq
 ## Add App Group to Bundle Identifiers
 
 1. Go to [Certificates, Identifiers & Profiles](https://developer.apple.com/account/resources/identifiers/list) on the apple developer site.
-1. For each of the following identifiers:
+1. For each of the following identifier names:
     * Loop
     * Loop Intent Extension
     * Loop Status Extension
