@@ -79,7 +79,7 @@ The setup steps are somewhat involved, but nearly all are one time steps. Subseq
 
 ## Create Loop App in App Store Connect
 
-1. If you have created a Loop app in App Store Connect before, you can skip this step as well.
+1. If you have created a Loop app in App Store Connect before, you can skip this section as well.
 1. Go to the [apps list](https://appstoreconnect.apple.com/apps) on App Store Connect and click the blue "plus" icon to create a New App.
     * Select "iOS"
     * Select a name: this will have to be unique, so you may have to try a few different names here, but it will not be the name you see on your phone, so it's not that important.
