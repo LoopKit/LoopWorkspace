@@ -18,7 +18,7 @@ The setup steps are somewhat involved, but nearly all are one time steps. Subseq
 1. Go to the [App Store Connect](https://appstoreconnect.apple.com/access/api) interface, click the "Keys" tab, and create a new key with "Admin" access. Give it a name like "FastLane API Key".
 1. Record the key id; this will be used for `FASTLANE_KEY_ID`.
 1. Record the issuer id; this will be used for `FASTLANE_ISSUER_ID`.
-1. Download the API key itself, and open it in a text editor. The contents of this file will be used for `FASTLANE_KEY`.
+1. Download the API key itself, and open it in a text editor. The contents of this file will be used for `FASTLANE_KEY`. Copy the full text, including the "-----BEGIN PRIVATE KEY-----" and "-----END PRIVATE KEY-----" lines.
 
 ## Setup Github
 1. Create a [new empty repository](https://github.com/new) titled `Match-Secrets`. It should be private.
