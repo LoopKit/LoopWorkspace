@@ -48,5 +48,5 @@ jobs:
         with:
           name: build-artifacts
           path: 
-            Loop.ipa
-            Loop.app.dSYM.zip
+            ${{ github.workspace }}/Loop.ipa
+            ${{ github.workspace }}/Loop.app.dSYM.zip
