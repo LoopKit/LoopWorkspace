@@ -16,7 +16,7 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Test Path
+      - name: List files
         run: ls  
 
       - name: Test Path
@@ -52,6 +52,9 @@ jobs:
           FASTLANE_ISSUER_ID: ${{ secrets.FASTLANE_ISSUER_ID }}
           FASTLANE_KEY: ${{ secrets.FASTLANE_KEY }}
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+
+      - name: List files again
+        run: ls  
 
       # Upload IPA and Symbols
       - name: Upload IPA and Symbol artifacts
