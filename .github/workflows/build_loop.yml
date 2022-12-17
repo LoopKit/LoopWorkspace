@@ -47,6 +47,6 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: build-artifacts
-          path: 
+          path: |
             artifacts
             buildlog
