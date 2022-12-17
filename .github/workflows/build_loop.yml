@@ -1,6 +1,6 @@
 name: Build Loop
 on:
-  push
+  workflow_dispatch:
 
 jobs:
   build:
