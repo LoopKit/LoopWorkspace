@@ -12,7 +12,7 @@ jobs:
 
       # Checks-out the repo
       - name: Checkout Repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: recursive
       
@@ -31,7 +31,7 @@ jobs:
           FASTLANE_KEY: ${{ secrets.FASTLANE_KEY }}
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
       
-      # Upload encrypted output as artifact
+      # Upload to TestFlight
       - name: Fastlane upload to TestFlight
         run: fastlane release
         env:
@@ -41,3 +41,12 @@ jobs:
           FASTLANE_ISSUER_ID: ${{ secrets.FASTLANE_ISSUER_ID }}
           FASTLANE_KEY: ${{ secrets.FASTLANE_KEY }}
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+
+      # Upload IPA and Symbols
+      - name: Upload IPA and Symbol artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts
+          path: |
+            artifacts
+            buildlog
