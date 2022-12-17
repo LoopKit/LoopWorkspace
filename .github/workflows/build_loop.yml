@@ -15,17 +15,6 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: recursive
-
-      - name: List files
-        run: ls  
-
-      - name: Test Path
-        uses: actions/upload-artifact@v3
-        with:
-          name: build-artifacts
-          if-no-files-found: error
-          path: 
-            README.md
       
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
@@ -53,12 +42,11 @@ jobs:
           FASTLANE_KEY: ${{ secrets.FASTLANE_KEY }}
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
 
-      - name: List files again
-        run: ls  
-
       # Upload IPA and Symbols
       - name: Upload IPA and Symbol artifacts
         uses: actions/upload-artifact@v3
         with:
           name: build-artifacts
-          path: artifacts
+          path: 
+            artifacts
+            buildlog

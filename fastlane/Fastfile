@@ -133,7 +133,8 @@ platform :ios do
       scheme: "Loop (Workspace)",
       output_name: "Loop.ipa",
       configuration: "Release",
-      destination: 'generic/platform=iOS'
+      destination: 'generic/platform=iOS',
+      buildlog_path: 'buildlog'
     )
 
     copy_artifacts(
