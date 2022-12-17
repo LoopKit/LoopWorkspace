@@ -135,6 +135,11 @@ platform :ios do
       configuration: "Release",
       destination: 'generic/platform=iOS'
     )
+
+    copy_artifacts(
+      target_path: "artifacts",
+      artifacts: ["*.mobileprovision", "*.ipa", "*.dSYM.zip"]
+    )
   end
 
   desc "Push to TestFlight"
