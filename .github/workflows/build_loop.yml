@@ -1,6 +1,21 @@
-name: Build Loop
+name: Sync Fork
+
 on:
-  workflow_dispatch:
+  schedule:
+    - cron: '30 * * * *' # Every saturday
+  workflow_dispatch: # on button click
+
+jobs:
+  sync:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: tgymnich/fork-sync@v1.6.3
+        with:
+          owner: [Your GitHub Account name]
+          base: dev
+          head: dev
 
 jobs:
   build:
