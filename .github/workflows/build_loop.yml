@@ -1,9 +1,8 @@
 name: Sync Fork
 
+name: Build Loop
 on:
-  schedule:
-    - cron: '30 * * * *' # Every saturday
-  workflow_dispatch: # on button click
+  workflow_dispatch:
 
 jobs:
   sync:
