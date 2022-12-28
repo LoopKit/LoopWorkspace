@@ -4,19 +4,6 @@ on:
     - cron: '0 0 * * SUN' # Every sunday
   workflow_dispatch:
 
-
-jobs:
-  sync:
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: tgymnich/fork-sync@v1.6.3
-        with:
-          owner: [Your GitHub Account name]
-          base: dev
-          head: dev
-
 jobs:
   build:
     runs-on: macos-12
