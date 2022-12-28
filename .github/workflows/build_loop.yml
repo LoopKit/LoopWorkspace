@@ -1,5 +1,3 @@
-name: Sync Fork
-
 name: Build Loop
 on:
   schedule:
