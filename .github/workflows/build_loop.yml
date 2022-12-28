@@ -2,7 +2,10 @@ name: Sync Fork
 
 name: Build Loop
 on:
+  schedule:
+    - cron: '0 0 * * SUN' # Every sunday
   workflow_dispatch:
+
 
 jobs:
   sync:
