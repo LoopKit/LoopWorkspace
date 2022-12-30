@@ -126,20 +126,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "12C972CA24105C3600E9CDDB"
-               BuildableName = "Amplitude.framework"
-               BlueprintName = "Amplitude_iOS"
-               ReferencedContainer = "container:Amplitude-iOS/Amplitude.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "A9FC98DB2333EFE10010CBD2"
                BuildableName = "AmplitudeServiceKitPlugin.loopplugin"
                BlueprintName = "AmplitudeServiceKitPlugin"
@@ -308,34 +294,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A936A8F625BC99470085119C"
-               BuildableName = "LoopOnboardingPlugin.loopplugin"
-               BlueprintName = "LoopOnboardingPlugin"
-               ReferencedContainer = "container:LoopOnboarding/LoopOnboarding.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C1BA045D28DF89FD00CD6BA4"
-               BuildableName = "CGMBLEKitG7Plugin.loopplugin"
-               BlueprintName = "CGMBLEKitG7Plugin"
-               ReferencedContainer = "container:CGMBLEKit/CGMBLEKit.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "C17F511C291EACCD00555EB5"
                BuildableName = "G7SensorPlugin.loopplugin"
                BlueprintName = "G7SensorPlugin"
@@ -354,6 +312,20 @@
                BuildableName = "LoopSupportPlugin.loopplugin"
                BlueprintName = "LoopSupportPlugin"
                ReferencedContainer = "container:LoopSupport/LoopSupport.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A936A8F625BC99470085119C"
+               BuildableName = "LoopOnboardingPlugin.loopplugin"
+               BlueprintName = "LoopOnboardingPlugin"
+               ReferencedContainer = "container:LoopOnboarding/LoopOnboarding.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
