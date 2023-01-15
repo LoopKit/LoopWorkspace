@@ -8,6 +8,9 @@
       location = "container:OverrideAssetsLoop.xcassets">
    </FileRef>
    <FileRef
+      location = "group:xdrip-client-swift/xDripClient.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "container:OverrideAssetsWatchApp.xcassets">
    </FileRef>
    <FileRef
