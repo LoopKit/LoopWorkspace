@@ -46,3 +46,7 @@
 [submodule "G7SensorKit"]
 	path = G7SensorKit
 	url = https://github.com/LoopKit/G7SensorKit.git
+[submodule "xdrip-client-swift"]
+	path = xdrip-client-swift
+	url = https://github.com/johandegraeve/xdrip-client-swift-1.git
+	branch = master
