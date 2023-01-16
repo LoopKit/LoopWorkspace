@@ -2,13 +2,10 @@ name: 4. Build Loop
 run-name: Build Loop
 on:
   workflow_dispatch:
-  
-  ## Remove the "#" sign from the beginning of the line below to get automated builds on push (code changes in your repository)
-  #push:
-
-  ## Remove the "#" sign from the beginning of the two lines below to get automated builds every two months
-  #schedule:
-    #- cron: '0 17 1 */2 *' # Runs at 17:00 UTC on the 1st in Jan, Mar, May, Jul, Sep and Nov.
+  schedule:
+     # actually, ~5 minutes is the highest
+     # effective frequency you will get
+    - cron:  '00 12 01 * *'  
 
 jobs:
   secrets:
