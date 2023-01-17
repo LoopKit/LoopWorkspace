@@ -1,33 +1,39 @@
-[submodule "Loop"]
-	path = Loop
-	url=https://github.com/loopnlearn/Loop.git
-[submodule "LoopKit"]
-	path = LoopKit
-	url = https://github.com/loopnlearn/LoopKit.git
-[submodule "CGMBLEKit"]
-	path = CGMBLEKit
-	url = https://github.com/loopnlearn/CGMBLEKit.git
-[submodule "SwiftCharts"]
-	path = SwiftCharts
-	url = https://github.com/ps2/SwiftCharts.git
-[submodule "dexcom-share-client-swift"]
-	path = dexcom-share-client-swift
-	url = https://github.com/loopnlearn/dexcom-share-client-swift.git
-[submodule "G4ShareSpy"]
-	path = G4ShareSpy
-	url = https://github.com/loopnlearn/G4ShareSpy.git
-[submodule "rileylink_ios"]
-	path = rileylink_ios
-	url = https://github.com/loopnlearn/rileylink_ios.git
 [submodule "Amplitude-iOS"]
 	path = Amplitude-iOS
 	url = https://github.com/loopnlearn/Amplitude-iOS.git
+[submodule "CGMBLEKit"]
+	path = CGMBLEKit
+	url = https://github.com/loopnlearn/CGMBLEKit.git
+[submodule "G4ShareSpy"]
+	path = G4ShareSpy
+	url = https://github.com/loopnlearn/G4ShareSpy.git
+[submodule "Loop"]
+	path = Loop
+	url = https://github.com/loopnlearn/Loop.git
+[submodule "LoopKit"]
+	path = LoopKit
+	url = https://github.com/loopnlearn/LoopKit.git
 [submodule "MKRingProgressView"]
 	path = MKRingProgressView
 	url = https://github.com/loopnlearn/MKRingProgressView.git
 [submodule "NightscoutAPIClient"]
 	path = NightscoutAPIClient
 	url = https://github.com/ivalkou/NightscoutAPIClient.git
+[submodule "OmniBLE"]
+	path = OmniBLE
+	url = https://github.com/loopnlearn/OmniBLE.git
+[submodule "SwiftCharts"]
+	path = SwiftCharts
+	url = https://github.com/ps2/SwiftCharts.git
+[submodule "dexcom-share-client-swift"]
+	path = dexcom-share-client-swift
+	url = https://github.com/loopnlearn/dexcom-share-client-swift.git
+[submodule "libre-direct-client-swift"]
+	path = libre-direct-client-swift
+	url = https://github.com/loopnlearn/libre-direct-client-swift.git
+[submodule "rileylink_ios"]
+	path = rileylink_ios
+	url = https://github.com/loopnlearn/rileylink_ios.git
 [submodule "xdrip-client-swift"]
 	path = xdrip-client-swift
 	url = https://github.com/loopnlearn/xdrip-client-swift

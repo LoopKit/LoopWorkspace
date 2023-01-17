@@ -308,6 +308,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "84752E8126ED0FFE009FD801"
+               BuildableName = "OmniBLE.framework"
+               BlueprintName = "OmniBLE"
+               ReferencedContainer = "container:OmniBLE/OmniBLE.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "384D8EF9236085C300B1DD29"
                BuildableName = "NightscoutAPIClient.framework"
                BlueprintName = "NightscoutAPIClient-watchOS"
@@ -392,8 +406,36 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "432B0E871CDFC3C50045347B"
+               BuildableName = "LibreDirectClient.framework"
+               BlueprintName = "LibreDirectClient"
+               ReferencedContainer = "container:libre-direct-client-swift/LibreDirectClient.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "43A8EC81210E664300A81379"
+               BuildableName = "LibreDirectClientUI.framework"
+               BlueprintName = "LibreDirectClientUI"
+               ReferencedContainer = "container:libre-direct-client-swift/LibreDirectClient.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "43776F8B1B8022E90074EA36"
-               BuildableName = "FreeAPS.app"
+               BuildableName = "Loop.app"
                BlueprintName = "Loop"
                ReferencedContainer = "container:Loop/Loop.xcodeproj">
             </BuildableReference>
@@ -423,7 +465,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "43776F8B1B8022E90074EA36"
-            BuildableName = "FreeAPS.app"
+            BuildableName = "Loop.app"
             BlueprintName = "Loop"
             ReferencedContainer = "container:Loop/Loop.xcodeproj">
          </BuildableReference>
@@ -539,6 +581,16 @@
                ReferencedContainer = "container:rileylink_ios/RileyLink.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "84752E8A26ED0FFE009FD801"
+               BuildableName = "OmniBLETests.xctest"
+               BlueprintName = "OmniBLETests"
+               ReferencedContainer = "container:OmniBLE/OmniBLE.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -556,7 +608,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "43776F8B1B8022E90074EA36"
-            BuildableName = "FreeAPS.app"
+            BuildableName = "Loop.app"
             BlueprintName = "Loop"
             ReferencedContainer = "container:Loop/Loop.xcodeproj">
          </BuildableReference>

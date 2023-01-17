@@ -1,17 +1,14 @@
-//
+// This enables a persistent override file used across clones at the same level
+#include? "../../LoopConfigOverride.xcconfig"
 
 // Override this if you don't want the default com.${DEVELOPMENT_TEAM}.loopkit that loop uses
 // MAIN_APP_BUNDLE_IDENTIFIER = com.myname.loop
 
 // Customize this to change the app name displayed
-MAIN_APP_DISPLAY_NAME = FreeAPS
-
-MAIN_APP_PRODUCT_NAME = FreeAPS
+// MAIN_APP_DISPLAY_NAME = Loop
 
 // Features
-// SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) FEATURE_OVERRIDES_DISABLED
+SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) ALLOW_SIMULATORS_ENABLED //ALLOW_DEBUG_FEATURES_ENABLED
 
-// Assets
-INCLUDED_SOURCE_FILE_NAMES = AdditionalAssets.xcassets
-
-APPICON_NAME = CustomLoopIcon
+// Put your team id here for signing
+// LOOP_DEVELOPMENT_TEAM = YOUR_ID_HERE
