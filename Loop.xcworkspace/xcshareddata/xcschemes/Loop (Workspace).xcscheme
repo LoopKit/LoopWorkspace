@@ -252,6 +252,34 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A943534F23C932A10093CFA3"
+               BuildableName = "TidepoolKit.framework"
+               BlueprintName = "TidepoolKit"
+               ReferencedContainer = "container:TidepoolKit/TidepoolKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A94AE4E3235A89B5005CA320"
+               BuildableName = "TidepoolServiceKitPlugin.loopplugin"
+               BlueprintName = "TidepoolServiceKitPlugin"
+               ReferencedContainer = "container:TidepoolService/TidepoolService.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "B4D40D3D23A428BC00D7ECB5"
                BuildableName = "CGMBLEKitG5Plugin.loopplugin"
                BlueprintName = "CGMBLEKitG5Plugin"
