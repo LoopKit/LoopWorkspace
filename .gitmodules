@@ -50,3 +50,7 @@
 	path = xdrip-client-swift
 	url = https://github.com/johandegraeve/xdrip-client-swift-1.git
 	branch = master
+[submodule "GlucoseDirectClient"]
+	path = GlucoseDirectClient
+	url = https://github.com/creepymonster/GlucoseDirectClient.git
+	branch = master
