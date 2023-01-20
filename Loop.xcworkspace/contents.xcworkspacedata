@@ -58,4 +58,7 @@
    <FileRef
       location = "group:LoopOnboarding/LoopOnboarding.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:xdrip-client-swift/xDripClient.xcodeproj">
+   </FileRef>
 </Workspace>
