@@ -6,7 +6,7 @@ on:
   schedule:
      # actually, ~5 minutes is the highest
      # effective frequency you will get
-    - cron:  '* * * * Sun'
+    - cron:  '00 12 * * Sun'
 jobs:
   merge:
     runs-on: ubuntu-latest
