@@ -1,0 +1,252 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+default_platform(:ios)
+
+TEAMID = ENV["TEAMID"]
+GH_PAT = ENV["GH_PAT"]
+GITHUB_WORKSPACE = ENV["GITHUB_WORKSPACE"]
+GITHUB_REPOSITORY_OWNER = ENV["GITHUB_REPOSITORY_OWNER"]
+FASTLANE_KEY_ID = ENV["FASTLANE_KEY_ID"]
+FASTLANE_ISSUER_ID = ENV["FASTLANE_ISSUER_ID"]
+FASTLANE_KEY = ENV["FASTLANE_KEY"]
+DEVICE_NAME = ENV["DEVICE_NAME"]
+DEVICE_ID = ENV["DEVICE_ID"]
+ENV["FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT"] = "120"
+
+platform :ios do
+  desc "Build Loop"
+  lane :build_loop do
+    setup_ci if ENV['CI']
+    
+    update_project_team(
+      path: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
+      teamid: "#{TEAMID}"
+    )
+
+    api_key = app_store_connect_api_key(
+      key_id: "#{FASTLANE_KEY_ID}",
+      issuer_id: "#{FASTLANE_ISSUER_ID}",
+      key_content: "#{FASTLANE_KEY}"
+    )
+
+    previous_build_number = latest_testflight_build_number(
+      app_identifier: "com.#{TEAMID}.loopkit.Loop",
+      api_key: api_key,
+    )
+
+    current_build_number = previous_build_number + 1
+
+    increment_build_number(
+      xcodeproj: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
+      build_number: current_build_number
+    )      
+    
+    match(
+      type: "appstore",
+      git_basic_authorization: Base64.strict_encode64("#{GITHUB_REPOSITORY_OWNER}:#{GH_PAT}"),
+      app_identifier: [
+        "com.#{TEAMID}.loopkit.Loop", 
+        "com.#{TEAMID}.loopkit.Loop.statuswidget", 
+        "com.#{TEAMID}.loopkit.Loop.LoopWatch.watchkitextension", 
+        "com.#{TEAMID}.loopkit.Loop.LoopWatch", 
+        "com.#{TEAMID}.loopkit.Loop.Loop-Intent-Extension",
+        "com.#{TEAMID}.loopkit.Loop.SmallStatusWidget"
+      ]
+    )
+
+    previous_build_number = latest_testflight_build_number(
+      app_identifier: "com.#{TEAMID}.loopkit.Loop",
+      api_key: api_key,
+    )
+
+    current_build_number = previous_build_number + 1
+
+    increment_build_number(
+      xcodeproj: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
+      build_number: current_build_number
+    )
+    
+    mapping = Actions.lane_context[
+      SharedValues::MATCH_PROVISIONING_PROFILE_MAPPING
+    ]
+
+    update_code_signing_settings(
+      path: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
+      profile_name: mapping["com.#{TEAMID}.loopkit.Loop"],
+      code_sign_identity: "iPhone Distribution",
+      targets: ["Loop"]
+    )
+
+    update_code_signing_settings(
+      path: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
+      code_sign_identity: "iPhone Distribution",
+      targets: ["LoopCore", "LoopCore-watchOS", "LoopUI"]
+    )
+
+    update_code_signing_settings(
+      path: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
+      profile_name: mapping["com.#{TEAMID}.loopkit.Loop.statuswidget"],
+      code_sign_identity: "iPhone Distribution",
+      targets: ["Loop Status Extension"]
+    )
+    
+    update_code_signing_settings(
+      path: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
+      profile_name: mapping["com.#{TEAMID}.loopkit.Loop.LoopWatch.watchkitextension"],
+      code_sign_identity: "iPhone Distribution",
+      targets: ["WatchApp Extension"]
+    )
+    
+    update_code_signing_settings(
+      path: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
+      profile_name: mapping["com.#{TEAMID}.loopkit.Loop.LoopWatch"],
+      code_sign_identity: "iPhone Distribution",
+      targets: ["WatchApp"]
+    )
+    
+    update_code_signing_settings(
+      path: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
+      profile_name: mapping["com.#{TEAMID}.loopkit.Loop.Loop-Intent-Extension"],
+      code_sign_identity: "iPhone Distribution",
+      targets: ["Loop Intent Extension"]
+    )
+    
+    update_code_signing_settings(
+      path: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
+      profile_name: mapping["com.#{TEAMID}.loopkit.Loop.SmallStatusWidget"],
+      code_sign_identity: "iPhone Distribution",
+      targets: ["SmallStatusWidgetExtension"]
+    )
+
+    gym(
+      export_method: "app-store",
+      scheme: "Loop (Workspace)",
+      output_name: "Loop.ipa",
+      configuration: "Release",
+      destination: 'generic/platform=iOS',
+      buildlog_path: 'buildlog'
+    )
+
+    copy_artifacts(
+      target_path: "artifacts",
+      artifacts: ["*.mobileprovision", "*.ipa", "*.dSYM.zip"]
+    )
+  end
+
+  desc "Push to TestFlight"
+  lane :release do
+    api_key = app_store_connect_api_key(
+      key_id: "#{FASTLANE_KEY_ID}",
+      issuer_id: "#{FASTLANE_ISSUER_ID}",
+      key_content: "#{FASTLANE_KEY}"
+    )
+    
+    upload_to_testflight(
+      api_key: api_key,
+      skip_submission: false,
+      ipa: "Loop.ipa",
+      skip_waiting_for_build_processing: true,
+    )
+  end
+
+  desc "Provision Identifiers and Certificates"
+  lane :identifiers do
+    setup_ci if ENV['CI']
+    ENV["MATCH_READONLY"] = false.to_s
+    
+    app_store_connect_api_key(
+      key_id: "#{FASTLANE_KEY_ID}",
+      issuer_id: "#{FASTLANE_ISSUER_ID}",
+      key_content: "#{FASTLANE_KEY}"
+    )
+
+    def configure_bundle_id(name, identifier, capabilities)
+      bundle_id = Spaceship::ConnectAPI::BundleId.find(identifier) || Spaceship::ConnectAPI::BundleId.create(name: name, identifier: identifier)
+      capabilities.each { |capability|
+        bundle_id.create_capability(capability)
+      }
+    end
+
+    configure_bundle_id("Loop", "com.#{TEAMID}.loopkit.Loop", [
+      Spaceship::ConnectAPI::BundleIdCapability::Type::APP_GROUPS,
+      Spaceship::ConnectAPI::BundleIdCapability::Type::HEALTHKIT,
+      Spaceship::ConnectAPI::BundleIdCapability::Type::PUSH_NOTIFICATIONS,
+      Spaceship::ConnectAPI::BundleIdCapability::Type::SIRIKIT
+    ])
+
+    configure_bundle_id("Loop Intent Extension", "com.#{TEAMID}.loopkit.Loop.Loop-Intent-Extension", [
+      Spaceship::ConnectAPI::BundleIdCapability::Type::APP_GROUPS
+    ])
+
+    configure_bundle_id("Loop Status Extension", "com.#{TEAMID}.loopkit.Loop.statuswidget", [
+      Spaceship::ConnectAPI::BundleIdCapability::Type::APP_GROUPS
+    ])
+
+    configure_bundle_id("WatchApp", "com.#{TEAMID}.loopkit.Loop.LoopWatch", [])
+
+    configure_bundle_id("WatchApp Extension", "com.#{TEAMID}.loopkit.Loop.LoopWatch.watchkitextension", [
+      Spaceship::ConnectAPI::BundleIdCapability::Type::HEALTHKIT,
+      Spaceship::ConnectAPI::BundleIdCapability::Type::SIRIKIT
+    ])
+
+    configure_bundle_id("Small Status Widget", "com.#{TEAMID}.loopkit.Loop.SmallStatusWidget", [
+      Spaceship::ConnectAPI::BundleIdCapability::Type::APP_GROUPS
+    ])
+    
+  end
+
+  desc "Provision Certificates"
+  lane :certs do
+    setup_ci if ENV['CI']
+    ENV["MATCH_READONLY"] = false.to_s
+    
+    app_store_connect_api_key(
+      key_id: "#{FASTLANE_KEY_ID}",
+      issuer_id: "#{FASTLANE_ISSUER_ID}",
+      key_content: "#{FASTLANE_KEY}"
+    )
+    
+    match(
+      type: "appstore",
+      force: true,
+      git_basic_authorization: Base64.strict_encode64("#{GITHUB_REPOSITORY_OWNER}:#{GH_PAT}"),
+      app_identifier: [
+        "com.#{TEAMID}.loopkit.Loop", 
+        "com.#{TEAMID}.loopkit.Loop.statuswidget", 
+        "com.#{TEAMID}.loopkit.Loop.LoopWatch.watchkitextension", 
+        "com.#{TEAMID}.loopkit.Loop.LoopWatch", 
+        "com.#{TEAMID}.loopkit.Loop.Loop-Intent-Extension",
+        "com.#{TEAMID}.loopkit.Loop.SmallStatusWidget",
+      ]
+    )
+  end
+
+  desc "Nuke Certs"
+  lane :nuke_certs do
+    setup_ci if ENV['CI']
+    ENV["MATCH_READONLY"] = false.to_s
+    
+    app_store_connect_api_key(
+      key_id: "#{FASTLANE_KEY_ID}",
+      issuer_id: "#{FASTLANE_ISSUER_ID}",
+      key_content: "#{FASTLANE_KEY}"
+    )
+    
+    match_nuke(
+      type: "appstore",
+      team_id: "#{TEAMID}",
+      skip_confirmation: true,
+      git_basic_authorization: Base64.strict_encode64("#{GITHUB_REPOSITORY_OWNER}:#{GH_PAT}")
+    )
+  end
+end

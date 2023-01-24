@@ -2,13 +2,13 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:LoopConfigOverride.xcconfig">
+      location = "container:LoopConfigOverride.xcconfig">
    </FileRef>
    <FileRef
-      location = "group:AdditionalAssets.xcassets">
+      location = "container:OverrideAssetsLoop.xcassets">
    </FileRef>
    <FileRef
-      location = "group:AdditionalWatchAssets.xcassets">
+      location = "container:OverrideAssetsWatchApp.xcassets">
    </FileRef>
    <FileRef
       location = "group:Loop/Loop.xcodeproj">
@@ -20,21 +20,42 @@
       location = "group:CGMBLEKit/CGMBLEKit.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:SwiftCharts/SwiftCharts.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:dexcom-share-client-swift/ShareClient.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:G4ShareSpy/G4ShareSpy.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:rileylink_ios/RileyLink.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Amplitude-iOS/Amplitude.xcodeproj">
+      location = "group:AmplitudeService/AmplitudeService.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:LogglyService/LogglyService.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:NightscoutService/NightscoutService.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:NightscoutAPIClient/NightscoutAPIClient.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:MKRingProgressView/MKRingProgressView.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Minizip/Minizip.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:TrueTime.swift/TrueTime.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:OmniBLE/OmniBLE.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:G7SensorKit/G7SensorKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:LoopSupport/LoopSupport.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:LoopOnboarding/LoopOnboarding.xcodeproj">
    </FileRef>
 </Workspace>

@@ -1,0 +1,59 @@
+{
+  "pins" : [
+    {
+      "identity" : "amplitude-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/amplitude/Amplitude-iOS.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "c3cb4810a021ccd172caaed33bef5f400899f599"
+      }
+    },
+    {
+      "identity" : "analytics-connector-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/amplitude/analytics-connector-ios.git",
+      "state" : {
+        "revision" : "b44981119e2efc0edd1d2e26831c3c4c0e0264e6",
+        "version" : "1.0.0"
+      }
+    },
+    {
+      "identity" : "base32",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mattrubin/Base32.git",
+      "state" : {
+        "branch" : "1.1.2+spm",
+        "revision" : "d185e44c8b355d34d5c6c6ad502c60cba4599f69"
+      }
+    },
+    {
+      "identity" : "cryptoswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/krzyzanowskim/CryptoSwift",
+      "state" : {
+        "revision" : "12f2389aca4a07e0dd54c86ec23d0721ed88b8db",
+        "version" : "1.4.3"
+      }
+    },
+    {
+      "identity" : "onetimepassword",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mattrubin/OneTimePassword",
+      "state" : {
+        "branch" : "develop",
+        "revision" : "8e4022f2852d77240d0a17482cbfe325354aac70"
+      }
+    },
+    {
+      "identity" : "swiftcharts",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ivanschuetz/SwiftCharts",
+      "state" : {
+        "branch" : "master",
+        "revision" : "3d011f67eccb1ffa622fbfccb1348eed80309ae8"
+      }
+    }
+  ],
+  "version" : 2
+}

@@ -7,21 +7,42 @@
 [submodule "CGMBLEKit"]
 	path = CGMBLEKit
 	url = https://github.com/LoopKit/CGMBLEKit.git
-[submodule "SwiftCharts"]
-	path = SwiftCharts
-	url = https://github.com/i-schuetz/SwiftCharts.git
 [submodule "dexcom-share-client-swift"]
 	path = dexcom-share-client-swift
 	url = https://github.com/LoopKit/dexcom-share-client-swift.git
-[submodule "G4ShareSpy"]
-	path = G4ShareSpy
-	url = https://github.com/LoopKit/G4ShareSpy.git
 [submodule "rileylink_ios"]
 	path = rileylink_ios
 	url = https://github.com/ps2/rileylink_ios.git
-[submodule "Amplitude-iOS"]
-	path = Amplitude-iOS
-	url = https://github.com/LoopKit/Amplitude-iOS.git
 [submodule "MKRingProgressView"]
 	path = MKRingProgressView
 	url = https://github.com/LoopKit/MKRingProgressView.git
+[submodule "NightscoutService"]
+	path = NightscoutService
+	url = https://github.com/ps2/NightscoutService.git
+[submodule "Minizip"]
+	path = Minizip
+	url = https://github.com/LoopKit/Minizip.git
+[submodule "TrueTime.swift"]
+	path = TrueTime.swift
+	url = https://github.com/LoopKit/TrueTime.swift.git
+[submodule "LoopOnboarding"]
+	path = LoopOnboarding
+	url = https://github.com/LoopKit/LoopOnboarding.git
+[submodule "AmplitudeService"]
+	path = AmplitudeService
+	url = https://github.com/LoopKit/AmplitudeService.git
+[submodule "LogglyService"]
+	path = LogglyService
+	url = https://github.com/LoopKit/LogglyService.git
+[submodule "OmniBLE"]
+	path = OmniBLE
+	url = https://github.com/LoopKit/OmniBLE.git
+[submodule "NightscoutAPIClient"]
+	path = NightscoutAPIClient
+	url = https://github.com/LoopKit/NightscoutAPIClient.git
+[submodule "LoopSupport"]
+	path = LoopSupport
+	url = https://github.com/LoopKit/LoopSupport
+[submodule "G7SensorKit"]
+	path = G7SensorKit
+	url = https://github.com/LoopKit/G7SensorKit.git

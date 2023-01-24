@@ -1,8 +1,0 @@
-language: objective-c
-
-osx_image: xcode10.2
-
-script:
-  - set -o pipefail && time xcodebuild -workspace Loop.xcworkspace -scheme 'Loop (Workspace)' -destination 'name=iPhone 8' build | xcpretty
-  - set -o pipefail && time xcodebuild -workspace Loop.xcworkspace -scheme 'Learn (Workspace)' -destination 'name=iPhone 8' build | xcpretty
-  - set -o pipefail && time xcodebuild -workspace Loop.xcworkspace -scheme 'Loop (Workspace)' -destination 'name=iPhone 8' test | xcpretty
