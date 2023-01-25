@@ -2,6 +2,9 @@ name: 4. Build Loop
 run-name: Build Loop
 on:
   workflow_dispatch:
+  push:
+    tags:
+      - "v*"
   schedule:
      # actually, ~5 minutes is the highest
      # effective frequency you will get
