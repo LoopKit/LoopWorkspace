@@ -1,4 +1,5 @@
-name: Add Identifiers
+name: 2. Add Identifiers
+run-name: Add Identifiers
 on:
   workflow_dispatch:
 

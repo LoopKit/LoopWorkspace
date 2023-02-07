@@ -1,4 +1,5 @@
-name: Build Loop
+name: 4. Build Loop
+run-name: Build Loop
 on:
   workflow_dispatch:
 
