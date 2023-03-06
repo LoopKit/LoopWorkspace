@@ -32,7 +32,7 @@ You require 6 Secrets (alphanumeric items) to use the GitHub build method and if
 
 ## Generate App Store Connect API Key
 
-This step is common for all GitHub Browser Builds, and should be done only once. You will be saving 4 Secrets from your Apple Account in this step.
+This step is common for all GitHub Browser Builds; do this step only once. You will be saving 4 Secrets from your Apple Account in this step.
 
 1. Sign in to the [Apple developer portal page](https://developer.apple.com/account/resources/certificates/list).
 1. Copy the Team ID from the upper right of the screen. Record this as your `TEAMID`.
