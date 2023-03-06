@@ -74,7 +74,7 @@ Once created, you will not take any direct actions with this repository; it need
 ## Setup GitHub LoopWorkspace Repository
 
 1. Fork https://github.com/LoopKit/LoopWorkspace into your account.
-1. In the forked LoopWorkspace repo, go to Settings -> Secrets -> Actions.
+1. In the forked LoopWorkspace repo, go to Settings -> Secrets and variables -> Actions.
 1. For each of the following secrets, tap on "New repository secret", then add the name of the secret, along with the value you recorded for it:
     * `TEAMID`
     * `FASTLANE_ISSUER_ID`
