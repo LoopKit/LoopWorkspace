@@ -1,5 +1,11 @@
 # LoopWorkspace
 
+## New GitHub Build Instructions
+
+The new GitHub Build Instructions are at this [link](fastlane/testflight.md)
+
+The rest of this README contains information needed for the traditional Mac/Xcode build for Loop from LoopWorkspace.
+
 ## Clone
 
 This repository uses git submodules to pull in the various workspace dependencies.
