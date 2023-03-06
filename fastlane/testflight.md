@@ -4,14 +4,17 @@ These instructions allow you to build Loop without having access to a Mac.
 
 * You can install Loop on phones via TestFlight that are not connected to your computer
 * You can send builds and updates to those you care for
-* You can install Loop if a phone is lost or the app is accidentally deleted
-* You do not need to worry about correct Xcode/Mac versions either.
+* You can install Loop on your phone using only the TestFlight app if a phone was lost or the app is accidentally deleted
+* You do not need to worry about specific Xcode/Mac versions
 
 An app built using this method can easily be deployed to newer versions of iOS, as soon as they are available.
 
 The setup steps are somewhat involved, but nearly all are one time steps. Subsequent builds are trivial. Your app must be updated once every 90 days, but it's a simple click to make a new build and can be done from anywhere. The 90-day update is a TestFlight requirement, which can be automated.
 
-There are more detailed instructions in LoopDocs for using GitHub for Browser Builds of Loop, including troubleshooting and build errors. Please refer to [LoopDocs: GitHub Overview](https://loopkit.github.io/loopdocs/gh-actions/gh-overview/).
+There are more detailed instructions in LoopDocs for using GitHub for Browser Builds of Loop, including troubleshooting and build errors. Please refer to:
+
+* [LoopDocs: GitHub Overview](https://loopkit.github.io/loopdocs/gh-actions/gh-overview/)
+* [LoopDocs: GitHub Errors](https://loopkit.github.io/loopdocs/gh-actions/gh-errors/)
 
 Note that installing with TestFlight, (in the US), requires the Apple ID account holder to be 13 years or older. For younger Loopers, an adult must log into Media & Purchase on the child's phone to install Loop. More details on this can be found in [LoopDocs](https://loopkit.github.io/loopdocs/gh-actions/gh-deploy/#install-testflight-loop-for-child).
 
@@ -28,7 +31,7 @@ You require 6 Secrets (alphanumeric items) to use the GitHub build method and if
 * Four Secrets are from your Apple Account
 * Two Secrets are from your GitHub account
 * Be sure to save the 6 Secrets in a text file using a text editor
-    - Do **NOT** use a smart editor because these Secrets are case sensitive
+    - Do **NOT** use a smart editor, which might auto-correct and change case, because these Secrets are case sensitive
 
 ## Generate App Store Connect API Key
 
@@ -56,13 +59,17 @@ Log into your GitHub account to create a personal access token; this is one of t
 
 ## Make up a Password
 
-The first time you build with the GitHub Browser Build method for any DIY app, you will make up a password (MATCH_PASSWORD) for the Match-Secrets repository. This is the second one of two GitHub secrets needed for your build.
+This is the second one of two GitHub secrets needed for your build.
 
-## Setup GitHub Match-Secrets repository
+The first time you build with the GitHub Browser Build method for any DIY app, you will make up a password and record it as `MATCH_PASSWORD`. Note, if you later lose `MATCH_PASSWORD`, you will need to delete and make a new Match-Secrets repository (next step).
+
+## Setup GitHub Match-Secrets Repository
 
 The creation of the Match-Secrets repository is a common step for all GitHub Browser Builds; do this step only once. You must be logged into your GitHub account.
 
 1. Create a [new empty repository](https://github.com/new) titled `Match-Secrets`. It should be private.
+
+Once created, you will not take any direct actions with this repository; it needs to be there for the GitHub to use as you progress through the steps.
 
 ## Setup GitHub LoopWorkspace Repository
 
