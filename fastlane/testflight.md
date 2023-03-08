@@ -50,9 +50,7 @@ Log into your GitHub account to create a personal access token; this is one of t
 
 1. Create a [new personal access token](https://github.com/settings/tokens/new):
     * Enter a name for your token, use "FastLane Access Token".
-    * Change the selection to 90 days or 1 year.
-        * If you use 1 year, be sure to remove the comments from the automatic build `cron` lines after your first build
-        * See .github/workflows/build_loop.yml file
+    * Change the selection to 90 days.
     * Select the `repo` permission scope.
     * Click "Generate token".
     * Copy the token and record it. It will be used below as `GH_PAT`.
