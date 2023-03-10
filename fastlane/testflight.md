@@ -5,9 +5,7 @@ These instructions allow you to build Loop without having access to a Mac.
 * You can install Loop on phones via TestFlight that are not connected to your computer
 * You can send builds and updates to those you care for
 * You can install Loop on your phone using only the TestFlight app if a phone was lost or the app is accidentally deleted
-* You do not need to worry about specific Xcode/Mac versions
-
-An app built using this method can easily be deployed to newer versions of iOS, as soon as they are available.
+* You do not need to worry about specific Xcode/Mac versions for a given iOS
 
 The setup steps are somewhat involved, but nearly all are one time steps. Subsequent builds are trivial. Your app must be updated once every 90 days, but it's a simple click to make a new build and can be done from anywhere. The 90-day update is a TestFlight requirement, which can be automated.
 
