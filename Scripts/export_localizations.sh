@@ -1,6 +1,9 @@
 #!/bin/zsh
 
 set -e
+set -u
+
+: "$LOKALISE_TOKEN"
 
 LANGUAGES=(ar es ru en zh-Hans nl fr de it nb pl ru es ja pt-BR vi da sv fi ro tr he sk)
 
