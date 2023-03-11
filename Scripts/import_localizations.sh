@@ -3,8 +3,13 @@
 # Install the Lokalise command line tools from https://github.com/lokalise/lokalise-cli-2-go
 # Generate an API Token (not an SDK Token!) following the instructions here: https://docs.lokalise.com/en/articles/1929556-api-tokens
 # export LOKALISE_TOKEN="<yourtokenhere>"
+# export GH_TOKEN="<githubtoken>"
 
 set -e
+set -u
+
+: "$LOKALISE_TOKEN"
+: "$GH_TOKEN"
 
 date=`date`
 
