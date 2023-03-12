@@ -453,16 +453,6 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C1B383131CD0665D00CE7782"
-               BuildableName = "NightscoutUploadKitTests.xctest"
-               BlueprintName = "NightscoutUploadKitTests"
-               ReferencedContainer = "container:rileylink_ios/RileyLink.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "431CE7761F98564200255374"
                BuildableName = "RileyLinkBLEKitTests.xctest"
                BlueprintName = "RileyLinkBLEKitTests"
