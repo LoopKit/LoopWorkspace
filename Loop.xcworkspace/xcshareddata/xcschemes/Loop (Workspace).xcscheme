@@ -493,6 +493,16 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1DEE226824A676A300693C32"
+               BuildableName = "LoopKitHostedTests.xctest"
+               BlueprintName = "LoopKitHostedTests"
+               ReferencedContainer = "container:LoopKit/LoopKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "C1FFAF7F213323CC00C50C1D"
                BuildableName = "OmniKitTests.xctest"
                BlueprintName = "OmniKitTests"
