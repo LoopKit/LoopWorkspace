@@ -83,9 +83,9 @@ jobs:
           fi
 
           # Submodule Loop patches:
-          # Template for customizing submodule Loop (changes Loop app name to "MyCustomizedLoop")
+          # Template for customizing submodule Loop (changes Loop app name to "CustomLoop")
           # Remove the "#" sign from the beginning of the line below to activate:
-          #wget -qO- https://github.com/loopnlearn/Loop/commit/1468358552babba21da44a4a5bb6ae679588bc66.patch | git apply --directory=Loop -v --whitespace=fix
+          #wget -qO- https://github.com/loopnlearn/Loop/commit/d206432b024279ef710df462b20bd464cd9682d4.patch | git apply --directory=Loop -v --whitespace=fix
           
           # Submodule LoopKit patches:
           # General template for customizing submodule LoopKit 
