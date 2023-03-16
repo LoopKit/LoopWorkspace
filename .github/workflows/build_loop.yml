@@ -83,14 +83,15 @@ jobs:
           fi
 
           # Submodule Loop patches:
-          # Template for customizing submodule Loop based on CustomTypeOne/LoopPatches (remove the "#" sign from the beginning of the line below to activate):
-          #wget -qO- https://raw.githubusercontent.com/CustomTypeOne/LoopPatches/main/LoopPatch.txt | git apply --directory=Loop -v --whitespace=fix
+          # Template for customizing submodule Loop (changes Loop app name to "MyCustomizedLoop")
+          # Remove the "#" sign from the beginning of the line below to activate:
+          wget -qO- https://github.com/loopnlearn/Loop/commit/1468358552babba21da44a4a5bb6ae679588bc66.patch | git apply --directory=Loop -v --whitespace=fix
           
           # Submodule LoopKit patches:
-          # Template for customizing submodule LoopKit based on CustomTypeOne/LoopPatches (remove the "#" sign from the beginning of the line below to activate):
-          #wget -qO- https://raw.githubusercontent.com/CustomTypeOne/LoopPatches/main/LoopkitPatch.txt | git apply --directory=LoopKit -v --whitespace=fix
+          # General template for customizing submodule LoopKit 
+          # Copy url from a GitHub commit or pull request and insert below, and remove the "#" sign from the beginning of the line to activate:
+          #wget -qO- url_to_github_commit.patch | git apply --directory=LoopKit -v --whitespace=fix
           
-
           # Submodule xxxxx patches:
 
           # Add patches for customization of additional submodules by following the templates above, 
