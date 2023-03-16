@@ -51,8 +51,6 @@ jobs:
           upstream_sync_branch: ${{ env.UPSTREAM_BRANCH }}
           upstream_sync_repo: ${{ env.UPSTREAM_REPO }}
           # upstream_repo_access_token: ${{ secrets.UPSTREAM_REPO_SECRET }}
-          # Set test_mode true to run tests instead of the true action!!
-          test_mode: false
       
       # Step 3: Display a sample message based on the sync output var 'has_new_commits'
       - name: New commits found
