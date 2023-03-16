@@ -95,10 +95,10 @@ jobs:
           # Submodule xxxxx patches:
 
           # Add patches for customization of additional submodules by following the templates above, 
-          # and make sure to specify the submodule by setting '--directory=(submodule_name)'.
+          # and make sure to specify the submodule by setting "--directory=(submodule_name)".
           # Several patches may be added per submodule.
           # Adding comments (#) may be useful to easily tell the individual patches apart.
-          # All customizations can be disabled by setting env SYNC_UPSTREAM: 'false'
+          # All customizations can be disabled by setting env CUSTOMIZE_APP: 'false'
           
           
       # Patch Fastlane Match to not print tables
