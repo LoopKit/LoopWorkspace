@@ -15,7 +15,6 @@ env:
   UPSTREAM_BRANCH: main
   TARGET_BRANCH: main
   SYNC_UPSTREAM: 'true' # set to 'false' or 'true' to disable / enable syncing of fork with upstream repository
-  CUSTOMIZE_APP: 'true' # apply code customizations from patch files in LoopWorkspace/patches/ and/or individual submodule patches specified under 'name: Customize Loop' ('false / 'true')
 
 jobs:
   secrets:
@@ -96,7 +95,6 @@ jobs:
           # and make sure to specify the submodule by setting "--directory=(submodule_name)".
           # Several patches may be added per submodule.
           # Adding comments (#) may be useful to easily tell the individual patches apart.
-          # All customizations can be disabled by setting env CUSTOMIZE_APP: 'false'
           
           
       # Patch Fastlane Match to not print tables
