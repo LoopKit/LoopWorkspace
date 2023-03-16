@@ -69,8 +69,6 @@ jobs:
       
       # Customize Loop: Download and apply patches
       - name: Customize Loop
-        if: ${{ env.CUSTOMIZE_APP == 'true'}}
-        
         run: |
 
           # LoopWorkspace patches
