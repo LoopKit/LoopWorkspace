@@ -140,20 +140,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "43C246921D8918AE0031F8D1"
-               BuildableName = "Crypto.framework"
-               BlueprintName = "Crypto"
-               ReferencedContainer = "container:rileylink_ios/RileyLink.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "C136AA5D231187B0008A320D"
                BuildableName = "MinimedKitPlugin.loopplugin"
                BlueprintName = "MinimedKitPlugin"
@@ -242,6 +228,34 @@
                BuildableName = "LogglyServiceKitPlugin.loopplugin"
                BlueprintName = "LogglyServiceKitPlugin"
                ReferencedContainer = "container:LogglyService/LogglyService.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A943534F23C932A10093CFA3"
+               BuildableName = "TidepoolKit.framework"
+               BlueprintName = "TidepoolKit"
+               ReferencedContainer = "container:TidepoolKit/TidepoolKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A94AE4E3235A89B5005CA320"
+               BuildableName = "TidepoolServiceKitPlugin.loopplugin"
+               BlueprintName = "TidepoolServiceKitPlugin"
+               ReferencedContainer = "container:TidepoolService/TidepoolService.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -439,16 +453,6 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C1B383131CD0665D00CE7782"
-               BuildableName = "NightscoutUploadKitTests.xctest"
-               BlueprintName = "NightscoutUploadKitTests"
-               ReferencedContainer = "container:rileylink_ios/RileyLink.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "431CE7761F98564200255374"
                BuildableName = "RileyLinkBLEKitTests.xctest"
                BlueprintName = "RileyLinkBLEKitTests"
@@ -483,6 +487,16 @@
                BuildableName = "LoopTests.xctest"
                BlueprintName = "LoopTests"
                ReferencedContainer = "container:Loop/Loop.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1DEE226824A676A300693C32"
+               BuildableName = "LoopKitHostedTests.xctest"
+               BlueprintName = "LoopKitHostedTests"
+               ReferencedContainer = "container:LoopKit/LoopKit.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
