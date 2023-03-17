@@ -1,16 +1,22 @@
 name: 'Auto-update'
 
+# Runs only on schedule for the default branch
+# TARGET_BRANCH should be set as default
+# Syncs the target branch with upstream
+# Checks for activity and creates empty commits to TARGET_BRANCH as needed after 'time_elapsed' days of inactivity
+# Launches the build workflow if new commits are found.
+# The build workflow syncs and builds the main branch and uploads to TestFlight
+
 on:
+  workflow_dispatch:
   schedule:
     - cron:  '0 7 * * 1,4'
     # scheduled at 07:00 every Monday and Thursday
 
-  workflow_dispatch:  # click the button on Github repo!
-
 env:
   UPSTREAM_REPO: LoopKit/LoopWorkspace
   UPSTREAM_BRANCH: main
-  TARGET_BRANCH: main
+  TARGET_BRANCH: actions # target branch on fork to be kept "alive" for running scheduled workflows (repo activity required at least every 60 days for scheduled workflows to remain active)
 
 jobs:
   check_latest_from_upstream:
@@ -33,7 +39,6 @@ jobs:
     # REQUIRED step
     # Step 2: run the sync action
     - name: Sync upstream changes
-      if: (github.repository_owner != 'LoopKit')
       id: sync
       uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
       with:
@@ -59,16 +64,16 @@ jobs:
         echo ${{ steps.sync.outputs.has_new_commits }}
         echo "NEW_COMMITS=${{ steps.sync.outputs.has_new_commits }}" >> $GITHUB_OUTPUT
         
-    # Keep upstream repository "alive": add empty commits after "time_elapsed" days to avoid inactivation of scheduled workflows
+    # Keep repository "alive": add empty commits to TARGET_BRANCH after "time_elapsed" days of inactivity to avoid inactivation of scheduled workflows
     - name: Keep alive
-      if: (github.ref == 'refs/heads/main' && github.repository_owner == 'LoopKit')
+      if: github.ref == 'refs/heads/${{ env.TARGET_BRANCH }}'
       uses: gautamkrishnar/keepalive-workflow@v1 # using the workflow with default settings
       with:
         time_elapsed: 27 # Time elapsed from the previous commit to trigger a new automated commit (in days)
 
   # Launch build workflow if new commits are found
   launch_build_workflow:
-    if: needs.check_latest_from_upstream.outputs.NEW_COMMITS == 'true' && (github.repository_owner != 'LoopKit')
+    if: needs.check_latest_from_upstream.outputs.NEW_COMMITS == 'true'
     needs: check_latest_from_upstream
     name: Launch build workflow
     uses: ./.github/workflows/build_loop.yml

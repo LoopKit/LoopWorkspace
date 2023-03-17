@@ -2,18 +2,15 @@ name: 4. Build Loop
 run-name: Build Loop ${{ github.ref_name }}
 on:
   workflow_dispatch:
+  workflow_call:
   
   ## Remove the "#" sign from the beginning of the line below to get automated builds on push (code changes in your repository)
   #push:
 
-  ## Remove the "#" sign from the beginning of the two lines below to get automated builds every month
-  #schedule:
-    #- cron: '0 17 1 * *' # Runs at 17:00 UTC on the 1st in every month.
-
 env:
   UPSTREAM_REPO: LoopKit/LoopWorkspace
-  UPSTREAM_BRANCH: main
-  TARGET_BRANCH: main
+  UPSTREAM_BRANCH: main # upstream branch to sync from
+  TARGET_BRANCH: main # branch on fork to build from
   SYNC_UPSTREAM: 'true' # set to 'false' or 'true' to disable / enable syncing of fork with upstream repository
 
 jobs:
