@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <Group
+      location = "group:Scripts"
+      name = "Scripts">
+      <FileRef
+         location = "group:export_localizations.sh">
+      </FileRef>
+      <FileRef
+         location = "group:import_localizations.sh">
+      </FileRef>
+   </Group>
    <FileRef
       location = "container:LoopConfigOverride.xcconfig">
    </FileRef>
@@ -30,6 +40,12 @@
    </FileRef>
    <FileRef
       location = "group:LogglyService/LogglyService.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:TidepoolKit/TidepoolKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:TidepoolService/TidepoolService.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:NightscoutService/NightscoutService.xcodeproj">

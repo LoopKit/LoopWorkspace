@@ -37,6 +37,15 @@
       }
     },
     {
+      "identity" : "nightscoutkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/LoopKit/NightscoutKit",
+      "state" : {
+        "branch" : "main",
+        "revision" : "54c668c7154eca0ccd7b5714e1d206e488cd1bd9"
+      }
+    },
+    {
       "identity" : "onetimepassword",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mattrubin/OneTimePassword",
