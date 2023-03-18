@@ -26,5 +26,6 @@ foreach lang in $LANGUAGES
     --project-id 8069387863cdd837d11dd0.82955128 \
     file upload \
     --file ${lang}.xliff \
+    --cleanup-mode \
     --lang-iso ${lang_iso}
 end
