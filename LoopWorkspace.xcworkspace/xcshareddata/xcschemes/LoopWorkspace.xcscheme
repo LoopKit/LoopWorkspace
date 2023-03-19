@@ -154,20 +154,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C1B3830A1CD0665D00CE7782"
-               BuildableName = "NightscoutUploadKit.framework"
-               BlueprintName = "NightscoutUploadKit"
-               ReferencedContainer = "container:rileylink_ios/RileyLink.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "A99C713023396CB100AB9035"
                BuildableName = "NightscoutServiceKitPlugin.loopplugin"
                BlueprintName = "NightscoutServiceKitPlugin"

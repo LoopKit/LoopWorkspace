@@ -10,7 +10,7 @@ LANGUAGES=(ar es ru en zh-Hans nl fr de it nb pl ru es ja pt-BR vi da sv fi ro t
 argstring="${LANGUAGES[@]/#/-exportLanguage }"
 IFS=" "; args=( $=argstring )
 
-xcodebuild -exportLocalizations -localizationPath xclocs $args
+xcodebuild -scheme LoopWorkspace -exportLocalizations -localizationPath xclocs $args
 
 mkdir -p xliff
 find xclocs -name '*.xliff' -exec cp {} xliff \;
@@ -19,7 +19,7 @@ cd xliff
 
 foreach lang in $LANGUAGES
 
-  lang_iso=$(sed "s/zh-Hans/zh_Hans_CN/g; s/pt-BR/pt_BR/g" <<<"$lang")
+  lang_iso=$(sed "s/zh-Hans/zh_Hans/g; s/pt-BR/pt_BR/g" <<<"$lang")
 
   lokalise2 \
     --token $LOKALISE_TOKEN \
