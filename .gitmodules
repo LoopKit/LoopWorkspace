@@ -52,3 +52,9 @@
 [submodule "TidepoolKit"]
 	path = TidepoolKit
 	url = https://github.com/LoopKit/TidepoolKit.git
+[submodule "OmniKit"]
+	path = OmniKit
+	url = https://github.com/LoopKit/OmniKit.git
+[submodule "MinimedKit"]
+	path = MinimedKit
+	url = https://github.com/LoopKit/MinimedKit.git
