@@ -23,7 +23,7 @@ foreach lang in $LANGUAGES
 
   lokalise2 \
     --token $LOKALISE_TOKEN \
-    --project-id 8069387863cdd837d11dd0.82955128 \
+    --project-id 414338966417c70d7055e2.75119857 \
     file upload \
     --file ${lang}.xliff \
     --cleanup-mode \

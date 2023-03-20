@@ -17,7 +17,7 @@ date=`date`
 rm -rf xliff
 lokalise2 \
     --token "$LOKALISE_TOKEN" \
-    --project-id "8069387863cdd837d11dd0.82955128" \
+    --project-id "414338966417c70d7055e2.75119857" \
     file download \
     --format xliff \
     --bundle-structure "%LANG_ISO%.%FORMAT%" \
@@ -26,7 +26,7 @@ lokalise2 \
     --replace-breaks=false \
     --unzip-to ./xliff
 
-projects=(LoopKit:AmplitudeService:dev LoopKit:CGMBLEKit:dev LoopKit:G7SensorKit:main LoopKit:LogglyService:dev LoopKit:Loop:dev LoopKit:LoopKit:dev LoopKit:LoopOnboarding:dev LoopKit:LoopSupport:dev LoopKit:NightscoutAPIClient:master ps2:NightscoutService:dev LoopKit:OmniBLE:dev LoopKit:TidepoolKit:dev LoopKit:TidepoolService:dev LoopKit:dexcom-share-client-swift:dev ps2:rileylink_ios:dev)
+projects=(LoopKit:AmplitudeService:dev LoopKit:CGMBLEKit:dev LoopKit:G7SensorKit:main LoopKit:LogglyService:dev LoopKit:Loop:dev LoopKit:LoopKit:dev LoopKit:LoopOnboarding:dev LoopKit:LoopSupport:dev LoopKit:NightscoutAPIClient:master ps2:NightscoutService:dev LoopKit:OmniBLE:dev LoopKit:TidepoolKit:dev LoopKit:TidepoolService:dev LoopKit:dexcom-share-client-swift:dev ps2:rileylink_ios:dev LoopKit:OmniKit:main LoopKit:MinimedKit:main)
 
 for project in ${projects}; do
   echo "Prepping $project"
