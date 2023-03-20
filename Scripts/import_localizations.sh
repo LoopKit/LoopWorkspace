@@ -14,7 +14,7 @@ set -u
 date=`date`
 
 # Fetch translations from Lokalise
-rm -rf xliff
+rm -rf xliff_in
 lokalise2 \
     --token "$LOKALISE_TOKEN" \
     --project-id "414338966417c70d7055e2.75119857" \
@@ -24,7 +24,7 @@ lokalise2 \
     --original-filenames=false \
     --export-empty-as skip \
     --replace-breaks=false \
-    --unzip-to ./xliff
+    --unzip-to ./xliff_in
 
 projects=(LoopKit:AmplitudeService:dev LoopKit:CGMBLEKit:dev LoopKit:G7SensorKit:main LoopKit:LogglyService:dev LoopKit:Loop:dev LoopKit:LoopKit:dev LoopKit:LoopOnboarding:dev LoopKit:LoopSupport:dev LoopKit:NightscoutAPIClient:master ps2:NightscoutService:dev LoopKit:OmniBLE:dev LoopKit:TidepoolKit:dev LoopKit:TidepoolService:dev LoopKit:dexcom-share-client-swift:dev ps2:rileylink_ios:dev LoopKit:OmniKit:main LoopKit:MinimedKit:main)
 
@@ -43,7 +43,7 @@ set -o pipefail && time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme 
 
 
 # Apply translations
-foreach file in xliff/*.xliff
+foreach file in xliff_in/*.xliff
   xcodebuild -workspace LoopWorkspace.xcworkspace -scheme "LoopWorkspace" -importLocalizations -localizationPath $file
 end
 

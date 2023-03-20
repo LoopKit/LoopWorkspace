@@ -12,10 +12,10 @@ IFS=" "; args=( $=argstring )
 
 xcodebuild -scheme LoopWorkspace -exportLocalizations -localizationPath xclocs $args
 
-mkdir -p xliff
-find xclocs -name '*.xliff' -exec cp {} xliff \;
+mkdir -p xliff_out
+find xclocs -name '*.xliff' -exec cp {} xliff_out \;
 
-cd xliff
+cd xliff_out
 
 foreach lang in $LANGUAGES
 
@@ -23,6 +23,7 @@ foreach lang in $LANGUAGES
 
   lokalise2 \
     --token $LOKALISE_TOKEN \
+    --convert-placeholders false \
     --project-id 414338966417c70d7055e2.75119857 \
     file upload \
     --file ${lang}.xliff \
