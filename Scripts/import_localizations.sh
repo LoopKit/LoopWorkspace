@@ -22,6 +22,7 @@ lokalise2 \
     --format xliff \
     --bundle-structure "%LANG_ISO%.%FORMAT%" \
     --original-filenames=false \
+    --placeholder-format ios \
     --export-empty-as skip \
     --replace-breaks=false \
     --unzip-to ./xliff_in
