@@ -14,43 +14,65 @@ set -u
 date=`date`
 
 # Fetch translations from Lokalise
+rm -rf xliff_in
 lokalise2 \
     --token "$LOKALISE_TOKEN" \
-    --project-id "8069387863cdd837d11dd0.82955128" \
+    --project-id "414338966417c70d7055e2.75119857" \
     file download \
     --format xliff \
     --bundle-structure "%LANG_ISO%.%FORMAT%" \
     --original-filenames=false \
+    --placeholder-format ios \
     --export-empty-as skip \
     --replace-breaks=false \
-    --unzip-to ./xliff
+    --unzip-to ./xliff_in
 
+projects=(LoopKit:AmplitudeService:dev LoopKit:CGMBLEKit:dev LoopKit:G7SensorKit:main LoopKit:LogglyService:dev LoopKit:Loop:dev LoopKit:LoopKit:dev LoopKit:LoopOnboarding:dev LoopKit:LoopSupport:dev LoopKit:NightscoutAPIClient:master ps2:NightscoutService:dev LoopKit:OmniBLE:dev LoopKit:TidepoolKit:dev LoopKit:TidepoolService:dev LoopKit:dexcom-share-client-swift:dev ps2:rileylink_ios:dev LoopKit:OmniKit:main LoopKit:MinimedKit:main)
+
+for project in ${projects}; do
+  echo "Prepping $project"
+  IFS=":" read user dir branch <<< "$project"
+  echo "parts = $user $dir $branch"
+  cd $dir
+  git checkout $branch
+  git branch -D translations || true
+  cd -
+done
 
 # Build Loop
-set -o pipefail && time xcodebuild -workspace Loop.xcworkspace -scheme 'Loop (Workspace)' build | xcpretty
+set -o pipefail && time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme 'LoopWorkspace' build | xcpretty
 
 
 # Apply translations
-foreach file in xliff/*.xliff
-  xcodebuild -workspace Loop.xcworkspace -scheme "Loop (Workspace)" -importLocalizations -localizationPath $file
+foreach file in xliff_in/*.xliff
+  xcodebuild -workspace LoopWorkspace.xcworkspace -scheme "LoopWorkspace" -importLocalizations -localizationPath $file
 end
 
 
 # Generate branches, commit and push.
-projects=(LoopKit:AmplitudeService:dev LoopKit:CGMBLEKit:dev LoopKit:G7SensorKit:main LoopKit:LogglyService:dev LoopKit:Loop:dev LoopKit:LoopKit:dev LoopKit:LoopOnboarding:dev LoopKit:LoopSupport:dev LoopKit:NightscoutAPIClient:master ps2:NightscoutService:dev LoopKit:OmniBLE:dev LoopKit:TidepoolKit:dev LoopKit:TidepoolService:dev LoopKit:dexcom-share-client-swift:dev ps2:rileylink_ios:dev)
 for project in ${projects}; do
-  echo "Working on $project"
+  echo "Commiting $project"
   IFS=":" read user dir branch <<< "$project"
   echo "parts = $user $dir $branch"
   cd $dir
-  set +e
-  git checkout -b translations
+  git checkout -b translations || true
   git add .
-  git commit -am "Updated translations from Lokalise on ${date}"
-  git push -f
-  pr=$(gh pr create -B $branch -R $user/$dir --fill 2>&1 | grep http)
-  echo "PR = $pr"
-  open $pr
-  cd ..
+  if git commit -am "Updated translations from Lokalise on ${date}"; then
+    git push -f
+    pr=$(gh pr create -B $branch -R $user/$dir --fill 2>&1 | grep http)
+    echo "PR = $pr"
+    open $pr
+  fi
+  cd -
 done
 
+# Reset 
+#for project in ${projects}; do
+#  echo "Commiting $project"
+#  IFS=":" read user dir branch <<< "$project"
+#  echo "parts = $user $dir $branch"
+#  cd $dir
+#  git checkout $branch
+#  git pull
+#  cd -
+#done
