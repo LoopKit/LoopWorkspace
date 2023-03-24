@@ -224,7 +224,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A943534F23C932A10093CFA3"
+               BlueprintIdentifier = "tidepoolkit::TidepoolKit"
                BuildableName = "TidepoolKit.framework"
                BlueprintName = "TidepoolKit"
                ReferencedContainer = "container:TidepoolKit/TidepoolKit.xcodeproj">
@@ -533,6 +533,26 @@
                BuildableName = "OmniKitTests.xctest"
                BlueprintName = "OmniKitTests"
                ReferencedContainer = "container:OmniKit/OmniKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "tidepoolkit::TidepoolKitTests"
+               BuildableName = "TidepoolKitTests.xctest"
+               BlueprintName = "TidepoolKitTests"
+               ReferencedContainer = "container:TidepoolKit/TidepoolKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A9DAAD0622E7987800E76C9F"
+               BuildableName = "TidepoolServiceKitTests.xctest"
+               BlueprintName = "TidepoolServiceKitTests"
+               ReferencedContainer = "container:TidepoolService/TidepoolService.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
