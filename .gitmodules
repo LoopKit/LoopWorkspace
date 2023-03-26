@@ -1,9 +1,9 @@
 [submodule "Loop"]
 	path = Loop
-	url = https://github.com/LoopKit/Loop.git
+	url = https://github.com/gestrich/Loop.git
 [submodule "LoopKit"]
 	path = LoopKit
-	url = https://github.com/LoopKit/LoopKit.git
+	url = https://github.com/gestrich/LoopKit.git
 [submodule "CGMBLEKit"]
 	path = CGMBLEKit
 	url = https://github.com/LoopKit/CGMBLEKit.git
@@ -18,7 +18,7 @@
 	url = https://github.com/LoopKit/MKRingProgressView.git
 [submodule "NightscoutService"]
 	path = NightscoutService
-	url = https://github.com/ps2/NightscoutService.git
+	url = https://github.com/gestrich/NightscoutService.git
 [submodule "Minizip"]
 	path = Minizip
 	url = https://github.com/LoopKit/Minizip.git
@@ -39,7 +39,7 @@
 	url = https://github.com/LoopKit/OmniBLE.git
 [submodule "NightscoutAPIClient"]
 	path = NightscoutAPIClient
-	url = https://github.com/LoopKit/NightscoutAPIClient.git
+	url = https://github.com/gestrich/NightscoutAPIClient.git
 [submodule "LoopSupport"]
 	path = LoopSupport
 	url = https://github.com/LoopKit/LoopSupport
@@ -48,7 +48,7 @@
 	url = https://github.com/LoopKit/G7SensorKit.git
 [submodule "TidepoolService"]
 	path = TidepoolService
-	url = https://github.com/LoopKit/TidepoolService.git
+	url = https://github.com/gestrich/TidepoolService.git
 [submodule "TidepoolKit"]
 	path = TidepoolKit
 	url = https://github.com/LoopKit/TidepoolKit.git
