@@ -140,34 +140,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C136AA5D231187B0008A320D"
-               BuildableName = "MinimedKitPlugin.loopplugin"
-               BlueprintName = "MinimedKitPlugin"
-               ReferencedContainer = "container:rileylink_ios/RileyLink.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C1B3830A1CD0665D00CE7782"
-               BuildableName = "NightscoutUploadKit.framework"
-               BlueprintName = "NightscoutUploadKit"
-               ReferencedContainer = "container:rileylink_ios/RileyLink.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "A99C713023396CB100AB9035"
                BuildableName = "NightscoutServiceKitPlugin.loopplugin"
                BlueprintName = "NightscoutServiceKitPlugin"
@@ -182,10 +154,24 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C136AA2923116E32008A320D"
+               BlueprintIdentifier = "C1E34B5A29C7AD01009A50A5"
+               BuildableName = "MinimedKitPlugin.loopplugin"
+               BlueprintName = "MinimedKitPlugin"
+               ReferencedContainer = "container:MinimedKit/MinimedKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C124021629C7D93D00B32844"
                BuildableName = "OmniKitPlugin.loopplugin"
                BlueprintName = "OmniKitPlugin"
-               ReferencedContainer = "container:rileylink_ios/RileyLink.xcodeproj">
+               ReferencedContainer = "container:OmniKit/OmniKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -443,16 +429,6 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C10D9BC91C8269D500378342"
-               BuildableName = "MinimedKitTests.xctest"
-               BlueprintName = "MinimedKitTests"
-               ReferencedContainer = "container:rileylink_ios/RileyLink.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "431CE7761F98564200255374"
                BuildableName = "RileyLinkBLEKitTests.xctest"
                BlueprintName = "RileyLinkBLEKitTests"
@@ -503,16 +479,6 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C1FFAF7F213323CC00C50C1D"
-               BuildableName = "OmniKitTests.xctest"
-               BlueprintName = "OmniKitTests"
-               ReferencedContainer = "container:rileylink_ios/RileyLink.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "84752E8A26ED0FFE009FD801"
                BuildableName = "OmniBLETests.xctest"
                BlueprintName = "OmniBLETests"
@@ -547,6 +513,26 @@
                BuildableName = "G7SensorKitTests.xctest"
                BlueprintName = "G7SensorKitTests"
                ReferencedContainer = "container:G7SensorKit/G7SensorKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C13CC34029C7B73A007F25DE"
+               BuildableName = "MinimedKitTests.xctest"
+               BlueprintName = "MinimedKitTests"
+               ReferencedContainer = "container:MinimedKit/MinimedKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C12ED9C929C7DBA900435701"
+               BuildableName = "OmniKitTests.xctest"
+               BlueprintName = "OmniKitTests"
+               ReferencedContainer = "container:OmniKit/OmniKit.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
