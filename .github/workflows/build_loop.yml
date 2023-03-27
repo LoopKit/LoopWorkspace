@@ -15,10 +15,12 @@ env:
 
 jobs:
   secrets:
+    name: Secrets
     uses: ./.github/workflows/validate_secrets.yml
     secrets: inherit
 
   upstream_sync_and_build:
+    name: Sync and build
     needs: secrets
     runs-on: macos-13
     steps:
