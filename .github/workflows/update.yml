@@ -21,7 +21,7 @@ env:
 jobs:
   check_latest_from_upstream:
     runs-on: ubuntu-latest
-    name: Check latest commits from upstream repo
+    name: Check upstream
     outputs: 
       NEW_COMMITS: ${{ steps.sync.outputs.has_new_commits }}
 
