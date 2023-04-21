@@ -35,6 +35,7 @@ for project in ${projects}; do
   echo "parts = $user $dir $branch"
   cd $dir
   git checkout $branch
+  git pull
   git branch -D translations || true
   cd -
 done
