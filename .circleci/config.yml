@@ -14,3 +14,7 @@ jobs:
           name: Run Tests
           command: set -o pipefail && time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme 'LoopWorkspace' -destination 'platform=iOS Simulator,name=iPhone 13,OS=15.5' test | xcpretty
 
+workflows:
+  build_and_test:
+    jobs:
+      - build_and_test
