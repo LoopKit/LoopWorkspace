@@ -12,7 +12,7 @@
 	url = https://github.com/LoopKit/dexcom-share-client-swift.git
 [submodule "RileyLinkKit"]
 	path = RileyLinkKit
-	url = https://github.com/LoopKit/RileyLinkKit.git
+	url = https://github.com/LoopKit/RileyLinkKit
 [submodule "MKRingProgressView"]
 	path = MKRingProgressView
 	url = https://github.com/LoopKit/MKRingProgressView.git
