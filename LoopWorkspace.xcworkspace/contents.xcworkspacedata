@@ -33,9 +33,6 @@
       location = "group:dexcom-share-client-swift/ShareClient.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:rileylink_ios/RileyLink.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:AmplitudeService/AmplitudeService.xcodeproj">
    </FileRef>
    <FileRef
@@ -67,6 +64,9 @@
    </FileRef>
    <FileRef
       location = "group:OmniKit/OmniKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:RileyLinkKit/RileyLinkKit.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:MinimedKit/MinimedKit.xcodeproj">
