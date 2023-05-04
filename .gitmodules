@@ -10,15 +10,15 @@
 [submodule "dexcom-share-client-swift"]
 	path = dexcom-share-client-swift
 	url = https://github.com/LoopKit/dexcom-share-client-swift.git
-[submodule "rileylink_ios"]
-	path = rileylink_ios
-	url = https://github.com/ps2/rileylink_ios.git
+[submodule "RileyLinkKit"]
+	path = RileyLinkKit
+	url = https://github.com/LoopKit/RileyLinkKit
 [submodule "MKRingProgressView"]
 	path = MKRingProgressView
 	url = https://github.com/LoopKit/MKRingProgressView.git
 [submodule "NightscoutService"]
 	path = NightscoutService
-	url = https://github.com/ps2/NightscoutService.git
+	url = https://github.com/LoopKit/NightscoutService.git
 [submodule "Minizip"]
 	path = Minizip
 	url = https://github.com/LoopKit/Minizip.git
