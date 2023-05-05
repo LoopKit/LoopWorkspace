@@ -337,9 +337,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A9BAC72626CDB7A5001C9493"
-               BuildableName = "NightscoutAPIClientPlugin.loopplugin"
-               BlueprintName = "NightscoutAPIClientPlugin"
-               ReferencedContainer = "container:NightscoutAPIClient/NightscoutAPIClient.xcodeproj">
+               BuildableName = "NightscoutRemoteCGMPlugin.loopplugin"
+               BlueprintName = "NightscoutRemoteCGMPlugin"
+               ReferencedContainer = "container:NightscoutRemoteCGM/NightscoutRemoteCGM.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
