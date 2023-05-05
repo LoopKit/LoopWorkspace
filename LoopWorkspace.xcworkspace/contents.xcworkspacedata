@@ -45,10 +45,10 @@
       location = "group:TidepoolService/TidepoolService.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:NightscoutService/NightscoutService.xcodeproj">
+      location = "group:NightscoutRemoteCGM/NightscoutRemoteCGM.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:NightscoutAPIClient/NightscoutAPIClient.xcodeproj">
+      location = "group:NightscoutService/NightscoutService.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:MKRingProgressView/MKRingProgressView.xcodeproj">
