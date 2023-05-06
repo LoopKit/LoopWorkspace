@@ -13,9 +13,6 @@
 [submodule "RileyLinkKit"]
 	path = RileyLinkKit
 	url = https://github.com/LoopKit/RileyLinkKit
-[submodule "MKRingProgressView"]
-	path = MKRingProgressView
-	url = https://github.com/LoopKit/MKRingProgressView.git
 [submodule "NightscoutService"]
 	path = NightscoutService
 	url = https://github.com/LoopKit/NightscoutService.git
