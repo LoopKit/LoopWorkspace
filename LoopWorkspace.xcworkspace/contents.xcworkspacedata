@@ -5,6 +5,9 @@
       location = "group:Scripts"
       name = "Scripts">
       <FileRef
+         location = "group:sync.swift">
+      </FileRef>
+      <FileRef
          location = "group:export_localizations.sh">
       </FileRef>
       <FileRef
