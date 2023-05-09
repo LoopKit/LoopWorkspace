@@ -14,20 +14,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5085266D1E52FDC000D611F4"
-               BuildableName = "MKRingProgressView.framework"
-               BlueprintName = "MKRingProgressView"
-               ReferencedContainer = "container:MKRingProgressView/MKRingProgressView.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "43D8FDCA1C728FDF0073BE78"
                BuildableName = "LoopKit.framework"
                BlueprintName = "LoopKit"
@@ -46,20 +32,6 @@
                BuildableName = "LoopKit.framework"
                BlueprintName = "LoopKit-watchOS"
                ReferencedContainer = "container:LoopKit/LoopKit.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8687AEE71C66F322005D9419"
-               BuildableName = "Minizip.framework"
-               BlueprintName = "Minizip-iOS"
-               ReferencedContainer = "container:Minizip/Minizip.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
