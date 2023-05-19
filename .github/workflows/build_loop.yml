@@ -28,7 +28,13 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: recursive
-      
+       
+      # Customize Loop: Download and apply patches
+      - name: Customize Loop
+        run: |  
+          # Loop: LoopDataManager: Limit loop cycles to no more frequent than once every 4.8 minutes
+          curl https://github.com/loopnlearn/Loop/commit/414588c5e7dc36f692c8bbcf2d97adde1861072a.patch | git apply --directory=Loop
+                        
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
         run: find /usr/local/lib/ruby/gems -name table_printer.rb | xargs sed -i "" "/puts(Terminal::Table.new(params))/d"
