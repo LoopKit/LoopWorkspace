@@ -5,6 +5,9 @@
       location = "group:Scripts"
       name = "Scripts">
       <FileRef
+         location = "group:update_submodule_refs.sh">
+      </FileRef>
+      <FileRef
          location = "group:sync.swift">
       </FileRef>
       <FileRef
@@ -17,6 +20,19 @@
    <FileRef
       location = "container:LoopConfigOverride.xcconfig">
    </FileRef>
+   <Group
+      location = "group:fastlane"
+      name = "fastlane">
+      <FileRef
+         location = "group:testflight.md">
+      </FileRef>
+      <FileRef
+         location = "group:Fastfile">
+      </FileRef>
+      <FileRef
+         location = "group:Matchfile">
+      </FileRef>
+   </Group>
    <FileRef
       location = "container:OverrideAssetsLoop.xcassets">
    </FileRef>

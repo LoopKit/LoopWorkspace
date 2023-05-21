@@ -6,7 +6,7 @@
       "location" : "https://github.com/amplitude/Amplitude-iOS.git",
       "state" : {
         "branch" : "main",
-        "revision" : "8e1239c369e0dfe4c26f2dce1b05d093f6e18aff"
+        "revision" : "e818b182f5c3d5ce5035deab90bca108175b3561"
       }
     },
     {
@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/openid/AppAuth-iOS",
       "state" : {
-        "revision" : "0eadcdec4ddb121865f3d66917549194afce1f2b",
-        "version" : "1.6.1"
+        "revision" : "71cde449f13d453227e687458144bde372d30fc7",
+        "version" : "1.6.2"
       }
     },
     {
