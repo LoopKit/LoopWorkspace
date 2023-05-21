@@ -1,25 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1330"
+   LastUpgradeVersion = "1430"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "NO"
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5085266D1E52FDC000D611F4"
-               BuildableName = "MKRingProgressView.framework"
-               BlueprintName = "MKRingProgressView"
-               ReferencedContainer = "container:MKRingProgressView/MKRingProgressView.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
@@ -46,20 +32,6 @@
                BuildableName = "LoopKit.framework"
                BlueprintName = "LoopKit-watchOS"
                ReferencedContainer = "container:LoopKit/LoopKit.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8687AEE71C66F322005D9419"
-               BuildableName = "Minizip.framework"
-               BlueprintName = "Minizip-iOS"
-               ReferencedContainer = "container:Minizip/Minizip.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry

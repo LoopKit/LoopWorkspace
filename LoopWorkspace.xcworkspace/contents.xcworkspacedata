@@ -70,9 +70,12 @@
       location = "group:NightscoutService/NightscoutService.xcodeproj">
    </FileRef>
    <FileRef
+<<<<<<< HEAD
       location = "group:Minizip/Minizip.xcodeproj">
    </FileRef>
    <FileRef
+=======
+>>>>>>> origin/dev
       location = "group:TrueTime.swift/TrueTime.xcodeproj">
    </FileRef>
    <FileRef
