@@ -23,18 +23,15 @@ let projects = [
    Project("LoopKit", "dev"),
    Project("CGMBLEKit", "dev"),
    Project("dexcom-share-client-swift", "dev"),
-   //Project("RileyLinkKit", "dev"),
-   //Project("MKRingProgressView", "dev"),
+   Project("RileyLinkKit", "dev"),
    Project("NightscoutService", "dev"),
-   //Project("Minizip", "dev"),
-   //Project("TrueTime.swift", "dev"),
    Project("LoopOnboarding", "dev"),
    Project("AmplitudeService", "dev"),
    Project("LogglyService", "dev"),
    Project("OmniBLE", "dev"),
    Project("NightscoutRemoteCGM", "dev"),
    Project("LoopSupport", "dev"),
-   Project("G7SensorKit", "dev"),
+   Project("G7SensorKit", "main"),
    Project("TidepoolService", "dev"),
    Project("TidepoolKit", "dev"),
    Project("OmniKit", "main"),
@@ -98,6 +95,15 @@ for project in projects {
     // Merge changes from tidepool to diy
     try await repository.merge(revisionSpecification: "\(incomingRemote)/\(project.branch)", signature: signature)
 
+    let (ahead, behind) = try repository.commitsAheadBehind(other: "origin/\(project.branch)")
+    print("Ahead = \(ahead)")
+    print("Behind = \(behind)")
+
+    guard ahead > 0 else {
+        print("No incoming changes; skipping PR creation.")
+        continue
+    }
+
     // Push changes up to origin
     let refspec = "refs/heads/" + syncBranch + ":refs/heads/" + syncBranch
     print("Pushing \(refspec) to \(project.project)")
@@ -132,7 +138,7 @@ extension Octokit {
                            draft: Bool? = nil) async throws -> PullRequest
     {
         return try await withCheckedThrowingContinuation { continuation in
-            octokit.pullRequest(owner: owner, repo: repo, title: title, head: head, headRepo: headRepo, base: base, body: body, maintainerCanModify: maintainerCanModify, draft: draft)
+            octokit.createPullRequest(owner: owner, repo: repo, title: title, head: head, headRepo: headRepo, base: base, body: body, maintainerCanModify: maintainerCanModify, draft: draft)
             { response in
                 continuation.resume(with: response)
             }
