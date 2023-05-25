@@ -10,14 +10,14 @@ name: 'Auto-update'
 on:
   workflow_dispatch:
   schedule:
-    - cron:  '0 7 * * 1,4'
-    # scheduled at 07:00 every Monday and Thursday
+    - cron:  '0 04 * * *'
+    # scheduled at 04:00 every day
 
 env:
   UPSTREAM_REPO: LoopKit/LoopWorkspace
-  UPSTREAM_BRANCH: main
-  TARGET_BRANCH: actions # target branch on fork to be kept "alive" for running scheduled workflows (repo activity required at least every 60 days for scheduled workflows to remain active)
-
+  UPSTREAM_BRANCH: ${{ github.ref_name }} # branch on upstream repository to sync from (relpace with specific branch name if needed)
+  TARGET_BRANCH: ${{ github.ref_name }} # target branch on fork to be kept in sync, and target branch on upstream to be kept alive (relpace with specific branch name if needed)
+  
 jobs:
   check_latest_from_upstream:
     runs-on: ubuntu-latest
@@ -39,6 +39,7 @@ jobs:
     # REQUIRED step
     # Step 2: run the sync action
     - name: Sync upstream changes
+      if: github.repository_owner != 'LoopKit' # do not run the upstream sync action on the upstream repository
       id: sync
       uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
       with:
@@ -69,7 +70,7 @@ jobs:
       if: github.ref == 'refs/heads/${{ env.TARGET_BRANCH }}'
       uses: gautamkrishnar/keepalive-workflow@v1 # using the workflow with default settings
       with:
-        time_elapsed: 27 # Time elapsed from the previous commit to trigger a new automated commit (in days)
+        time_elapsed: 50 # Time elapsed from the previous commit to trigger a new automated commit (in days)
 
   # Launch build workflow if new commits are found
   launch_build_workflow:
