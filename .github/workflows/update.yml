@@ -2,7 +2,6 @@ name: 'Auto-update'
 run-name: Auto-update (${{ github.ref_name }})
 
 # Runs only on schedule for the default branch
-# TARGET_BRANCH should be set as default
 # Syncs the target branch with upstream
 # Checks for activity and creates empty commits to TARGET_BRANCH as needed after 'time_elapsed' days of inactivity
 # Launches the build workflow if new commits are found.
