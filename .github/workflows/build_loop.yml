@@ -21,7 +21,7 @@ jobs:
     steps:
       # Uncomment to manually select latest Xcode if needed
       - name: Select Latest Xcode
-        run: "sudo xcode-select --switch /Applications/Xcode_14.1.app/Contents/Developer"
+        run: "sudo xcode-select --switch /Applications/Xcode_14.3.app/Contents/Developer"
 
       # Checks-out the repo
       - name: Checkout Repo
