@@ -71,6 +71,9 @@
       location = "group:AmplitudeService/AmplitudeService.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:MixpanelService/MixpanelService.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:LogglyService/LogglyService.xcodeproj">
    </FileRef>
    <FileRef
