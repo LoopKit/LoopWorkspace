@@ -57,4 +57,4 @@
 	url = https://github.com/LoopKit/MinimedKit.git
 [submodule "MixpanelService"]
 	path = MixpanelService
-	url = https://github.com/tidepool-org/MixpanelService.git
+	url = https://github.com/LoopKit/MixpanelService
