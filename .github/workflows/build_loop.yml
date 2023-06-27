@@ -6,16 +6,23 @@ on:
   ## Remove the "#" sign from the beginning of the line below to get automated builds on push (code changes in your repository)
   #push:
 
-  ## Remove the "#" sign from the beginning of the two lines below to get automated builds every two months
+  ## Remove the "#" sign from the beginning of the two lines below to get automated builds every month
   #schedule:
-    #- cron: '0 17 1 */2 *' # Runs at 17:00 UTC on the 1st in Jan, Mar, May, Jul, Sep and Nov.
+    #- cron: '0 17 1 * *' # Runs at 17:00 UTC on the 1st in every month.
+
+env:
+  UPSTREAM_REPO: LoopKit/LoopWorkspace
+  UPSTREAM_BRANCH: main
+  TARGET_BRANCH: main
+  SYNC_UPSTREAM: 'true' # set to 'false' or 'true' to disable / enable syncing of fork with upstream repository
+  CUSTOMIZE_APP: 'true' # apply code customizations from patch files in LoopWorkspace/patches/ and/or individual submodule patches specified under 'name: Customize Loop' ('false / 'true')
 
 jobs:
   secrets:
     uses: ./.github/workflows/validate_secrets.yml
     secrets: inherit
-    
-  build:
+
+  upstream_sync_and_build:
     needs: secrets
     runs-on: macos-13
     steps:
@@ -28,7 +35,71 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: recursive
+          ref: ${{ env.TARGET_BRANCH }} 
       
+      # Run the sync action
+      - name: Sync upstream changes
+        if: ${{ env.SYNC_UPSTREAM == 'true' }}
+        id: sync
+        uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
+        with:
+          target_sync_branch: ${{ env.TARGET_BRANCH }}
+          target_branch_checkout_args: --recurse-submodules
+          shallow_since: 6 months ago
+          # REQUIRED 'target_repo_token' exactly like this!
+          target_repo_token: ${{ secrets.GH_PAT }}
+          upstream_sync_branch: ${{ env.UPSTREAM_BRANCH }}
+          upstream_sync_repo: ${{ env.UPSTREAM_REPO }}
+          # upstream_repo_access_token: ${{ secrets.UPSTREAM_REPO_SECRET }}
+          # Set test_mode true to run tests instead of the true action!!
+          test_mode: false
+      
+      # Step 3: Display a sample message based on the sync output var 'has_new_commits'
+      - name: New commits found
+        if: steps.sync.outputs.has_new_commits == 'true'
+        run: echo "New commits were found to sync."
+    
+      - name: No new commits
+        if: steps.sync.outputs.has_new_commits == 'false'
+        run: echo "There were no new commits."
+      
+      - name: Show value of 'has_new_commits'
+        run: echo ${{ steps.sync.outputs.has_new_commits }}
+        
+      - uses: gautamkrishnar/keepalive-workflow@v1 # using the workflow with default settings
+        with:
+          time_elapsed: 27 # Time elapsed from the previous commit to trigger a new automated commit (in days)
+      
+      # Customize Loop: Download and apply patches
+      - name: Customize Loop
+        if: ${{ env.CUSTOMIZE_APP == 'true'}}
+        
+        run: |
+
+          # LoopWorkspace patches
+          # -applies any patches located in the LoopWorkspace/patches/ directory
+          if $(ls ./patches/* &> /dev/null); then
+          git apply ./patches/* --exclude=save_patches_here.md --allow-empty -v --whitespace=fix
+          fi
+
+          # Submodule Loop patches:
+          # Template for customizing submodule Loop based on CustomTypeOne/LoopPatches (remove the "#" sign from the beginning of the line below to activate):
+          #wget -qO- https://raw.githubusercontent.com/CustomTypeOne/LoopPatches/main/LoopPatch.txt | git apply --directory=Loop -v --whitespace=fix
+          
+          # Submodule LoopKit patches:
+          # Template for customizing submodule LoopKit based on CustomTypeOne/LoopPatches (remove the "#" sign from the beginning of the line below to activate):
+          #wget -qO- https://raw.githubusercontent.com/CustomTypeOne/LoopPatches/main/LoopkitPatch.txt | git apply --directory=LoopKit -v --whitespace=fix
+          
+
+          # Submodule xxxxx patches:
+
+          # Add patches for customization of additional submodules by following the templates above, 
+          # and make sure to specify the submodule by setting '--directory=(submodule_name)'.
+          # Several patches may be added per submodule.
+          # Adding comments (#) may be useful to easily tell the individual patches apart.
+          # All customizations can be disabled by setting env SYNC_UPSTREAM: 'false'
+          
+          
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
         run: find /usr/local/lib/ruby/gems -name table_printer.rb | xargs sed -i "" "/puts(Terminal::Table.new(params))/d"
