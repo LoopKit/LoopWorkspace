@@ -2,39 +2,107 @@ name: 4. Build Loop
 run-name: Build Loop (${{ github.ref_name }})
 on:
   workflow_dispatch:
-  workflow_call:
   
   ## Remove the "#" sign from the beginning of the line below to get automated builds on push (code changes in your repository)
   #push:
 
   schedule:
-    - cron: '30 04 1 * *' # Runs at 04:30 UTC on the 1st every month
+    - cron: '0 04 * * *' # Checks for updates at 04:00 UTC every day
+    - cron: '0 04 1 * *' # Builds the app on the 1th every month
 
 env:
-  BUILD_BRANCH: ${{ github.ref_name }} # branch on fork to build from (relpace with specific branch name if needed)
+  UPSTREAM_REPO: LoopKit/LoopWorkspace
+  UPSTREAM_BRANCH: ${{ github.ref_name }} # branch on upstream repository to sync from (relpace with specific branch name if needed)
+  TARGET_BRANCH: ${{ github.ref_name }} # target branch on fork to be kept in sync, and target branch on upstream to be kept alive (relpace with specific branch name if needed)
+  ALIVE_BRANCH: alive
+  SYNC_UPSTREAM: 'true' # set to 'false' or 'true' to disable / enable syncing of fork with upstream repository
 
 jobs:
-  secrets:
-    name: Secrets
-    uses: ./.github/workflows/validate_secrets.yml
-    secrets: inherit
+  check_latest_from_upstream:
+    runs-on: ubuntu-latest
+    name: Check upstream and keep alive
+    outputs: 
+      NEW_COMMITS: ${{ steps.sync.outputs.has_new_commits }}
 
+    steps:
+    - name: Checkout target repo
+      uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.GH_PAT }}
+        ref: alive
+
+    - name: Sync upstream changes
+      if: ${{ env.SYNC_UPSTREAM == 'true' }} && github.repository_owner != 'LoopKit' # do not run the upstream sync action on the upstream repository
+      id: sync
+      uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
+      with:
+        target_sync_branch: ${{ env.ALIVE_BRANCH }}
+        shallow_since: 6 months ago
+        target_repo_token: ${{ secrets.GH_PAT }}
+        upstream_sync_branch: ${{ env.UPSTREAM_BRANCH }}
+        upstream_sync_repo: ${{ env.UPSTREAM_REPO }}
+      
+    # Display a sample message based on the sync output var 'has_new_commits'
+    - name: New commits found
+      if: steps.sync.outputs.has_new_commits == 'true'
+      run: echo "New commits were found to sync."
+    
+    - name: No new commits
+      if: steps.sync.outputs.has_new_commits == 'false'
+      run: echo "There were no new commits."
+      
+    - name: Show value of 'has_new_commits'
+      run: |
+        echo ${{ steps.sync.outputs.has_new_commits }}
+        echo "NEW_COMMITS=${{ steps.sync.outputs.has_new_commits }}" >> $GITHUB_OUTPUT
+        
+    # Keep repository "alive": add empty commits to ALIVE_BRANCH after "time_elapsed" days of inactivity to avoid inactivation of scheduled workflows
+    - name: Keep alive
+      uses: gautamkrishnar/keepalive-workflow@v1 # using the workflow with default settings
+      with:
+        time_elapsed: 20 # Time elapsed from the previous commit to trigger a new automated commit (in days)
+  
   build:
     name: Build
-    needs: secrets
+    needs: check_latest_from_upstream
     runs-on: macos-13
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.schedule == '0 04 1 * *' || needs.check_latest_from_upstream.outputs.NEW_COMMITS == 'true' }} # runs if started manually, or if scheduled on the first each month, or if new commits were found
     steps:
-      # Uncomment to manually select latest Xcode if needed
-      - name: Select Latest Xcode
+      - name: Select Xcode version
         run: "sudo xcode-select --switch /Applications/Xcode_14.3.1.app/Contents/Developer"
 
-      # Checks-out the repo
       - name: Checkout Repo
         uses: actions/checkout@v3
         with:
+          token: ${{ secrets.GH_PAT }}
           submodules: recursive
-          ref: ${{ env.BUILD_BRANCH }} 
-              
+          ref: ${{ env.TARGET_BRANCH }} 
+
+      - name: Sync upstream changes
+        if: ${{ env.SYNC_UPSTREAM == 'true' }} && github.repository_owner != 'LoopKit' # do not run the upstream sync action on the upstream repository
+        id: sync
+        uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
+        with:
+          target_sync_branch: ${{ env.TARGET_BRANCH }}
+          shallow_since: 6 months ago
+          target_repo_token: ${{ secrets.GH_PAT }}
+          upstream_sync_branch: ${{ env.UPSTREAM_BRANCH }}
+          upstream_sync_repo: ${{ env.UPSTREAM_REPO }}
+      
+      # Display a sample message based on the sync output var 'has_new_commits'
+      - name: New commits found
+        if: steps.sync.outputs.has_new_commits == 'true'
+        run: echo "New commits were found to sync."
+    
+      - name: No new commits
+        if: steps.sync.outputs.has_new_commits == 'false'
+        run: echo "There were no new commits."
+      
+      - name: Show value of 'has_new_commits'
+        run: |
+          echo ${{ steps.sync.outputs.has_new_commits }}
+          echo "NEW_COMMITS=${{ steps.sync.outputs.has_new_commits }}" >> $GITHUB_OUTPUT
+
       # Customize Loop: Download and apply patches
       - name: Customize Loop
         run: |
