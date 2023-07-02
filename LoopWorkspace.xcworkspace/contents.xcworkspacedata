@@ -104,6 +104,9 @@
       location = "group:G7SensorKit/G7SensorKit.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:LibreTransmitter/LibreTransmitter.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:LoopSupport/LoopSupport.xcodeproj">
    </FileRef>
    <FileRef

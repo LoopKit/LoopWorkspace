@@ -55,3 +55,6 @@
 [submodule "MinimedKit"]
 	path = MinimedKit
 	url = https://github.com/LoopKit/MinimedKit.git
+[submodule "LibreTransmitter"]
+	path = LibreTransmitter
+	url = https://github.com/LoopKit/LibreTransmitter.git
