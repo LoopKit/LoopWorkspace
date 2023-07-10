@@ -159,6 +159,18 @@ You do not need to fill out the next form. That is for submitting to the app sto
 1. On the right side, click "Run Workflow", and tap the green `Run workflow` button.
 1. Wait, and within a minute or two you should see a green checkmark indicating the workflow succeeded.
 
+## Create a branch named "alive"
+
+You will now create a branch that is used keep your repository active, which allows the TestFlight app to be built and updated automatically. This is needed to circumvent a 60 day repository inactivity limit for scheduled GitHub actions. The "alve" branch will only receive some additional commits to its history, and is not used to build the app.
+
+1. Go to the "Code" tab of your LoopWorkspace repository.
+1. Click the branch selection dropdown button, and then `View all branches`.
+1. Click the green "New branch" button (upper right).
+1. Type `alive` in the  "New branch name" field.
+1. Select `LoopKit/LoopWorkspace` as "Source".
+1. Select `dev` in the branch dropdown.
+1. Click the green "Create new branch" button.
+
 ## Build Loop
 
 1. Click on the "Actions" tab of your LoopWorkspace repository.
