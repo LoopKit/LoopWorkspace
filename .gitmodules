@@ -46,9 +46,6 @@
 [submodule "TidepoolService"]
 	path = TidepoolService
 	url = https://github.com/LoopKit/TidepoolService.git
-[submodule "TidepoolKit"]
-	path = TidepoolKit
-	url = https://github.com/LoopKit/TidepoolKit.git
 [submodule "OmniKit"]
 	path = OmniKit
 	url = https://github.com/LoopKit/OmniKit.git
