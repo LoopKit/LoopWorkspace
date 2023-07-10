@@ -74,9 +74,6 @@
       location = "group:LogglyService/LogglyService.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:TidepoolKit/TidepoolKit.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:TidepoolService/TidepoolService.xcodeproj">
    </FileRef>
    <FileRef

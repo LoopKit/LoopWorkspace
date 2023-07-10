@@ -101,6 +101,7 @@ for project in projects {
 
     guard ahead > 0 else {
         print("No incoming changes; skipping PR creation.")
+	try await repository.checkout(revspec: project.branch)
         continue
     }
 
