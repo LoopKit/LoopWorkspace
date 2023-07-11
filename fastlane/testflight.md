@@ -161,7 +161,9 @@ You do not need to fill out the next form. That is for submitting to the app sto
 
 ## Create a branch named "alive"
 
-You will now create a branch that is used keep your repository active, which allows the TestFlight app to be built and updated automatically. This is needed to circumvent a 60 day repository inactivity limit for scheduled GitHub actions. The "alve" branch will only receive some additional commits to its history, and is not used to build the app.
+TestFlight builds expire after 90 days. This process you are implementing here will update and rebuild Loop periodically, and requires that you create a branch named "alive" so that GitHub will not inactivate the scheduled rebuild if no code updates are made.
+
+The "alive" branch will only receive some additional commits to its history, and is not used for building the app.
 
 1. Go to the "Code" tab of your LoopWorkspace repository.
 1. Click the branch selection dropdown button, and then `View all branches`.
