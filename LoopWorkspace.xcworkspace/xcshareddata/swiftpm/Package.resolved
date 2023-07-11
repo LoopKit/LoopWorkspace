@@ -60,7 +60,7 @@
       "location" : "https://github.com/LoopKit/NightscoutKit",
       "state" : {
         "branch" : "main",
-        "revision" : "bb6db78111cbca6423da0fcaa9969850404a8142"
+        "revision" : "9d22748c31c407345931bdba7327614345ab7b8d"
       }
     },
     {
@@ -81,12 +81,21 @@
       }
     },
     {
+      "identity" : "tidepoolkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tidepool-org/TidepoolKit",
+      "state" : {
+        "branch" : "dev",
+        "revision" : "a0bcbb037789fcd186e151c7eaf36aa1b9632915"
+      }
+    },
+    {
       "identity" : "zipfoundation",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/LoopKit/ZIPFoundation.git",
       "state" : {
         "branch" : "stream-entry",
-        "revision" : "91700d5f888090e88589f7c8d97e78417793e78e"
+        "revision" : "c67b7509ec82ee2b4b0ab3f97742b94ed9692494"
       }
     }
   ],
