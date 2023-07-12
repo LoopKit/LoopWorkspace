@@ -52,6 +52,9 @@
 [submodule "MinimedKit"]
 	path = MinimedKit
 	url = https://github.com/LoopKit/MinimedKit.git
+[submodule "MixpanelService"]
+	path = MixpanelService
+	url = https://github.com/LoopKit/MixpanelService
 [submodule "LibreTransmitter"]
 	path = LibreTransmitter
 	url = https://github.com/LoopKit/LibreTransmitter.git

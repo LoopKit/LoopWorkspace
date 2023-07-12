@@ -37,6 +37,15 @@
       }
     },
     {
+      "identity" : "mixpanel-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mixpanel/mixpanel-swift.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "c676a9737c76e127e3ae5776247b226bc6d7652d"
+      }
+    },
+    {
       "identity" : "mkringprogressview",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/maxkonovalov/MKRingProgressView.git",

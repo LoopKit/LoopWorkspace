@@ -112,6 +112,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "849523B52A25DCD3003AC2FD"
+               BuildableName = "MixpanelServiceKitPlugin.loopplugin"
+               BlueprintName = "MixpanelServiceKitPlugin"
+               ReferencedContainer = "container:MixpanelService/MixpanelService.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "A99C713023396CB100AB9035"
                BuildableName = "NightscoutServiceKitPlugin.loopplugin"
                BlueprintName = "NightscoutServiceKitPlugin"
