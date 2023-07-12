@@ -15,7 +15,7 @@ env:
   UPSTREAM_BRANCH: ${{ github.ref_name }} # branch on upstream repository to sync from (relpace with specific branch name if needed)
   TARGET_BRANCH: ${{ github.ref_name }} # target branch on fork to be kept in sync, and target branch on upstream to be kept alive (relpace with specific branch name if needed)
   ALIVE_BRANCH: alive
-  SYNC_UPSTREAM: 'true' # set to 'false' or 'true' to disable / enable syncing of fork with upstream repository
+  SYNC_UPSTREAM: 'false' # set to 'false' or 'true' to disable / enable syncing of fork with upstream repository
 
 jobs:
   check_latest_from_upstream:
