@@ -48,8 +48,8 @@ Log into your GitHub account to create a personal access token; this is one of t
 
 1. Create a [new personal access token](https://github.com/settings/tokens/new):
     * Enter a name for your token, use "FastLane Access Token".
-    * Change the selection to 90 days.
-    * Select the `repo` permission scope.
+    * Change the Expiration selection to `No expiration`.
+    * Select the `repo` and `workflow` permission scopes.
     * Click "Generate token".
     * Copy the token and record it. It will be used below as `GH_PAT`.
 
@@ -158,6 +158,20 @@ You do not need to fill out the next form. That is for submitting to the app sto
 1. On the left side, select "3. Create Certificates".
 1. On the right side, click "Run Workflow", and tap the green `Run workflow` button.
 1. Wait, and within a minute or two you should see a green checkmark indicating the workflow succeeded.
+
+## Create a branch named "alive"
+
+TestFlight builds expire after 90 days. This process you are implementing here will update and rebuild Loop periodically, and requires that you create a branch named "alive" so that GitHub will not inactivate the scheduled rebuild if no code updates are made.
+
+The "alive" branch will only receive some additional commits to its history, and is not used for building the app.
+
+1. Go to the "Code" tab of your LoopWorkspace repository.
+1. Click the branch selection dropdown button, and then `View all branches`.
+1. Click the green "New branch" button (upper right).
+1. Type `alive` in the  "New branch name" field.
+1. Select `LoopKit/LoopWorkspace` as "Source".
+1. Select `dev` in the branch dropdown.
+1. Click the green "Create new branch" button.
 
 ## Build Loop
 

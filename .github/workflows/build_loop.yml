@@ -1,34 +1,136 @@
 name: 4. Build Loop
-run-name: Build Loop ${{ github.ref_name }}
+run-name: Build Loop (${{ github.ref_name }})
 on:
   workflow_dispatch:
   
   ## Remove the "#" sign from the beginning of the line below to get automated builds on push (code changes in your repository)
   #push:
 
-  ## Remove the "#" sign from the beginning of the two lines below to get automated builds every two months
-  #schedule:
-    #- cron: '0 17 1 */2 *' # Runs at 17:00 UTC on the 1st in Jan, Mar, May, Jul, Sep and Nov.
+  schedule:
+    - cron: '0 04 * * *' # Checks for updates at 04:00 UTC every day
+    - cron: '0 04 1 * *' # Builds the app on the 1th every month
+
+env:
+  UPSTREAM_REPO: LoopKit/LoopWorkspace
+  UPSTREAM_BRANCH: ${{ github.ref_name }} # branch on upstream repository to sync from (relpace with specific branch name if needed)
+  TARGET_BRANCH: ${{ github.ref_name }} # target branch on fork to be kept in sync, and target branch on upstream to be kept alive (relpace with specific branch name if needed)
+  ALIVE_BRANCH: alive
+  SYNC_UPSTREAM: 'true' # set to 'false' or 'true' to disable / enable syncing of fork with upstream repository
 
 jobs:
-  secrets:
-    uses: ./.github/workflows/validate_secrets.yml
-    secrets: inherit
-    
-  build:
-    needs: secrets
-    runs-on: macos-13
+  check_latest_from_upstream:
+    runs-on: ubuntu-latest
+    name: Check upstream and keep alive
+    outputs: 
+      NEW_COMMITS: ${{ steps.sync.outputs.has_new_commits }}
+
     steps:
-      # Uncomment to manually select latest Xcode if needed
-      - name: Select Latest Xcode
+    - name: Checkout target repo
+      uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.GH_PAT }}
+        ref: alive
+
+    - name: Sync upstream changes
+      if: ${{ env.SYNC_UPSTREAM == 'true' }} && github.repository_owner != 'LoopKit' # do not run the upstream sync action on the upstream repository
+      id: sync
+      uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
+      with:
+        target_sync_branch: ${{ env.ALIVE_BRANCH }}
+        shallow_since: 6 months ago
+        target_repo_token: ${{ secrets.GH_PAT }}
+        upstream_sync_branch: ${{ env.UPSTREAM_BRANCH }}
+        upstream_sync_repo: ${{ env.UPSTREAM_REPO }}
+      
+    # Display a sample message based on the sync output var 'has_new_commits'
+    - name: New commits found
+      if: steps.sync.outputs.has_new_commits == 'true'
+      run: echo "New commits were found to sync."
+    
+    - name: No new commits
+      if: steps.sync.outputs.has_new_commits == 'false'
+      run: echo "There were no new commits."
+      
+    - name: Show value of 'has_new_commits'
+      run: |
+        echo ${{ steps.sync.outputs.has_new_commits }}
+        echo "NEW_COMMITS=${{ steps.sync.outputs.has_new_commits }}" >> $GITHUB_OUTPUT
+        
+    # Keep repository "alive": add empty commits to ALIVE_BRANCH after "time_elapsed" days of inactivity to avoid inactivation of scheduled workflows
+    - name: Keep alive
+      uses: gautamkrishnar/keepalive-workflow@v1 # using the workflow with default settings
+      with:
+        time_elapsed: 20 # Time elapsed from the previous commit to trigger a new automated commit (in days)
+  
+  build:
+    name: Build
+    needs: check_latest_from_upstream
+    runs-on: macos-13
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.schedule == '0 04 1 * *' || needs.check_latest_from_upstream.outputs.NEW_COMMITS == 'true' }} # runs if started manually, or if scheduled on the first each month, or if new commits were found
+    steps:
+      - name: Select Xcode version
         run: "sudo xcode-select --switch /Applications/Xcode_14.3.1.app/Contents/Developer"
 
-      # Checks-out the repo
       - name: Checkout Repo
         uses: actions/checkout@v3
         with:
+          token: ${{ secrets.GH_PAT }}
           submodules: recursive
+          ref: ${{ env.TARGET_BRANCH }} 
+
+      - name: Sync upstream changes
+        if: ${{ env.SYNC_UPSTREAM == 'true' }} && github.repository_owner != 'LoopKit' # do not run the upstream sync action on the upstream repository
+        id: sync
+        uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
+        with:
+          target_sync_branch: ${{ env.TARGET_BRANCH }}
+          shallow_since: 6 months ago
+          target_repo_token: ${{ secrets.GH_PAT }}
+          upstream_sync_branch: ${{ env.UPSTREAM_BRANCH }}
+          upstream_sync_repo: ${{ env.UPSTREAM_REPO }}
       
+      # Display a sample message based on the sync output var 'has_new_commits'
+      - name: New commits found
+        if: steps.sync.outputs.has_new_commits == 'true'
+        run: echo "New commits were found to sync."
+    
+      - name: No new commits
+        if: steps.sync.outputs.has_new_commits == 'false'
+        run: echo "There were no new commits."
+      
+      - name: Show value of 'has_new_commits'
+        run: |
+          echo ${{ steps.sync.outputs.has_new_commits }}
+          echo "NEW_COMMITS=${{ steps.sync.outputs.has_new_commits }}" >> $GITHUB_OUTPUT
+
+      # Customize Loop: Download and apply patches
+      - name: Customize Loop
+        run: |
+
+          # LoopWorkspace patches
+          # -applies any patches located in the LoopWorkspace/patches/ directory
+          if $(ls ./patches/* &> /dev/null); then
+          git apply ./patches/* --allow-empty -v --whitespace=fix
+          fi
+
+          # Submodule Loop patches:
+          # Template for customizing submodule Loop (changes Loop app name to "CustomLoop")
+          # Remove the "#" sign from the beginning of the line below to activate:
+          #curl https://github.com/loopnlearn/Loop/commit/d206432b024279ef710df462b20bd464cd9682d4.patch | git apply --directory=Loop -v --whitespace=fix
+          
+          # Submodule LoopKit patches:
+          # General template for customizing submodule LoopKit 
+          # Copy url from a GitHub commit or pull request and insert below, and remove the "#" sign from the beginning of the line to activate:
+          #curl url_to_github_commit.patch | git apply --directory=LoopKit -v --whitespace=fix
+          
+          # Submodule xxxxx patches:
+
+          # Add patches for customization of additional submodules by following the templates above, 
+          # and make sure to specify the submodule by setting "--directory=(submodule_name)".
+          # Several patches may be added per submodule.
+          # Adding comments (#) may be useful to easily tell the individual patches apart.
+          
+          
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
         run: find /usr/local/lib/ruby/gems -name table_printer.rb | xargs sed -i "" "/puts(Terminal::Table.new(params))/d"
