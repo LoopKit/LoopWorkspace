@@ -15,7 +15,7 @@ env:
   UPSTREAM_BRANCH: ${{ github.ref_name }} # branch on upstream repository to sync from (relpace with specific branch name if needed)
   TARGET_BRANCH: ${{ github.ref_name }} # target branch on fork to be kept in sync, and target branch on upstream to be kept alive (relpace with specific branch name if needed)
   ALIVE_BRANCH: alive
-  SYNC_UPSTREAM: 'true' # set to 'false' or 'true' to disable / enable syncing of fork with upstream repository
+  SYNC_UPSTREAM: ${{ vars.SYNC_UPSTREAM }} # set an optional "SYNC_UPSTREAM" repository variable to 'false' to disable syncing of fork with the upstream repository
 
 jobs:
   check_latest_from_upstream:
@@ -32,7 +32,7 @@ jobs:
         ref: alive
 
     - name: Sync upstream changes
-      if: ${{ env.SYNC_UPSTREAM == 'true' }} && github.repository_owner != 'LoopKit' # do not run the upstream sync action on the upstream repository
+      if: ${{ env.SYNC_UPSTREAM != 'false' && github.repository_owner != 'LoopKit' }} # do not run the upstream sync action on the upstream repository
       id: sync
       uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
       with:
@@ -71,15 +71,14 @@ jobs:
       - name: Select Xcode version
         run: "sudo xcode-select --switch /Applications/Xcode_14.3.1.app/Contents/Developer"
 
-      - name: Checkout Repo
+      - name: Checkout Repo for syncing
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.GH_PAT }}
-          submodules: recursive
           ref: ${{ env.TARGET_BRANCH }} 
 
       - name: Sync upstream changes
-        if: ${{ env.SYNC_UPSTREAM == 'true' }} && github.repository_owner != 'LoopKit' # do not run the upstream sync action on the upstream repository
+        if: ${{ env.SYNC_UPSTREAM != 'false' && github.repository_owner != 'LoopKit' }} # do not run the upstream sync action on the upstream repository
         id: sync
         uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
         with:
@@ -103,6 +102,13 @@ jobs:
           echo ${{ steps.sync.outputs.has_new_commits }}
           echo "NEW_COMMITS=${{ steps.sync.outputs.has_new_commits }}" >> $GITHUB_OUTPUT
 
+      - name: Checkout Repo for building
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GH_PAT }}
+          submodules: recursive
+          ref: ${{ env.TARGET_BRANCH }}
+          
       # Customize Loop: Download and apply patches
       - name: Customize Loop
         run: |
