@@ -71,11 +71,10 @@ jobs:
       - name: Select Xcode version
         run: "sudo xcode-select --switch /Applications/Xcode_14.3.1.app/Contents/Developer"
 
-      - name: Checkout Repo
+      - name: Checkout Repo for syncing
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.GH_PAT }}
-          submodules: recursive
           ref: ${{ env.TARGET_BRANCH }} 
 
       - name: Sync upstream changes
@@ -103,6 +102,13 @@ jobs:
           echo ${{ steps.sync.outputs.has_new_commits }}
           echo "NEW_COMMITS=${{ steps.sync.outputs.has_new_commits }}" >> $GITHUB_OUTPUT
 
+      - name: Checkout Repo for building
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GH_PAT }}
+          submodules: recursive
+          ref: ${{ env.TARGET_BRANCH }}
+          
       # Customize Loop: Download and apply patches
       - name: Customize Loop
         run: |
