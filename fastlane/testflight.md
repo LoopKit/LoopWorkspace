@@ -49,7 +49,7 @@ Log into your GitHub account to create a personal access token; this is one of t
 1. Create a [new personal access token](https://github.com/settings/tokens/new):
     * Enter a name for your token, use "FastLane Access Token".
     * Change the Expiration selection to `No expiration`.
-    * Select the `repo` and `workflow` permission scopes.
+    * Select the `repo` permission scopes.
     * Click "Generate token".
     * Copy the token and record it. It will be used below as `GH_PAT`.
 
@@ -159,19 +159,46 @@ You do not need to fill out the next form. That is for submitting to the app sto
 1. On the right side, click "Run Workflow", and tap the green `Run workflow` button.
 1. Wait, and within a minute or two you should see a green checkmark indicating the workflow succeeded.
 
-## Create a branch named "alive"
+## OPTIONAL: Enable Scheduled Building
+### 1. Create a branch named "alive"
 
-TestFlight builds expire after 90 days. This process you are implementing here will update and rebuild Loop periodically, and requires that you create a branch named "alive" so that GitHub will not inactivate the scheduled rebuild if no code updates are made.
+TestFlight builds expire after 90 days. This process you are implementing here will update and rebuild Loop periodically, and requires that you create a branch named `alive` so that GitHub will not disable the scheduled rebuild if no code updates are made.
 
-The "alive" branch will only receive some additional commits to its history, and is not used for building the app.
+The `alive` branch will only receive some additional commits to its history, and is not used for building the app.
 
 1. Go to the "Code" tab of your LoopWorkspace repository.
 1. Click the branch selection dropdown button, and then `View all branches`.
-1. Click the green "New branch" button (upper right).
+1. Click the green `New branch` button (upper right).
 1. Type `alive` in the  "New branch name" field.
 1. Select `LoopKit/LoopWorkspace` as "Source".
 1. Select `dev` in the branch dropdown.
-1. Click the green "Create new branch" button.
+1. Click the green `Create new branch` button.
+
+### 2. Enable scheduled building and synchronization.
+
+You can enable this automation to either
+- only build periodically, or
+- to build periodically and also check if there have been any changes, i.e. new commits that bring bugfixes or novel features, and synchronize your fork to pull in these changes.
+
+1. Go to the "Settings" tab of your LoopWorkspace repository.
+2. Click on `Secrets and Variables`.
+3. Click on `Actions`
+4. You will now see a page titled *Actions secrets and variables*. Click on the `Variables` tab.
+5. To enable ONLY scheduled building, do the following:
+    - Click on the green `New repository variable` button (upper right).
+    - Type `SCHEDULED_BUILD` in the "Name" field.
+    - Type `true` in the "Value" field.
+    - Click the green `Add variable` button to save.
+7. To also enable scheduled syncing, add a second variable:
+    - Click on the green `New repository variable` button (upper right).
+    - - Type `SCHEDULED_SYNC` in the "Name" field.
+    - Type `true` in the "Value" field.
+    - Click the green `Add variable` button to save.
+  
+Your build will now run on the following conditions:
+- If you did not enable any scheduling it only runs when manually triggered.
+- If you enabled only scheduled building, it will run every night at 04:00am UTC to do a *keepalive* commit, that keeps your fork *active*. A scheduled build will run every 1st of the month, also at 04:00am UTC.
+- If you also enabled scheduled synchronization, it will run every night at 04:00am UTC to do a *keepalive* commit and check for changes; if there are changes, it will then built. If not, it will only do the keepalive commit.
 
 ## Build Loop
 
