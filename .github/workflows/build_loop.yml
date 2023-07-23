@@ -31,7 +31,7 @@ jobs:
       if: ${{ vars.SCHEDULED_BUILD == 'true' || vars.SCHEDULED_SYNC == 'true' }}
       uses: actions/checkout@v3
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.GH_PAT }}
         ref: alive
 
     - name: Sync upstream changes
@@ -41,7 +41,7 @@ jobs:
       with:
         target_sync_branch: ${{ env.ALIVE_BRANCH }}
         shallow_since: 6 months ago
-        target_repo_token: ${{ secrets.GITHUB_TOKEN }}
+        target_repo_token: ${{ secrets.GH_PAT }}
         upstream_sync_branch: ${{ env.UPSTREAM_BRANCH }}
         upstream_sync_repo: ${{ env.UPSTREAM_REPO }}
       
@@ -96,7 +96,7 @@ jobs:
         if: ${{ vars.SCHEDULED_SYNC == 'true' }}
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_PAT }}
           ref: ${{ env.TARGET_BRANCH }} 
 
       - name: Sync upstream changes
@@ -106,7 +106,7 @@ jobs:
         with:
           target_sync_branch: ${{ env.TARGET_BRANCH }}
           shallow_since: 6 months ago
-          target_repo_token: ${{ secrets.GITHUB_TOKEN }}
+          target_repo_token: ${{ secrets.GH_PAT }}
           upstream_sync_branch: ${{ env.UPSTREAM_BRANCH }}
           upstream_sync_repo: ${{ env.UPSTREAM_REPO }}
       
@@ -128,7 +128,7 @@ jobs:
       - name: Checkout Repo for building
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_PAT }}
           submodules: recursive
           ref: ${{ env.TARGET_BRANCH }}
           
@@ -169,7 +169,7 @@ jobs:
         run: fastlane build_loop
         env:
           TEAMID: ${{ secrets.TEAMID }}
-          GH_PAT: ${{ secrets.GH_PAT }} # GH_PAT required here with access role "repo" to read from Match-Secrets repository
+          GH_PAT: ${{ secrets.GH_PAT }}
           FASTLANE_KEY_ID: ${{ secrets.FASTLANE_KEY_ID }}
           FASTLANE_ISSUER_ID: ${{ secrets.FASTLANE_ISSUER_ID }}
           FASTLANE_KEY: ${{ secrets.FASTLANE_KEY }}
@@ -180,7 +180,7 @@ jobs:
         run: fastlane release
         env:
           TEAMID: ${{ secrets.TEAMID }}
-          GH_PAT: ${{ secrets.GH_PAT }}  # GH_PAT required here with access role "repo" to read from Match-Secrets repository
+          GH_PAT: ${{ secrets.GH_PAT }}
           FASTLANE_KEY_ID: ${{ secrets.FASTLANE_KEY_ID }}
           FASTLANE_ISSUER_ID: ${{ secrets.FASTLANE_ISSUER_ID }}
           FASTLANE_KEY: ${{ secrets.FASTLANE_KEY }}
