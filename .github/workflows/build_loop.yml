@@ -34,7 +34,7 @@ jobs:
         ref: alive
 
     - name: Sync upstream changes
-      if: vars.SCHEDULED_SYNC == 'true' && github.repository_owner != 'loopdocs-tester' # do not run the upstream sync action on the upstream repository
+      if: vars.SCHEDULED_SYNC == 'true' && github.repository_owner != 'LoopKit' # do not run the upstream sync action on the upstream repository
       id: sync
       uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
       with:
