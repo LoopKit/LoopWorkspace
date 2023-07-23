@@ -174,7 +174,16 @@ The `alive` branch will only receive some additional commits to its history, and
 1. Select `dev` in the branch dropdown.
 1. Click the green `Create new branch` button.
 
-### 2. Enable scheduled building and synchronization.
+### 2. Extend GH_PAT permissions
+
+To enable the scheduled build and sync, the `GH_PAT` must be updated (not regenerated) and given access to the `workflow` scope.
+
+1. Go to your [FastLane Access Token](https://github.com/settings/tokens)
+2. It will only say `repo` next to the `FastLane Access Token` link. Click on the link to open the token detail view.
+3. Click to check the `workflow` box. You will see that the checked boxes for the `repo` scope become disable (change color to dark gray and no more clickalbe).
+4. Scroll all the way down to and click the green `Update token` button.
+
+### 3. Enable scheduled building and synchronization.
 
 You can enable this automation to either
 - only build periodically, or
