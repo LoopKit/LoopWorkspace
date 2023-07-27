@@ -49,7 +49,7 @@ jobs:
     - name: Check for alive branch
       if: steps.workflow-permission.outputs.has_permission == 'true'
       env:
-        GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+        GH_PAT: ${{ secrets.GH_PAT }}
       run: |
         if [[ "$(gh api -H "Accept: application/vnd.github+json" /repos/${{ github.repository_owner }}/LoopWorkspace/branches | jq --raw-output 'any(.name=="alive")')" == "true" ]]; then
           echo "Branch 'alive' exists."
@@ -62,7 +62,7 @@ jobs:
     - name: Create alive branch
       if: env.ALIVE_BRANCH_EXISTS != 'true'
       env:
-        GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+        GH_PAT: ${{ secrets.GH_PAT }}
       run: |
         # Get ref for LoopKit/LoopWorkspace:dev
         SHA=$(curl -sS https://api.github.com/repos/${{ env.UPSTREAM_REPO }}/git/refs \
@@ -73,7 +73,7 @@ jobs:
         # Create alive branch based on LoopKit/LoopWorkspace:dev
         gh api \
           --method POST \
-          -H "Authorization: token $GITHUB_TOKEN" \
+          -H "Authorization: token $GH_PAT" \
           -H "Accept: application/vnd.github.v3+json" \
           /repos/${{ github.repository_owner }}/LoopWorkspace/git/refs \
           -f ref='refs/heads/alive' \
