@@ -135,7 +135,26 @@ jobs:
           # and make sure to specify the submodule by setting "--directory=(submodule_name)".
           # Several patches may be added per submodule.
           # Adding comments (#) may be useful to easily tell the individual patches apart.
-          
+      
+          # The lines below add the customizations listed using the CustomizationSelect script
+          # The "\" is a continuation character 
+          #   the line following a "\" should not be blank
+          /bin/bash -c "$(curl -fsSL \
+          https://raw.githubusercontent.com/loopandlearn/lnl-scripts/main/CustomizationSelect.sh)" \
+          omnipod_cage \
+          dexcom_sage \
+          dexcom_upload_readings \
+          future_carbs_4h \
+          low_carb_limit \
+          high_carb_limit \
+          no_auth \
+          override_sens \
+          limit_loop_cycle_time \
+          customtypeone_looppatches \
+          2002
+
+          # the final customization listed above CANNOT have a continuation character "\"
+          # more customizations can be pasted after this line    
         
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
