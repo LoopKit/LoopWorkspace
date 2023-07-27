@@ -160,7 +160,7 @@ If you have created a Loop app in App Store Connect before, you can skip this se
 
 You do not need to fill out the next form. That is for submitting to the app store.
 
-## Create Building Certficates
+## Create Building Certificates
 
 1. Go back to the "Actions" tab of your LoopWorkspace repository in GitHub.
 1. On the left side, select "3. Create Certificates".
