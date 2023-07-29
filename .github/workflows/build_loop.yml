@@ -46,7 +46,7 @@ jobs:
           limit_loop_cycle_time \
           lnl_icon \
           customtypeone_looppatches \
-          2002
+          2002 \
           algorithm_experiments
 
           # the final customization listed above CANNOT have a continuation character "\"
