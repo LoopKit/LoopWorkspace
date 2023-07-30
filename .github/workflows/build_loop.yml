@@ -34,8 +34,10 @@ jobs:
     steps:
     - name: Check for workflow permissions
       id: workflow-permission
+      env: 
+        TOKEN_TO_CHECK: ${{ secrets.GH_PAT }}
       run: |
-        PERMISSIONS=$(curl -sS -f -I -H "Authorization: token ${{ secrets.GH_PAT }}" https://api.github.com | grep ^x-oauth-scopes: | cut -d' ' -f2-);
+        PERMISSIONS=$(curl -sS -f -I -H "Authorization: token ${{ env.TOKEN_TO_CHECK }}" https://api.github.com | grep ^x-oauth-scopes: | cut -d' ' -f2-);
         
         if [[ $PERMISSIONS =~ "workflow" || $PERMISSIONS == "" ]]; then
           echo "GH_PAT holds workflow permissions or is fine-grained PAT."
@@ -49,7 +51,7 @@ jobs:
     - name: Check for alive branch
       if: steps.workflow-permission.outputs.has_permission == 'true'
       env:
-        GH_PAT: ${{ secrets.GH_PAT }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         if [[ "$(gh api -H "Accept: application/vnd.github+json" /repos/${{ github.repository_owner }}/LoopWorkspace/branches | jq --raw-output 'any(.name=="alive")')" == "true" ]]; then
           echo "Branch 'alive' exists."
@@ -62,7 +64,7 @@ jobs:
     - name: Create alive branch
       if: env.ALIVE_BRANCH_EXISTS != 'true'
       env:
-        GH_PAT: ${{ secrets.GH_PAT }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         # Get ref for LoopKit/LoopWorkspace:dev
         SHA=$(curl -sS https://api.github.com/repos/${{ env.UPSTREAM_REPO }}/git/refs \
@@ -73,7 +75,7 @@ jobs:
         # Create alive branch based on LoopKit/LoopWorkspace:dev
         gh api \
           --method POST \
-          -H "Authorization: token $GH_PAT" \
+          -H "Authorization: token $GITHUB_TOKEN" \
           -H "Accept: application/vnd.github.v3+json" \
           /repos/${{ github.repository_owner }}/LoopWorkspace/git/refs \
           -f ref='refs/heads/alive' \
