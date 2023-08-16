@@ -113,11 +113,10 @@ for project in projects {
     // Merge changes from tidepool to diy
     try await repository.merge(revisionSpecification: "\(incomingRemote)/\(project.branch)", signature: signature)
 
-    let (ahead, behind) = try repository.commitsAheadBehind(other: "origin/\(project.branch)")
-    print("Ahead = \(ahead)")
-    print("Behind = \(behind)")
+    let originTree = try repository.lookupTree(for: "origin/\(project.branch)")
+    let diff = try repository.diff(originTree, repository.headTree)
 
-    guard ahead > 0 else {
+    guard diff.count > 0 else {
         print("No incoming changes; skipping PR creation.")
 	try await repository.checkout(revspec: project.branch)
         continue
