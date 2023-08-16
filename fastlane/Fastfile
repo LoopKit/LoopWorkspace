@@ -60,7 +60,7 @@ platform :ios do
         "com.#{TEAMID}.loopkit.Loop.LoopWatch.watchkitextension", 
         "com.#{TEAMID}.loopkit.Loop.LoopWatch", 
         "com.#{TEAMID}.loopkit.Loop.Loop-Intent-Extension",
-        "com.#{TEAMID}.loopkit.Loop.SmallStatusWidget"
+        "com.#{TEAMID}.loopkit.Loop.LoopWidgetExtension"
       ]
     )
 
@@ -123,9 +123,9 @@ platform :ios do
     
     update_code_signing_settings(
       path: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
-      profile_name: mapping["com.#{TEAMID}.loopkit.Loop.SmallStatusWidget"],
+      profile_name: mapping["com.#{TEAMID}.loopkit.Loop.LoopWidgetExtension"],
       code_sign_identity: "iPhone Distribution",
-      targets: ["SmallStatusWidgetExtension"]
+      targets: ["Loop Widget Extension"]
     )
 
     gym(
@@ -201,7 +201,7 @@ platform :ios do
       Spaceship::ConnectAPI::BundleIdCapability::Type::SIRIKIT
     ])
 
-    configure_bundle_id("Small Status Widget", "com.#{TEAMID}.loopkit.Loop.SmallStatusWidget", [
+    configure_bundle_id("Loop Widget Extension", "com.#{TEAMID}.loopkit.Loop.LoopWidgetExtension", [
       Spaceship::ConnectAPI::BundleIdCapability::Type::APP_GROUPS
     ])
     
@@ -228,7 +228,7 @@ platform :ios do
         "com.#{TEAMID}.loopkit.Loop.LoopWatch.watchkitextension", 
         "com.#{TEAMID}.loopkit.Loop.LoopWatch", 
         "com.#{TEAMID}.loopkit.Loop.Loop-Intent-Extension",
-        "com.#{TEAMID}.loopkit.Loop.SmallStatusWidget",
+        "com.#{TEAMID}.loopkit.Loop.LoopWidgetExtension",
       ]
     )
   end
