@@ -4,12 +4,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  secrets:
+  validate:
     uses: ./.github/workflows/validate_secrets.yml
     secrets: inherit
     
   identifiers:
-    needs: secrets
+    needs: validate
     runs-on: macos-12
     steps:
       # Uncomment to manually select latest Xcode if needed
