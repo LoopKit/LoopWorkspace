@@ -18,7 +18,12 @@ env:
   SYNC_UPSTREAM: ${{ vars.SYNC_UPSTREAM }} # set an optional "SYNC_UPSTREAM" repository variable to 'false' to disable syncing of fork with the upstream repository
 
 jobs:
+  validate:
+    uses: ./.github/workflows/validate_secrets.yml
+    secrets: inherit
+    
   check_latest_from_upstream:
+    needs: validate
     runs-on: ubuntu-latest
     name: Check upstream and keep alive
     outputs: 
