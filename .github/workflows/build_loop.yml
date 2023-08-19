@@ -8,7 +8,7 @@ on:
 
   schedule:
     - cron: '0 8 * * 3' # Checks for updates at 08:00 am UTC every Wednesday
-    - cron: '0 8 1 * 6' # Builds the app on the 1st Satrday every month at 08:00 am UTC
+    - cron: '0 8 1 * 6' # Builds the app on the 1st Saturday every month at 08:00 am UTC
 
 env:
   UPSTREAM_REPO: LoopKit/LoopWorkspace
