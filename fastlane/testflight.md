@@ -7,6 +7,14 @@ These instructions allow you to build Loop without having access to a Mac.
 * You can install Loop on your phone using only the TestFlight app if a phone was lost or the app is accidentally deleted
 * You do not need to worry about specific Xcode/Mac versions for a given iOS
 
+> **Automatic and Scheduled Builds**\
+> 
+> This new version of the browser build **defaults to**\
+> - checking for updates and building in case of updates weekly on Wednesdays\
+> - or building at least once a month, every first Saturday of the month\
+> 
+> The **optional** section provides instructions to modify the default behaviour. 
+
 The setup steps are somewhat involved, but nearly all are one time steps. Subsequent builds are trivial. Your app must be updated once every 90 days, but it's a simple click to make a new build and can be done from anywhere. The 90-day update is a TestFlight requirement, which can be automated.
 
 There are more detailed instructions in LoopDocs for using GitHub for Browser Builds of Loop, including troubleshooting and build errors. Please refer to:
@@ -49,7 +57,7 @@ Log into your GitHub account to create a personal access token; this is one of t
 1. Create a [new personal access token](https://github.com/settings/tokens/new):
     * Enter a name for your token, use "FastLane Access Token".
     * Change the Expiration selection to `No expiration`.
-    * Select the `repo` permission scopes.
+    * Select the `repo` and `workflow` permission scopes.
     * Click "Generate token".
     * Copy the token and record it. It will be used below as `GH_PAT`.
 
@@ -116,7 +124,7 @@ Note 2 - Depending on your build history, you may find some of the Identifiers a
     * Loop
     * Loop Intent Extension
     * Loop Status Extension
-    * Small Status Widget
+    * Loop Widget Extension
 1. Click on the identifier's name.
 1. On the "App Groups" capabilies, click on the "Configure" button.
 1. Select the "Loop App Group"
@@ -132,7 +140,7 @@ Note 2 - Depending on your build history, you may find some of the Identifiers a
 | Loop | com.TEAMID.loopkit.Loop |
 | Loop Intent Extension | com.TEAMID.loopkit.Loop.Loop-Intent-Extension |
 | Loop Status Extension | com.TEAMID.loopkit.Loop.statuswidget |
-| Small Status Widget | com.TEAMID.loopkit.Loop.SmallStatusWidget |
+| Loop Widget Extension | com.TEAMID.loopkit.Loop.LoopWidgetExtension |
 | WatchApp | com.TEAMID.loopkit.Loop.LoopWatch |
 | WatchAppExtension | com.TEAMID.loopkit.Loop.LoopWatch.watchkitextension |
 
@@ -159,55 +167,55 @@ You do not need to fill out the next form. That is for submitting to the app sto
 1. On the right side, click "Run Workflow", and tap the green `Run workflow` button.
 1. Wait, and within a minute or two you should see a green checkmark indicating the workflow succeeded.
 
-## OPTIONAL: Enable Scheduled Building
-### 1. Create a branch named "alive"
+## OPTIONAL: Scheduled Building
+### 1. The `alive` branch
 
-TestFlight builds expire after 90 days. This process you are implementing here will update and rebuild Loop periodically, and requires that you create a branch named `alive` so that GitHub will not disable the scheduled rebuild if no code updates are made.
+TestFlight builds expire after 90 days. This process you are implementing here will update and rebuild Loop periodically, and requires a branch named `alive` so that GitHub will not disable the scheduled rebuild if no code updates are made. This branch js created automatically for you. Do not delete or rename it!
 
 The `alive` branch will only receive some additional commits to its history, and is not used for building the app.
 
-1. Go to the "Code" tab of your LoopWorkspace repository.
-1. Click the branch selection dropdown button, and then `View all branches`.
-1. Click the green `New branch` button (upper right).
-1. Type `alive` in the  "New branch name" field.
-1. Select `LoopKit/LoopWorkspace` as "Source".
-1. Select `dev` in the branch dropdown.
-1. Click the green `Create new branch` button.
+### 2. GH_PAT `workflow` permissiom
 
-### 2. Extend GH_PAT permissions
-
-To enable the scheduled build and sync, the `GH_PAT` must be updated (not regenerated) and given access to the `workflow` scope.
+To enable the scheduled build and sync, the `GH_PAT` must hold the `workflow` permission scope. It serves as the enabler for automatic and scheduled builds with browser build. To verify your token holds this permission, follow these steps.
 
 1. Go to your [FastLane Access Token](https://github.com/settings/tokens)
-2. It will only say `repo` next to the `FastLane Access Token` link. Click on the link to open the token detail view.
-3. Click to check the `workflow` box. You will see that the checked boxes for the `repo` scope become disable (change color to dark gray and no more clickalbe).
-4. Scroll all the way down to and click the green `Update token` button.
+2. It should say `repo` and `workflow` next to the `FastLane Access Token` link.
+3. If it does not, click on the link to open the token detail view.
+4. Click to check the `workflow` box. You will see that the checked boxes for the `repo` scope become disabled (change color to dark gray and are not clickable).
+5. Scroll all the way down to and click the green `Update token` button.
+6. Your token now holds both required permissions.
 
-### 3. Enable scheduled building and synchronization.
+### 3. Modify scheduled building and synchronization.
 
-You can enable this automation to either
-- only build periodically, or
-- to build periodically and also check if there have been any changes, i.e. new commits that bring bugfixes or novel features, and synchronize your fork to pull in these changes.
+You can configure the automation to either
+- follow the default process, so to build periodically and also check if there have been any changes, i.e., new commits that bring bugfixes or novel features, and synchronize your fork to pull in these changes.
+- to not check for updates, synchronize them when there are any and build, but only build periodically
+- to not build automatically at all, but only manually 
+
+To configure the automated build more granularly involves creating up to two environment variables: `SCHEDULED_BUILD` and/or `SCHEDULED_SYNC`.
 
 1. Go to the "Settings" tab of your LoopWorkspace repository.
 2. Click on `Secrets and Variables`.
 3. Click on `Actions`
 4. You will now see a page titled *Actions secrets and variables*. Click on the `Variables` tab.
-5. To enable ONLY scheduled building, do the following:
+5. To disable ONLY scheduled building, do the following:
     - Click on the green `New repository variable` button (upper right).
     - Type `SCHEDULED_BUILD` in the "Name" field.
-    - Type `true` in the "Value" field.
+    - Type `false` in the "Value" field.
     - Click the green `Add variable` button to save.
-7. To also enable scheduled syncing, add a second variable:
+7. To disable scheduled syncing, add a variable:
     - Click on the green `New repository variable` button (upper right).
     - - Type `SCHEDULED_SYNC` in the "Name" field.
-    - Type `true` in the "Value" field.
+    - Type `false` in the "Value" field.
     - Click the green `Add variable` button to save.
   
-Your build will now run on the following conditions:
-- If you did not enable any scheduling it only runs when manually triggered.
-- If you enabled only scheduled building, it will run every night at 04:00am UTC to do a *keepalive* commit, that keeps your fork *active*. A scheduled build will run every 1st of the month, also at 04:00am UTC.
-- If you also enabled scheduled synchronization, it will run every night at 04:00am UTC to do a *keepalive* commit and check for changes; if there are changes, it will then built. If not, it will only do the keepalive commit.
+Your build will run on the following conditions:
+- Default behaviour:
+    - Run weekly, every Wednesday night at 02:00am EST to do a keepalive commit and check for changes; if there are changes, it will then built. If not, it will only do the keepalive commit.
+    - Run monthly, every first Saturday of the month at 02:00am EST, to check for changes and do monthly rebuild; regardless of whether there are changes or not.
+- If you disable any automation (both variables set to `false`), it only runs when manually triggered.
+- If you disabled scheduled synchronization (`SCHEDULED_SYNC` set to`false`), it will only run once a month, on the first Saturday of the month night at 02:00am EST, to do a monthly build. 
+- If you disabled the scheduled build (`SCHEDULED_BUILD` set to`false`), it will only run once weekly, every Wednesday at 02:00am EST, do a *keepalive* commit and check for changes; if there are changes, it will then built. If not, it will only do the keepalive commit.
 
 ## Build Loop
 
