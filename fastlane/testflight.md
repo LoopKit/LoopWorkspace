@@ -7,15 +7,24 @@ These instructions allow you to build Loop without having access to a Mac.
 * You can install Loop on your phone using only the TestFlight app if a phone was lost or the app is accidentally deleted
 * You do not need to worry about specific Xcode/Mac versions for a given iOS
 
-> **Automatic and Scheduled Builds**\
+## **Automatic Builds**
 > 
-> This new version of the browser build **defaults to**\
-> - checking for updates and building in case of updates weekly on Wednesdays\
-> - or building at least once a month, every first Saturday of the month\
+> This new version of the browser build **defaults to** automatically updating and building a new version of Loop according to this schedule:
+> - automatically checks for updates weekly on Wednesdays and if updates are found, it will build a new version of the app
+> - automatically builds once a month regardless of whether there are updates on the first Saturday of the month
+> - with each scheduled run (weekly or monthly), a successful Build Loop log appears - if the time is very short, it did not need to build - only the long actions (>20 minutes) built a new Loop app
 > 
-> The **optional** section provides instructions to modify the default behaviour. 
+> It also creates an alive branch, if you don't already have one. See [Why do I have an alive branch?](#why-do-i-have-an-alive-branch).
+>
+> The [**Optional**](#optional) section provides instructions to modify the default behavior if desired. 
 
-The setup steps are somewhat involved, but nearly all are one time steps. Subsequent builds are trivial. Your app must be updated once every 90 days, but it's a simple click to make a new build and can be done from anywhere. The 90-day update is a TestFlight requirement, which can be automated.
+> **Repeat Builders**
+> - to enable automatic build, your `GH_PAT` token must have `workflow` scope
+> - if you previously configured your `GH_PAT` without that scope, see [`GH_PAT` `workflow` permission](#gh_pat-workflow-permission)
+
+## Introduction
+
+The setup steps are somewhat involved, but nearly all are one time steps. Subsequent builds are trivial. Your app must be updated once every 90 days, but it's a simple click to make a new build and can be done from anywhere. The 90-day update is a TestFlight requirement, and with this version of Loop, the build process (once you've successfully built once) is automated to update and build at least once a month.
 
 There are more detailed instructions in LoopDocs for using GitHub for Browser Builds of Loop, including troubleshooting and build errors. Please refer to:
 
@@ -57,7 +66,7 @@ Log into your GitHub account to create a personal access token; this is one of t
 1. Create a [new personal access token](https://github.com/settings/tokens/new):
     * Enter a name for your token, use "FastLane Access Token".
     * Change the Expiration selection to `No expiration`.
-    * Select the `repo` and `workflow` permission scopes.
+    * Select the `workflow` permission scope - this also selects `repo` scope.
     * Click "Generate token".
     * Copy the token and record it. It will be used below as `GH_PAT`.
 
@@ -167,56 +176,6 @@ You do not need to fill out the next form. That is for submitting to the app sto
 1. On the right side, click "Run Workflow", and tap the green `Run workflow` button.
 1. Wait, and within a minute or two you should see a green checkmark indicating the workflow succeeded.
 
-## OPTIONAL: Scheduled Building
-### 1. The `alive` branch
-
-TestFlight builds expire after 90 days. This process you are implementing here will update and rebuild Loop periodically, and requires a branch named `alive` so that GitHub will not disable the scheduled rebuild if no code updates are made. This branch js created automatically for you. Do not delete or rename it!
-
-The `alive` branch will only receive some additional commits to its history, and is not used for building the app.
-
-### 2. GH_PAT `workflow` permissiom
-
-To enable the scheduled build and sync, the `GH_PAT` must hold the `workflow` permission scope. It serves as the enabler for automatic and scheduled builds with browser build. To verify your token holds this permission, follow these steps.
-
-1. Go to your [FastLane Access Token](https://github.com/settings/tokens)
-2. It should say `repo` and `workflow` next to the `FastLane Access Token` link.
-3. If it does not, click on the link to open the token detail view.
-4. Click to check the `workflow` box. You will see that the checked boxes for the `repo` scope become disabled (change color to dark gray and are not clickable).
-5. Scroll all the way down to and click the green `Update token` button.
-6. Your token now holds both required permissions.
-
-### 3. Modify scheduled building and synchronization.
-
-You can configure the automation to either
-- follow the default process, so to build periodically and also check if there have been any changes, i.e., new commits that bring bugfixes or novel features, and synchronize your fork to pull in these changes.
-- to not check for updates, synchronize them when there are any and build, but only build periodically
-- to not build automatically at all, but only manually 
-
-To configure the automated build more granularly involves creating up to two environment variables: `SCHEDULED_BUILD` and/or `SCHEDULED_SYNC`.
-
-1. Go to the "Settings" tab of your LoopWorkspace repository.
-2. Click on `Secrets and Variables`.
-3. Click on `Actions`
-4. You will now see a page titled *Actions secrets and variables*. Click on the `Variables` tab.
-5. To disable ONLY scheduled building, do the following:
-    - Click on the green `New repository variable` button (upper right).
-    - Type `SCHEDULED_BUILD` in the "Name" field.
-    - Type `false` in the "Value" field.
-    - Click the green `Add variable` button to save.
-7. To disable scheduled syncing, add a variable:
-    - Click on the green `New repository variable` button (upper right).
-    - - Type `SCHEDULED_SYNC` in the "Name" field.
-    - Type `false` in the "Value" field.
-    - Click the green `Add variable` button to save.
-  
-Your build will run on the following conditions:
-- Default behaviour:
-    - Run weekly, every Wednesday night at 02:00am EST to do a keepalive commit and check for changes; if there are changes, it will then built. If not, it will only do the keepalive commit.
-    - Run monthly, every first Saturday of the month at 02:00am EST, to check for changes and do monthly rebuild; regardless of whether there are changes or not.
-- If you disable any automation (both variables set to `false`), it only runs when manually triggered.
-- If you disabled scheduled synchronization (`SCHEDULED_SYNC` set to`false`), it will only run once a month, on the first Saturday of the month night at 02:00am EST, to do a monthly build. 
-- If you disabled the scheduled build (`SCHEDULED_BUILD` set to`false`), it will only run once weekly, every Wednesday at 02:00am EST, do a *keepalive* commit and check for changes; if there are changes, it will then built. If not, it will only do the keepalive commit.
-
 ## Build Loop
 
 1. Click on the "Actions" tab of your LoopWorkspace repository.
@@ -231,3 +190,80 @@ Your build will run on the following conditions:
 ## TestFlight and Deployment Details
 
 Please refer to [LoopDocs: Set Up Users](https://loopkit.github.io/loopdocs/gh-actions/gh-first-time/#set-up-users-and-access-testflight) and [LoopDocs: Deploy](https://loopkit.github.io/loopdocs/gh-actions/gh-deploy/)
+
+## Automatic Build FAQs
+
+### Why do I have an `alive` branch?
+
+If a GitHub repository has no activity (no commits are made) in 60 days, then GitHub disables the ability to use automated actions for that repository. We need to take action more frequently than that or the automated build process won't work.
+
+The updated `build_loop.yml` file uses a special branch called `alive` and adds a dummy commit to the `alive` branch at regular intervals. This "trick" keeps the Actions enabled so the automated build works.
+
+The branch `alive` is created automatically for you. Do not delete or rename it! Do not modify `alive` yourself; it is not used for building the app.
+
+## OPTIONAL
+
+What if you don't want to allow automated updates of the repository or automatic builds?
+
+You can affect the default behavior:
+
+1. [`GH_PAT` `workflow` permission](#gh_pat-workflow-permission)
+1. [Modify scheduled building and synchronization](#modify-scheduled-building-and-synchronization)
+
+### `GH_PAT` `workflow` permission
+
+To enable the scheduled build and sync, the `GH_PAT` must hold the `workflow` permission scopes. This permission serves as the enabler for automatic and scheduled builds with browser build. To verify your token holds this permission, follow these steps.
+
+1. Go to your [FastLane Access Token](https://github.com/settings/tokens)
+2. It should say `repo`, `workflow` next to the `FastLane Access Token` link
+3. If it does not, click on the link to open the token detail view
+4. Click to check the `workflow` box. You will see that the checked boxes for the `repo` scope become disabled (change color to dark gray and are not clickable)
+5. Scroll all the way down to and click the green `Update token` button
+6. Your token now holds both required permissions
+
+If you choose not to have automatic building enabled, be sure the `GH_PAT` has `repo` scope or you won't be able to manually build.
+
+### Modify scheduled building and synchronization
+
+You can modify the automation by creating and using some variables.
+
+To configure the automated build more granularly involves creating up to two environment variables: `SCHEDULED_BUILD` and/or `SCHEDULED_SYNC`. See [How to configure a variable](#how-to-configure-a-variable). 
+
+Note that the weekly and monthly Build Loop actions will continue, but the actions are modified if one or more of these variables is set to false. **A successful Action Log will still appear, even if no automatic activity happens**.
+
+* If you want to manually decide when to update your repository to the latest commit, but you want the monthly builds and keep-alive to continue: set `SCHEDULED_SYNC` to false and either do not create `SCHEDULED_BUILD` or set it to true
+* If you want to only build when an update has been found: set `SCHEDULED_BUILD` to false and either do not create `SCHEDULED_SYNC` or set it to true
+    * **Warning**: if no updates to your default branch are detected within 90 days, your previous TestFlight build may expire requiring a manual build
+
+|`SCHEDULED_SYNC`|`SCHEDULED_BUILD`|Automatic Actions|
+|---|---|---|
+| `true` (or NA) | `true` (or NA) | keep-alive, weekly update check (auto update/build), monthly build with auto update|
+| `true` (or NA) | `false` | keep-alive, weekly update check with auto update, only builds if update detected|
+| `false` | `true` (or NA) | keep-alive, monthly build, no auto update |
+| `false` | `false` | no automatic activity, no keep-alive|
+
+### How to configure a variable
+
+1. Go to the "Settings" tab of your LoopWorkspace repository.
+2. Click on `Secrets and Variables`.
+3. Click on `Actions`
+4. You will now see a page titled *Actions secrets and variables*. Click on the `Variables` tab
+5. To disable ONLY scheduled building, do the following:
+    - Click on the green `New repository variable` button (upper right)
+    - Type `SCHEDULED_BUILD` in the "Name" field
+    - Type `false` in the "Value" field
+    - Click the green `Add variable` button to save.
+7. To disable scheduled syncing, add a variable:
+    - Click on the green `New repository variable` button (upper right)
+    - - Type `SCHEDULED_SYNC` in the "Name" field
+    - Type `false` in the "Value" field
+    - Click the green `Add variable` button to save
+  
+Your build will run on the following conditions:
+- Default behaviour:
+    - Run weekly, every Wednesday at 08:00 UTC to check for changes; if there are changes, it will update your repository and build
+    - Run monthly, every first Saturday of the month at 08:00 UTC, if there are changes, it will update your repository; regardless of changes, it will build
+    - Each time the action runs, it makes a keep-alive commit to the `alive` branch if necessary
+- If you disable any automation (both variables set to `false`), no updates, keep-alive or building happens when Build Loop runs
+- If you disabled just scheduled synchronization (`SCHEDULED_SYNC` set to`false`), it will only run once a month, on the first Saturday of the month, no update will happen; keep-alive will run
+- If you disabled just scheduled build (`SCHEDULED_BUILD` set to`false`), it will run once weekly, every Wednesday, to check for changes; if there are changes, it will update and build; keep-alive will run
