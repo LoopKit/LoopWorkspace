@@ -6,43 +6,16 @@ import Foundation
 import Cocoa
 
 import AsyncSwiftGit // @bdewey
-import OctoKit // /Users/pete/dev/octokit.swift
+import OctoKit // nerdishbynature/octokit.swift == main
 
-struct Project {
-    let project: String
-    let branch: String
+let createPRs = false
 
-    init(_ project: String, _ branch: String) {
-        self.project = project
-        self.branch = branch
-    }
+guard CommandLine.arguments.count == 3 else {
+    print("usage: sync.swift <pull-request-title> <branch-name>")
+    exit(1)
 }
-
-let projects = [
-   Project("Loop", "dev"),
-   Project("LoopKit", "dev"),
-   Project("CGMBLEKit", "dev"),
-   Project("dexcom-share-client-swift", "dev"),
-   Project("RileyLinkKit", "dev"),
-   Project("NightscoutService", "dev"),
-   Project("LoopOnboarding", "dev"),
-   Project("AmplitudeService", "dev"),
-   Project("LogglyService", "dev"),
-   Project("OmniBLE", "dev"),
-   Project("NightscoutRemoteCGM", "dev"),
-   Project("LoopSupport", "dev"),
-   Project("G7SensorKit", "main"),
-   Project("TidepoolService", "dev"),
-   Project("TidepoolKit", "dev"),
-   Project("OmniKit", "main"),
-   Project("MinimedKit", "main")
-]
-
-let fm = FileManager.default
-let loopkit = URL(string: "https://github.com/LoopKit")!
-let tidepool = URL(string: "https://github.com/tidepool-org")!
-let syncBranch = "tidepool-sync"
-let incomingRemote = "tidepool"
+let pullRequestName = CommandLine.arguments[1]  // example: "LOOP-4688 DIY Sync"
+let syncBranch = CommandLine.arguments[2]       // example: "ps/LOOP-4688/diy-sync"
 
 enum EnvError: Error {
     case missing(String)
@@ -60,21 +33,66 @@ let ghToken = try getEnv("GH_TOKEN")
 let ghCommitterName = try getEnv("GH_COMMITTER_NAME")
 let ghCommitterEmail = try getEnv("GH_COMMITTER_EMAIL")
 
+struct Project {
+    let project: String
+    let branch: String
+    let subdir: String
+
+    init(_ project: String, _ branch: String, _ subdir: String = "") {
+        self.project = project
+        self.branch = branch
+        self.subdir = subdir
+    }
+
+    var path: String {
+        if subdir.isEmpty {
+            return project
+        } else {
+            return subdir + "/" + project
+        }
+    }
+}
+
+let projects = [
+   Project("Loop", "dev"),
+   Project("LoopKit", "dev"),
+   Project("TidepoolService", "dev"),
+   Project("CGMBLEKit", "dev"),
+   Project("dexcom-share-client-swift", "dev"),
+   Project("RileyLinkKit", "dev"),
+   Project("NightscoutService", "dev"),
+   Project("LoopOnboarding", "dev"),
+   Project("AmplitudeService", "dev"),
+   Project("LogglyService", "dev"),
+   Project("OmniBLE", "dev"),
+   Project("NightscoutRemoteCGM", "dev"),
+   Project("LoopSupport", "dev"),
+   Project("G7SensorKit", "main"),
+   Project("OmniKit", "main"),
+   Project("MinimedKit", "main"),
+   Project("LibreTransmitter", "main")
+]
+
+let fm = FileManager.default
+let loopkit = URL(string: "https://github.com/LoopKit")!
+let tidepool = URL(string: "https://github.com/tidepool-org")!
+let incomingRemote = "tidepool"
+
 let octokit = Octokit(TokenConfiguration(ghToken))
 
 let credentials = Credentials.plaintext(username: ghUsername, password: ghToken)
 let signature = try! Signature(name: ghCommitterName, email: ghCommitterEmail)
 
 for project in projects {
-    let dest = URL(string: fm.currentDirectoryPath)!.appendingPathComponent(project.project)
+    let dest = URL(string: fm.currentDirectoryPath)!.appendingPathComponent(project.path)
     let repository: AsyncSwiftGit.Repository
-    if !fm.fileExists(atPath: project.project) {
+    if !fm.fileExists(atPath: dest.path) {
         print("Cloning \(project.project)")
         let url = loopkit.appendingPathComponent(project.project)
         repository = try await Repository.clone(from: url, to: dest)
         print("Cloned \(project.project)")
     } else {
-        print("Already Exists: \(project.project)")
+        print("Already Exists: \(project.path)")
         repository = try Repository(openAt: dest)
     }
 
@@ -95,11 +113,10 @@ for project in projects {
     // Merge changes from tidepool to diy
     try await repository.merge(revisionSpecification: "\(incomingRemote)/\(project.branch)", signature: signature)
 
-    let (ahead, behind) = try repository.commitsAheadBehind(other: "origin/\(project.branch)")
-    print("Ahead = \(ahead)")
-    print("Behind = \(behind)")
+    let originTree = try repository.lookupTree(for: "origin/\(project.branch)")
+    let diff = try repository.diff(originTree, repository.headTree)
 
-    guard ahead > 0 else {
+    guard diff.count > 0 else {
         print("No incoming changes; skipping PR creation.")
 	try await repository.checkout(revspec: project.branch)
         continue
@@ -110,55 +127,24 @@ for project in projects {
     print("Pushing \(refspec) to \(project.project)")
     try await repository.push(remoteName: "origin", refspecs: [refspec], credentials: credentials)
 
-    // Make sure a PR exists, or create it
-    let prs = try await octokit.listPullRequests(owner: "LoopKit", repo: project.project, base: project.branch, head:"LoopKit:tidepool-sync")
-    let pr: PullRequest
-    if prs.count == 0 {
-        pr = try await octokit.createPullRequest(owner: "LoopKit", repo: project.project, title: "Tidepool Sync", head: "LoopKit:" + syncBranch, base: project.branch, body: "")
-        print("PR = \(pr)")
-    } else {
-        pr = prs.first!
-    }
-    if let url = pr.htmlURL {
-        if NSWorkspace.shared.open(url) {
-            print("default browser was successfully opened")
+    if createPRs {
+      // Make sure a PR exists, or create it
 
-        }
-    }
+      let prs = try await octokit.pullRequests(owner: "LoopKit", repository: project.project, base: project.branch, head:"LoopKit:" + syncBranch)
+      let pr: PullRequest
+      if prs.count == 0 {
+          pr = try await octokit.createPullRequest(owner: "LoopKit", repo: project.project, title: pullRequestName, head: "LoopKit:" + syncBranch, base: project.branch, body: "")
+          print("PR = \(pr)")
+      } else {
+          pr = prs.first!
+      }
+      if let url = pr.htmlURL {
+          if NSWorkspace.shared.open(url) {
+              print("default browser was successfully opened")
+          }
+      }
+   } else {
+     print("Skipping PR creation")
+   }
 }
 
-extension Octokit {
-    func createPullRequest(owner: String,
-                           repo: String,
-                           title: String,
-                           head: String,
-                           headRepo: String? = nil,
-                           base: String,
-                           body: String? = nil,
-                           maintainerCanModify: Bool? = nil,
-                           draft: Bool? = nil) async throws -> PullRequest
-    {
-        return try await withCheckedThrowingContinuation { continuation in
-            octokit.createPullRequest(owner: owner, repo: repo, title: title, head: head, headRepo: headRepo, base: base, body: body, maintainerCanModify: maintainerCanModify, draft: draft)
-            { response in
-                continuation.resume(with: response)
-            }
-        }
-    }
-
-    func listPullRequests(owner: String,
-                          repo: String,
-                          base: String? = nil,
-                          head: String? = nil,
-                          state: Openness = .open,
-                          sort: SortType = .created,
-                          direction: SortDirection = .desc) async throws -> [PullRequest]
-    {
-        return try await withCheckedThrowingContinuation { continuation in
-            octokit.pullRequests(owner: owner, repository: repo, base: base, head: head, state: state, sort: sort, direction: direction)
-            { response in
-                continuation.resume(with: response)
-            }
-        }
-    }
-}
