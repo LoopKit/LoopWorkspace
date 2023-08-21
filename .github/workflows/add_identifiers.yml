@@ -1,14 +1,16 @@
 name: 2. Add Identifiers
-run-name: Add Identifiers
+run-name: Add Identifiers (${{ github.ref_name }})
 on:
   workflow_dispatch:
 
 jobs:
   validate:
+    name: Validate
     uses: ./.github/workflows/validate_secrets.yml
     secrets: inherit
-    
+  
   identifiers:
+    name: Add Identifiers
     needs: validate
     runs-on: macos-12
     steps:
