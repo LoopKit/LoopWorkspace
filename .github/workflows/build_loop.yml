@@ -64,7 +64,7 @@ jobs:
         fi
     
     - name: Create alive branch
-      if: env.ALIVE_BRANCH_EXISTS != 'true'
+      if: env.ALIVE_BRANCH_EXISTS == 'false'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
