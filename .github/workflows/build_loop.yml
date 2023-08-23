@@ -5,10 +5,10 @@ on:
   
   ## Remove the "#" sign from the beginning of the line below to get automated builds on push (code changes in your repository)
   #push:
-
+  
   schedule:
-    - cron: '0 8 * * 3' # Checks for updates at 08:00 am UTC every Wednesday
-    - cron: '0 8 1 * 6' # Builds the app on the 1st Saturday every month at 08:00 am UTC
+    - cron: '0 8 * * 3' # Checks for updates at 08:00 UTC every Wednesday
+    - cron: '0 8 1 * 6' # Builds the app on the 1st Saturday every month at 08:00 UTC
 
 env:
   UPSTREAM_REPO: LoopKit/LoopWorkspace
@@ -18,21 +18,22 @@ env:
   WORKFLOW_PERMISSIONS: false
 
 jobs:
-  secrets:
+  validate:
+    name: Validate
     uses: ./.github/workflows/validate_secrets.yml
     secrets: inherit
-    
+  
   # Checks if GH_PAT holds workflow permissions
   # Checks for existence of alive branch; if non-existent creates it
   check_alive_and_permissions:
-    needs: secrets
+    needs: validate
     runs-on: ubuntu-latest
     name: Check alive branch and permissions
     permissions:
       contents: write
     outputs:
       WORKFLOW_PERMISSION: ${{ steps.workflow-permission.outputs.has_permission }}
-      
+    
     steps:
     - name: Check for workflow permissions
       id: workflow-permission
@@ -49,7 +50,7 @@ jobs:
           echo "Automated build features will be skipped!"
           echo "has_permission=false" >> $GITHUB_OUTPUT # Set WORKFLOW_PERMISSION to false.
         fi
-        
+    
     - name: Check for alive branch
       if: steps.workflow-permission.outputs.has_permission == 'true'
       env:
@@ -62,7 +63,7 @@ jobs:
           echo "Branch 'alive' does not exist."
           echo "ALIVE_BRANCH_EXISTS=false" >> $GITHUB_ENV # Set ALIVE_BRANCH_EXISTS to false
         fi
-        
+    
     - name: Create alive branch
       if: env.ALIVE_BRANCH_EXISTS != 'true'
       env:
@@ -82,7 +83,7 @@ jobs:
           /repos/${{ github.repository_owner }}/LoopWorkspace/git/refs \
           -f ref='refs/heads/alive' \
           -f sha=$SHA
-          
+  
   # Checks for changes in upstream repository; if changes exist prompts sync for build
   # Performs keepalive to avoid stale fork
   check_latest_from_upstream:
@@ -91,7 +92,7 @@ jobs:
     name: Check upstream and keep alive
     outputs: 
       NEW_COMMITS: ${{ steps.sync.outputs.has_new_commits }}
-      
+    
     steps:
     - name: Checkout target repo
       if: |
@@ -101,7 +102,7 @@ jobs:
       with:
         token: ${{ secrets.GH_PAT }}
         ref: alive
-
+    
     - name: Sync upstream changes
       if: | # do not run the upstream sync action on the upstream repository
         needs.check_alive_and_permissions.outputs.WORKFLOW_PERMISSION == 'true' &&
@@ -114,7 +115,7 @@ jobs:
         target_repo_token: ${{ secrets.GH_PAT }}
         upstream_sync_branch: ${{ env.UPSTREAM_BRANCH }}
         upstream_sync_repo: ${{ env.UPSTREAM_REPO }}
-      
+    
     # Display a sample message based on the sync output var 'has_new_commits'
     - name: New commits found
       if: |
@@ -127,7 +128,7 @@ jobs:
         needs.check_alive_and_permissions.outputs.WORKFLOW_PERMISSION == 'true' && 
         vars.SCHEDULED_SYNC != 'false' && steps.sync.outputs.has_new_commits == 'false'
       run: echo "There were no new commits."
-      
+    
     - name: Show value of 'has_new_commits'
       if: needs.check_alive_and_permissions.outputs.WORKFLOW_PERMISSION == 'true' && vars.SCHEDULED_SYNC != 'false'
       run: |
@@ -142,7 +143,7 @@ jobs:
       uses: gautamkrishnar/keepalive-workflow@v1 # using the workflow with default settings
       with:
         time_elapsed: 20 # Time elapsed from the previous commit to trigger a new automated commit (in days)
-        
+    
     - name: Show scheduled build configuration message
       if: needs.check_alive_and_permissions.outputs.WORKFLOW_PERMISSION != 'true'
       run: |
@@ -151,7 +152,6 @@ jobs:
         echo "Synchronizing your fork of <code>LoopWorkspace</code> with the upstream repository <code>LoopKit/LoopWorkspace</code> will be skipped." >> $GITHUB_STEP_SUMMARY
         echo "If you want to enable automatic builds and updates for your Loop, please follow the instructions \
               under the following path <code>LoopWorkspace/fastlane/testflight.md</code>." >> $GITHUB_STEP_SUMMARY
-  
   
   # Builds Loop
   build:
@@ -169,7 +169,7 @@ jobs:
     steps:
       - name: Select Xcode version
         run: "sudo xcode-select --switch /Applications/Xcode_14.3.1.app/Contents/Developer"
-
+      
       - name: Checkout Repo for syncing
         if: |
           needs.check_alive_and_permissions.outputs.WORKFLOW_PERMISSION == 'true' &&
@@ -178,7 +178,7 @@ jobs:
         with:
           token: ${{ secrets.GH_PAT }}
           ref: ${{ env.TARGET_BRANCH }} 
-
+      
       - name: Sync upstream changes
         if: | # do not run the upstream sync action on the upstream repository
           needs.check_alive_and_permissions.outputs.WORKFLOW_PERMISSION == 'true' &&
