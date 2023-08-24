@@ -233,11 +233,18 @@ jobs:
           # Template for customizing submodule Loop (changes Loop app name to "CustomLoop")
           # Remove the "#" sign from the beginning of the line below to activate:
           #curl https://github.com/loopnlearn/Loop/commit/d206432b024279ef710df462b20bd464cd9682d4.patch | git apply --directory=Loop -v --whitespace=fix
+          # Module: Loop - Path: LoopCore/LoopCoreConstants.swift - Commit: Line 19 - Changed Default Carb Absorption Times - SHA-1: 36c15883f5ee5368ca428d77e5afd994390e7b7e
+          curl https://github.com/XxDdosingDosaxX/Loop/commit/36c15883f5ee5368ca428d77e5afd994390e7b7e.patch | git apply -v --directory=Loop
+
+          #Module: Loop - Path: Loop/Models/LoopConstants.swift - Commit: Line 53 - Adjusted Automatic Bolus Percent - SHA-1: 5da0ce0dc507259b86bc58f90819571ff4718d33
+          curl https://github.com/XxDdosingDosaxX/Loop/commit/5da0ce0dc507259b86bc58f90819571ff4718d33.patch | git apply -v --directory=Loop
           
           # Submodule LoopKit patches:
           # General template for customizing submodule LoopKit 
           # Copy url from a GitHub commit or pull request and insert below, and remove the "#" sign from the beginning of the line to activate:
           #curl url_to_github_commit.patch | git apply --directory=LoopKit -v --whitespace=fix
+          # Module: LoopKit - Path: LoopKitUI/Extensions/Environment+Authenticate.swift - Commit: Line 20 - Disable Bolus Authentication - SHA-1: c768d1a7793cf9602fe7dd04c726cfa9eac59793
+          curl https://github.com/XxDdosingDosaxX/LoopKit/commit/c768d1a7793cf9602fe7dd04c726cfa9eac59793.patch | git apply -v --directory=LoopKit
           
           # Submodule xxxxx patches:
 
