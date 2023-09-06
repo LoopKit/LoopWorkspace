@@ -453,16 +453,6 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "43E2D8D01D20BF42004DA55F"
-               BuildableName = "DoseMathTests.xctest"
-               BlueprintName = "DoseMathTests"
-               ReferencedContainer = "container:Loop/Loop.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "43E2D90A1D20C581004DA55F"
                BuildableName = "LoopTests.xctest"
                BlueprintName = "LoopTests"
@@ -537,16 +527,6 @@
                BuildableName = "OmniKitTests.xctest"
                BlueprintName = "OmniKitTests"
                ReferencedContainer = "container:OmniKit/OmniKit.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A9DAAD0622E7987800E76C9F"
-               BuildableName = "TidepoolServiceKitTests.xctest"
-               BlueprintName = "TidepoolServiceKitTests"
-               ReferencedContainer = "container:TidepoolService/TidepoolService.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
