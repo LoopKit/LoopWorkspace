@@ -8,6 +8,7 @@ for project in ${projects}; do
   echo "Updating to $branch on $user/$project"
   cd $dir
   git checkout $branch
+  #git branch -D tidepool-sync
   git pull
   cd -
 done

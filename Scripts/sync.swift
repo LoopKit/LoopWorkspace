@@ -8,7 +8,7 @@ import Cocoa
 import AsyncSwiftGit // @bdewey
 import OctoKit // nerdishbynature/octokit.swift == main
 
-let createPRs = false
+let createPRs = true
 
 guard CommandLine.arguments.count == 3 else {
     print("usage: sync.swift <pull-request-title> <branch-name>")
@@ -106,7 +106,7 @@ for project in projects {
 
     // Create and checkout the branch where sync changesets will go ("tidepool-sync")
     if !(try repository.branchExists(named: syncBranch)) {
-        try repository.createBranch(named: syncBranch, target: project.branch)
+        try repository.createBranch(named: syncBranch, target: "origin/\(project.branch)")
     }
     try await repository.checkout(revspec: syncBranch)
 
@@ -120,7 +120,8 @@ for project in projects {
         print("No incoming changes; skipping PR creation.")
 	try await repository.checkout(revspec: project.branch)
         continue
-    }
+    } 
+    print("Found diffs: \(diff)")
 
     // Push changes up to origin
     let refspec = "refs/heads/" + syncBranch + ":refs/heads/" + syncBranch
