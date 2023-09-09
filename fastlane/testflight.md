@@ -11,7 +11,7 @@ These instructions allow you to build Loop without having access to a Mac.
 > 
 > This new version of the browser build **defaults to** automatically updating and building a new version of Loop according to this schedule:
 > - automatically checks for updates weekly on Wednesdays and if updates are found, it will build a new version of the app
-> - automatically builds once a month regardless of whether there are updates on the first Saturday of the month
+> - automatically builds once a month regardless of whether there are updates on the first of the month
 > - with each scheduled run (weekly or monthly), a successful Build Loop log appears - if the time is very short, it did not need to build - only the long actions (>20 minutes) built a new Loop app
 > 
 > It also creates an alive branch, if you don't already have one. See [Why do I have an alive branch?](#why-do-i-have-an-alive-branch).
@@ -262,8 +262,8 @@ Note that the weekly and monthly Build Loop actions will continue, but the actio
 Your build will run on the following conditions:
 - Default behaviour:
     - Run weekly, every Wednesday at 08:00 UTC to check for changes; if there are changes, it will update your repository and build
-    - Run monthly, every first Saturday of the month at 08:00 UTC, if there are changes, it will update your repository; regardless of changes, it will build
+    - Run monthly, every first of the month at 06:00 UTC, if there are changes, it will update your repository; regardless of changes, it will build
     - Each time the action runs, it makes a keep-alive commit to the `alive` branch if necessary
 - If you disable any automation (both variables set to `false`), no updates, keep-alive or building happens when Build Loop runs
-- If you disabled just scheduled synchronization (`SCHEDULED_SYNC` set to`false`), it will only run once a month, on the first Saturday of the month, no update will happen; keep-alive will run
+- If you disabled just scheduled synchronization (`SCHEDULED_SYNC` set to`false`), it will only run once a month, on the first of the month, no update will happen; keep-alive will run
 - If you disabled just scheduled build (`SCHEDULED_BUILD` set to`false`), it will run once weekly, every Wednesday, to check for changes; if there are changes, it will update and build; keep-alive will run
