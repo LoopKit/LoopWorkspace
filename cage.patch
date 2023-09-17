@@ -1,0 +1,176 @@
+Submodule OmniBLE contains modified content
+diff --git a/OmniBLE/OmniBLE/PumpManager/OmniBLEPumpManager.swift b/OmniBLE/OmniBLE/PumpManager/OmniBLEPumpManager.swift
+index af0516f..257ccaf 100644
+--- a/OmniBLE/OmniBLE/PumpManager/OmniBLEPumpManager.swift
++++ b/OmniBLE/OmniBLE/PumpManager/OmniBLEPumpManager.swift
+@@ -874,6 +874,56 @@ extension OmniBLEPumpManager {
+         #endif
+     }
+ 
++    private func SiteChange()
++    {
++        do { // Silence all errors and return
++            let keychain = KeychainManager()
++            let credentials = try keychain.getInternetCredentials(account: "NightscoutAPI")
++
++            let date = Date()
++            let formatter = ISO8601DateFormatter()
++            formatter.timeZone = TimeZone(abbreviation: "UTC")
++            let dateString = formatter.string(from: date)
++
++            let json: [String: Any] = [
++                "enteredBy": "Loop",
++                "timestamp": dateString,
++                "eventType": "Site Change",
++                "secret": credentials.password.sha1()
++            ]
++
++            guard var urlComponents = URLComponents(url: credentials.url, resolvingAgainstBaseURL: false) else {return }
++            if urlComponents.path.hasSuffix("/") {
++                urlComponents.path = String(urlComponents.path.dropLast())
++            }
++            urlComponents.path += "/api/v1/treatments.json"
++
++            guard let apiURL = urlComponents.url else { return }
++
++            var request = URLRequest(url: apiURL)
++            request.httpMethod = "POST"
++            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
++            request.httpBody = try? JSONSerialization.data(withJSONObject: json)
++
++            let task = URLSession.shared.dataTask(with: request) { data, response, error in
++                if let error = error {
++                    // Handle network error
++                    print("Error: \(error)")
++                    return
++                }
++
++                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
++                    // Handle server error
++                    print("Error: Invalid response")
++                    return
++                }
++            }
++            task.resume()
++        } catch {
++            return
++        }
++    }
++
+     // Called on the main thread
+     public func insertCannula(completion: @escaping (Result<TimeInterval,OmniBLEPumpManagerError>) -> Void) {
+         
+@@ -894,6 +944,7 @@ extension OmniBLEPumpManager {
+                 var podState = state.podState
+                 podState?.setupProgress = .completed
+                 state.updatePodStateFromPodComms(podState)
++                self.SiteChange()
+                 return .success(mockDelay)
+             })
+ 
+@@ -944,6 +995,7 @@ extension OmniBLEPumpManager {
+                     ]
+ 
+                     let finishWait = try session.insertCannula(optionalAlerts: alerts)
++                    self.SiteChange()
+                     completion(.success(finishWait))
+                 } catch let error {
+                     completion(.failure(.communication(error)))
+Submodule OmniKit contains modified content
+diff --git a/OmniKit/OmniKit/PumpManager/OmnipodPumpManager.swift b/OmniKit/OmniKit/PumpManager/OmnipodPumpManager.swift
+index f3082f9..a6d39f5 100644
+--- a/OmniKit/OmniKit/PumpManager/OmnipodPumpManager.swift
++++ b/OmniKit/OmniKit/PumpManager/OmnipodPumpManager.swift
+@@ -12,7 +12,19 @@ import RileyLinkKit
+ import RileyLinkBLEKit
+ import UserNotifications
+ import os.log
++import CommonCrypto
+ 
++extension String {
++    func sha1() -> String {
++        let data = Data(self.utf8)
++        var digest = [UInt8](repeating: 0, count:Int(CC_SHA1_DIGEST_LENGTH))
++        data.withUnsafeBytes {
++            _ = CC_SHA1($0.baseAddress, CC_LONG(data.count), &digest)
++        }
++        let hexBytes = digest.map { String(format: "%02hhx", $0) }
++        return hexBytes.joined()
++    }
++}
+ 
+ public enum ReservoirAlertState {
+     case ok
+@@ -813,6 +825,56 @@ extension OmnipodPumpManager {
+         }
+         #endif
+     }
++
++    private func SiteChange()
++    {
++        do { // Silence all errors and return
++            let keychain = KeychainManager()
++            let credentials = try keychain.getInternetCredentials(account: "NightscoutAPI")
++
++            let date = Date()
++            let formatter = ISO8601DateFormatter()
++            formatter.timeZone = TimeZone(abbreviation: "UTC")
++            let dateString = formatter.string(from: date)
++
++            let json: [String: Any] = [
++                "enteredBy": "Loop",
++                "timestamp": dateString,
++                "eventType": "Site Change",
++                "secret": credentials.password.sha1()
++            ]
++
++            guard var urlComponents = URLComponents(url: credentials.url, resolvingAgainstBaseURL: false) else {return }
++            if urlComponents.path.hasSuffix("/") {
++                urlComponents.path = String(urlComponents.path.dropLast())
++            }
++            urlComponents.path += "/api/v1/treatments.json"
++
++            guard let apiURL = urlComponents.url else { return }
++
++            var request = URLRequest(url: apiURL)
++            request.httpMethod = "POST"
++            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
++            request.httpBody = try? JSONSerialization.data(withJSONObject: json)
++
++            let task = URLSession.shared.dataTask(with: request) { data, response, error in
++                if let error = error {
++                    // Handle network error
++                    print("Error: \(error)")
++                    return
++                }
++
++                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
++                    // Handle server error
++                    print("Error: Invalid response")
++                    return
++                }
++            }
++            task.resume()
++        } catch {
++            return
++        }
++    }
+ 
+     // Called on the main thread
+     public func insertCannula(completion: @escaping (Result<TimeInterval,OmnipodPumpManagerError>) -> Void) {
+@@ -834,6 +896,7 @@ extension OmnipodPumpManager {
+                 var podState = state.podState
+                 podState?.setupProgress = .completed
+                 state.updatePodStateFromPodComms(podState)
++                self.SiteChange()
+                 return .success(mockDelay)
+             })
+ 
+@@ -885,6 +948,7 @@ extension OmnipodPumpManager {
+                     ]
+ 
+                     let finishWait = try messageSender.insertCannula(optionalAlerts: alerts)
++                    self.SiteChange()
+                     completion(.success(finishWait))
+                 } catch let error {
+                     completion(.failure(.communication(error)))
