@@ -64,6 +64,7 @@ let projects = [
    Project("LoopOnboarding", "dev"),
    Project("AmplitudeService", "dev"),
    Project("LogglyService", "dev"),
+   Project("MixpanelService", "main"),
    Project("OmniBLE", "dev"),
    Project("NightscoutRemoteCGM", "dev"),
    Project("LoopSupport", "dev"),
