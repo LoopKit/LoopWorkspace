@@ -4,22 +4,6 @@
    <Group
       location = "group:Scripts"
       name = "Scripts">
-      <Group
-         location = "group:"
-         name = "">
-         <FileRef
-            location = "group:update_submodule_refs.sh">
-         </FileRef>
-         <FileRef
-            location = "group:sync.swift">
-         </FileRef>
-         <FileRef
-            location = "group:export_localizations.sh">
-         </FileRef>
-         <FileRef
-            location = "group:import_localizations.sh">
-         </FileRef>
-      </Group>
       <FileRef
          location = "group:update_submodule_refs.sh">
       </FileRef>
