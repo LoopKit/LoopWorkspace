@@ -12,7 +12,7 @@ jobs:
           command: set -o pipefail && time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme 'LoopWorkspace' -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.0' build | xcpretty
       - run:
           name: Run Tests
-          command: set -o pipefail && time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme 'LoopWorkspace' -destination 'platform=iOS Simulator,name=iPhone 1l,OS=17.0' test | xcpretty
+          command: set -o pipefail && time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme 'LoopWorkspace' -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.0' test | xcpretty
 workflows:
   version: 2
   build_and_test:
