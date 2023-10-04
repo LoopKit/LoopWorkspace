@@ -232,7 +232,7 @@ jobs:
           # Submodule Loop patches:
           # Template for customizing submodule Loop (changes Loop app name to "CustomLoop")
           # Remove the "#" sign from the beginning of the line below to activate:
-          curl https://github.com/PaulinaL2016/patches/blob/main/GlucoseBasedApplicationFactorStrategy.swift.patch | git apply --directory=Loop -v --whitespace=fix
+          curl https://github.com/PaulinaL2016/LoopPatches/commit/d97d816314e7580ba087331c58b7002c273cd856 | git apply --directory=Loop -v --whitespace=fix
           
           # Submodule LoopKit patches:
           # General template for customizing submodule LoopKit 
