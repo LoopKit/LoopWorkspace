@@ -232,7 +232,7 @@ jobs:
           # Submodule Loop patches:
           # Template for customizing submodule Loop (changes Loop app name to "CustomLoop")
           # Remove the "#" sign from the beginning of the line below to activate:
-          curl https://raw.githubusercontent.com/PaulinaL2016/LoopPatches/main/loop_factor40.patch | git apply --directory=Loop -v --whitespace=fix
+          curl https://raw.githubusercontent.com/PaulinaL2016/LoopPatches/main/loop_factor_60_100.patch | git apply --directory=Loop -v --whitespace=fix
           
           # Submodule LoopKit patches:
           # General template for customizing submodule LoopKit 
