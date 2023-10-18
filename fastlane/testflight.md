@@ -149,7 +149,7 @@ Note 2 - Depending on your build history, you may find some of the Identifiers a
 | Loop | com.TEAMID.loopkit.Loop |
 | Loop Intent Extension | com.TEAMID.loopkit.Loop.Loop-Intent-Extension |
 | Loop Status Extension | com.TEAMID.loopkit.Loop.statuswidget |
-| Loop Widget Extension | com.TEAMID.loopkit.Loop.LoopWidgetExtension |
+| Small Status Widget | com.TEAMID.loopkit.Loop.SmallStatusWidget |
 | WatchApp | com.TEAMID.loopkit.Loop.LoopWatch |
 | WatchAppExtension | com.TEAMID.loopkit.Loop.LoopWatch.watchkitextension |
 
