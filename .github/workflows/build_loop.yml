@@ -40,7 +40,6 @@ jobs:
           https://raw.githubusercontent.com/loopandlearn/lnl-scripts/main/CustomizationSelect.sh)" \
           omnipod_cage \
           dexcom_sage \
-          future_carbs_4h \
           high_carb_limit \
           2002 \
           algorithm_experiments
