@@ -28,7 +28,7 @@ jobs:
       - name: Sync clock
         run: sudo sntp -sS time.windows.com
       
-      # Create or update certificates for app
+      # Nuke certs from the match repo
       - name: Nuke Certificates
         run: bundle exec fastlane nuke_certs
         env:
