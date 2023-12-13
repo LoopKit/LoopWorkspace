@@ -29,22 +29,6 @@ jobs:
         with:
           submodules: recursive
 
-      # Customize Loop: Download and apply patches
-      - name: Customize Loop
-        run: |
-
-          # For each patch, edit comment line (keep the #) then update curl (and remove the #)
-
-          # Submodule Loop patches:
-          # Loop: Filename: customization details
-          #curl https://github.com/username/Loop/commit/SHA-1.patch | git apply -v --directory=Loop
-
-          # Submodule LoopKit patches:
-          # LoopKit: Filename: customization details
-          #curl https://github.com/username/LoopKit/commit/SHA-1.patch | git apply -v --directory=LoopKit
-
-          # Submodule xxxxx patches: Follow prototype above
-
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
         run: find /usr/local/lib/ruby/gems -name table_printer.rb | xargs sed -i "" "/puts(Terminal::Table.new(params))/d"
