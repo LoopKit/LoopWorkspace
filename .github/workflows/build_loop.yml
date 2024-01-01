@@ -21,7 +21,7 @@ jobs:
     steps:
       # Uncomment to manually select latest Xcode if needed
       - name: Select Latest Xcode
-        run: "sudo xcode-select --switch /Applications/Xcode_14.1.app/Contents/Developer"
+        run: "xcode-select --install"
 
       # Checks-out the repo
       - name: Checkout Repo
@@ -68,7 +68,7 @@ jobs:
       
       # Build signed Loop IPA file
       - name: Fastlane Build & Archive
-        run: fastlane build_loop
+        run: [sudo] gem install fastlane -NV
         env:
           TEAMID: ${{ secrets.TEAMID }}
           GH_PAT: ${{ secrets.GH_PAT }}
