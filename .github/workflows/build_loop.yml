@@ -28,7 +28,22 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: recursive
-      
+
+      # Customize Loop: Download and apply patches
+      - name: Customize Loop
+        run: | 
+
+          # The lines below add the customizations listed using the CustomizationSelect script
+          # The "\" is a continuation character 
+          #   the line following a "\" cannot be blank - that causes the Action to never complete
+          /bin/bash -c "$(curl -fsSL \
+          https://raw.githubusercontent.com/loopandlearn/lnl-scripts/main/CustomizationSelect.sh)" \
+          now_line \
+          testflight_expiration_warning
+
+          # the final customization listed above CANNOT have a continuation character "\"
+          # more customizations can be pasted after this line
+          
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
         run: find /usr/local/lib/ruby/gems -name table_printer.rb | xargs sed -i "" "/puts(Terminal::Table.new(params))/d"
