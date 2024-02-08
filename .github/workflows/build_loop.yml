@@ -233,6 +233,8 @@ jobs:
           # Template for customizing submodule Loop (changes Loop app name to "CustomLoop")
           # Remove the "#" sign from the beginning of the line below to activate:
           #curl https://github.com/loopnlearn/Loop/commit/d206432b024279ef710df462b20bd464cd9682d4.patch | git apply --directory=Loop -v --whitespace=fix
+          # Module Loop: Bolus Entry Screen
+          curl https://github.com/Trpl7ca/Loop/commit/449a650809eab5a0c8e57d1da5c9f4e368edb7dd.Patch | git apply -v --directory=Loop
          
           # Submodule LoopKit patches:
           # General template for customizing submodule LoopKit 
