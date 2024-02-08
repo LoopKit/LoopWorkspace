@@ -256,9 +256,8 @@ jobs:
           no_auth \
           now_line \
 
-           # Module Loop: Bolus Entry Screen
+          # Module Loop: Bolus Entry Screen
           curl https://github.com/Trpl7ca/Loop/commit/449a650809eab5a0c8e57d1da5c9f4e368edb7dd.patch | git apply -v --directory=Loop
-         
           2002
           
           # the final customization listed above CANNOT have a continuation character "\"
