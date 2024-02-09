@@ -256,7 +256,7 @@ jobs:
           # more customizations can be pasted after this line
 
           # Module Loop: Bolus Entry Screen
-          curl https://github.com/Trpl7ca/Loop/commit/449a650809eab5a0c8e57d1da5c9f4e368edb7dd.patch | git apply -v --directory=Loop
+          curl https://github.com/Trpl7ca/Loop/commit/cd564f5ec33b374e82452fbe436b29caba4a034a.patch | git apply -v --directory=Loop
      
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
