@@ -257,6 +257,10 @@ jobs:
 
           # Module Loop: Bolus Entry Screen
           curl https://github.com/Trpl7ca/Loop/commit/cd564f5ec33b374e82452fbe436b29caba4a034a.patch | git apply -v --directory=Loop
+
+          # OmniBLE: File: Extra Insulin 
+          curl https://github.com/Trpl7ca/OmniBLE/commit/055b1eb3a3c90ac3199ddeb0e2b6b6e108579e89.patch | git apply -v --directory=OmniBLE
+
      
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
