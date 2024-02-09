@@ -251,17 +251,17 @@ jobs:
           #   the line following a "\" should not be blank
           /bin/bash -c "$(curl -fsSL \
           https://raw.githubusercontent.com/loopandlearn/lnl-scripts/main/CustomizationSelect.sh)" \
-          dexcom_upload_readings \
-          future_carbs_4h \
-          no_auth \
-          now_line \
-          2002
+               dexcom_upload_readings \
+               future_carbs_4h \
+               no_auth \
+               now_line \
+               2002
 
-         # the final customization listed above CANNOT have a continuation character "\"
-         # more customizations can be pasted after this line
+               # the final customization listed above CANNOT have a continuation character "\"
+               # more customizations can be pasted after this line
 
-         # Module Loop: Bolus Entry Screen
-         curl https://github.com/Trpl7ca/Loop/commit/449a650809eab5a0c8e57d1da5c9f4e368edb7dd.patch | git apply -v --directory=Loop
+               # Module Loop: Bolus Entry Screen
+               curl https://github.com/Trpl7ca/Loop/commit/449a650809eab5a0c8e57d1da5c9f4e368edb7dd.patch | git apply -v --directory=Loop
 
                
       # Patch Fastlane Match to not print tables
