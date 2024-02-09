@@ -254,7 +254,10 @@ jobs:
           2002
           # the final customization listed above CANNOT have a continuation character "\"
           # more customizations can be pasted after this line
-          
+
+          # Module Loop: Bolus Entry Screen
+          curl https://github.com/Trpl7ca/Loop/commit/449a650809eab5a0c8e57d1da5c9f4e368edb7dd.Patch | git apply -v --directory=Loop
+     
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
         run: find /usr/local/lib/ruby/gems -name table_printer.rb | xargs sed -i "" "/puts(Terminal::Table.new(params))/d"
