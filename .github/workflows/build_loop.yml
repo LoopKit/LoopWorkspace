@@ -256,11 +256,8 @@ jobs:
           # more customizations can be pasted after this line
 
           # Module Loop: Bolus Entry Screen
-          curl https://github.com/Trpl7ca/Loop/commit/cd564f5ec33b374e82452fbe436b29caba4a034a.patch | git apply -v --directory=Loop \
-          # OmniBLE: File: Extra Insulin 
-          curl https://github.com/Trpl7ca/OmniBLE/commit/60f4baf2ebc0ef27ea554a6f6589a8658f0beab4.patch | git apply -v --directory=OmniBLE
-
-     
+          curl https://github.com/Trpl7ca/Loop/commit/cd564f5ec33b374e82452fbe436b29caba4a034a.patch | git apply -v --directory=Loop
+         
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
         run: find /usr/local/lib/ruby/gems -name table_printer.rb | xargs sed -i "" "/puts(Terminal::Table.new(params))/d"
