@@ -36,7 +36,6 @@ jobs:
           # The lines below add the customizations listed using the CustomizationSelect script
           # The "\" is a continuation character 
           #   the line following a "\" cannot be blank - that causes the Action to never complete
-          /bin/bash -c "$(curl -fsSL \
           testflight_expiration_warning
 
           # the final customization listed above CANNOT have a continuation character "\"
