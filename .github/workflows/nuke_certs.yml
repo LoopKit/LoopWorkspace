@@ -1,17 +1,11 @@
-name: 3. Create Certificates
-run-name: Create Certificates (${{ github.ref_name }})
+name: 5. Nuke Certificates
+run-name: Nuke Certificates (${{ github.ref_name }})
 on:
   workflow_dispatch:
 
 jobs:
-  validate:
-    name: Validate
-    uses: ./.github/workflows/validate_secrets.yml
-    secrets: inherit
-
   certificates:
-    name: Create Certificates
-    needs: validate
+    name: Nuke Certificates
     runs-on: macos-12
     steps:
       # Uncomment to manually select latest Xcode if needed
@@ -34,9 +28,9 @@ jobs:
       - name: Sync clock
         run: sudo sntp -sS time.windows.com
       
-      # Create or update certificates for app
-      - name: Create Certificates
-        run: bundle exec fastlane certs
+      # Nuke certs from the match repo
+      - name: Nuke Certificates
+        run: bundle exec fastlane nuke_certs
         env:
           TEAMID: ${{ secrets.TEAMID }}
           GH_PAT: ${{ secrets.GH_PAT }}
