@@ -67,3 +67,26 @@ jobs:
           path: |
             artifacts
             buildlog
+      # Customize Loop: Download and apply patches
+      - name: Customize Loop
+        run: |
+          # OmniBLE: Omnipod Dash Site Change
+          curl https://raw.githubusercontent.com/bjorkert/patches/master/siteChange.patch | git apply --directory=OmniBLE
+
+          # CGMBLEKit: Dexcom G6+G7 - Sensor Change
+          curl https://raw.githubusercontent.com/bjorkert/patches/master/g6g7_sage.patch | git apply
+
+          # CGMBLEKit: Dexcom G6+G7 - Upload Readings
+          curl https://raw.githubusercontent.com/bjorkert/patches/master/g6g7_upload_readings.patch | git apply
+
+          # Loop: View PreMeal in Nightscout
+          curl https://raw.githubusercontent.com/bjorkert/patches/master/preMeal.patch | git apply --directory=Loop
+
+          # Loop: Future carbs 90 minutes
+          curl https://raw.githubusercontent.com/bjorkert/patches/master/90m.patch | git apply --directory=Loop
+
+          # Required carbs
+          curl https://raw.githubusercontent.com/bjorkert/patches/master/updateRequiredCarbs.patch | git apply
+
+          # Basic I:C Bolus Calculation
+          curl https://raw.githubusercontent.com/bjorkert/patches/master/basicICBolusCalc.patch | git apply
