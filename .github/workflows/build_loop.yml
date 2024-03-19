@@ -45,9 +45,7 @@ jobs:
           future_carbs_4h \
           override_sens \
           now_line \
-          2002 \
-          algorithm_experiments \
-          testflight_expiration_warning
+          2002
 
           # the final customization listed above CANNOT have a continuation character "\"
           # more customizations can be pasted after this line
