@@ -29,7 +29,7 @@ jobs:
         with:
           submodules: recursive
 
-      # Customize Loop: Download and apply patches
+          # Customize Loop: Download and apply patches
       - name: Customize Loop
         run: | 
 
@@ -42,15 +42,6 @@ jobs:
           dexcom_sage \
           dexcom_upload_readings \
           limit_loop_cycle_time \
-          # Customize Loop: Download and apply patches
-      - name: Customize Loop
-        run: | 
-
-          # The lines below add the customizations listed using the CustomizationSelect script
-          # The "\" is a continuation character 
-          #   the line following a "\" cannot be blank - that causes the Action to never complete
-          /bin/bash -c "$(curl -fsSL \
-          https://raw.githubusercontent.com/loopandlearn/lnl-scripts/main/CustomizationSelect.sh)" \
           future_carbs_4h \
           low_carb_limit \
           high_carb_limit \
