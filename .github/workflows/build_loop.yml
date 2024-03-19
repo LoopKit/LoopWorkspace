@@ -53,6 +53,10 @@ jobs:
           # Submodule Loop patches:
           # Module: File: change lollipop from 30 to 60 minutes
           curl https://github.com/SanderRemote20/Loop/commit/12bbc4ea00edea03a078450c1fb1413fd3542648.patch | git apply -v --directory=Loop
+          
+          # Submodule Loop patches:
+          # Module: File: Translation fixed
+          curl https://github.com/SanderRemote20/OmniBLE/commit/d4331647add7e9b1f560be1f3b1282b40c1eee43.patch | git apply -v --directory=OmniBLE
       
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
