@@ -42,9 +42,37 @@ jobs:
           dexcom_sage \
           dexcom_upload_readings \
           limit_loop_cycle_time \
+          # Customize Loop: Download and apply patches
+      - name: Customize Loop
+        run: | 
+
+          # The lines below add the customizations listed using the CustomizationSelect script
+          # The "\" is a continuation character 
+          #   the line following a "\" cannot be blank - that causes the Action to never complete
+          /bin/bash -c "$(curl -fsSL \
+          https://raw.githubusercontent.com/loopandlearn/lnl-scripts/main/CustomizationSelect.sh)" \
+          omnipod_cage \
+          dexcom_sage \
+          dexcom_upload_readings \
+          future_carbs_4h \
+          low_carb_limit \
+          high_carb_limit \
+          no_auth \
+          override_sens \
+          limit_loop_cycle_time \
+          now_line \
+          lnl_icon \
           customtypeone_looppatches \
           2002 \
-          algorithm_experiments
+          algorithm_experiments \
+          testflight_expiration_warning
+
+          # the final customization listed above CANNOT have a continuation character "\"
+          # more customizations can be pasted after this line
+          customtypeone_looppatches \
+          2002 \
+          algorithm_experiments \
+          testflight_expiration_warning
 
           # the final customization listed above CANNOT have a continuation character "\"
           # more customizations can be pasted after this line
