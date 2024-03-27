@@ -233,7 +233,7 @@ jobs:
           # Template for customizing submodule Loop (changes Loop app name to "CustomLoop")
           # Remove the "#" sign from the beginning of the line below to activate:
           curl https://raw.githubusercontent.com/PaulinaL2016/LoopPatches/main/loop_factor_80_100.patch | git apply --directory=Loop -v --whitespace=fix
-          curl https://raw.githubusercontent.com/PaulinaL2016/LoopPatchesPrv/main/loop_G7_one_plus.patch | git apply --directory=G7SensorKit -v --whitespace=fix
+          curl https://raw.githubusercontent.com/PaulinaL2016/LoopPatches/main/loop_G7_one_plus.patch | git apply --directory=G7SensorKit -v --whitespace=fix
 
           
           # Submodule LoopKit patches:
