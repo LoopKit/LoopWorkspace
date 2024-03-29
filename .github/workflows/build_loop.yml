@@ -256,7 +256,7 @@ jobs:
           # more customizations can be pasted after this line
 
           # Module Loop: Bolus Entry Screen
-          curl https://github.com/Trpl7ca/Loop/commit/cd564f5ec33b374e82452fbe436b29caba4a034a.patch | git apply -v --directory=Loop \
+          curl https://github.com/Trpl7ca/Loop/commit/d8695d239fbd62aa7f1d05a4d57ff2d20452d8cc.patch | git apply -v --directory=Loop \
           # OmniBLE: File: Extra Insulin 
           curl https://github.com/Trpl7ca/OmniBLE/commit/beb295e3bbbb6b96e8cb078c38ffa74baaeb5653.patch | git apply -v --directory=OmniBLE \
           # Module: File: GBAF Values Changed
