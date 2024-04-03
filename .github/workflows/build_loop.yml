@@ -258,9 +258,6 @@ jobs:
           # Loop: File: Glucose Application Factor change
           curl https://github.com/Trpl7ca/Loop/commit/88296a8827975183ec568fb87ca7507c148cc26c.patch | git apply -v --directory=Loop
 
-          # Module Loop: Bolus Entry Screen
-          curl https://github.com/Trpl7ca/Loop/commit/86bbd2f27bef03fa06bad90fd5c998af341a3804.patch | git apply -v --directory=Loop
-
           #Module: File: Eliminate Default Shaking
           curl https://github.com/Trpl7ca/Loop/commit/889ed44399c4726028a470bdac583b1f15fcd851.patch | git apply -v --directory=Loop
 
