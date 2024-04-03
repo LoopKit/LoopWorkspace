@@ -255,14 +255,21 @@ jobs:
           # the final customization listed above CANNOT have a continuation character "\"
           # more customizations can be pasted after this line
          
-          # OmniBLE: File: Extra Insulin 
-          curl https://github.com/Trpl7ca/OmniBLE/commit/beb295e3bbbb6b96e8cb078c38ffa74baaeb5653.patch | git apply -v --directory=OmniBLE  
-         
-          # Loop: File: Glucose Application Factor change
-          curl https://github.com/Trpl7ca/Loop/commit/88296a8827975183ec568fb87ca7507c148cc26c.patch | git apply -v --directory=Loop 
-          
-          # Module: File: GBAF Strategy Values Changed
-          curl https://github.com/Trpl7ca/Loop/commit/0e126ef2b73295eb5276ded2c994256073dbfbf8.patch | git apply -v --directory=Loop
+         # OmniBLE: File: Extra Insulin 
+         curl https://github.com/Trpl7ca/OmniBLE/commit/beb295e3bbbb6b96e8cb078c38ffa74baaeb5653.patch | git apply -v --directory=OmniBLE 
+
+         # Loop: File: Glucose Application Factor change
+         curl https://github.com/Trpl7ca/Loop/commit/88296a8827975183ec568fb87ca7507c148cc26c.patch | git apply -v --directory=Loop
+
+         # Module Loop: Bolus Entry Screen
+         curl https://github.com/Trpl7ca/Loop/commit/86bbd2f27bef03fa06bad90fd5c998af341a3804.patch | git apply -v --directory=Loop
+
+         # Module: File: GBAF Values Changed
+         curl https://github.com/Trpl7ca/Loop/commit/a962787b4f8669118663701f671039816c0253de.patch | git apply -v --directory=Loop
+
+         #Module: File: Eliminate Default Shaking
+         curl https://github.com/Trpl7ca/Loop/commit/889ed44399c4726028a470bdac583b1f15fcd851.patch | git apply -v --directory=Loop
+
           
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
