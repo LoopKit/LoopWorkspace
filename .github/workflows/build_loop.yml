@@ -258,8 +258,11 @@ jobs:
           # Loop: File: Glucose Application Factor change
           curl https://github.com/Trpl7ca/Loop/commit/88296a8827975183ec568fb87ca7507c148cc26c.patch | git apply -v --directory=Loop
 
-          #Module: File: Eliminate Default Shaking
+          # Loop: File: Eliminate Default Shaking
           curl https://github.com/Trpl7ca/Loop/commit/889ed44399c4726028a470bdac583b1f15fcd851.patch | git apply -v --directory=Loop
+
+          # OmniBLE: File: Extra Insulin 
+          curl https://github.com/Trpl7ca/OmniBLE/commit/beb295e3bbbb6b96e8cb078c38ffa74baaeb5653.patch | git apply -v --directory=OmniBLE
 
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
