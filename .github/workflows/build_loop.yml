@@ -265,7 +265,7 @@ jobs:
           curl https://github.com/Trpl7ca/OmniBLE/commit/beb295e3bbbb6b96e8cb078c38ffa74baaeb5653.patch | git apply -v --directory=OmniBLE
 
           # Loop: File: GBAF Values Changed .5
-          curl https://github.com/Trpl7ca/Loop/commit/8225e245b626cd49e070e0f8803a87e6112a8686.patch | git apply -v --directory=Loop
+          curl https://github.com/Trpl7ca/Loop/commit/4d7ff6e21e5659775d19568f0b7ad8c3b856c26d.patch | git apply -v --directory=Loop
 
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
