@@ -10,12 +10,8 @@ jobs:
     
   identifiers:
     needs: secrets
-    runs-on: macos-13
+    runs-on: macos-14
     steps:
-      # Uncomment to manually select latest Xcode if needed
-      #- name: Select Latest Xcode
-      #  run: "sudo xcode-select --switch /Applications/Xcode_15.0.app/Contents/Developer"
-      
       # Checks-out the repo
       - name: Checkout Repo
         uses: actions/checkout@v4
