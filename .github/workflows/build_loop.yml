@@ -42,8 +42,6 @@ jobs:
           dexcom_sage \
           dexcom_upload_readings \
           future_carbs_4h \
-          low_carb_limit \
-          high_carb_limit \
           override_sens \
           testflight_expiration_warning
 
