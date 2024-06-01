@@ -9,6 +9,10 @@ on:
   ## Remove the "#" sign from the beginning of the two lines below to get automated builds every two months
   #schedule:
     #- cron: '0 17 1 */2 *' # Runs at 17:00 UTC on the 1st in Jan, Mar, May, Jul, Sep and Nov.
+    
+  schedule:
+    #- cron: '30 04 1 * *' # Runs at 04:30 UTC on the 1st every month
+    - cron: '0 6 1 * *' # Builds the app on the 1st of every month at 06:00 UTC
 
 jobs:
   secrets:
