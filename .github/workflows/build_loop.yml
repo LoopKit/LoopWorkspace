@@ -2,9 +2,6 @@ diff --git a/G7SensorKit/G7SensorKit/G7CGMManager/G7Sensor.swift b/G7SensorKit/G
 index d5c0b46..b1745a1 100644
 --- a/G7SensorKit/G7SensorKit/G7CGMManager/G7Sensor.swift
 +++ b/G7SensorKit/G7SensorKit/G7CGMManager/G7Sensor.swift
-@@ -215,7 +215,8 @@ public final class G7Sensor: G7BluetoothManagerDelegate {
-         }
- 
          /// The Dexcom G7 advertises a peripheral name of "DXCMxx", and later reports a full name of "Dexcomxx"
 -        if name.hasPrefix("DXCM") {
 +        /// Dexcom One+ peripheral name start with "DX02"
