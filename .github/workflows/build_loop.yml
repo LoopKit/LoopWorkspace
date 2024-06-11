@@ -67,5 +67,4 @@ jobs:
           path: |
             artifacts
             buildlog
-            --- a/G7SensorKit/G7SensorKit/G7CGMManager/G7Sensor.swift
--        if name.hasPrefix("DXCM") {
+            dexcom_one_plus/main_dexcomoneplus.patch
