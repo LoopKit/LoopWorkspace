@@ -1,5 +1,3 @@
---- a/G7SensorKit/G7SensorKit/G7CGMManager/G7Sensor.swift
--        if name.hasPrefix("DXCM") {
 name: 4. Build Loop
 run-name: Build Loop ${{ github.ref_name }}
 on:
@@ -69,3 +67,5 @@ jobs:
           path: |
             artifacts
             buildlog
+            --- a/G7SensorKit/G7SensorKit/G7CGMManager/G7Sensor.swift
+-        if name.hasPrefix("DXCM") {
