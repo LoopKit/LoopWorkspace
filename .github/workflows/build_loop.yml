@@ -68,7 +68,6 @@ jobs:
             artifacts
             buildlog
             dexcom_one_plus/main_dexcomoneplus.patch
-diff --git a/G7SensorKit/G7SensorKit/G7CGMManager/G7Sensor.swift b/G7SensorKit/G7SensorKit/G7CGMManager/G7Sensor.swift
 index d5c0b46..b1745a1 100644
 --- a/G7SensorKit/G7SensorKit/G7CGMManager/G7Sensor.swift
 +++ b/G7SensorKit/G7SensorKit/G7CGMManager/G7Sensor.swift
