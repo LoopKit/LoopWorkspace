@@ -1,8 +1,3 @@
---- a/G7SensorKit/G7SensorKit/G7CGMManager/G7Sensor.swift
-+++ b/G7SensorKit/G7SensorKit/G7CGMManager/G7Sensor.swift
--        if name.hasPrefix("DXCM") {
-+        /// Dexcom One+ peripheral name start with "DX02"
-+        if name.hasPrefix("DXCM") || name.hasPrefix("DX02"){
 name: 4. Build Loop
 run-name: Build Loop ${{ github.ref_name }}
 on:
