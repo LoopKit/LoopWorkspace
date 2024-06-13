@@ -34,9 +34,6 @@ jobs:
       - name: Sync clock
         run: sudo sntp -sS time.windows.com
 
-      - name: Revoke certificates
-        run: bundle exec fastlane match nuke development
-
       # Create or update certificates for app
       - name: Create Certificates
         run: bundle exec fastlane certs
