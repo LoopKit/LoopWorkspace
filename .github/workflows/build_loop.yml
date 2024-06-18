@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
   
   ## Remove the "#" sign from the beginning of the line below to get automated builds on push (code changes in your repository)
-  #push:
+  push:
 
   ## Remove the "#" sign from the beginning of the two lines below to get automated builds every two months
-  #schedule:
-    #- cron: '0 17 1 */2 *' # Runs at 17:00 UTC on the 1st in Jan, Mar, May, Jul, Sep and Nov.
+  schedule:
+    - cron: '0 17 1 */2 *' # Runs at 17:00 UTC on the 1st in Jan, Mar, May, Jul, Sep and Nov.
 
 jobs:
   secrets:
@@ -28,6 +28,35 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
+
+          # Customize Loop: Download and apply patches
+      - name: Customize Loop
+        run: | 
+
+          # The lines below add the customizations listed using the CustomizationSelect script
+          # The "\" is a continuation character 
+          #   the line following a "\" cannot be blank - that causes the Action to never complete
+          /bin/bash -c "$(curl -fsSL \
+          https://raw.githubusercontent.com/loopandlearn/lnl-scripts/main/CustomizationSelect.sh)" \
+          omnipod_cage \
+          dexcom_sage \
+          dexcom_upload_readings \
+          limit_loop_cycle_time \
+          future_carbs_4h \
+          override_sens \
+          now_line \
+          2002
+
+          # the final customization listed above CANNOT have a continuation character "\"
+          # more customizations can be pasted after this line
+
+          # Submodule Loop patches:
+          # Module: File: change lollipop from 30 to 60 minutes
+          curl https://github.com/SanderRemote20/Loop/commit/12bbc4ea00edea03a078450c1fb1413fd3542648.patch | git apply -v --directory=Loop
+          
+          # Submodule Loop patches:
+          # Module: File: Translation fixed
+          curl https://github.com/SanderRemote20/OmniBLE/commit/d4331647add7e9b1f560be1f3b1282b40c1eee43.patch | git apply -v --directory=OmniBLE
       
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
