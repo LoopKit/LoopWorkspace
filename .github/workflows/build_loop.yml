@@ -17,15 +17,15 @@ jobs:
     
   build:
     needs: secrets
-    runs-on: macos-12
+    runs-on: macos-14
     steps:
       # Uncomment to manually select latest Xcode if needed
       - name: Select Latest Xcode
-        run: "sudo xcode-select --switch /Applications/Xcode_14.1.app/Contents/Developer"
+        run: "sudo xcode-select --switch /Applications/Xcode_15.3.app/Contents/Developer"
 
       # Checks-out the repo
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           submodules: recursive
 
@@ -62,6 +62,10 @@ jobs:
       - name: Patch Match Tables
         run: find /usr/local/lib/ruby/gems -name table_printer.rb | xargs sed -i "" "/puts(Terminal::Table.new(params))/d"
       
+      # Sync the GitHub runner clock with the Windows time server (workaround as suggested in https://github.com/actions/runner/issues/2996)
+      - name: Sync clock
+        run: sudo sntp -sS time.windows.com
+      
       # Build signed Loop IPA file
       - name: Fastlane Build & Archive
         run: fastlane build_loop
@@ -86,7 +90,7 @@ jobs:
 
       # Upload IPA and Symbols
       - name: Upload IPA and Symbol artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
           path: |
