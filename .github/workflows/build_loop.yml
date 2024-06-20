@@ -17,15 +17,15 @@ jobs:
     
   build:
     needs: secrets
-    runs-on: macos-12
+    runs-on: macos-14
     steps:
       # Uncomment to manually select latest Xcode if needed
       - name: Select Latest Xcode
-        run: "sudo xcode-select --switch /Applications/Xcode_14.1.app/Contents/Developer"
+        run: "sudo xcode-select --switch /Applications/Xcode_15.3.app/Contents/Developer"
 
       # Checks-out the repo
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           submodules: recursive
       
@@ -61,7 +61,7 @@ jobs:
 
       # Upload IPA and Symbols
       - name: Upload IPA and Symbol artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
           path: |
