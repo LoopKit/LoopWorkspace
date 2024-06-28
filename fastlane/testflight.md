@@ -54,7 +54,7 @@ This step is common for all GitHub Browser Builds; do this step only once. You w
 
 1. Sign in to the [Apple developer portal page](https://developer.apple.com/account/resources/certificates/list).
 1. Copy the Team ID from the upper right of the screen. Record this as your `TEAMID`.
-1. Go to the [App Store Connect](https://appstoreconnect.apple.com/access/api) interface, click the "Keys" tab, and create a new key with "Admin" access. Give it the name: "FastLane API Key".
+1. Go to the [App Store Connect](https://appstoreconnect.apple.com/access/integrations/api) interface, click the "Integrations" tab, and create a new key with "Admin" access. Give it the name: "FastLane API Key".
 1. Record the issuer id; this will be used for `FASTLANE_ISSUER_ID`.
 1. Record the key id; this will be used for `FASTLANE_KEY_ID`.
 1. Download the API key itself, and open it in a text editor. The contents of this file will be used for `FASTLANE_KEY`. Copy the full text, including the "-----BEGIN PRIVATE KEY-----" and "-----END PRIVATE KEY-----" lines.
