@@ -1,4 +1,5 @@
 {
+  "originHash" : "50471027a7f8b4bd10b803cb440076490566c50e112576a093dd9c291bdec4cb",
   "pins" : [
     {
       "identity" : "amplitude-ios",
@@ -25,15 +26,6 @@
       "state" : {
         "branch" : "1.1.2+spm",
         "revision" : "d185e44c8b355d34d5c6c6ad502c60cba4599f69"
-      }
-    },
-    {
-      "identity" : "cryptoswift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/krzyzanowskim/CryptoSwift",
-      "state" : {
-        "revision" : "eee9ad754926c40a0f7e73f152357d37b119b7fa",
-        "version" : "1.7.1"
       }
     },
     {
@@ -108,5 +100,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
