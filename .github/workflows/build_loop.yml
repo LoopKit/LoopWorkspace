@@ -43,7 +43,8 @@ jobs:
           dexcom_upload_readings \
           algorithm_experiments \
           high_carb_limit \
-          testflight_expiration_warning
+          testflight_expiration_warning \
+          dexcom_one_plus
           
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
