@@ -166,8 +166,8 @@ jobs:
           (vars.SCHEDULED_SYNC != 'false' && needs.check_latest_from_upstream.outputs.NEW_COMMITS == 'true' )
         )
     steps:
-      - name: Select Xcode version
-        run: "sudo xcode-select --switch /Applications/Xcode_15.0.app/Contents/Developer"
+      #- name: Select Xcode version
+      #  run: "sudo xcode-select --switch /Applications/Xcode_15.0.app/Contents/Developer"
       
       - name: Checkout Repo for syncing
         if: |
