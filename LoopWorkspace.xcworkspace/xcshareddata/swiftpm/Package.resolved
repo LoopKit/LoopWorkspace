@@ -1,4 +1,5 @@
 {
+  "originHash" : "f8d1e9c237647ab612da7f2bd3ae26946f39410508314c00cf54509a673f147e",
   "pins" : [
     {
       "identity" : "amplitude-ios",
@@ -108,5 +109,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
