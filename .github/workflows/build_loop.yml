@@ -45,13 +45,7 @@ jobs:
           omnipod_cage \
           dexcom_sage \
           dexcom_upload_readings \
-          future_carbs_4h \
-          override_sens \
-          limit_loop_cycle_time \
-          lnl_icon \
-          customtypeone_looppatches \
-          2002 \
-          algorithm_experiments
+          limit_loop_cycle_time 
 
           # the final customization listed above CANNOT have a continuation character "\"
           # more customizations can be pasted after this line
