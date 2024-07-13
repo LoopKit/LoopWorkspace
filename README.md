@@ -1,9 +1,9 @@
 # LoopWorkspace
 
-The Loop app can be built using GitHub workflows in the cloud from a browser on any computer or using a Mac with Xcode.
+The Loop app can be built using GitHub in a browser on any computer or using a Mac with Xcode.
 
-* Non-developers may prefer the GitHub workflow method, which does not require a mac.
-* Developers or Loopers who want full build control may prefer the local Mac/Xcode method.
+* Non-developers may prefer the GitHub method
+* Developers or Loopers who want full build control may prefer the Mac/Xcode method
 
 ## GitHub Build Instructions
 
