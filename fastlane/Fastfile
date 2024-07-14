@@ -60,7 +60,7 @@ platform :ios do
         "com.#{TEAMID}.loopkit.Loop.LoopWatch.watchkitextension", 
         "com.#{TEAMID}.loopkit.Loop.LoopWatch", 
         "com.#{TEAMID}.loopkit.Loop.Loop-Intent-Extension",
-        "com.#{TEAMID}.loopkit.Loop.SmallStatusWidget"
+        "com.#{TEAMID}.loopkit.Loop.LoopWidgetExtension"
       ]
     )
 
@@ -123,9 +123,9 @@ platform :ios do
     
     update_code_signing_settings(
       path: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
-      profile_name: mapping["com.#{TEAMID}.loopkit.Loop.SmallStatusWidget"],
+      profile_name: mapping["com.#{TEAMID}.loopkit.Loop.LoopWidgetExtension"],
       code_sign_identity: "iPhone Distribution",
-      targets: ["SmallStatusWidgetExtension"]
+      targets: ["Loop Widget Extension"]
     )
 
     gym(
@@ -181,7 +181,9 @@ platform :ios do
       Spaceship::ConnectAPI::BundleIdCapability::Type::APP_GROUPS,
       Spaceship::ConnectAPI::BundleIdCapability::Type::HEALTHKIT,
       Spaceship::ConnectAPI::BundleIdCapability::Type::PUSH_NOTIFICATIONS,
-      Spaceship::ConnectAPI::BundleIdCapability::Type::SIRIKIT
+      Spaceship::ConnectAPI::BundleIdCapability::Type::SIRIKIT,
+      Spaceship::ConnectAPI::BundleIdCapability::Type::USERNOTIFICATIONS_TIMESENSITIVE,
+      Spaceship::ConnectAPI::BundleIdCapability::Type::NFC_TAG_READING
     ])
 
     configure_bundle_id("Loop Intent Extension", "com.#{TEAMID}.loopkit.Loop.Loop-Intent-Extension", [
@@ -199,7 +201,7 @@ platform :ios do
       Spaceship::ConnectAPI::BundleIdCapability::Type::SIRIKIT
     ])
 
-    configure_bundle_id("Small Status Widget", "com.#{TEAMID}.loopkit.Loop.SmallStatusWidget", [
+    configure_bundle_id("Loop Widget Extension", "com.#{TEAMID}.loopkit.Loop.LoopWidgetExtension", [
       Spaceship::ConnectAPI::BundleIdCapability::Type::APP_GROUPS
     ])
     
@@ -226,7 +228,7 @@ platform :ios do
         "com.#{TEAMID}.loopkit.Loop.LoopWatch.watchkitextension", 
         "com.#{TEAMID}.loopkit.Loop.LoopWatch", 
         "com.#{TEAMID}.loopkit.Loop.Loop-Intent-Extension",
-        "com.#{TEAMID}.loopkit.Loop.SmallStatusWidget",
+        "com.#{TEAMID}.loopkit.Loop.LoopWidgetExtension",
       ]
     )
   end
@@ -247,6 +249,13 @@ platform :ios do
     end
 
     find_bundle_id("com.#{TEAMID}.loopkit.Loop")
+
+    match(
+      type: "appstore",
+      git_basic_authorization: Base64.strict_encode64("#{GITHUB_REPOSITORY_OWNER}:#{GH_PAT}"),
+      app_identifier: [],
+    )
+
   end
   
   desc "Nuke Certs"
