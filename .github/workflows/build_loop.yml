@@ -11,7 +11,7 @@ on:
     - cron: '0 6 1 * *' # Builds the app on the 1st of every month at 06:00 UTC
 
 env:
-  UPSTREAM_REPO: LoopKit/LoopWorkspace
+  UPSTREAM_REPO: CrisLopEsp/LoopWorkspace
   UPSTREAM_BRANCH: ${{ github.ref_name }} # branch on upstream repository to sync from (replace with specific branch name if needed)
   TARGET_BRANCH: ${{ github.ref_name }} # target branch on fork to be kept in sync, and target branch on upstream to be kept alive (replace with specific branch name if needed)
   ALIVE_BRANCH: alive
@@ -68,13 +68,13 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GH_PAT }}
       run: |
-        # Get ref for LoopKit/LoopWorkspace:dev
+        # Get ref for CrisLopEsp/LoopWorkspace:dev
         SHA=$(curl -sS https://api.github.com/repos/${{ env.UPSTREAM_REPO }}/git/refs \
           | jq '.[] | select(.ref == "refs/heads/dev" ) | .object.sha' \
           | tr -d '"'
         );
         
-        # Create alive branch based on LoopKit/LoopWorkspace:dev
+        # Create alive branch based on CrisLopEsp/LoopWorkspace:dev
         gh api \
           --method POST \
           -H "Authorization: token $GITHUB_TOKEN" \
@@ -105,7 +105,7 @@ jobs:
     - name: Sync upstream changes
       if: | # do not run the upstream sync action on the upstream repository
         needs.check_alive_and_permissions.outputs.WORKFLOW_PERMISSION == 'true' &&
-        vars.SCHEDULED_SYNC != 'false' && github.repository_owner != 'LoopKit'
+        vars.SCHEDULED_SYNC != 'false' && github.repository_owner != 'CrisLopEsp'
       id: sync
       uses: aormsby/Fork-Sync-With-Upstream-action@v3.4.1
       with:
@@ -148,7 +148,7 @@ jobs:
       run: |
         echo "### :calendar: Scheduled Sync and Build Disabled :mobile_phone_off:" >> $GITHUB_STEP_SUMMARY
         echo "You have not yet configured the scheduled sync and build for Loop's browser build." >> $GITHUB_STEP_SUMMARY
-        echo "Synchronizing your fork of <code>LoopWorkspace</code> with the upstream repository <code>LoopKit/LoopWorkspace</code> will be skipped." >> $GITHUB_STEP_SUMMARY
+        echo "Synchronizing your fork of <code>LoopWorkspace</code> with the upstream repository <code>CrisLopEsp/LoopWorkspace</code> will be skipped." >> $GITHUB_STEP_SUMMARY
         echo "If you want to enable automatic builds and updates for your Loop, please follow the instructions \
               under the following path <code>LoopWorkspace/fastlane/testflight.md</code>." >> $GITHUB_STEP_SUMMARY
   
@@ -181,7 +181,7 @@ jobs:
       - name: Sync upstream changes
         if: | # do not run the upstream sync action on the upstream repository
           needs.check_alive_and_permissions.outputs.WORKFLOW_PERMISSION == 'true' &&
-          vars.SCHEDULED_SYNC != 'false' && github.repository_owner != 'LoopKit'
+          vars.SCHEDULED_SYNC != 'false' && github.repository_owner != 'CrisLopEsp'
         id: sync
         uses: aormsby/Fork-Sync-With-Upstream-action@v3.4.1
         with:
@@ -234,10 +234,10 @@ jobs:
           # Remove the "#" sign from the beginning of the line below to activate:
           #curl https://github.com/loopnlearn/Loop/commit/d206432b024279ef710df462b20bd464cd9682d4.patch | git apply --directory=Loop -v --whitespace=fix
           
-          # Submodule LoopKit patches:
-          # General template for customizing submodule LoopKit 
+          # Submodule CrisLopEsp patches:
+          # General template for customizing submodule CrisLopEsp 
           # Copy url from a GitHub commit or pull request and insert below, and remove the "#" sign from the beginning of the line to activate:
-          #curl url_to_github_commit.patch | git apply --directory=LoopKit -v --whitespace=fix
+          #curl url_to_github_commit.patch | git apply --directory=CrisLopEsp -v --whitespace=fix
           
           # Submodule xxxxx patches:
 
