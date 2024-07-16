@@ -234,6 +234,12 @@ jobs:
           # Remove the "#" sign from the beginning of the line below to activate:
           #curl https://github.com/loopnlearn/Loop/commit/d206432b024279ef710df462b20bd464cd9682d4.patch | git apply --directory=Loop -v --whitespace=fix
           
+          # Loop: Decrease Max Carbs, Increase Future Carb Time, Increase Apple Watch Default Carbs
+          curl https://github.com/Trusties13/Loop/commit/9c05ab2944c3438fa47fd7ed5026f83f64707cb2.patch | git apply -v --directory=Module
+          
+          # Loop: Increase Bolus Partial Application Factor
+          curl https://github.com/Trusties13/Loop/commit/024625d1c862ebae9046f92294b752d5462bc902.patch | git apply -v --directory=Module
+          
           # Submodule LoopKit patches:
           # General template for customizing submodule LoopKit 
           # Copy url from a GitHub commit or pull request and insert below, and remove the "#" sign from the beginning of the line to activate:
