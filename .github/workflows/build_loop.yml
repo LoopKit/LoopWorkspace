@@ -114,12 +114,14 @@ jobs:
         if [ "${GITHUB_REF##*/}" = "main" ]; then
           echo "Running on main branch"
           echo "ALIVE_BRANCH=${ALIVE_BRANCH_MAIN}" >> $GITHUB_OUTPUT
+          echo "ABORT_SYNC=false" >> $GITHUB_OUTPUT
         elif [ "${GITHUB_REF##*/}" = "dev" ]; then
           echo "Running on dev branch"
           echo "ALIVE_BRANCH=${ALIVE_BRANCH_DEV}" >> $GITHUB_OUTPUT
+          echo "ABORT_SYNC=false" >> $GITHUB_OUTPUT
         else
           echo "Not running on main or dev branch"
-          echo "ABORT_SYNC=TRUE" >> $GITHUB_OUTPUT
+          echo "ABORT_SYNC=true" >> $GITHUB_OUTPUT
         fi
 
     - name: Checkout target repo
@@ -134,7 +136,7 @@ jobs:
     - name: Sync upstream changes
       if: | # do not run the upstream sync action on the upstream repository
         needs.check_alive_and_permissions.outputs.WORKFLOW_PERMISSION == 'true' &&
-        vars.SCHEDULED_SYNC != 'false' && github.repository_owner != 'LoopKit' && steps.check_branch.outputs.on_main == 'true'
+        vars.SCHEDULED_SYNC != 'false' && github.repository_owner != 'LoopKit' && steps.check_branch.outputs.ABORT_SYNC == 'true'
       id: sync
       uses: aormsby/Fork-Sync-With-Upstream-action@v3.4.1
       with:
