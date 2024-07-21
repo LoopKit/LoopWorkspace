@@ -12,7 +12,7 @@ jobs:
   identifiers:
     name: Add Identifiers
     needs: validate
-    runs-on: macos-12
+    runs-on: macos-14
     steps:
       # Uncomment to manually select latest Xcode if needed
       #- name: Select Latest Xcode
