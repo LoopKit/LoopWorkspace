@@ -283,10 +283,6 @@ jobs:
           /bin/bash -c "$(curl -fsSL \
           https://raw.githubusercontent.com/loopandlearn/lnl-scripts/main/CustomizationSelect.sh)" \
           dexcom_upload_readings \
-          # future_carbs_4h \
-          # low_carb_limit \
-          # high_carb_limit \
-          # no_auth \
           override_sens \
           now_line \
           lnl_icon \
