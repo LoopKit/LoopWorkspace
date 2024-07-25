@@ -5,6 +5,12 @@
       location = "group:Scripts"
       name = "Scripts">
       <FileRef
+         location = "group:update_submodule_refs.sh">
+      </FileRef>
+      <FileRef
+         location = "group:sync.swift">
+      </FileRef>
+      <FileRef
          location = "group:export_localizations.sh">
       </FileRef>
       <FileRef
@@ -14,6 +20,19 @@
    <FileRef
       location = "container:LoopConfigOverride.xcconfig">
    </FileRef>
+   <Group
+      location = "group:fastlane"
+      name = "fastlane">
+      <FileRef
+         location = "group:testflight.md">
+      </FileRef>
+      <FileRef
+         location = "group:Fastfile">
+      </FileRef>
+      <FileRef
+         location = "group:Matchfile">
+      </FileRef>
+   </Group>
    <FileRef
       location = "container:OverrideAssetsLoop.xcassets">
    </FileRef>
@@ -33,31 +52,22 @@
       location = "group:dexcom-share-client-swift/ShareClient.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:rileylink_ios/RileyLink.xcodeproj">
+      location = "group:AmplitudeService/AmplitudeService.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:AmplitudeService/AmplitudeService.xcodeproj">
+      location = "group:MixpanelService/MixpanelService.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:LogglyService/LogglyService.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:TidepoolKit/TidepoolKit.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:TidepoolService/TidepoolService.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:NightscoutRemoteCGM/NightscoutRemoteCGM.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:NightscoutService/NightscoutService.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:NightscoutAPIClient/NightscoutAPIClient.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:MKRingProgressView/MKRingProgressView.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Minizip/Minizip.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:TrueTime.swift/TrueTime.xcodeproj">
@@ -69,10 +79,16 @@
       location = "group:OmniKit/OmniKit.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:RileyLinkKit/RileyLinkKit.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:MinimedKit/MinimedKit.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:G7SensorKit/G7SensorKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:LibreTransmitter/LibreTransmitter.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:LoopSupport/LoopSupport.xcodeproj">
