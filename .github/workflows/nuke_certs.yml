@@ -1,4 +1,5 @@
 name: 9. Annual Certificates Reset
+run-name: Annual Certificates Reset (${{ github.ref_name }})
 on:
   workflow_dispatch:
 
