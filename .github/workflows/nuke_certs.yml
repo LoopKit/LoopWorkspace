@@ -4,6 +4,11 @@ on:
   workflow_dispatch:
 
 jobs:
+  validate:
+    name: Validate
+    uses: ./.github/workflows/validate_secrets.yml
+    secrets: inherit
+
   nuke_certs:
     runs-on: macos-14
     steps:
