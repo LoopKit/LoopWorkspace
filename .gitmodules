@@ -10,15 +10,12 @@
 [submodule "dexcom-share-client-swift"]
 	path = dexcom-share-client-swift
 	url = https://github.com/LoopKit/dexcom-share-client-swift.git
-[submodule "rileylink_ios"]
-	path = rileylink_ios
-	url = https://github.com/ps2/rileylink_ios.git
-[submodule "MKRingProgressView"]
-	path = MKRingProgressView
-	url = https://github.com/LoopKit/MKRingProgressView.git
+[submodule "RileyLinkKit"]
+	path = RileyLinkKit
+	url = https://github.com/LoopKit/RileyLinkKit
 [submodule "NightscoutService"]
 	path = NightscoutService
-	url = https://github.com/ps2/NightscoutService.git
+	url = https://github.com/LoopKit/NightscoutService.git
 [submodule "Minizip"]
 	path = Minizip
 	url = https://github.com/LoopKit/Minizip.git
@@ -37,9 +34,9 @@
 [submodule "OmniBLE"]
 	path = OmniBLE
 	url = https://github.com/LoopKit/OmniBLE.git
-[submodule "NightscoutAPIClient"]
-	path = NightscoutAPIClient
-	url = https://github.com/LoopKit/NightscoutAPIClient.git
+[submodule "NightscoutRemoteCGM"]
+	path = NightscoutRemoteCGM
+	url = https://github.com/LoopKit/NightscoutRemoteCGM.git
 [submodule "LoopSupport"]
 	path = LoopSupport
 	url = https://github.com/LoopKit/LoopSupport
@@ -49,12 +46,15 @@
 [submodule "TidepoolService"]
 	path = TidepoolService
 	url = https://github.com/LoopKit/TidepoolService.git
-[submodule "TidepoolKit"]
-	path = TidepoolKit
-	url = https://github.com/LoopKit/TidepoolKit.git
 [submodule "OmniKit"]
 	path = OmniKit
 	url = https://github.com/LoopKit/OmniKit.git
 [submodule "MinimedKit"]
 	path = MinimedKit
 	url = https://github.com/LoopKit/MinimedKit.git
+[submodule "MixpanelService"]
+	path = MixpanelService
+	url = https://github.com/LoopKit/MixpanelService
+[submodule "LibreTransmitter"]
+	path = LibreTransmitter
+	url = https://github.com/LoopKit/LibreTransmitter.git
