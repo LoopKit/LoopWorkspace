@@ -1,4 +1,5 @@
 {
+  "originHash" : "f8d1e9c237647ab612da7f2bd3ae26946f39410508314c00cf54509a673f147e",
   "pins" : [
     {
       "identity" : "amplitude-ios",
@@ -6,7 +7,7 @@
       "location" : "https://github.com/amplitude/Amplitude-iOS.git",
       "state" : {
         "branch" : "main",
-        "revision" : "c3cb4810a021ccd172caaed33bef5f400899f599"
+        "revision" : "e818b182f5c3d5ce5035deab90bca108175b3561"
       }
     },
     {
@@ -14,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/amplitude/analytics-connector-ios.git",
       "state" : {
-        "revision" : "b44981119e2efc0edd1d2e26831c3c4c0e0264e6",
-        "version" : "1.0.0"
+        "revision" : "d3d682a26ca6f4947ece2c2e627971bb41b940fa",
+        "version" : "1.0.1"
       }
     },
     {
@@ -32,8 +33,26 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/krzyzanowskim/CryptoSwift",
       "state" : {
-        "revision" : "12f2389aca4a07e0dd54c86ec23d0721ed88b8db",
-        "version" : "1.4.3"
+        "revision" : "eee9ad754926c40a0f7e73f152357d37b119b7fa",
+        "version" : "1.7.1"
+      }
+    },
+    {
+      "identity" : "mixpanel-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mixpanel/mixpanel-swift.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "c676a9737c76e127e3ae5776247b226bc6d7652d"
+      }
+    },
+    {
+      "identity" : "mkringprogressview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/maxkonovalov/MKRingProgressView.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "660888aab1d2ab0ed7eb9eb53caec12af4955fa7"
       }
     },
     {
@@ -42,7 +61,7 @@
       "location" : "https://github.com/LoopKit/NightscoutKit",
       "state" : {
         "branch" : "main",
-        "revision" : "54c668c7154eca0ccd7b5714e1d206e488cd1bd9"
+        "revision" : "ca8e2cea82ab465282cd180ce01d64c1cf25478d"
       }
     },
     {
@@ -54,14 +73,41 @@
       }
     },
     {
+      "identity" : "slidebutton",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/no-comment/SlideButton",
+      "state" : {
+        "branch" : "main",
+        "revision" : "5eacebba4d7deeb693592bc9a62ab2d2181e133b"
+      }
+    },
+    {
       "identity" : "swiftcharts",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ivanschuetz/SwiftCharts",
       "state" : {
         "branch" : "master",
-        "revision" : "3d011f67eccb1ffa622fbfccb1348eed80309ae8"
+        "revision" : "c354c1945bb35a1f01b665b22474f6db28cba4a2"
+      }
+    },
+    {
+      "identity" : "tidepoolkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tidepool-org/TidepoolKit",
+      "state" : {
+        "branch" : "dev",
+        "revision" : "54045c2e7d720dcd8a0909037772dcd6f54f0158"
+      }
+    },
+    {
+      "identity" : "zipfoundation",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/LoopKit/ZIPFoundation.git",
+      "state" : {
+        "branch" : "stream-entry",
+        "revision" : "c67b7509ec82ee2b4b0ab3f97742b94ed9692494"
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
