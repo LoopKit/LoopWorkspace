@@ -1,0 +1,17 @@
+<svg width="1024" height="1024" xmlns="http://www.w3.org/2000/svg">
+    <linearGradient id="backGradiant" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stop-color="#fefefe" />
+        <stop offset="100%" stop-color="#acacac" />
+    </linearGradient>
+    <linearGradient id="ringGradiant" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stop-color="#64af76" />
+        <stop offset="100%" stop-color="#5dd371" />
+    </linearGradient>
+    <linearGradient id="innerGradiant" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stop-color="#bdbdbd" />
+        <stop offset="100%" stop-color="#f8f8f8" />
+    </linearGradient>
+    <rect x="0" y="0" width="1024" height="1024" fill="url(#backGradiant)"/>
+    <circle cx="512" cy="512" r="428" fill="url(#ringGradiant)"/>
+    <circle cx="512" cy="512" r="286" fill="url(#innerGradiant)"/>
+</svg>
