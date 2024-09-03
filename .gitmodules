@@ -52,6 +52,12 @@
 [submodule "MinimedKit"]
 	path = MinimedKit
 	url = https://github.com/LoopKit/MinimedKit.git
+[submodule "xdrip-client-swift"]
+	path = xdrip-client-swift
+	url = https://github.com/johandegraeve/xdrip-client-swift-1.git
+[submodule "GlucoseDirectClient"]
+	path = GlucoseDirectClient
+	url = https://github.com/FokkeZB/GlucoseDirectClient.git
 [submodule "MixpanelService"]
 	path = MixpanelService
 	url = https://github.com/LoopKit/MixpanelService
