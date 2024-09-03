@@ -246,7 +246,25 @@ jobs:
           # Several patches may be added per submodule.
           # Adding comments (#) may be useful to easily tell the individual patches apart.
           
-          
+      # The lines below add the customizations listed using the CustomizationSelect script
+          # The "\" is a continuation character 
+          #   the line following a "\" should not be blank
+          /bin/bash -c "$(curl -fsSL \
+          https://raw.githubusercontent.com/loopandlearn/lnl-scripts/main/CustomizationSelect.sh)" \
+          dexcom_upload_readings \
+          future_carbs_4h \
+          no_auth \
+          override_sens \
+          now_line \
+          watch_title \
+          2hlollipop \
+          meal_days \
+          2002 \
+          basal_lock \
+          live_activity
+
+          # the final customization listed above CANNOT have a continuation character
+          # more customizations can be pasted after this line    
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
         run: find /usr/local/lib/ruby/gems -name table_printer.rb | xargs sed -i "" "/puts(Terminal::Table.new(params))/d"
