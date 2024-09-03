@@ -281,11 +281,14 @@ jobs:
           echo "checking out the xdrip-client-swift commit that works with Loop 3.4.0 or later"
           cd xdrip-client-swift; git checkout e618d67 --quiet; cd ..
           echo "Downloading code to support GlucoseDirectClient"
-          git clone --branch=dev https://github.com/creepymonster/GlucoseDirectClient.git GlucoseDirectClient
+          # git clone --branch=dev https://github.com/creepymonster/GlucoseDirectClient.git GlucoseDirectClient
+          git clone --branch=patch-1 https://github.com/FokkeZB/GlucoseDirectClient.git GlucoseDirectClient
           echo "checking out the GlucoseDirectClient commit that works with Loop 3.4.0 or later"
-          cd GlucoseDirectClient; git checkout c4223d7 --quiet; cd ..
+          # cd GlucoseDirectClient; git checkout c4223d7 --quiet; cd ..
+          cd GlucoseDirectClient; git checkout 2411185 --quiet; cd ..
           echo "Applying customization to add CGM support to Loop for xDrip4iOS and GlucoseDirect"
-          curl https://github.com/loopandlearn/LoopWorkspace/commit/c97f303d15982a9b192bb90ae7ac3e89a3daf203.patch | git apply
+          # curl https://github.com/loopandlearn/LoopWorkspace/commit/c97f303d15982a9b192bb90ae7ac3e89a3daf203.patch | git apply
+          curl https://gist.githubusercontent.com/FokkeZB/2bc40a3bdc5da874b84a01b2e5dd8188/raw/8fbfd53942527d543f1c18cb6340893b8321e0d1/cgm.patch | git apply
 
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
