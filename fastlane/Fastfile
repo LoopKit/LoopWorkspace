@@ -135,7 +135,6 @@ platform :ios do
       configuration: "Release",
       destination: 'generic/platform=iOS',
       buildlog_path: 'buildlog',
-      sdk: "iOS 18.0"
     )
 
     copy_artifacts(
