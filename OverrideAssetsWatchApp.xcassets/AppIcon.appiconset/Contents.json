@@ -1,134 +1,92 @@
 {
   "images" : [
     {
-      "filename" : "icon_24pt@2x.png",
-      "idiom" : "watch",
-      "role" : "notificationCenter",
-      "scale" : "2x",
       "size" : "24x24",
+      "idiom" : "watch",
+      "filename" : "Icon-AppleWatch-24x24@2x.png",
+      "scale" : "2x",
+      "role" : "notificationCenter",
       "subtype" : "38mm"
     },
     {
-      "filename" : "icon_27.5pt@2x.png",
-      "idiom" : "watch",
-      "role" : "notificationCenter",
-      "scale" : "2x",
       "size" : "27.5x27.5",
+      "idiom" : "watch",
+      "filename" : "Icon-AppleWatch-27.5x27.5@2x.png",
+      "scale" : "2x",
+      "role" : "notificationCenter",
       "subtype" : "42mm"
     },
     {
-      "filename" : "icon_29pt@2x.png",
+      "size" : "29x29",
       "idiom" : "watch",
+      "filename" : "Icon-AppleWatch-Companion-29x29@2x.png",
       "role" : "companionSettings",
-      "scale" : "2x",
-      "size" : "29x29"
+      "scale" : "2x"
     },
     {
-      "filename" : "icon_29pt@3x.png",
+      "size" : "29x29",
       "idiom" : "watch",
+      "filename" : "Icon-AppleWatch-Companion-29x29@3x.png",
       "role" : "companionSettings",
-      "scale" : "3x",
-      "size" : "29x29"
+      "scale" : "3x"
     },
     {
-      "idiom" : "watch",
-      "role" : "notificationCenter",
-      "scale" : "2x",
-      "size" : "33x33",
-      "subtype" : "45mm"
-    },
-    {
-      "filename" : "icon_40pt@2x.png",
-      "idiom" : "watch",
-      "role" : "appLauncher",
-      "scale" : "2x",
       "size" : "40x40",
+      "idiom" : "watch",
+      "filename" : "Icon-AppleWatch-40x40@2x.png",
+      "scale" : "2x",
+      "role" : "appLauncher",
       "subtype" : "38mm"
     },
     {
-      "filename" : "icon_44pt@2x.png",
-      "idiom" : "watch",
-      "role" : "appLauncher",
-      "scale" : "2x",
       "size" : "44x44",
+      "idiom" : "watch",
+      "filename" : "Icon-AppleWatch-44x44@2x.png",
+      "scale" : "2x",
+      "role" : "appLauncher",
       "subtype" : "40mm"
     },
     {
-      "idiom" : "watch",
-      "role" : "appLauncher",
-      "scale" : "2x",
-      "size" : "46x46",
-      "subtype" : "41mm"
-    },
-    {
-      "filename" : "icon_50pt@2x.png",
-      "idiom" : "watch",
-      "role" : "appLauncher",
-      "scale" : "2x",
       "size" : "50x50",
+      "idiom" : "watch",
+      "filename" : "Icon-AppleWatch-100x100@2x.png",
+      "scale" : "2x",
+      "role" : "appLauncher",
       "subtype" : "44mm"
     },
     {
-      "idiom" : "watch",
-      "role" : "appLauncher",
-      "scale" : "2x",
-      "size" : "51x51",
-      "subtype" : "45mm"
-    },
-    {
-      "idiom" : "watch",
-      "role" : "appLauncher",
-      "scale" : "2x",
-      "size" : "54x54",
-      "subtype" : "49mm"
-    },
-    {
-      "filename" : "icon_86pt@2x.png",
-      "idiom" : "watch",
-      "role" : "quickLook",
-      "scale" : "2x",
       "size" : "86x86",
+      "idiom" : "watch",
+      "filename" : "Icon-AppleWatch-86x86@2x.png",
+      "scale" : "2x",
+      "role" : "quickLook",
       "subtype" : "38mm"
     },
     {
-      "filename" : "icon_98pt@2x.png",
-      "idiom" : "watch",
-      "role" : "quickLook",
-      "scale" : "2x",
       "size" : "98x98",
+      "idiom" : "watch",
+      "filename" : "Icon-AppleWatch-98x98@2x.png",
+      "scale" : "2x",
+      "role" : "quickLook",
       "subtype" : "42mm"
     },
     {
-      "filename" : "icon_108pt@2x.png",
-      "idiom" : "watch",
-      "role" : "quickLook",
-      "scale" : "2x",
       "size" : "108x108",
+      "idiom" : "watch",
+      "filename" : "Icon-AppleWatch-216x216@2x.png",
+      "scale" : "2x",
+      "role" : "quickLook",
       "subtype" : "44mm"
     },
     {
-      "idiom" : "watch",
-      "role" : "quickLook",
-      "scale" : "2x",
-      "size" : "117x117",
-      "subtype" : "45mm"
-    },
-    {
-      "idiom" : "watch",
-      "role" : "quickLook",
-      "scale" : "2x",
-      "size" : "129x129",
-      "subtype" : "49mm"
-    },
-    {
-      "filename" : "Icon.png",
+      "size" : "1024x1024",
       "idiom" : "watch-marketing",
-      "scale" : "1x",
-      "size" : "1024x1024"
+      "filename" : "Icon-App-Store-1024.png",
+      "scale" : "1x"
     }
   ],
   "info" : {
-    "author" : "xcode",
-    "version" : 1
+    "version" : 1,
+    "author" : "xcode"
   }
 }
