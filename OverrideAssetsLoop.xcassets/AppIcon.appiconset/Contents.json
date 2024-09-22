@@ -1,116 +1,116 @@
 {
   "images" : [
+	{
+      "size" : "20x20",
+      "idiom": "iphone",
+	  "filename" : "Frame 4-20@2x.png",
+      "scale": "2x"
+    },
+	{
+      "size" : "20x20",
+      "idiom": "iphone",
+	  "filename" : "Frame 4-20@3x.png",
+      "scale": "3x"
+    },
+	{
+      "size" : "20x20",
+      "idiom": "ipad",
+	  "filename" : "Frame 4-20.png",
+      "scale": "1x"
+    },
     {
-      "filename" : "image_fx_-20@2x.png",
+      "size" : "20x20",
+      "idiom": "ipad",
+	  "filename" : "Frame 4-20@2x.png",
+      "scale": "2x"
+    },
+    {
+      "size" : "29x29",
       "idiom" : "iphone",
-      "scale" : "2x",
-      "size" : "20x20"
+      "filename" : "Frame 4-29@2x.png",
+      "scale" : "2x"
     },
     {
-      "filename" : "image_fx_-20@3x.png",
+      "size" : "29x29",
       "idiom" : "iphone",
-      "scale" : "3x",
-      "size" : "20x20"
+      "filename" : "Frame 4-29@3x.png",
+      "scale" : "3x"
     },
     {
-      "filename" : "image_fx_-29@2x.png",
+      "size" : "40x40",
       "idiom" : "iphone",
-      "scale" : "2x",
-      "size" : "29x29"
+      "filename" : "Frame 4-40@2x.png",
+      "scale" : "2x"
     },
     {
-      "filename" : "image_fx_-29@3x.png",
+      "size" : "40x40",
       "idiom" : "iphone",
-      "scale" : "3x",
-      "size" : "29x29"
+      "filename" : "Frame 4-40@3x.png",
+      "scale" : "3x"
     },
     {
-      "filename" : "image_fx_-40@2x.png",
+      "size" : "60x60",
       "idiom" : "iphone",
-      "scale" : "2x",
-      "size" : "40x40"
+      "filename" : "Frame 4-60@2x.png",
+      "scale" : "2x"
     },
     {
-      "filename" : "image_fx_-40@3x.png",
+      "size" : "60x60",
       "idiom" : "iphone",
-      "scale" : "3x",
-      "size" : "40x40"
+      "filename" : "Frame 4-60@3x.png",
+      "scale" : "3x"
     },
     {
-      "filename" : "image_fx_-60@2x.png",
-      "idiom" : "iphone",
-      "scale" : "2x",
-      "size" : "60x60"
-    },
-    {
-      "filename" : "image_fx_-60@3x.png",
-      "idiom" : "iphone",
-      "scale" : "3x",
-      "size" : "60x60"
-    },
-    {
-      "filename" : "image_fx_-20.png",
+      "size" : "29x29",
       "idiom" : "ipad",
-      "scale" : "1x",
-      "size" : "20x20"
+      "filename" : "Frame 4-29.png",
+      "scale" : "1x"
     },
     {
-      "filename" : "image_fx_-20@2x.png",
+      "size" : "29x29",
       "idiom" : "ipad",
-      "scale" : "2x",
-      "size" : "20x20"
+      "filename" : "Frame 4-29@2x.png",
+      "scale" : "2x"
     },
     {
-      "filename" : "image_fx_-29.png",
+      "size" : "40x40",
       "idiom" : "ipad",
-      "scale" : "1x",
-      "size" : "29x29"
+      "filename" : "Frame 4-40.png",
+      "scale" : "1x"
     },
     {
-      "filename" : "image_fx_-29@2x.png",
+      "size" : "40x40",
       "idiom" : "ipad",
-      "scale" : "2x",
-      "size" : "29x29"
+      "filename" : "Frame 4-40@2x.png",
+      "scale" : "2x"
     },
     {
-      "filename" : "image_fx_-40.png",
+      "size" : "76x76",
       "idiom" : "ipad",
-      "scale" : "1x",
-      "size" : "40x40"
+      "filename" : "Frame 4-76.png",
+      "scale" : "1x"
     },
     {
-      "filename" : "image_fx_-40@2x.png",
+      "size" : "76x76",
       "idiom" : "ipad",
-      "scale" : "2x",
-      "size" : "40x40"
+      "filename" : "Frame 4-76@2x.png",
+      "scale" : "2x"
     },
     {
-      "filename" : "image_fx_-76.png",
+      "size" : "83.5x83.5",
       "idiom" : "ipad",
-      "scale" : "1x",
-      "size" : "76x76"
+      "filename" : "Frame 4-83.5@2x.png",
+      "scale" : "2x"
     },
     {
-      "filename" : "image_fx_-76@2x.png",
-      "idiom" : "ipad",
-      "scale" : "2x",
-      "size" : "76x76"
-    },
-    {
-      "filename" : "image_fx_-83.5@2x.png",
-      "idiom" : "ipad",
-      "scale" : "2x",
-      "size" : "83.5x83.5"
-    },
-    {
-      "filename" : "image_fx_-1024.png",
+      "size" : "1024x1024",
       "idiom" : "ios-marketing",
-      "scale" : "1x",
-      "size" : "1024x1024"
+      "filename" : "Frame 4-1024.png",
+      "scale" : "1x"
     }
   ],
   "info" : {
-    "author" : "xcode",
-    "version" : 1
+    "version" : 1,
+    "author" : "xcode"
   }
 }
