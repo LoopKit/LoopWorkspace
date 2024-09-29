@@ -41,14 +41,14 @@ jobs:
           TOKEN_TO_CHECK: ${{ secrets.GH_PAT }}
         run: |
           PERMISSIONS=$(curl -sS -f -I -H "Authorization: token ${{ env.TOKEN_TO_CHECK }}" https://api.github.com | grep ^x-oauth-scopes: | cut -d' ' -f2-);
-
+          
           if [[ $PERMISSIONS =~ "workflow" || $PERMISSIONS == "" ]]; then
             echo "GH_PAT holds workflow permissions or is fine-grained PAT."
-            echo "has_permission=true" >> $GITHUB_OUTPUT # Set WORKFLOW_PERMISSION to false.
+            echo "has_permission=true" >> $GITHUB_OUTPUT
           else 
             echo "GH_PAT lacks workflow permissions."
             echo "Automated build features will be skipped!"
-            echo "has_permission=false" >> $GITHUB_OUTPUT # Set WORKFLOW_PERMISSION to false.
+            echo "has_permission=false" >> $GITHUB_OUTPUT
           fi
 
       - name: Check for alive branches
@@ -56,7 +56,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
         run: |
-          if [[ $(gh api -H "Accept: application/vnd.github+json" /repos/${{ github.repository_owner }}/LoopWorkspace/branches | jq --raw-output '[.[] | select(.name == "alive-main" or .name == "alive-dev")] | length > 0') == "true" ]]; then
+          ALIVE_BRANCH_EXISTS=$(gh api -H "Accept: application/vnd.github+json" /repos/${{ github.repository_owner }}/LoopWorkspace/branches | jq --raw-output '[.[] | select(.name == "alive-main" or .name == "alive-dev")] | length > 0')
+          
+          if [[ $ALIVE_BRANCH_EXISTS == "true" ]]; then
             echo "Branches 'alive-main' or 'alive-dev' exist."
             echo "ALIVE_BRANCH_EXISTS=true" >> $GITHUB_ENV
           else
@@ -92,6 +94,7 @@ jobs:
             /repos/${{ github.repository_owner }}/LoopWorkspace/git/refs \
             -f ref='refs/heads/alive-dev' \
             -f sha=$SHA_DEV
+
 
   # Checks for changes in upstream repository; if changes exist prompts sync for build
   # Performs keepalive to avoid stale fork
