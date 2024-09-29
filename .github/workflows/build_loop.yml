@@ -271,17 +271,16 @@ jobs:
             exit 1
           fi
 
-      # Uninstall any existing fastlane
+      # Uninstall any existing fastlane version
       - name: Uninstall existing fastlane
         run: |
           gem uninstall fastlane -a -x
-
-      # Install the latest version of fastlane
-      - name: Install latest fastlane version
-        run: gem install fastlane -N
-
-
-      # Check fastlane version to verify it's updated
+    
+      # Install the latest version of fastlane (2.223.1)
+      - name: Install fastlane 2.223.1
+        run: gem install fastlane -v 2.223.1 -N
+    
+      # Verify the installed fastlane version
       - name: Verify fastlane version
         run: fastlane -v
 
