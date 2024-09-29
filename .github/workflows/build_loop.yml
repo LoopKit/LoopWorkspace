@@ -28,31 +28,31 @@ jobs:
           token: ${{ secrets.GH_PAT }}
           submodules: recursive
 
-      # Uninstall existing Bundler versions to avoid conflicts
+      # Uninstall any existing Bundler versions
       - name: Uninstall existing Bundler
         run: gem uninstall bundler -a -x || true
-
+  
       # Install Bundler 2.4.19
       - name: Install Bundler 2.4.19
         run: gem install bundler -v 2.4.19
-
+  
       # Verify Bundler version
       - name: Verify Bundler version
         run: bundler -v
-
-      # Remove Gemfile.lock if it exists
-      - name: Remove existing Gemfile.lock
+  
+      # Remove Gemfile.lock if necessary
+      - name: Remove Gemfile.lock if exists
         run: |
           if [ -f Gemfile.lock ]; then
             echo "Removing existing Gemfile.lock"
-            rm Gemfile.lock
+            rm -f Gemfile.lock
           else
             echo "No Gemfile.lock to remove"
           fi
-
-      # Install project dependencies and regenerate Gemfile.lock using Bundler 2.4.19
-      - name: Install Project Dependencies with Bundler 2.4.19
-        run: bundle _2.4.19_ install --verbose
+  
+      # Install project dependencies using Bundler 2.4.19
+      - name: Install Project Dependencies
+        run: bundle _2.4.19_ install
 
       # Display the contents of the regenerated Gemfile.lock to confirm it worked
       - name: Display Gemfile.lock
