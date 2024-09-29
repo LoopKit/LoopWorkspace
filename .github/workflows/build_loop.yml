@@ -284,9 +284,14 @@ jobs:
       - name: Verify fastlane version
         run: fastlane -v
 
-      # Install project dependencies
+      # Install the correct Bundler version
+      - name: Install Bundler 2.4.19
+        run: gem install bundler -v 2.4.19
+
+      # Use Bundler 2.4.19 to install dependencies
       - name: Install Project Dependencies
-        run: bundle install
+        run: bundle _2.4.19_ install
+
 
       # **Add this step to update provisioning profiles**
       - name: Update Provisioning Profiles
