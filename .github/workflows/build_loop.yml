@@ -283,15 +283,13 @@ jobs:
       - name: Verify Bundler version
         run: bundler -v
   
-      # Remove existing Gemfile.lock if it still causes issues
+      # Ensure Gemfile.lock is removed
       - name: Remove Gemfile.lock if necessary
         run: rm -f Gemfile.lock
   
       # Install project dependencies using Bundler 2.4.19
       - name: Install Project Dependencies
         run: bundle _2.4.19_ install
-
-
 
       # **Add this step to update provisioning profiles**
       - name: Update Provisioning Profiles
