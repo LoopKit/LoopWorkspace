@@ -271,6 +271,16 @@ jobs:
             exit 1
           fi
 
+      # **Ensure fastlane is updated to the latest version**
+      - name: Update fastlane to the latest version
+        run: |
+          gem install fastlane -N  # Installs the latest fastlane version
+          bundle update fastlane   # Ensures fastlane is up-to-date
+
+      # Check fastlane version to verify it's updated
+      - name: Verify fastlane version
+        run: fastlane -v
+
       # Install project dependencies
       - name: Install Project Dependencies
         run: bundle install
@@ -278,6 +288,7 @@ jobs:
       # **Add this step to update provisioning profiles**
       - name: Update Provisioning Profiles
         run: bundle exec fastlane match appstore
+
 
       # Sync the GitHub runner clock with the Windows time server (workaround as suggested in https://github.com/actions/runner/issues/2996)
       - name: Sync clock
