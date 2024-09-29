@@ -271,26 +271,26 @@ jobs:
             exit 1
           fi
 
-      # Uninstall any existing fastlane version
-      - name: Uninstall existing fastlane
-        run: |
-          gem uninstall fastlane -a -x
-    
-      # Install the latest version of fastlane (2.223.1)
-      - name: Install fastlane 2.223.1
-        run: gem install fastlane -v 2.223.1 -N
-    
-      # Verify the installed fastlane version
-      - name: Verify fastlane version
-        run: fastlane -v
-
-      # Install the correct Bundler version
+      # Uninstall any existing Bundler versions
+      - name: Uninstall existing Bundler
+        run: gem uninstall bundler -a -x || true
+  
+      # Install Bundler 2.4.19
       - name: Install Bundler 2.4.19
         run: gem install bundler -v 2.4.19
-
-      # Use Bundler 2.4.19 to install dependencies
+  
+      # Verify Bundler version
+      - name: Verify Bundler version
+        run: bundler -v
+  
+      # Remove existing Gemfile.lock if it still causes issues
+      - name: Remove Gemfile.lock if necessary
+        run: rm -f Gemfile.lock
+  
+      # Install project dependencies using Bundler 2.4.19
       - name: Install Project Dependencies
         run: bundle _2.4.19_ install
+
 
 
       # **Add this step to update provisioning profiles**
