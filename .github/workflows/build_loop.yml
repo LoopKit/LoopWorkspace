@@ -263,14 +263,14 @@ jobs:
           # Submodule Loop patches:
           # Template for customizing submodule Loop (changes Loop app name to "CustomLoop")
           # Remove the "#" sign from the beginning of the line below to activate:
-          curl https://github.com/loopandlearn/LoopWorkspace/commit/155d2e4a89ab5e7e6b423c67f8c0ccb132517ca4.patch | git apply --directory=Loop -v --whitespace=fix
+          curl https://github.com/loopandlearn/LoopWorkspace/commit/155d2e4a89ab5e7e6b423c67f8c0ccb132517ca4.patch | git apply -v --whitespace=fix
 
           # Submodule LoopKit patches:
           # General template for customizing submodule LoopKit 
           # Copy url from a GitHub commit or pull request and insert below, and remove the "#" sign from the beginning of the line to activate:
           echo "Downloading code to support Dana pump"
           git clone --branch=dev https://github.com/bastiaanv/DanaKit
-          curl https://github.com/loopandlearn/LoopWorkspace/commit/155d2e4a89ab5e7e6b423c67f8c0ccb132517ca4.patch | git apply --directory=LoopKit -v --whitespace=fix
+          curl https://github.com/loopandlearn/LoopWorkspace/commit/155d2e4a89ab5e7e6b423c67f8c0ccb132517ca4.patch | git apply -v --whitespace=fix
 
           # Submodule xxxxx patches:
 
@@ -279,8 +279,7 @@ jobs:
           # Several patches may be added per submodule.
           # Adding comments (#) may be useful to easily tell the individual patches apart.
           
-          echo "Downloading code to support Dana pump"
-          git clone --branch=dev https://github.com/bastiaanv/DanaKit
+
           
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
