@@ -270,7 +270,7 @@ jobs:
           # Copy url from a GitHub commit or pull request and insert below, and remove the "#" sign from the beginning of the line to activate:
           echo "Downloading code to support Dana pump"
           git clone --branch=dev https://github.com/bastiaanv/DanaKit
-          curl https://github.com/loopandlearn/LoopWorkspace/commit/155d2e4a89ab5e7e6b423c67f8c0ccb132517ca4.patch | git apply -v --whitespace=fix
+          # curl https://github.com/loopandlearn/LoopWorkspace/commit/155d2e4a89ab5e7e6b423c67f8c0ccb132517ca4.patch | git apply -v --whitespace=fix
 
           # Submodule xxxxx patches:
 
