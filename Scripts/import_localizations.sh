@@ -27,7 +27,7 @@ lokalise2 \
     --replace-breaks=false \
     --unzip-to ./xliff_in
 
-projects=(LoopKit:AmplitudeService:dev LoopKit:CGMBLEKit:dev LoopKit:G7SensorKit:main LoopKit:LogglyService:dev LoopKit:Loop:dev LoopKit:LoopKit:dev LoopKit:LoopOnboarding:dev LoopKit:LoopSupport:dev LoopKit:NightscoutAPIClient:master ps2:NightscoutService:dev LoopKit:OmniBLE:dev LoopKit:TidepoolKit:dev LoopKit:TidepoolService:dev LoopKit:dexcom-share-client-swift:dev ps2:rileylink_ios:dev LoopKit:OmniKit:main LoopKit:MinimedKit:main)
+projects=(LoopKit:AmplitudeService:dev LoopKit:CGMBLEKit:dev LoopKit:G7SensorKit:main LoopKit:LogglyService:dev LoopKit:Loop:dev LoopKit:LoopKit:dev LoopKit:LoopOnboarding:dev LoopKit:LoopSupport:dev LoopKit:NightscoutRemoteCGM:dev LoopKit:NightscoutService:dev LoopKit:OmniBLE:dev LoopKit:TidepoolService:dev LoopKit:dexcom-share-client-swift:dev LoopKit:RileyLinkKit:dev LoopKit:OmniKit:main LoopKit:MinimedKit:main LoopKit:LibreTransmitter:main)
 
 for project in ${projects}; do
   echo "Prepping $project"
@@ -35,7 +35,9 @@ for project in ${projects}; do
   echo "parts = $user $dir $branch"
   cd $dir
   git checkout $branch
+  git pull
   git branch -D translations || true
+  git checkout -b translations || true
   cd -
 done
 
@@ -55,7 +57,6 @@ for project in ${projects}; do
   IFS=":" read user dir branch <<< "$project"
   echo "parts = $user $dir $branch"
   cd $dir
-  git checkout -b translations || true
   git add .
   if git commit -am "Updated translations from Lokalise on ${date}"; then
     git push -f
