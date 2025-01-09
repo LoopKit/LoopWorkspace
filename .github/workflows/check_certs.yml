@@ -49,7 +49,12 @@ jobs:
             echo "Certificate status file not found. Defaulting to false."
             echo "new_certificate_needed=false" >> $GITHUB_OUTPUT
           fi
-          
+
+          # Check if certs are valid
+          if [ "$CERT_STATUS" != "true" ]; then
+            echo "::notice::✅ Distribution certificate is present and valid. No action required."
+          fi
+
           # Check if ENABLE_NUKE_CERTS is not set to true when certs are valid
           if [ "$CERT_STATUS" != "true" ] && [ "$ENABLE_NUKE_CERTS" != "true" ]; then
             echo "::notice::🔔 Automated renewal of certificates is disabled because the repository variable ENABLE_NUKE_CERTS is not set to 'true'."
