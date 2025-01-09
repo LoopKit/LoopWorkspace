@@ -1,8 +1,7 @@
 name: Check Certificates
 run-name: Check Certificates (${{ github.ref_name }})
 
-on:
-  workflow_dispatch:
+on: [workflow_call, workflow_dispatch]
 
 env:
   EXPIRATION_WARNING_DAYS: 7
