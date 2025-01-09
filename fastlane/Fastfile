@@ -332,12 +332,6 @@ platform :ios do
     # Handle output for triggering workflow
     if new_certificate_needed
       puts "❌ Certificate is expired or no certificates found. Creating flag file to trigger renewal or creation of certificate."
-      puts ""
-      puts "⚠️⚠️⚠️   All Distribution certificates and TestFlight profiles are being revoked."
-      puts "⚠️⚠️⚠️   If you have other apps being distributed by GitHub Actions / Fastlane / TestFlight,"
-      puts "⚠️⚠️⚠️   please run the '3. Create Certificates' workflow for each of these apps to allow these apps to be built."
-      puts ""
-      puts "✅✅✅   But don't worry about your existing TestFlight builds, they will keep working!"
     else
       puts "✅ Distribution certificate is present and valid. No action required."
     end

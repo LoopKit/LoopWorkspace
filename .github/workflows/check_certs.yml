@@ -50,9 +50,15 @@ jobs:
             echo "new_certificate_needed=false" >> $GITHUB_OUTPUT
           fi
           
-          # Check if ENABLE_NUKE_CERTS is not set to true
+          # Check if ENABLE_NUKE_CERTS is not set to true when certs are valid
+          if [ "$CERT_STATUS" != "true" ] && [ "$ENABLE_NUKE_CERTS" != "true" ]; then
+            echo "::notice::🔔 Automated renewal of certificates is disabled because the repository variable ENABLE_NUKE_CERTS is not set to 'true'."
+          fi
+
+          # Check if ENABLE_NUKE_CERTS is not set to true when certs are not valid
           if [ "$CERT_STATUS" = "true" ] && [ "$ENABLE_NUKE_CERTS" != "true" ]; then
-            echo "::notice::🔔 Nuke certificates was skipped because the repository variable ENABLE_NUKE_CERTS is not set to 'true'."
+            echo "::error::❌ No valid distribution certificate found. Automated renewal of certificates was skipped because the repository variable ENABLE_NUKE_CERTS is not set to 'true'."
+            exit 1
           fi
 
           # Check if vars.FORCE_NUKE_CERTS is not set to true
@@ -111,6 +117,5 @@ jobs:
       - name: Annotate Summary
         run: |
           echo "::warning::⚠️⚠️⚠️   Certificates have been recreated successfully."
-          echo "::warning::⚠️⚠️⚠️   If you have other apps being distributed by GitHub Actions / Fastlane / TestFlight,"
-          echo "::warning::⚠️⚠️⚠️   please run the '3. Create Certificates' workflow for each of these apps to allow these apps to be built."
+          echo "::warning::⚠️⚠️⚠️   If you have other apps being distributed by GitHub Actions / Fastlane / TestFlight, please run the '3. Create Certificates' workflow for each of these apps to allow these apps to be built."
           echo "::warning::✅✅✅   But don't worry about your existing TestFlight builds, they will keep working!"
