@@ -56,11 +56,16 @@ jobs:
             echo "::notice::🔔 Nuke certificates was skipped because the repository variable ENABLE_NUKE_CERTS is not set to 'true'."
           fi
 
-  # Nuke Certs if needed, and if the repository variable ENABLE_NUKE_CERTS is set to 'true' (without quotes)
+          # Check if vars.FORCE_NUKE_CERTS is not set to true
+          if [ vars.FORCE_NUKE_CERTS = "true" ]; then
+            echo "::warning::‼️ Nuking of certificates was forced because the repository variable FORCE_NUKE_CERTS is set to 'true'."
+          fi
+
+  # Nuke Certs if needed, and if the repository variable ENABLE_NUKE_CERTS is set to 'true', or if FORCE_NUKE_CERTS is set to 'true', which will always force certs to be nuked
   nuke_certs:
     needs: check_certs
-    runs-on: macos-14 
-    if: ${{ needs.check_certs.outputs.new_certificate_needed == 'true' && vars.ENABLE_NUKE_CERTS == 'true' }}
+    runs-on: macos-14
+    if: ${{ (needs.check_certs.outputs.new_certificate_needed == 'true' && vars.ENABLE_NUKE_CERTS == 'true') || vars.FORCE_NUKE_CERTS == 'true' }}
     steps:
       - name: Debug check_certs output
         run: echo "new_certificate_needed=${{ needs.check_certs.outputs.new_certificate_needed }}"
