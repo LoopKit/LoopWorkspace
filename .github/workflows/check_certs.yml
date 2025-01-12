@@ -29,9 +29,6 @@ jobs:
         run: bundle install
 
       - name: Check Certificates and create or renew if needed
-        env:
-          FASTLANE_USER: ${{ secrets.APPLE_ID }}
-          FASTLANE_PASSWORD: ${{ secrets.APPLE_PASSWORD }}
         run: bundle exec fastlane check_and_renew_certificates
         id: check_certs
 
