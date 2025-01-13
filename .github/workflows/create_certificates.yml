@@ -1,4 +1,4 @@
-name: Check Certificates
+name: 3. Check Certificates
 run-name: Check Certificates (${{ github.ref_name }})
 
 on: [workflow_call, workflow_dispatch]
