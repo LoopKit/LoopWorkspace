@@ -183,6 +183,7 @@ jobs:
                 under the following path <code>LoopWorkspace/fastlane/testflight.md</code>." >> $GITHUB_STEP_SUMMARY
 
   # Builds Loop
+  # runs if started manually
   build:
     name: Build
     needs: [validate, check_alive_and_permissions, check_latest_from_upstream]
