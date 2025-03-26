@@ -88,7 +88,7 @@ A private Match-Secrets repository is automatically created under your GitHub us
 
 ## Setup GitHub LoopWorkspace Repository
 
-1. Fork https://github.com/LoopKit/LoopWorkspace into your GitHub username (using your organization if you have one). If you already have a fork of Trio in that username, you should not make another one. Do not rename the repository. You can continue to work with your existing fork, or delete that from GitHub and then fork again.
+1. Fork https://github.com/LoopKit/LoopWorkspace into your GitHub username (using your organization if you have one). If you already have a fork of LoopWorkspace in that username, you should not make another one. Do not rename the repository. You can continue to work with your existing fork, or delete that from GitHub and then fork again.
 1. If you are using an organization, do this step at the organization level, e.g., username-org. If you are not using an organization, do this step at the repository level, e.g., username/LoopWorkspace:
     * Go to Settings -> Secrets and variables -> Actions and make sure the Secrets tab is open
 1. For each of the following secrets, tap on "New organization secret" or "New repository secret", then add the name of the secret, along with the value you recorded for it:
@@ -281,7 +281,7 @@ Your build will run on the following conditions:
 This is not typical. But if you do use more than one GitHub username, follow these steps at the time of the annual certificate renewal.
 
 1. After the certificates were removed (nuked) from username1 Match-Secrets storage, you need to switch to username2
-1. Add the variable FORCE_NUKE_CERTS=true to the username2/Trio repository
+1. Add the variable FORCE_NUKE_CERTS=true to the username2/LoopWorkspace repository
 1. Run the action Create Certificate (or Build, but Create is faster)
 1. Immediately set FORCE_NUKE_CERTS=false or delete the variable
 
