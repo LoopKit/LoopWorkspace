@@ -96,4 +96,7 @@
    <FileRef
       location = "group:LoopOnboarding/LoopOnboarding.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:VersionOverride.xcconfig">
+   </FileRef>
 </Workspace>
