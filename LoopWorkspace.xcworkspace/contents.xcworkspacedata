@@ -20,9 +20,6 @@
    <FileRef
       location = "container:LoopConfigOverride.xcconfig">
    </FileRef>
-   <FileRef
-      location = "group:LoopVersion.xcconfig">
-   </FileRef>
    <Group
       location = "group:fastlane"
       name = "fastlane">
