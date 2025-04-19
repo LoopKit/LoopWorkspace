@@ -1,10 +1,10 @@
 # Using GitHub Actions + FastLane to deploy to TestFlight
 
-These instructions allow you to build Loop without having access to a Mac.
+These instructions allow you to build your app without having access to a Mac.
 
-* You can install Loop on phones using TestFlight that are not connected to your computer
+* You can install your app on phones using TestFlight that are not connected to your computer
 * You can send builds and updates to those you care for
-* You can install Loop on your phone using only the TestFlight app if a phone was lost or the app is accidentally deleted
+* You can install your app on your phone using only the TestFlight app if a phone was lost or the app is accidentally deleted
 * You do not need to worry about specific Xcode/Mac versions for a given iOS
 
 ## **Automatic Builds**
@@ -26,14 +26,14 @@ These instructions allow you to build Loop without having access to a Mac.
 
 The setup steps are somewhat involved, but nearly all are one time steps. Subsequent builds are trivial. Your app must be updated once every 90 days, but it's a simple click to make a new build and can be done from anywhere. The 90-day update is a TestFlight requirement, and with this version of Loop, the build process (once you've successfully built once) is automated to update and build at least once a month.
 
-There are more detailed instructions in LoopDocs for using GitHub for Browser Builds of Loop, including troubleshooting and build errors. Please refer to:
+There are more detailed instructions in LoopDocs for using GitHub for Browser Builds, including troubleshooting and build errors. Please refer to:
 
-* [LoopDocs: GitHub Overview](https://loopkit.github.io/loopdocs/gh-actions/gh-overview/)
-* [LoopDocs: GitHub Errors](https://loopkit.github.io/loopdocs/gh-actions/gh-errors/)
+* [LoopDocs: Browser Overview](https://loopkit.github.io/loopdocs/browser/bb-overview/)
+* [LoopDocs: Errors with Browser](https://loopkit.github.io/loopdocs/browser/bb-errors/)
 
-Note that installing with TestFlight, (in the US), requires the Apple ID account holder to be 13 years or older. For younger Loopers, an adult must log into Media & Purchase on the child's phone to install Loop. More details on this can be found in [LoopDocs](https://loopkit.github.io/loopdocs/gh-actions/gh-deploy/#install-testflight-loop-for-child).
+Note that installing with TestFlight, (in the US), requires the Apple ID account holder to be 13 years or older. For younger Loopers, an adult must log into Media & Purchase on the child's phone to install Loop. More details on this can be found in [LoopDocs](https://loopkit.github.io/loopdocs/browser/phone-install/#testflight-for-a-child).
 
-If you build multiple apps, it is strongly recommended that you configure a free *GitHub* organization and do all your building in the organization. This means you enter items one time for the organization (6 SECRETS required to build and 1 VARIABLE required to automatically update your certificates annually). Otherwise, those 6 SECRETS must be entered for every repository. Please refer to [LoopDocs: Use a *GitHub* Organization Account](https://loopkit.github.io/loopdocs/gh-actions/gh-other-apps/#use-a-github-organization-account).
+If you build multiple apps, it is strongly recommended that you configure a free *GitHub* organization and do all your building in the organization. This means you enter items one time for the organization (6 SECRETS required to build and 1 VARIABLE required to automatically update your certificates annually). Otherwise, those 6 SECRETS must be entered for every repository. Please refer to [LoopDocs: Create a *GitHub* Organization](https://loopkit.github.io/loopdocs/browser/secrets/#create-a-free-github-organization).
 
 ## Prerequisites
 
@@ -43,14 +43,14 @@ If you build multiple apps, it is strongly recommended that you configure a free
 
 ## Save 6 Secrets
 
-You require 6 Secrets (alphanumeric items) to use the GitHub build method and if you use the GitHub method to build more than Loop, e.g., Loop Follow or LoopCaregiver, you will use the same 6 Secrets for each app you build with this method. Each secret is indentified below by `ALL_CAPITAL_LETTER_NAMES`.
+You require 6 Secrets (alphanumeric items) to use the GitHub build method and if you use the GitHub method to build more than Loop, e.g., Loop Follow or LoopCaregiver, you will use the same 6 Secrets for each app you build with this method. Each secret is identified below by `ALL_CAPITAL_LETTER_NAMES`.
 
 * Four Secrets are from your Apple Account
 * Two Secrets are from your GitHub account
 * Be sure to save the 6 Secrets in a text file using a text editor
     - Do **NOT** use a smart editor, which might auto-correct and change case, because these Secrets are case sensitive
 
-Refer to [LoopDocs: Make a Secrets Reference File](https://loopkit.github.io/loopdocs/gh-actions/gh-first-time/#make-a-secrets-reference-file) for a handy template to use when saving your Secrets.
+Refer to [LoopDocs: Make a Secrets Reference File](https://loopkit.github.io/loopdocs/browser/intro-summary/#make-a-secrets-reference-file) for a handy template to use when saving your Secrets.
 
 ## Generate App Store Connect API Key
 
@@ -100,7 +100,7 @@ A private Match-Secrets repository is automatically created under your GitHub us
     * `MATCH_PASSWORD`
 1. If you are using an organization, do this step at the organization level, e.g., username-org. If you are not using an organization, do this step at the repository level, e.g., username/LoopWorkspace:
     * Go to Settings -> Secrets and variables -> Actions and make sure the Variables tab is open
-1. Tap on "Create new organization variable" or "Create new repository variable", then add the name below and enter the value true. Unlike secrets variables are visible and can be edited.
+1. Tap on "Create new organization variable" or "Create new repository variable", then add the name below and enter the value true. Unlike secrets, variables are visible and can be edited.
     * `ENABLE_NUKE_CERTS`
 
 ## Validate repository secrets
@@ -124,11 +124,11 @@ There can be a delay after you start a workflow before the screen changes. Refre
 
 ## Create App Group
 
-If you have already built Loop via Xcode using this Apple ID, you can skip on to [Add App Group to Bundle Identifiers](#add-app-group-to-bundle-identifiers).
+If you have already built Loop via Xcode using this Apple ID, you can skip ahead to [Add App Group to Bundle Identifiers](#add-app-group-to-bundle-identifiers).
 
-1. Go to [Register an App Group](https://developer.apple.com/account/resources/identifiers/applicationGroup/add/) on the apple developer site.
+1. Go to [Register an App Group](https://developer.apple.com/account/resources/identifiers/applicationGroup/add/) on the Apple Developer site.
 1. For Description, use "Loop App Group".
-1. For Identifier, enter "group.com.TEAMID.loopkit.LoopGroup", subsituting your team id for `TEAMID`.
+1. For Identifier, enter "group.com.TEAMID.loopkit.LoopGroup", substituting your team id for `TEAMID`.
 1. Click "Continue" and then "Register".
 
 ## Add App Group to Bundle Identifiers
@@ -137,21 +137,21 @@ Note 1 - If you previously built with Xcode, the `Names` listed below may be dif
 
 Note 2 - Depending on your build history, you may find some of the Identifiers are already configured - and you are just verifying the status; but in other cases, you will need to configure the Identifiers.
 
-1. Go to [Certificates, Identifiers & Profiles](https://developer.apple.com/account/resources/identifiers/list) on the apple developer site.
+1. Go to [Certificates, Identifiers & Profiles](https://developer.apple.com/account/resources/identifiers/list) on the Apple Developer site.
 1. For each of the following identifier names:
     * Loop
     * Loop Intent Extension
     * Loop Status Extension
     * Loop Widget Extension
 1. Click on the identifier's name.
-1. On the "App Groups" capabilies, click on the "Configure" button.
+1. On the "App Groups" capabilities, click on the "Configure" button.
 1. Select the "Loop App Group"
 1. Click "Continue".
 1. Click "Save".
 1. Click "Confirm".
 1. Remember to do this for each of the identifiers above.
 
-#### Table with Name and Identifier for Loop 3
+#### Table with Name and Identifier for Loop
 
 | NAME | IDENTIFIER |
 |-------|------------|
@@ -197,7 +197,7 @@ Once a year, you will get an email from Apple indicating your certificate will e
 
 ## TestFlight and Deployment Details
 
-Please refer to [LoopDocs: Set Up Users](https://loopkit.github.io/loopdocs/gh-actions/gh-first-time/#set-up-users-and-access-testflight) and [LoopDocs: Deploy](https://loopkit.github.io/loopdocs/gh-actions/gh-deploy/)
+Please refer to [LoopDocs: TestFlight Overview](https://loopkit.github.io/loopdocs/browser/tf-users) and [LoopDocs: Install on Phone](https://loopkit.github.io/loopdocs/browser/phone-install/)
 
 ## Automatic Build FAQs
 
@@ -252,7 +252,7 @@ Note that the weekly and monthly Build Loop actions will continue, but the actio
 
 ### How to configure a variable
 
-1. Go to the "Settings" tab of your LoopWorkspace repository.
+1. Go to the "Settings" tab of your repository (to modify a single repository schedule) or your organization to affect all repositories.
 2. Click on `Secrets and Variables`.
 3. Click on `Actions`
 4. You will now see a page titled *Actions secrets and variables*. Click on the `Variables` tab
