@@ -43,7 +43,7 @@ If you build multiple apps, it is strongly recommended that you configure a free
 
 ## Save 6 Secrets
 
-You require 6 Secrets (alphanumeric items) to use the GitHub build method and if you use the GitHub method to build more than Loop, e.g., Loop Follow or LoopCaregiver, you will use the same 6 Secrets for each app you build with this method. Each secret is indentified below by `ALL_CAPITAL_LETTER_NAMES`.
+You require 6 Secrets (alphanumeric items) to use the GitHub build method and if you use the GitHub method to build more than Loop, e.g., Loop Follow or LoopCaregiver, you will use the same 6 Secrets for each app you build with this method. Each secret is identified below by `ALL_CAPITAL_LETTER_NAMES`.
 
 * Four Secrets are from your Apple Account
 * Two Secrets are from your GitHub account
@@ -100,7 +100,7 @@ A private Match-Secrets repository is automatically created under your GitHub us
     * `MATCH_PASSWORD`
 1. If you are using an organization, do this step at the organization level, e.g., username-org. If you are not using an organization, do this step at the repository level, e.g., username/LoopWorkspace:
     * Go to Settings -> Secrets and variables -> Actions and make sure the Variables tab is open
-1. Tap on "Create new organization variable" or "Create new repository variable", then add the name below and enter the value true. Unlike secrets variables are visible and can be edited.
+1. Tap on "Create new organization variable" or "Create new repository variable", then add the name below and enter the value true. Unlike secrets, variables are visible and can be edited.
     * `ENABLE_NUKE_CERTS`
 
 ## Validate repository secrets
@@ -124,11 +124,11 @@ There can be a delay after you start a workflow before the screen changes. Refre
 
 ## Create App Group
 
-If you have already built Loop via Xcode using this Apple ID, you can skip on to [Add App Group to Bundle Identifiers](#add-app-group-to-bundle-identifiers).
+If you have already built Loop via Xcode using this Apple ID, you can skip ahead to [Add App Group to Bundle Identifiers](#add-app-group-to-bundle-identifiers).
 
-1. Go to [Register an App Group](https://developer.apple.com/account/resources/identifiers/applicationGroup/add/) on the apple developer site.
+1. Go to [Register an App Group](https://developer.apple.com/account/resources/identifiers/applicationGroup/add/) on the Apple Developer site.
 1. For Description, use "Loop App Group".
-1. For Identifier, enter "group.com.TEAMID.loopkit.LoopGroup", subsituting your team id for `TEAMID`.
+1. For Identifier, enter "group.com.TEAMID.loopkit.LoopGroup", substituting your team id for `TEAMID`.
 1. Click "Continue" and then "Register".
 
 ## Add App Group to Bundle Identifiers
@@ -137,14 +137,14 @@ Note 1 - If you previously built with Xcode, the `Names` listed below may be dif
 
 Note 2 - Depending on your build history, you may find some of the Identifiers are already configured - and you are just verifying the status; but in other cases, you will need to configure the Identifiers.
 
-1. Go to [Certificates, Identifiers & Profiles](https://developer.apple.com/account/resources/identifiers/list) on the apple developer site.
+1. Go to [Certificates, Identifiers & Profiles](https://developer.apple.com/account/resources/identifiers/list) on the Apple Developer site.
 1. For each of the following identifier names:
     * Loop
     * Loop Intent Extension
     * Loop Status Extension
     * Loop Widget Extension
 1. Click on the identifier's name.
-1. On the "App Groups" capabilies, click on the "Configure" button.
+1. On the "App Groups" capabilities, click on the "Configure" button.
 1. Select the "Loop App Group"
 1. Click "Continue".
 1. Click "Save".
