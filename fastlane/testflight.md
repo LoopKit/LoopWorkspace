@@ -1,15 +1,15 @@
 # Using GitHub Actions + FastLane to deploy to TestFlight
 
-These instructions allow you to build Loop without having access to a Mac.
+These instructions allow you to build your app without having access to a Mac.
 
-* You can install Loop on phones via TestFlight that are not connected to your computer
+* You can install your app on phones using TestFlight that are not connected to your computer
 * You can send builds and updates to those you care for
-* You can install Loop on your phone using only the TestFlight app if a phone was lost or the app is accidentally deleted
+* You can install your app on your phone using only the TestFlight app if a phone was lost or the app is accidentally deleted
 * You do not need to worry about specific Xcode/Mac versions for a given iOS
 
 ## **Automatic Builds**
 > 
-> This new version of the browser build **defaults to** automatically updating and building a new version of Loop according to this schedule:
+> The browser build **defaults to** automatically updating and building a new version of Loop according to this schedule:
 > - automatically checks for updates weekly on Wednesdays and if updates are found, it will build a new version of the app
 > - automatically builds once a month regardless of whether there are updates on the first of the month
 > - with each scheduled run (weekly or monthly), a successful Build Loop log appears - if the time is very short, it did not need to build - only the long actions (>20 minutes) built a new Loop app
@@ -26,12 +26,14 @@ These instructions allow you to build Loop without having access to a Mac.
 
 The setup steps are somewhat involved, but nearly all are one time steps. Subsequent builds are trivial. Your app must be updated once every 90 days, but it's a simple click to make a new build and can be done from anywhere. The 90-day update is a TestFlight requirement, and with this version of Loop, the build process (once you've successfully built once) is automated to update and build at least once a month.
 
-There are more detailed instructions in LoopDocs for using GitHub for Browser Builds of Loop, including troubleshooting and build errors. Please refer to:
+There are more detailed instructions in LoopDocs for using GitHub for Browser Builds, including troubleshooting and build errors. Please refer to:
 
-* [LoopDocs: GitHub Overview](https://loopkit.github.io/loopdocs/gh-actions/gh-overview/)
-* [LoopDocs: GitHub Errors](https://loopkit.github.io/loopdocs/gh-actions/gh-errors/)
+* [LoopDocs: Browser Overview](https://loopkit.github.io/loopdocs/browser/bb-overview/)
+* [LoopDocs: Errors with Browser](https://loopkit.github.io/loopdocs/browser/bb-errors/)
 
-Note that installing with TestFlight, (in the US), requires the Apple ID account holder to be 13 years or older. For younger Loopers, an adult must log into Media & Purchase on the child's phone to install Loop. More details on this can be found in [LoopDocs](https://loopkit.github.io/loopdocs/gh-actions/gh-deploy/#install-testflight-loop-for-child).
+Note that installing with TestFlight, (in the US), requires the Apple ID account holder to be 13 years or older. For younger Loopers, an adult must log into Media & Purchase on the child's phone to install Loop. More details on this can be found in [LoopDocs](https://loopkit.github.io/loopdocs/browser/phone-install/#testflight-for-a-child).
+
+If you build multiple apps, it is strongly recommended that you configure a free *GitHub* organization and do all your building in the organization. This means you enter items one time for the organization (6 SECRETS required to build and 1 VARIABLE required to automatically update your certificates annually). Otherwise, those 6 SECRETS must be entered for every repository. Please refer to [LoopDocs: Create a *GitHub* Organization](https://loopkit.github.io/loopdocs/browser/secrets/#create-a-free-github-organization).
 
 ## Prerequisites
 
@@ -41,12 +43,14 @@ Note that installing with TestFlight, (in the US), requires the Apple ID account
 
 ## Save 6 Secrets
 
-You require 6 Secrets (alphanumeric items) to use the GitHub build method and if you use the GitHub method to build more than Loop, e.g., Loop Follow or LoopCaregiver, you will use the same 6 Secrets for each app you build with this method. Each secret is indentified below by `ALL_CAPITAL_LETTER_NAMES`.
+You require 6 Secrets (alphanumeric items) to use the GitHub build method and if you use the GitHub method to build more than Loop, e.g., Loop Follow or LoopCaregiver, you will use the same 6 Secrets for each app you build with this method. Each secret is identified below by `ALL_CAPITAL_LETTER_NAMES`.
 
 * Four Secrets are from your Apple Account
 * Two Secrets are from your GitHub account
 * Be sure to save the 6 Secrets in a text file using a text editor
     - Do **NOT** use a smart editor, which might auto-correct and change case, because these Secrets are case sensitive
+
+Refer to [LoopDocs: Make a Secrets Reference File](https://loopkit.github.io/loopdocs/browser/intro-summary/#make-a-secrets-reference-file) for a handy template to use when saving your Secrets.
 
 ## Generate App Store Connect API Key
 
@@ -60,6 +64,8 @@ This step is common for all GitHub Browser Builds; do this step only once. You w
 1. Download the API key itself, and open it in a text editor. The contents of this file will be used for `FASTLANE_KEY`. Copy the full text, including the "-----BEGIN PRIVATE KEY-----" and "-----END PRIVATE KEY-----" lines.
 
 ## Create GitHub Personal Access Token
+
+If you have previously built another app using the "browser build" method, you use the same personal access token (`GH_PAT`), so skip this step. If you use a free GitHub organization to build, you still use the same personal access token. This is created using your personal GitHub username.
 
 Log into your GitHub account to create a personal access token; this is one of two GitHub secrets needed for your build.
 
@@ -76,25 +82,26 @@ This is the second one of two GitHub secrets needed for your build.
 
 The first time you build with the GitHub Browser Build method for any DIY app, you will make up a password and record it as `MATCH_PASSWORD`. Note, if you later lose `MATCH_PASSWORD`, you will need to delete and make a new Match-Secrets repository (next step).
 
-## Setup GitHub Match-Secrets Repository
+## GitHub Match-Secrets Repository
 
-The creation of the Match-Secrets repository is a common step for all GitHub Browser Builds; do this step only once. You must be logged into your GitHub account.
-
-1. Create a [new empty repository](https://github.com/new) titled `Match-Secrets`. It should be private.
-
-Once created, you will not take any direct actions with this repository; it needs to be there for the GitHub to use as you progress through the steps.
+A private Match-Secrets repository is automatically created under your GitHub username the first time you run a GitHub Action. Because it is a private repository - only you can see it. You will not take any direct actions with this repository; it needs to be there for GitHub to use as you progress through the steps.
 
 ## Setup GitHub LoopWorkspace Repository
 
-1. Fork https://github.com/LoopKit/LoopWorkspace into your account.
-1. In the forked LoopWorkspace repo, go to Settings -> Secrets and variables -> Actions.
-1. For each of the following secrets, tap on "New repository secret", then add the name of the secret, along with the value you recorded for it:
+1. Fork https://github.com/LoopKit/LoopWorkspace into your GitHub username (using your organization if you have one). If you already have a fork of LoopWorkspace in that username, you should not make another one. Do not rename the repository. You can continue to work with your existing fork, or delete that from GitHub and then fork again.
+1. If you are using an organization, do this step at the organization level, e.g., username-org. If you are not using an organization, do this step at the repository level, e.g., username/LoopWorkspace:
+    * Go to Settings -> Secrets and variables -> Actions and make sure the Secrets tab is open
+1. For each of the following secrets, tap on "New organization secret" or "New repository secret", then add the name of the secret, along with the value you recorded for it:
     * `TEAMID`
     * `FASTLANE_ISSUER_ID`
     * `FASTLANE_KEY_ID`
     * `FASTLANE_KEY`
     * `GH_PAT`
     * `MATCH_PASSWORD`
+1. If you are using an organization, do this step at the organization level, e.g., username-org. If you are not using an organization, do this step at the repository level, e.g., username/LoopWorkspace:
+    * Go to Settings -> Secrets and variables -> Actions and make sure the Variables tab is open
+1. Tap on "Create new organization variable" or "Create new repository variable", then add the name below and enter the value true. Unlike secrets, variables are visible and can be edited.
+    * `ENABLE_NUKE_CERTS`
 
 ## Validate repository secrets
 
@@ -106,6 +113,8 @@ This step validates most of your six Secrets and provides error messages if it d
 1. Wait, and within a minute or two you should see a green checkmark indicating the workflow succeeded.
 1. The workflow will check if the required secrets are added and that they are correctly formatted. If errors are detected, please check the run log for details.
 
+There can be a delay after you start a workflow before the screen changes. Refresh your browser to see if it started. And if it seems to take a long time to finish - refresh your browser to see if it is done.
+
 ## Add Identifiers for Loop App
 
 1. Click on the "Actions" tab of your LoopWorkspace repository.
@@ -115,11 +124,11 @@ This step validates most of your six Secrets and provides error messages if it d
 
 ## Create App Group
 
-If you have already built Loop via Xcode using this Apple ID, you can skip on to [Add App Group to Bundle Identifiers](#add-app-group-to-bundle-identifiers).
+If you have already built Loop via Xcode using this Apple ID, you can skip ahead to [Add App Group to Bundle Identifiers](#add-app-group-to-bundle-identifiers).
 
-1. Go to [Register an App Group](https://developer.apple.com/account/resources/identifiers/applicationGroup/add/) on the apple developer site.
+1. Go to [Register an App Group](https://developer.apple.com/account/resources/identifiers/applicationGroup/add/) on the Apple Developer site.
 1. For Description, use "Loop App Group".
-1. For Identifier, enter "group.com.TEAMID.loopkit.LoopGroup", subsituting your team id for `TEAMID`.
+1. For Identifier, enter "group.com.TEAMID.loopkit.LoopGroup", substituting your team id for `TEAMID`.
 1. Click "Continue" and then "Register".
 
 ## Add App Group to Bundle Identifiers
@@ -128,21 +137,21 @@ Note 1 - If you previously built with Xcode, the `Names` listed below may be dif
 
 Note 2 - Depending on your build history, you may find some of the Identifiers are already configured - and you are just verifying the status; but in other cases, you will need to configure the Identifiers.
 
-1. Go to [Certificates, Identifiers & Profiles](https://developer.apple.com/account/resources/identifiers/list) on the apple developer site.
+1. Go to [Certificates, Identifiers & Profiles](https://developer.apple.com/account/resources/identifiers/list) on the Apple Developer site.
 1. For each of the following identifier names:
     * Loop
     * Loop Intent Extension
     * Loop Status Extension
     * Loop Widget Extension
 1. Click on the identifier's name.
-1. On the "App Groups" capabilies, click on the "Configure" button.
+1. On the "App Groups" capabilities, click on the "Configure" button.
 1. Select the "Loop App Group"
 1. Click "Continue".
 1. Click "Save".
 1. Click "Confirm".
 1. Remember to do this for each of the identifiers above.
 
-#### Table with Name and Identifier for Loop 3
+#### Table with Name and Identifier for Loop
 
 | NAME | IDENTIFIER |
 |-------|------------|
@@ -171,10 +180,9 @@ You do not need to fill out the next form. That is for submitting to the app sto
 
 ## Create Building Certificates
 
-1. Go back to the "Actions" tab of your LoopWorkspace repository in GitHub.
-1. On the left side, select "3. Create Certificates".
-1. On the right side, click "Run Workflow", and tap the green `Run workflow` button.
-1. Wait, and within a minute or two you should see a green checkmark indicating the workflow succeeded.
+This step is no longer required. The Build Loop function now takes care of this for you. It does not hurt to run it but is not needed.
+
+Once a year, you will get an email from Apple indicating your certificate will expire in 30 days. You can ignore that email. When it does expire, the next time an automatic or manual build happens, the expired certificate information will be removed (nuked) from your Match-Secrets repository and a new one created. This should happen without you needing to take any action.
 
 ## Build Loop
 
@@ -189,7 +197,7 @@ You do not need to fill out the next form. That is for submitting to the app sto
 
 ## TestFlight and Deployment Details
 
-Please refer to [LoopDocs: Set Up Users](https://loopkit.github.io/loopdocs/gh-actions/gh-first-time/#set-up-users-and-access-testflight) and [LoopDocs: Deploy](https://loopkit.github.io/loopdocs/gh-actions/gh-deploy/)
+Please refer to [LoopDocs: TestFlight Overview](https://loopkit.github.io/loopdocs/browser/tf-users) and [LoopDocs: Install on Phone](https://loopkit.github.io/loopdocs/browser/phone-install/)
 
 ## Automatic Build FAQs
 
@@ -244,7 +252,7 @@ Note that the weekly and monthly Build Loop actions will continue, but the actio
 
 ### How to configure a variable
 
-1. Go to the "Settings" tab of your LoopWorkspace repository.
+1. Go to the "Settings" tab of your repository (to modify a single repository schedule) or your organization to affect all repositories.
 2. Click on `Secrets and Variables`.
 3. Click on `Actions`
 4. You will now see a page titled *Actions secrets and variables*. Click on the `Variables` tab
@@ -267,3 +275,14 @@ Your build will run on the following conditions:
 - If you disable any automation (both variables set to `false`), no updates, keep-alive or building happens when Build Loop runs
 - If you disabled just scheduled synchronization (`SCHEDULED_SYNC` set to`false`), it will only run once a month, on the first of the month, no update will happen; keep-alive will run
 - If you disabled just scheduled build (`SCHEDULED_BUILD` set to`false`), it will run once weekly, every Wednesday, to check for changes; if there are changes, it will update and build; keep-alive will run
+
+## What if I build using more than one GitHub username
+
+This is not typical. But if you do use more than one GitHub username, follow these steps at the time of the annual certificate renewal.
+
+1. After the certificates were removed (nuked) from username1 Match-Secrets storage, you need to switch to username2
+1. Add the variable FORCE_NUKE_CERTS=true to the username2/LoopWorkspace repository
+1. Run the action Create Certificate (or Build, but Create is faster)
+1. Immediately set FORCE_NUKE_CERTS=false or delete the variable
+
+Now certificates for username2 have been cleared out of Match-Secrets storage for username2. Building can proceed as usual for both username1 and username2.
