@@ -58,3 +58,7 @@
 [submodule "LibreTransmitter"]
 	path = LibreTransmitter
 	url = https://github.com/LoopKit/LibreTransmitter.git
+[submodule "EversenseNowClient"]
+	path = EversenseNowClient
+	url = https://github.com/haarisedhi102/EversenseNowClient.git
+	branch = main

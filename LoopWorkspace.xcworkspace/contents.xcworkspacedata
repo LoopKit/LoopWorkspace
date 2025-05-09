@@ -43,6 +43,9 @@
       location = "container:OverrideAssetsWatchApp.xcassets">
    </FileRef>
    <FileRef
+      location = "container:../EversenseNowClient/EversenseNowClient.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Loop/Loop.xcodeproj">
    </FileRef>
    <FileRef
