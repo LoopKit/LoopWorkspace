@@ -6,7 +6,7 @@ on:
   ## Remove the "#" sign from the beginning of the line below to get automated builds on push (code changes in your repository)
   #push:
 
-  # Automated builds now include automatic certificate update - the nuke certs part of that process could
+   Automated builds now include automatic certificate update - the nuke certs part of that process could
   #   affect other OS apps if run simultaneously.
   # Each OS needs a time of day distinct from other apps, LoopWorkspace uses 9 every Wed and 7 every 1st of month
   schedule:
