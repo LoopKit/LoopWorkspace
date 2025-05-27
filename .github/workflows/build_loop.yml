@@ -299,6 +299,12 @@ jobs:
       - name: Install Project Dependencies
         run: bundle install
 
+      # Uppdatera Fastlane till senaste version
+      - name: Update Fastlane
+        run: 
+          gem update fastlane --no-document
+          fastlane --version
+
       # Sync the GitHub runner clock with the Windows time server (workaround as suggested in https://github.com/actions/runner/issues/2996)
       - name: Sync clock
         run: sudo sntp -sS time.windows.com
