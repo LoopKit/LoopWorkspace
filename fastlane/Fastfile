@@ -44,7 +44,7 @@ platform :ios do
       api_key: api_key,
     )
 
-    current_build_number = previous_build_number + 1
+    current_build_number = 54
 
     increment_build_number(
       xcodeproj: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
@@ -69,7 +69,7 @@ platform :ios do
       api_key: api_key,
     )
 
-    current_build_number = previous_build_number + 1
+    current_build_number = 54
 
     increment_build_number(
       xcodeproj: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
