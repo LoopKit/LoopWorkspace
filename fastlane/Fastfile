@@ -170,11 +170,38 @@ platform :ios do
       key_content: "#{FASTLANE_KEY}"
     )
 
+    # def configure_bundle_id(name, identifier, capabilities)
+    #   bundle_id = Spaceship::ConnectAPI::BundleId.find(identifier) || Spaceship::ConnectAPI::BundleId.create(name: name, identifier: identifier)
+    #   capabilities.each { |capability|
+    #     puts "Adding capability: #{capability}" # Debug statement
+    #     bundle_id.create_capability(capability)
+    #   }
+    # end
+
     def configure_bundle_id(name, identifier, capabilities)
-      bundle_id = Spaceship::ConnectAPI::BundleId.find(identifier) || Spaceship::ConnectAPI::BundleId.create(name: name, identifier: identifier)
-      capabilities.each { |capability|
-        bundle_id.create_capability(capability)
-      }
+      begin
+        bundle_id = Spaceship::ConnectAPI::BundleId.find(identifier) || Spaceship::ConnectAPI::BundleId.create(name: name, identifier: identifier)
+        
+        capabilities.each do |capability|
+          puts "Processing capability: #{capability}"
+          begin
+            # Check if capability already exists
+            existing = bundle_id.capabilities.find { |cap| cap.capability_type == capability }
+            if existing
+              puts "Capability #{capability} already exists"
+            else
+              puts "Adding capability: #{capability}"
+              bundle_id.create_capability(capability)
+            end
+          rescue => e
+            puts "Error adding capability #{capability}: #{e.message}"
+            # You could choose to fail or continue based on your requirements
+          end
+        }
+      rescue => e
+        puts "Error configuring bundle ID #{identifier}: #{e.message}"
+        raise e # Re-raise if you want the pipeline to fail
+      end
     end
 
     configure_bundle_id("Loop", "com.#{TEAMID}.loopkit.Loop", [
