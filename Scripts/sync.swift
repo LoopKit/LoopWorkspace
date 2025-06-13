@@ -112,6 +112,7 @@ for project in projects {
     try await repository.checkout(revspec: syncBranch)
 
     // Merge changes from tidepool to diy
+    print("Starting merge for \(project.project)")
     try await repository.merge(revisionSpecification: "\(incomingRemote)/\(project.branch)", signature: signature)
 
     let originTree = try repository.lookupTree(for: "origin/\(project.branch)")
