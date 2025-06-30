@@ -1,5 +1,5 @@
 {
-  "originHash" : "f8d1e9c237647ab612da7f2bd3ae26946f39410508314c00cf54509a673f147e",
+  "originHash" : "fd72e13865455a2feb38fe4cd881140a6934ac07e655a5d873c322bc9fac19f7",
   "pins" : [
     {
       "identity" : "amplitude-ios",
@@ -35,6 +35,15 @@
       "state" : {
         "revision" : "eee9ad754926c40a0f7e73f152357d37b119b7fa",
         "version" : "1.7.1"
+      }
+    },
+    {
+      "identity" : "loopalgorithm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/LoopKit/LoopAlgorithm",
+      "state" : {
+        "branch" : "main",
+        "revision" : "9d2405464d16a3bd2953e114f046b20bf2cabb48"
       }
     },
     {
@@ -96,7 +105,7 @@
       "location" : "https://github.com/tidepool-org/TidepoolKit",
       "state" : {
         "branch" : "dev",
-        "revision" : "54045c2e7d720dcd8a0909037772dcd6f54f0158"
+        "revision" : "b21a7906a202525c4e303dbee9b92182927ef0b5"
       }
     },
     {
@@ -104,7 +113,6 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/LoopKit/ZIPFoundation.git",
       "state" : {
-        "branch" : "stream-entry",
         "revision" : "c67b7509ec82ee2b4b0ab3f97742b94ed9692494"
       }
     }
