@@ -1,0 +1,12 @@
+//
+//  VersionOverride.xcconfig
+//  LoopWorkspace
+//
+//  Created 3/31/2025
+//  Copyright © 2020 LoopKit Authors. All rights reserved.
+//
+
+// Version [for DIY Loop]
+//   configure the version number in LoopWorkspace
+LOOP_MARKETING_VERSION = 3.6.3
+CURRENT_PROJECT_VERSION = 57
