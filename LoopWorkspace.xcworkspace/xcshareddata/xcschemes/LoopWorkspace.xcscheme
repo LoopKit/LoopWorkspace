@@ -154,6 +154,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "3E767D422D67B790004B1971"
+               BuildableName = "MedtrumKitPlugin.loopplugin"
+               BlueprintName = "MedtrumKitPlugin"
+               ReferencedContainer = "container:MedtrumKit/MedtrumKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "C124021629C7D93D00B32844"
                BuildableName = "OmniKitPlugin.loopplugin"
                BlueprintName = "OmniKitPlugin"

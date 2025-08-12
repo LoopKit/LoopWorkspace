@@ -58,3 +58,7 @@
 [submodule "LibreTransmitter"]
 	path = LibreTransmitter
 	url = https://github.com/LoopKit/LibreTransmitter.git
+[submodule "MedtrumKit"]
+	path = MedtrumKit
+	branch = dev
+	url = https://github.com/loopandlearn/MedtrumKit.git
