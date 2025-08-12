@@ -284,7 +284,7 @@ jobs:
           # and make sure to specify the submodule by setting "--directory=(submodule_name)".
           # Several patches may be added per submodule.
           # Adding comments (#) may be useful to easily tell the individual patches apart.
-
+          profiles \
       # Patch Fastlane Match to not print tables
       - name: Patch Match Tables
         run: |
