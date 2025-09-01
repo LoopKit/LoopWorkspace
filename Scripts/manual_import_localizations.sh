@@ -31,9 +31,9 @@ set -o pipefail && time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme 
 
 # Apply translations
 foreach file in xliff_in/*.xliff
-  echo "**********************************"
+  section_divider
   echo " importing ${file}"
-  echo "**********************************"
+  section_divider
   xcodebuild -workspace LoopWorkspace.xcworkspace -scheme "LoopWorkspace" -importLocalizations -localizationPath $file
 end
 
