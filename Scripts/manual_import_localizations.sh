@@ -1,37 +1,18 @@
 #!/bin/zsh
 
-# manually download and put the xliff files in the xliff_in folder
-# this script imports the customization into the users local clone of LoopWorkspace
+# This script imports localizations from xliff files into the users local clone of LoopWorkspace
+# You must be in the LoopWorkspace folder
+
+# Fetch translations from lokalise before running this script
+# ./Scripts/manual_download_from_lokalise.sh
+
+# Then execute script:
+# ./Scripts/manual_import_localizations.sh
 
 set -e
 set -u
 
-date=`date`
-
-translation_dir="translations"
-
-# Fetch translations from Lokalise manually before running this script
-# They need to be in the xliff_in folder at the LoopWorkspace level
-
-projects=( \
-    LoopKit:AmplitudeService:dev \
-    LoopKit:CGMBLEKit:dev \
-    LoopKit:dexcom-share-client-swift:dev \
-    LoopKit:G7SensorKit:main \
-    LoopKit:LibreTransmitter:main \
-    LoopKit:LogglyService:dev \
-    LoopKit:Loop:dev \
-    LoopKit:LoopKit:dev \
-    LoopKit:LoopOnboarding:dev \
-    LoopKit:LoopSupport:dev \
-    LoopKit:MinimedKit:main \
-    LoopKit:NightscoutRemoteCGM:dev \
-    LoopKit:NightscoutService:dev \
-    LoopKit:OmniBLE:dev \
-    LoopKit:OmniKit:main \
-    LoopKit:RileyLinkKit:dev \
-    LoopKit:TidepoolService:dev \
-    )
+source Scripts/define_common.sh
 
 for project in ${projects}; do
   echo "Prepping $project"
@@ -40,8 +21,8 @@ for project in ${projects}; do
   cd $dir
   git checkout $branch
   git pull
-  git branch -D ${translation_dir} || true
-  git checkout -b ${translation_dir} || true
+  git branch -D ${translation_branch} || true
+  git checkout -b ${translation_branch} || true
   cd -
 done
 
@@ -50,10 +31,12 @@ set -o pipefail && time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme 
 
 # Apply translations
 foreach file in xliff_in/*.xliff
-  echo "**********************************"
+  section_divider
   echo " importing ${file}"
-  echo "**********************************"
+  section_divider
   xcodebuild -workspace LoopWorkspace.xcworkspace -scheme "LoopWorkspace" -importLocalizations -localizationPath $file
 end
 
-## examine diffs before using the next script
+echo ""
+echo "Continue by reviewing the differences for each submodule with command:"
+echo "./Scripts/manual_review_translations.sh"
