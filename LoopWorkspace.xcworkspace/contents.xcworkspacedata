@@ -16,6 +16,24 @@
       <FileRef
          location = "group:import_localizations.sh">
       </FileRef>
+      <FileRef
+         location = "group:archive_translations.sh">
+      </FileRef>
+      <FileRef
+         location = "group:LocalizationInstructions.md">
+      </FileRef>
+      <FileRef
+         location = "group:manual_export_localizations.sh">
+      </FileRef>
+      <FileRef
+         location = "group:manual_import_localizations.sh">
+      </FileRef>
+      <FileRef
+         location = "group:manual_review_translations.sh">
+      </FileRef>
+      <FileRef
+         location = "group:manual_translations_finalize.sh">
+      </FileRef>
    </Group>
    <FileRef
       location = "container:LoopConfigOverride.xcconfig">
