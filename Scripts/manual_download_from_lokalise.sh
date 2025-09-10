@@ -19,12 +19,17 @@ date=`date`
 
 source Scripts/define_common.sh
 
+section_divider
+echo "You are running ${0}"
+echo "  This requests localization files from lokalise"
+
 # Fetch translations from lokalise
 rm -rf xliff_in
 lokalise2 \
     --token "$LOKALISE_TOKEN" \
     --project-id "414338966417c70d7055e2.75119857" \
     file download \
+    --async\
     --format xliff \
     --bundle-structure "%LANG_ISO%.%FORMAT%" \
     --original-filenames=false \
@@ -33,14 +38,17 @@ lokalise2 \
     --replace-breaks=false \
     --unzip-to ./xliff_in
 
-# create the temporary file xlate_pr_title.txt using the date of the import from localize
-# this overwrites any existing file because we want to capture the date of the actual download
+# create xlate_pr_title.txt using the date of the import from localize
+# this overwrites any existing file because we want to capture the date of the latest download
 
-echo "Updated translations from lokalise on ${date}" > "${message_file}"
+section_divider
+echo "Updated translations from lokalise on ${date}" > "${MESSAGE_FILE}"
+echo "The standard translation commit message is stored in ${MESSAGE_FILE}"
 
-echo "The standard translation commit message is stored in ${message_file}"
-
-echo ""
-echo "Continue by reviewing the importing the files in xliff_in"
-echo " for each submodule with command:"
+section_divider
+echo "To import from the xliff_in folder for each submodule, execute"
 echo "./Scripts/manual_import_localizations.sh"
+echo
+echo "If you prefer to use a path other than '${DEFAULT_TRANSLATION_BRANCH}',"
+echo " add that as the first argument on the import script"
+section_divider

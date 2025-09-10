@@ -21,32 +21,32 @@ set -u
 
 source Scripts/define_common.sh
 
-echo "This will upload an xliff file for each language to lokalise"
-echo "   Each uploaded file will be queued and processed"
-echo "Enter y to proceed, any other character exits"
-read query
+section_divider
+echo "You are running ${0}"
+echo "  It will upload an xliff file for each language to lokalise"
+echo "  from the xliff_out folder created by manual_export_localizations."
+echo
+echo "  Each uploaded file will be queued and processed"
 
-if [[ ${query} == "y" ]]; then
+continue_or_quit ${0}
 
-    cd xliff_out
+cd xliff_out
 
-    foreach lang in $LANGUAGES
+foreach lang in $LANGUAGES
 
-    # modify the hyphen to underscore to support lokalise lang-iso expectation
-    lang_iso=$(sed "s/zh-Hans/zh_Hans/g; s/pt-BR/pt_BR/g" <<<"$lang")
+# modify the hyphen to underscore to support lokalise lang-iso expectation
+lang_iso=$(sed "s/zh-Hans/zh_Hans/g; s/pt-BR/pt_BR/g" <<<"$lang")
 
-    lokalise2 \
-        --token $LOKALISE_TOKEN \
-        --convert-placeholders=false \
-        --project-id 414338966417c70d7055e2.75119857 \
-        file upload \
-        --file ${lang}.xliff \
-        --cleanup-mode \
-        --lang-iso ${lang_iso}
-    end
+lokalise2 \
+    --token $LOKALISE_TOKEN \
+    --convert-placeholders=false \
+    --project-id 414338966417c70d7055e2.75119857 \
+    file upload \
+    --file ${lang}.xliff \
+    --cleanup-mode \
+    --lang-iso ${lang_iso}
+end
 
-    echo "Reminder: At lokalise, wait until all uploaded files are processed"
-
-else;
-    echo "The upload to lokalise was skipped"
-fi
+section_divider
+echo "Reminder: At lokalise, wait until all uploaded files are processed"
+section_divider
