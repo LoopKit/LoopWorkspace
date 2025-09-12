@@ -62,3 +62,6 @@
 	path = MedtrumKit
 	branch = dev
 	url = https://github.com/loopandlearn/MedtrumKit.git
+[submodule "DanaKit"]
+	path = DanaKit
+	url = https://github.com/loopandlearn/DanaKit
