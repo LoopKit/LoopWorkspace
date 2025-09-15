@@ -1,7 +1,7 @@
 jobs:
   build_and_test:
     macos:
-      xcode: 15.4.0
+      xcode: 16.4
     steps:
       - checkout
       - run:
@@ -9,10 +9,10 @@ jobs:
           command: git submodule update --init --recursive --depth 1
       - run:
           name: Build Loop
-          command: set -o pipefail && time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme 'LoopWorkspace' -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.5' build | xcpretty
+          command: set -o pipefail && time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme 'LoopWorkspace' -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.5' build | xcpretty
       - run:
           name: Run Tests
-          command: set -o pipefail && time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme 'LoopWorkspace' -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.5' test | xcpretty
+          command: set -o pipefail && time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme 'LoopWorkspace' -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.5' test | xcpretty
 workflows:
   version: 2
   build_and_test:

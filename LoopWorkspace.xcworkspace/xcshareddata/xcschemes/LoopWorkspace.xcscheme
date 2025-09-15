@@ -182,6 +182,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "3E6007862D0C5D0C00B186D1"
+               BuildableName = "DanaKitPlugin.loopplugin"
+               BlueprintName = "DanaKitPlugin"
+               ReferencedContainer = "container:DanaKit/DanaKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "B40BF25D23ABD47400A43CEE"
                BuildableName = "ShareClientPlugin.loopplugin"
                BlueprintName = "ShareClientPlugin"
