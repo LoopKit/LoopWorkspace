@@ -122,6 +122,8 @@ There can be a delay after you start a workflow before the screen changes. Refre
 1. On the right side, click "Run Workflow", and tap the green `Run workflow` button.
 1. Wait, and within a minute or two you should see a green checkmark indicating the workflow succeeded.
 
+> New with changes *Apple* instituted in May 2025. There is one capability for the main Loop Identifier that has to be manually added. The Add Identifiers action cannot do it for you. Details are found at [Add Time Sensitive Capability](#add-time-sensitive-capability).
+
 ## Create App Group
 
 If you have already built Loop via Xcode using this Apple ID, you can skip ahead to [Add App Group to Bundle Identifiers](#add-app-group-to-bundle-identifiers).
@@ -139,7 +141,7 @@ Note 2 - Depending on your build history, you may find some of the Identifiers a
 
 1. Go to [Certificates, Identifiers & Profiles](https://developer.apple.com/account/resources/identifiers/list) on the Apple Developer site.
 1. For each of the following identifier names:
-    * Loop
+    * Loop (see Add Time Sensitive Capability)
     * Loop Intent Extension
     * Loop Status Extension
     * Loop Widget Extension
@@ -150,6 +152,15 @@ Note 2 - Depending on your build history, you may find some of the Identifiers a
 1. Click "Save".
 1. Click "Confirm".
 1. Remember to do this for each of the identifiers above.
+
+### Add Time Sensitive Capability
+
+For the Loop Identifier, you must manually add a capability if it is not already selected.
+
+1. Go to [Certificates, Identifiers & Profiles](https://developer.apple.com/account/resources/identifiers/list) on the Apple Developer site.
+1. Click on the Loop identifier name
+1, Scroll down on the screen looking at Capabilities until you reach `Time Sensitive Notifications`
+1. Make sure the Enable box to the left is selected - if you make a change, then you need to save the Identifier
 
 #### Table with Name and Identifier for Loop
 
