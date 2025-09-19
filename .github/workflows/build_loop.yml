@@ -292,6 +292,7 @@ jobs:
           dexcom_upload_readings \
           future_carbs_4h \
           no_auth \
+          2hlollipop \
           high_carb_limit \
           override_sens \
           profiles \
