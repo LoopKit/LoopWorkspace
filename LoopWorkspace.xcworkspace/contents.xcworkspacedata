@@ -109,6 +109,9 @@
       location = "group:TrueTime.swift/TrueTime.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:MedtrumKit/MedtrumKit.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:OmniBLE/OmniBLE.xcodeproj">
    </FileRef>
    <FileRef
