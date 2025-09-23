@@ -297,7 +297,9 @@ jobs:
           basal_lock \
           live_activity \
           negative_insulin 
-
+          # Loop: Update Absorption Times
+          curl https://github.com/Rdeboer180/Module/commit/62cb3ddba02ff0329aeec6aa9b155e3e41b43466.patch | git apply -v --directory=Loop
+          
           # the final customization listed above CANNOT have a continuation character
           # more customizations can be pasted after this line
       # Patch Fastlane Match to not print tables
