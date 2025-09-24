@@ -21,6 +21,8 @@ echo
 echo " This deletes the xclocs, xliff_in, xliff_out folders"
 echo " This deletes the file, ${MESSAGE_FILE}, with the lokalise download timestamp"
 echo " This restores all submodules to their current branch (reset, clean)"
+echo " If '${TRANSLATION_BRANCH}' branch exists and submodule is NOT on that branch:"
+echo "    then '${TRANSLATION_BRANCH}' branch is deleted"
 
 continue_or_quit ${0}
 
@@ -31,9 +33,19 @@ rm -f "${MESSAGE_FILE}"
 
 for project in ${PROJECTS}; do
   IFS=":" read user dir branch <<< "$project"
-  echo "Reset and clean $dir"
+  echo
+  echo " *** Reset and clean $dir"
   cd $dir
   git reset --hard; git clean -fd;
+  current_branch=$(git branch --show-current 2>/dev/null)
+  if [[ "${current_branch}" == "${TRANSLATION_BRANCH}" ]]; then
+    echo "  already on $TRANSLATION_BRANCH, take no action"
+  elif [ -n "$(git branch --list "$TRANSLATION_BRANCH")" ]; then
+    echo "  Local branch '$TRANSLATION_BRANCH' exists, deleting it."
+    git branch -D "${TRANSLATION_BRANCH}"
+  else
+    echo "  no branch named $TRANSLATION_BRANCH exists, take no action"
+  fi
   cd -
 done
 
