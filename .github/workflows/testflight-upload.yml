@@ -1,7 +1,7 @@
-name: Build and Upload to TestFlight
+name: TestFlight Upload
 
 on:
-  workflow_dispatch:  # Manual trigger only for safety
+  workflow_dispatch:
     inputs:
       build_type:
         description: 'Build Type'
@@ -12,50 +12,59 @@ on:
         - development
         - release
 
+env:
+  DEVELOPER_DIR: /Applications/Xcode.app/Contents/Developer
+  TEAMID: "5S2WW965AG"
+  FASTLANE_ISSUER_ID: "289e8063-2271-4b0a-9e3b-6376644ca657"
+  FASTLANE_KEY_ID: "KUT22ULSV9"
+
 jobs:
   build-and-upload:
     name: Build and Upload to TestFlight
     runs-on: macos-latest
     
-    # Only run if required secrets are available
-    if: |
-      secrets.TEAMID != '' &&
-      secrets.FASTLANE_KEY_ID != '' &&
-      secrets.FASTLANE_ISSUER_ID != '' &&
-      secrets.FASTLANE_KEY != ''
-      
     steps:
     - uses: actions/checkout@v4
       with:
         submodules: recursive
         
-    - name: Select Xcode
-      run: sudo xcode-select -s /Applications/Xcode.app
-      
-    - name: Install Fastlane
+    - name: Install Apple Certificate
+      env:
+        BUILD_CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
+        P12_PASSWORD: ${{ secrets.P12_PASSWORD }}
+        KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+      run: |
+        # Create keychain
+        security create-keychain -p "$KEYCHAIN_PASSWORD" build.keychain
+        security default-keychain -s build.keychain
+        security unlock-keychain -p "$KEYCHAIN_PASSWORD" build.keychain
+        security set-keychain-settings -t 3600 -u build.keychain
+
+        # Import certificate
+        echo -n "$BUILD_CERTIFICATE_BASE64" | base64 --decode --output certificate.p12
+        security import certificate.p12 -k build.keychain -P "$P12_PASSWORD" -T /usr/bin/codesign
+        security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "$KEYCHAIN_PASSWORD" build.keychain
+        
+    - name: Install Ruby and Fastlane
       run: |
         gem install bundler
         bundle install
         
     - name: Setup Provisioning
       env:
-        TEAMID: ${{ secrets.TEAMID }}
-        FASTLANE_KEY_ID: ${{ secrets.FASTLANE_KEY_ID }}
-        FASTLANE_ISSUER_ID: ${{ secrets.FASTLANE_ISSUER_ID }}
+        MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
         FASTLANE_KEY: ${{ secrets.FASTLANE_KEY }}
-        GH_PAT: ${{ secrets.GH_PAT }}
       run: |
-        bundle exec fastlane setup
+        # Create fastlane match config
+        echo "FASTLANE_KEY='$FASTLANE_KEY'" > .env
+        bundle exec fastlane match appstore
         
     - name: Build and Upload
       env:
-        TEAMID: ${{ secrets.TEAMID }}
-        FASTLANE_KEY_ID: ${{ secrets.FASTLANE_KEY_ID }}
-        FASTLANE_ISSUER_ID: ${{ secrets.FASTLANE_ISSUER_ID }}
+        MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
         FASTLANE_KEY: ${{ secrets.FASTLANE_KEY }}
-        BUILD_TYPE: ${{ github.event.inputs.build_type }}
       run: |
-        if [ "$BUILD_TYPE" = "release" ]; then
+        if [ "${{ github.event.inputs.build_type }}" = "release" ]; then
           bundle exec fastlane release
         else
           bundle exec fastlane beta
@@ -68,10 +77,8 @@ jobs:
         path: |
           Loop.ipa
           ExportOptions.plist
-        
-    - name: Upload Build Logs
+          
+    - name: Clean up keychain
       if: always()
-      uses: actions/upload-artifact@v3
-      with:
-        name: build-logs
-        path: buildlog/
+      run: |
+        security delete-keychain build.keychain
