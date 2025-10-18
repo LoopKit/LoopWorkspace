@@ -1,0 +1,91 @@
+import Foundation
+
+
+struct OctreotideAlgorithm {
+// MARK: - Tunable parameters (clinician-adjustable)
+var targetLow: Double = 70.0
+var targetHigh: Double = 100.0
+var criticalLow: Double = 65.0
+
+
+var minBasal: Double = 0.25
+var maxBasal: Double = 5.0
+
+
+var basalMultLow: Double = 1.5
+var basalMultHigh: Double = 0.5
+
+
+var trendFallFast: Double = -1.0 // mg/dL per min
+var trendRiseFast: Double = 1.0 // mg/dL per min
+
+
+var bolusUnit: Double = 1.0
+var bolusRepeatDelay: TimeInterval = 15 * 60 // seconds
+var maxDailyBolus: Double = 30.0
+
+
+// MARK: - State accessors (inject from Loop runtime)
+// The host app should provide these values when calling computeRecommendation
+
+
+// MARK: - Utility
+private func clamp(_ value: Double, _ minVal: Double, _ maxVal: Double) -> Double {
+return max(minVal, min(value, maxVal))
+}
+
+
+/// Compute trend in mg/dL per minute using 3 samples (e.g., t-10min, t-5min, t)
+/// glucoseHistory must be ordered oldest...newest and contain at least 3 entries spaced ~5 min
+private func computeTrendRate(glucoseHistory: [Double]) -> Double {
+guard glucoseHistory.count >= 3 else { return 0.0 }
+let last = glucoseHistory[glucoseHistory.count - 1]
+let thirdLast = glucoseHistory[glucoseHistory.count - 3]
+// approximate over ~10 minutes
+return (last - thirdLast) / 10.0
+}
+
+
+/// Main recommendation function
+/// - Parameters:
+/// - glucoseNow: current BG (mg/dL)
+/// - glucoseHistory: recent BG samples (mg/dL), oldest->newest, spacing ~5 min
+/// - scheduledBasal: scheduled basal rate (U/hr)
+/// - lastBolusDate: last bolus Date? (nil if none)
+/// - dailyBolusTotal: total bolus units given today
+/// - Returns: recommended basal (U/hr), recommended bolus (U), message(s)
+func computeRecommendation(glucoseNow: Double, glucoseHistory: [Double], scheduledBasal: Double, lastBolusDate: Date?, dailyBolusTotal: Double) -> (basal: Double, bolus: Double, messages: [String], trend: Double) {
+
+
+let trend = computeTrendRate(glucoseHistory: glucoseHistory)
+var recommendedBasal = scheduledBasal
+var recommendedBolus: Double = 0.0
+var messages: [String] = []
+
+
+// Helper to check bolus eligibility
+func canGiveBolus() -> Bool {
+if dailyBolusTotal + bolusUnit > maxDailyBolus { return false }
+if let last = lastBolusDate {
+if Date().timeIntervalSince(last) < bolusRepeatDelay { return false }
+}
+return true
+}
+
+
+// 1) Critical low
+if glucoseNow < criticalLow {
+messages.append("CRITICAL LOW (<\(Int(criticalLow))) — increase basal + consider bolus")
+recommendedBasal = clamp(scheduledBasal * basalMultLow, minBasal, maxBasal)
+if canGiveBolus() { recommendedBolus = bolusUnit }
+
+
+// 2) Low but not critical (< targetLow)
+} else if glucoseNow < targetLow {
+if trend <= trendFallFast {
+// rapid fall -> stronger increase
+recommendedBasal = clamp(scheduledBasal * basalMultLow * 1.2, minBasal, maxBasal)
+messages.append("Rapid fall detected -> stronger basal increase")
+} else {
+recommendedBasal = clamp(scheduledBasal * basalMultLow, minBasal, maxBasal)
+messages.append("Low range -> increase basal")
