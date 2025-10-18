@@ -1,0 +1,56 @@
+name: Octreotide CI
+
+on:
+  push:
+    branches: [ feature/octreotide-algorithm ]
+    paths:
+      - 'Experimental/Octreotide/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'Experimental/Octreotide/**'
+  workflow_dispatch:  # Allow manual triggers
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: macos-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
+        
+    - name: Select Xcode
+      run: sudo xcode-select -s /Applications/Xcode.app
+      
+    - name: List Available Schemes
+      run: xcodebuild -workspace LoopWorkspace.xcworkspace -list
+      
+    - name: Build and Test
+      run: |
+        xcodebuild test \
+          -workspace LoopWorkspace.xcworkspace \
+          -scheme LoopWorkspace \
+          -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest' \
+          -enableCodeCoverage YES \
+          -resultBundlePath TestResults.xcresult
+      
+    - name: Upload Test Results
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results
+        path: TestResults.xcresult
+        
+    - name: Generate Coverage Report
+      if: success()
+      run: |
+        xcrun xccov view --report TestResults.xcresult > coverage.txt
+        
+    - name: Upload Coverage
+      if: success()
+      uses: actions/upload-artifact@v3
+      with:
+        name: code-coverage
+        path: coverage.txt
