@@ -9,8 +9,8 @@ on:
         default: 'development'
         type: choice
         options:
-        - development
-        - release
+          - development
+          - release
 
 env:
   DEVELOPER_DIR: /Applications/Xcode.app/Contents/Developer
@@ -22,23 +22,23 @@ jobs:
   build-and-upload:
     name: Build and Upload to TestFlight
     runs-on: macos-latest
-    
+
     steps:
     - uses: actions/checkout@v4
-      with:
-        submodules: recursive
-        
+        with:
+          submodules: recursive
+
     - name: Install Apple Certificate
-      env:
-        BUILD_CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
-        P12_PASSWORD: ${{ secrets.P12_PASSWORD }}
-        KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
-      run: |
+        env:
+          BUILD_CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
+          P12_PASSWORD: ${{ secrets.P12_PASSWORD }}
+          KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+        run: |
         # Create keychain
-        security create-keychain -p "$KEYCHAIN_PASSWORD" build.keychain
-        security default-keychain -s build.keychain
-        security unlock-keychain -p "$KEYCHAIN_PASSWORD" build.keychain
-        security set-keychain-settings -t 3600 -u build.keychain
+          security create-keychain -p "$KEYCHAIN_PASSWORD" build.keychain
+          security default-keychain -s build.keychain
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" build.keychain
+          security set-keychain-settings -t 3600 -u build.keychain
 
         # Import certificate
         echo -n "$BUILD_CERTIFICATE_BASE64" | base64 --decode --output certificate.p12
@@ -53,32 +53,32 @@ jobs:
     - name: Setup Provisioning
       env:
         MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-        FASTLANE_KEY: ${{ secrets.FASTLANE_KEY }}
-      run: |
+          FASTLANE_KEY: ${{ secrets.FASTLANE_KEY }}
+        run: |
         # Create fastlane match config
         echo "FASTLANE_KEY='$FASTLANE_KEY'" > .env
         bundle exec fastlane match appstore
-        
+
     - name: Build and Upload
-      env:
-        MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-        FASTLANE_KEY: ${{ secrets.FASTLANE_KEY }}
-      run: |
-        if [ "${{ github.event.inputs.build_type }}" = "release" ]; then
+        env:
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          FASTLANE_KEY: ${{ secrets.FASTLANE_KEY }}
+        run: |
+          if [ "${{ github.event.inputs.build_type }}" = "release" ]; then
           bundle exec fastlane release
-        else
-          bundle exec fastlane beta
-        fi
-        
+          else
+            bundle exec fastlane beta
+          fi
+
     - name: Upload IPA
-      uses: actions/upload-artifact@v3
-      with:
-        name: loop-ipa
+        uses: actions/upload-artifact@v3
+        with:
+          name: loop-ipa
         path: |
           Loop.ipa
           ExportOptions.plist
-          
-    - name: Clean up keychain
-      if: always()
-      run: |
+
+      - name: Clean up keychain
+        if: always()
+        run: |
         security delete-keychain build.keychain
