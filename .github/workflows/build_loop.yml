@@ -8,104 +8,97 @@ on:
     - cron: "33 7 * * 0" # Sunday at UTC 7:33
 
 env:
+  GH_PAT: ${{ secrets.GH_PAT }}
   UPSTREAM_REPO: LoopKit/LoopWorkspace
   UPSTREAM_BRANCH: ${{ github.ref_name }} # branch on upstream repository to sync from (replace with specific branch name if needed)
   TARGET_BRANCH: ${{ github.ref_name }} # target branch on fork to be kept in sync
 
 jobs:
-
-  # Set a logic flag if this is the second instance of this day-of-week in this month
-  day_in_month:
+  # use a single runner for these sequential steps
+  check_status:
     runs-on: ubuntu-latest
-    name: Check day in month
-    outputs:
-      IS_SECOND_IN_MONTH: ${{ steps.date-check.outputs.is_second_instance }}
-
-    steps:
-      - id: date-check
-        name: Check if this is the second time this day-of-week happens this month
-        run: |
-          DAY_OF_MONTH=$(date +%-d)
-          WEEK_OF_MONTH=$(( ($(date +%-d) - 1) / 7 + 1 ))
-          if [[ $WEEK_OF_MONTH -eq 2 ]]; then
-            echo "is_second_instance=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "is_second_instance=false" >> "$GITHUB_OUTPUT"
-          fi
-
-  # Checks if Distribution certificate is present and valid, optionally nukes and
-  # creates new certs if the repository variable ENABLE_NUKE_CERTS == 'true'
-  check_certs: 
-    name: Check certificates
-    uses: ./.github/workflows/create_certs.yml
-    secrets: inherit
-
-  # Checks if GH_PAT holds workflow permissions
-  check_permissions:
-    needs: check_certs
-    runs-on: ubuntu-latest
-    name: Check and permissions
+    name: Check status to decide whether to build
     permissions:
       contents: write
     outputs:
-      WORKFLOW_PERMISSION: ${{ steps.workflow-permission.outputs.has_permission }}
-
-    steps:
-      - name: Check for workflow permissions
-        id: workflow-permission
-        env:
-          TOKEN_TO_CHECK: ${{ secrets.GH_PAT }}
-        run: |
-          PERMISSIONS=$(curl -sS -f -I -H "Authorization: token ${{ env.TOKEN_TO_CHECK }}" https://api.github.com | grep ^x-oauth-scopes: | cut -d' ' -f2-);
-
-          if [[ $PERMISSIONS =~ "workflow" || $PERMISSIONS == "" ]]; then
-            echo "GH_PAT holds workflow permissions or is fine-grained PAT."
-            echo "has_permission=true" >> $GITHUB_OUTPUT # Set WORKFLOW_PERMISSION to false.
-          else 
-            echo "GH_PAT lacks workflow permissions."
-            echo "Automated build features will be skipped!"
-            echo "has_permission=false" >> $GITHUB_OUTPUT # Set WORKFLOW_PERMISSION to false.
-          fi
-
-  # Checks for changes in upstream repository; if changes exist prompts sync for build
-  check_latest_from_upstream:
-    needs: [check_certs, check_permissions]
-    runs-on: ubuntu-latest
-    name: Check upstream
-    outputs:
       NEW_COMMITS: ${{ steps.sync.outputs.has_new_commits }}
-      ABORT_SYNC: ${{ steps.check_branch.outputs.ABORT_SYNC }}
+      IS_SECOND_IN_MONTH: ${{ steps.date-check.outputs.is_second_instance }}
 
+    # Check GH_PAT, sync repository, check day in month
     steps:
-      - name: Check if running on main or dev branch
-        if: |
-          needs.check_permissions.outputs.WORKFLOW_PERMISSION == 'true' &&
-          (vars.SCHEDULED_BUILD != 'false' || vars.SCHEDULED_SYNC != 'false')
-        id: check_branch
+
+      - name: Access
+        id: workflow-permission
         run: |
-          if [ "${GITHUB_REF##*/}" = "main" ]; then
-            echo "Running on main branch"
-            echo "ABORT_SYNC=false" >> $GITHUB_OUTPUT
-          elif [ "${GITHUB_REF##*/}" = "dev" ]; then
-            echo "Running on dev branch"
-            echo "ABORT_SYNC=false" >> $GITHUB_OUTPUT
+          # Validate Access Token
+          
+          # Ensure that gh exit codes are handled when output is piped.
+          set -o pipefail
+          
+          # Define patterns to validate the access token (GH_PAT) and distinguish between classic and fine-grained tokens.
+          GH_PAT_CLASSIC_PATTERN='^ghp_[a-zA-Z0-9]{36}$'
+          GH_PAT_FINE_GRAINED_PATTERN='^github_pat_[a-zA-Z0-9]{22}_[a-zA-Z0-9]{59}$'
+          
+          # Validate Access Token (GH_PAT)
+          if [ -z "$GH_PAT" ]; then
+            failed=true
+            echo "::error::The GH_PAT secret is unset or empty. Set it and try again."
           else
-            echo "Not running on main or dev branch"
-            echo "ABORT_SYNC=true" >> $GITHUB_OUTPUT
+            if [[ $GH_PAT =~ $GH_PAT_CLASSIC_PATTERN ]]; then
+              provides_scopes=true
+              echo "The GH_PAT secret is a structurally valid classic token."
+            elif [[ $GH_PAT =~ $GH_PAT_FINE_GRAINED_PATTERN ]]; then
+              echo "The GH_PAT secret is a structurally valid fine-grained token."
+            else
+              unknown_format=true
+              echo "The GH_PAT secret does not have a known token format."
+            fi
+            
+            # Attempt to capture the x-oauth-scopes scopes of the token.
+            if ! scopes=$(curl -sS -f -I -H "Authorization: token $GH_PAT" https://api.github.com | { grep -i '^x-oauth-scopes:' || true; } | cut -d ' ' -f2- | tr -d '\r'); then
+              failed=true
+              if [ $unknown_format ]; then
+                echo "::error::Unable to connect to GitHub using the GH_PAT secret. Verify that it is set correctly (including the 'ghp_' or 'github_pat_' prefix) and try again."
+              else
+                echo "::error::Unable to connect to GitHub using the GH_PAT secret. Verify that the token exists and has not expired at https://github.com/settings/tokens. If necessary, regenerate or create a new token (and update the secret), then try again."
+              fi
+            elif [[ $scopes =~ workflow ]]; then
+              echo "The GH_PAT secret has repo and workflow permissions."
+              echo "has_permission=true" >> $GITHUB_OUTPUT
+            elif [[ $scopes =~ repo ]]; then
+              echo "The GH_PAT secret has repo (but not workflow) permissions."
+            elif [ $provides_scopes ]; then
+              failed=true
+              if [ -z "$scopes" ]; then
+                echo "The GH_PAT secret is valid and can be used to connect to GitHub, but it does not provide any permission scopes."
+              else
+                echo "The GH_PAT secret is valid and can be used to connect to GitHub, but it only provides the following permission scopes: $scopes"
+              fi
+              echo "::error::The GH_PAT secret is lacking at least the 'repo' permission scope required to access the Match-Secrets repository. Update the token permissions at https://github.com/settings/tokens (to include the 'repo' and 'workflow' scopes) and try again."
+            else
+              echo "The GH_PAT secret is valid and can be used to connect to GitHub, but it does not provide inspectable scopes. Assuming that the 'repo' and 'workflow' permission scopes required to access the Match-Secrets repository and perform automations are present."
+              echo "has_permission=true" >> $GITHUB_OUTPUT
+            fi
+          fi
+          
+          # Exit unsuccessfully if secret validation failed.
+          if [ $failed ]; then
+            exit 2
           fi
 
       - name: Checkout target repo
         if: |
-          needs.check_permissions.outputs.WORKFLOW_PERMISSION == 'true' &&
+          steps.workflow-permission.outputs.has_permission == 'true' &&
           (vars.SCHEDULED_BUILD != 'false' || vars.SCHEDULED_SYNC != 'false')
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GH_PAT }}
 
+      # This syncs any target branch to upstream branch of the same name
       - name: Sync upstream changes
         if: | # do not run the upstream sync action on the upstream repository
-          needs.check_permissions.outputs.WORKFLOW_PERMISSION == 'true' &&
-          vars.SCHEDULED_SYNC != 'false' && github.repository_owner != 'LoopKit' && steps.check_branch.outputs.ABORT_SYNC == 'false'
+          steps.workflow-permission.outputs.has_permission == 'true' &&
+          vars.SCHEDULED_SYNC != 'false' && github.repository_owner != 'loopandlearn'
         id: sync
         uses: aormsby/Fork-Sync-With-Upstream-action@v3.4.1
         with:
@@ -118,24 +111,24 @@ jobs:
       # Display a sample message based on the sync output var 'has_new_commits'
       - name: New commits found
         if: |
-          needs.check_permissions.outputs.WORKFLOW_PERMISSION == 'true' &&
+          steps.workflow-permission.outputs.has_permission == 'true' &&
           vars.SCHEDULED_SYNC != 'false' && steps.sync.outputs.has_new_commits == 'true'
         run: echo "New commits were found to sync."
 
       - name: No new commits
         if: |
-          needs.check_permissions.outputs.WORKFLOW_PERMISSION == 'true' && 
+          steps.workflow-permission.outputs.has_permission == 'true' &&
           vars.SCHEDULED_SYNC != 'false' && steps.sync.outputs.has_new_commits == 'false'
         run: echo "There were no new commits."
 
       - name: Show value of 'has_new_commits'
-        if: needs.check_permissions.outputs.WORKFLOW_PERMISSION == 'true' && vars.SCHEDULED_SYNC != 'false' && steps.check_branch.outputs.ABORT_SYNC == 'false'
+        if: steps.workflow-permission.outputs.has_permission == 'true' && vars.SCHEDULED_SYNC != 'false'
         run: |
           echo ${{ steps.sync.outputs.has_new_commits }}
           echo "NEW_COMMITS=${{ steps.sync.outputs.has_new_commits }}" >> $GITHUB_OUTPUT
 
       - name: Show scheduled build configuration message
-        if: needs.check_permissions.outputs.WORKFLOW_PERMISSION != 'true'
+        if: steps.workflow-permission.outputs.has_permission != 'true'
         run: |
           echo "### :calendar: Scheduled Sync and Build Disabled :mobile_phone_off:" >> $GITHUB_STEP_SUMMARY
           echo "You have not yet configured the scheduled sync and build for Loop's browser build." >> $GITHUB_STEP_SUMMARY
@@ -143,18 +136,43 @@ jobs:
           echo "If you want to enable automatic builds and updates for your Loop, please follow the instructions \
                 under the following path <code>LoopWorkspace/fastlane/testflight.md</code>." >> $GITHUB_STEP_SUMMARY
 
+      # Set a logic flag if this is the second instance of this day-of-week in this month
+      - name: Check if this is the second time this day-of-week happens this month
+        id: date-check
+        run: |
+          DAY_OF_MONTH=$(date +%-d)
+          WEEK_OF_MONTH=$(( ($(date +%-d) - 1) / 7 + 1 ))
+          if [[ $WEEK_OF_MONTH -eq 2 ]]; then
+            echo "is_second_instance=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "is_second_instance=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  # Checks if Distribution certificate is present and valid, optionally nukes and
+  # creates new certs if the repository variable ENABLE_NUKE_CERTS == 'true'
+  # only run if a build is planned
+  check_certs:
+      needs: [check_status]
+      name: Check certificates
+      uses: ./.github/workflows/create_certs.yml
+      secrets: inherit
+      if: |
+        github.event_name == 'workflow_dispatch' ||
+          (vars.SCHEDULED_BUILD != 'false' && needs.check_status.outputs.IS_SECOND_IN_MONTH == 'true') ||
+          (vars.SCHEDULED_SYNC != 'false' && needs.check_status.outputs.NEW_COMMITS == 'true' )
+
   # Builds Loop
   build:
     name: Build
-    needs: [check_certs, check_latest_from_upstream, day_in_month]
+    needs: [check_certs, check_status]
     runs-on: macos-15
     permissions:
       contents: write
     if:
       | # builds with manual start; if scheduled: once a month or when new commits are found
       github.event_name == 'workflow_dispatch' ||
-        (vars.SCHEDULED_BUILD != 'false' && needs.day_in_month.outputs.IS_SECOND_IN_MONTH == 'true') ||
-        (vars.SCHEDULED_SYNC != 'false' && needs.check_latest_from_upstream.outputs.NEW_COMMITS == 'true' )
+        (vars.SCHEDULED_BUILD != 'false' && needs.check_status.outputs.IS_SECOND_IN_MONTH == 'true') ||
+        (vars.SCHEDULED_SYNC != 'false' && needs.check_status.outputs.NEW_COMMITS == 'true' )
     steps:
       - name: Select Xcode version
         run: "sudo xcode-select --switch /Applications/Xcode_16.4.app/Contents/Developer"
