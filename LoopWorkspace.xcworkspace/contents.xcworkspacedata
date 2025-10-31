@@ -115,9 +115,6 @@
       location = "group:OmniKit/OmniKit.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:DanaKit/DanaKit.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:RileyLinkKit/RileyLinkKit.xcodeproj">
    </FileRef>
    <FileRef
