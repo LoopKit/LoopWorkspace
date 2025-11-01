@@ -58,6 +58,3 @@
 [submodule "LibreTransmitter"]
 	path = LibreTransmitter
 	url = https://github.com/LoopKit/LibreTransmitter.git
-[submodule "DanaKit"]
-	path = DanaKit
-	url = https://github.com/loopandlearn/DanaKit
