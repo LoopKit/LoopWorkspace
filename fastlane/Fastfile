@@ -124,7 +124,7 @@ platform :ios do
       destination: 'generic/platform=iOS',
       buildlog_path: 'buildlog'
     )
-
+    
     copy_artifacts(
       target_path: "artifacts",
       artifacts: ["*.mobileprovision", "*.ipa", "*.dSYM.zip"]
