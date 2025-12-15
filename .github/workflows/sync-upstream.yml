@@ -1,0 +1,23 @@
+name: Sync LoopKit upstream
+
+on:
+  schedule:
+    - cron: '0 6 * * *'   # Kører hver dag kl. 06:00
+  workflow_dispatch:      # Gør det muligt at køre manuelt
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Sync upstream LoopKit
+        uses: repo-sync/github-sync@v2
+        with:
+          source_repo: "https://github.com/LoopKit/LoopWorkspace.git"
+          source_branch: "main"
+          destination_branch: "main"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
