@@ -37,13 +37,17 @@ foreach lang in $LANGUAGES
 # modify the hyphen to underscore to support lokalise lang-iso expectation
 lang_iso=$(sed "s/zh-Hans/zh_Hans/g; s/pt-BR/pt_BR/g" <<<"$lang")
 
+# flags to consider (neither in use by default)
+#   cleanup-mode (was default) - this deleted any keys in localise not in clone
+#      remove this because we have 3 repos that are work in progress
+#   replace-modified (was not there) - given that we may have input from crowdin,
+#      we may need to use this to update to lokalise, but not sure how to handle this
 lokalise2 \
     --token $LOKALISE_TOKEN \
     --convert-placeholders=false \
     --project-id 414338966417c70d7055e2.75119857 \
     file upload \
     --file ${lang}.xliff \
-    --cleanup-mode \
     --lang-iso ${lang_iso}
 end
 
