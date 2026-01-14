@@ -1,7 +1,7 @@
 name: 4. Build Loop
 run-name: Build Loop (${{ github.ref_name }})
 on:
-  workflow_dispatch:
+  workflow_dispatch: on
   schedule:
     # Check for updates every Sunday
     #   Later logic builds if there are updates or if it is the 2nd Sunday of the month
