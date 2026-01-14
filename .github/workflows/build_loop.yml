@@ -217,7 +217,7 @@ jobs:
           https://raw.githubusercontent.com/loopandlearn/lnl-scripts/main/CustomizationSelect.sh)" \
           dexcom_upload_readings \
           future_carbs_4h \
-          meal_days \
+          meal_days
           profiles \
           live_activity \
           negative_insulin \
