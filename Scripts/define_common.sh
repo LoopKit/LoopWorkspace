@@ -34,6 +34,7 @@ MESSAGE_FILE="xlate_message_file.txt"
 # matches lokalise order, en plus alphabetical order by language name in English
 LANGUAGES=(en \
     ar \
+    ce \
     zh-Hans \
     cs \
     da \
@@ -42,7 +43,8 @@ LANGUAGES=(en \
     fr \
     de \
     he \
-    hi ]
+    hi \
+    hu \
     it \
     ja \
     nb \
@@ -54,6 +56,7 @@ LANGUAGES=(en \
     es \
     sv \
     tr \
+    uk \
     vi \
 )
 
@@ -62,7 +65,6 @@ PROJECTS=( \
     LoopKit:AmplitudeService:dev \
     LoopKit:CGMBLEKit:dev \
     LoopKit:dexcom-share-client-swift:dev \
-    loopandlearn:DanaKit:dev \
     LoopKit:G7SensorKit:main \
     LoopKit:LibreTransmitter:main \
     LoopKit:LogglyService:dev \

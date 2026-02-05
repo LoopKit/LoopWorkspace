@@ -3,7 +3,7 @@
    LastUpgradeVersion = "1500"
    version = "1.3">
    <BuildAction
-      parallelizeBuildables = "NO"
+      parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
@@ -172,20 +172,6 @@
                BuildableName = "OmniBLEPlugin.loopplugin"
                BlueprintName = "OmniBLEPlugin"
                ReferencedContainer = "container:OmniBLE/OmniBLE.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3E6007862D0C5D0C00B186D1"
-               BuildableName = "DanaKitPlugin.loopplugin"
-               BlueprintName = "DanaKitPlugin"
-               ReferencedContainer = "container:DanaKit/DanaKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
