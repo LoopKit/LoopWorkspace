@@ -23,6 +23,15 @@ Table of Contents:
 
 ## Overview
 
+> As of 18 Feb 2026, the translations for these repositories are added to lokalise
+> * DanaKit
+> * EversenseKit
+> * MedtrumKit
+
+> In order to manage those localization strings, the translation work will be done in the feat/eversense branch, which includes those 3 repositories.
+
+> The Scripts needed to handle these new repositories are found on in this branch (for now).
+
 Translations for Loop are performed by volunteers at [lokalise](https://app.lokalise.com/projects). 
 Several scripts were added to assist in bringing those translations into the repositories and updating keys when strings are added or modified.
 

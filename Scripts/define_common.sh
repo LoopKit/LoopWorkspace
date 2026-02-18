@@ -61,6 +61,9 @@ LANGUAGES=(en \
 )
 
 # define the PROJECTS used by the translation scripts
+#  Note that although loopandlearn is the address used for .gitmodules for
+#    DanaKit, EversenseKit, and MedtrumKit,
+#    the upstream repositories are used here so that the appropriate pr can be generated
 PROJECTS=( \
     LoopKit:AmplitudeService:dev \
     LoopKit:CGMBLEKit:dev \
@@ -79,6 +82,9 @@ PROJECTS=( \
     LoopKit:OmniKit:main \
     LoopKit:RileyLinkKit:dev \
     LoopKit:TidepoolService:dev \
+    bastiaanv:DanaKit:dev \
+    bastiaanv:EversenseKit:dev \
+    jbr7rr:MedtrumKit:dev \
 )
 
 function section_divider() {
