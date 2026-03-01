@@ -12,7 +12,7 @@
 
 default_platform(:ios)
 
-TEAMID = ENV["TEAMID"]
+TEAMID = ENV["TEAMID_SUFFIX"].to_s.empty? ? "#{ENV["TEAMID"]}" : "#{ENV["TEAMID"]}-#{ENV["TEAMID_SUFFIX"]}"
 GH_PAT = ENV["GH_PAT"]
 GITHUB_WORKSPACE = ENV["GITHUB_WORKSPACE"]
 GITHUB_REPOSITORY_OWNER = ENV["GITHUB_REPOSITORY_OWNER"]
@@ -123,6 +123,7 @@ platform :ios do
       configuration: "Release",
       destination: 'generic/platform=iOS',
       buildlog_path: 'buildlog'
+      xcargs: "MAIN_APP_BUNDLE_IDENTIFIER=com.#{TEAMID}.loopkit.Loop"
     )
 
     copy_artifacts(
