@@ -123,7 +123,7 @@ platform :ios do
       output_name: "Loop.ipa",
       configuration: "Release",
       destination: 'generic/platform=iOS',
-      buildlog_path: 'buildlog'
+      buildlog_path: 'buildlog',
       xcargs: "MAIN_APP_BUNDLE_IDENTIFIER=com.#{TEAMID_SUFFIX}.loopkit.Loop"
     )
 
