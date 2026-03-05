@@ -63,35 +63,7 @@ for project in ${TRIO_PROJECT_FORKS}; do
   cd -
 done
 
-# LoopKit/LoopKit has commits used by Trio that require manual sync
-# The other repositories use loopandlearn in .gitmodules
-#   so must also be handled maually for both Loop and Trio.
-# These URL for DanaKit, EversenseKit and MedtrumKit are the same for Loop and Trio.
-SPECIAL_PROJECT_FORKS=( \
-    loopandlearn:LoopKit:dev:trio \
-    bastiaanv:DanaKit:dev:dev \
-    bastiaanv:EversenseKit:dev:dev \
-    jbr7rr:MedtrumKit:dev:dev \
-)
+# The next script is called automatically to enable manual evaluation for 
+#   additional pump and cgm manager repositories.
 
-
-section_divider
-echo "  ////////////// Use Browser for next step ////////////"
-echo
-echo "  Manually update these downstream repositories at ${DOWNSTREAM_GITHUB_NAME}"
-echo "    Each URL will automatically open"
-echo
-for project in ${SPECIAL_PROJECT_FORKS}; do
-  IFS=":" read user dir branch downstream_branch <<< "$project"
-  echo "  Manually sync ${DOWNSTREAM_GITHUB_NAME}/$dir:$downstream_branch with $user/$dir:$branch"
-  open https://github.com/${DOWNSTREAM_GITHUB_NAME}/$dir/tree/$downstream_branch
-done
-
-section_divider
-echo "  ////////////// WARNING ////////////"
-echo
-echo "  If any updates were made by manual sync for DanaKit, EversenseKit and MedtrumKit"
-echo "    follow up by running:"
-echo "      ./Scripts/update_submodule_refs.sh"
-echo "    This ensures the submodules used by LoopWorkspace are up to date"
-section_divider
+source Scripts/open_selected_url.sh
