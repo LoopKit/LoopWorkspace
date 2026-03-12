@@ -155,8 +155,17 @@ stored in `LoopSettings.overridePresets`. Each preset had a name, symbol, correc
 insulin sensitivity multiplier, and duration. There was no preset type system — all presets
 were generic overrides. Users could set a target range and/or an ISF multiplier, activate
 a preset from the toolbar, and it would run until it expired or was manually cancelled.
-There were no guardrails specific to presets, no required training, no scheduling, and no
-safety mitigations for extreme settings.
+
+DIY did have a limited scheduling concept: the UIKit `AddEditOverrideTableViewController`
+exposed a **Start Time** row that allowed setting a future start time for an override.
+If `startDate > Date()`, the override was queued as a one-shot future event and shown in
+a "SCHEDULED PRESET" section in `OverrideSelectionViewController`. There was no
+day-of-week recurrence, no system alert to prompt the user at the scheduled time, and
+no persistence of the schedule on the preset definition itself — the delay was set
+per-activation, not stored on the preset.
+
+There were no guardrails specific to presets, no required training, and no safety
+mitigations for extreme settings.
 
 #### After: SelectablePreset Type System
 
@@ -262,16 +271,31 @@ When a custom preset is started with indefinite duration, a repeating alert fire
 This alert is time-sensitive (interrupts Focus modes) and repeats until the preset is
 deactivated. When the preset is deactivated, the alert is retracted.
 
-#### Preset Scheduling
+#### Preset Scheduling — Significantly Expanded
 
-Presets can now be scheduled to start at a specific time, optionally repeating on
-selected days of the week (`PresetScheduleRepeatOptions`: Sunday through Saturday as
-an `OptionSet`). When a scheduled preset's start time approaches, a time-sensitive
-alert fires asking the user whether to start it:
+DIY Loop already had a basic scheduling concept: a **one-shot future start time**
+that could be set per-activation in the old UIKit override editor. That delayed the
+activation of an override to a future time, but the schedule was not stored on the
+preset, could not repeat, and generated no alert to remind the user.
+
+The new scheduling system stores the schedule on the preset definition itself and adds
+full day-of-week recurrence. Presets can now be scheduled to start at a specific time,
+optionally repeating on selected days of the week (`PresetScheduleRepeatOptions`:
+Sunday through Saturday as an `OptionSet`). When a scheduled preset's start time
+approaches, a time-sensitive system alert fires asking the user whether to start it:
 
 > *"Would you like to start your [Preset Name] preset? This will end any active preset."*
 
 The alert offers "Don't Start" (dismiss) and "Yes, Start Now" (activates the preset).
+The schedule is re-armed after each activation to fire again at the next scheduled time.
+
+| Aspect | Old DIY | New (Tidepool) |
+|--------|---------|----------------|
+| Schedule stored on preset | ❌ (set per-activation) | ✅ |
+| One-shot future start | ✅ | ✅ |
+| Day-of-week recurrence | ❌ | ✅ (any combination of days) |
+| System alert at scheduled time | ❌ | ✅ (time-sensitive) |
+| User confirm/dismiss in alert | ❌ | ✅ |
 
 #### Required Training Before Creating Presets
 
@@ -313,6 +337,7 @@ needs, and correction range, with guardrail-aware color coding.
 | **roundBasalRate utility** | `DeviceDataManager.roundBasalRate(unitsPerHour:)` added for consistent basal rate rounding (LOOP-5558) |
 | **schedulePresets storage** | `NSUserDefaults` now persists schedule presets (LOOP-4754) |
 | **defaultEnvironment key** | New `NSUserDefaults` key for Tidepool service environment selection (LOOP-5153) |
+| **Granular alert permission warnings** | `AlertPermissionsChecker` (existing since 2021) updated: single "safety notifications off" alert replaced with 5 granular cases distinguishing `notificationsDisabled`, `criticalAlertsDisabled`, `timeSensitiveDisabled`, and combinations thereof — each with tailored messaging |
 | **iOS 17+ onChange API** | `onChange(of:)` calls updated to the two-parameter form throughout views |
 | **XCTest environment guard** | `AppDelegate` skips full initialization when running under XCTest |
 | **Async/await in RemoteDataServicesManager** | `uploadCgmEventData` migrated from callback-based to `async/await Task` pattern |
