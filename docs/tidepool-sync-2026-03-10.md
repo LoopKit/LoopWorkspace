@@ -647,6 +647,19 @@ stored properties (`analyticsServicesManager`, `carbAbsorptionModel`,
 
 ---
 
+### `TidepoolServiceKit/Extensions/DoseEntry.swift` and `DeviceLogUploader.swift` — Missing `import LoopAlgorithm`
+
+**Problem:** Both files use `AbsoluteScheduleValue` (DoseEntry.swift) and `TDeviceLogEntry`
+(DeviceLogUploader.swift) from the LoopAlgorithm package, but `import LoopAlgorithm` was
+incorrectly removed from both files during conflict resolution. All other ~10 files in
+TidepoolServiceKit correctly import LoopAlgorithm. The omission caused build failures in
+Xcode (though command-line builds may succeed due to implicit module visibility from
+LoopKit.xcodeproj's LoopAlgorithm SPM dependency).
+
+**Fix:** Restored `import LoopAlgorithm` in both files.
+
+---
+
 ### `Loop.xcodeproj/project.pbxproj` — Structural Corruption (Loop)
 
 **Problem:** The pbxproj resolver's "keep both" strategy on a `PBXVariantGroup` conflict
