@@ -178,7 +178,7 @@ jobs:
         run: "sudo xcode-select --switch /Applications/Xcode_16.4.app/Contents/Developer"
 
       - name: Checkout Repo for building
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           token: ${{ secrets.GH_PAT }}
           submodules: recursive
