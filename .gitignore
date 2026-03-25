@@ -27,3 +27,18 @@ xcuserdata/
 *.playground
 playground.xcworkspace
 timeline.xctimeline
+
+## Build artifacts
+buildlog/
+artifacts/
+
+## Secrets / environment
+.env
+.env.*
+
+## Claude Code local config
+.claude/
+
+## Fastlane temp
+fastlane/new_certificate_needed.txt
+fastlane/report.xml
