@@ -63,7 +63,8 @@ jobs:
         id: set_output
         run: |
           CERT_STATUS_FILE="${{ github.workspace }}/fastlane/new_certificate_needed.txt"
-          ENABLE_NUKE_CERTS=${{ vars.ENABLE_NUKE_CERTS }}
+          ENABLE_NUKE_CERTS=$(echo "${{ vars.ENABLE_NUKE_CERTS }}" | tr '[:upper:]' '[:lower:]')
+          FORCE_NUKE_CERTS=$(echo "${{ vars.FORCE_NUKE_CERTS }}" | tr '[:upper:]' '[:lower:]')
           
           if [ -f "$CERT_STATUS_FILE" ]; then
             CERT_STATUS=$(cat "$CERT_STATUS_FILE" | tr -d '\n' | tr -d '\r') # Read file content and strip newlines
@@ -82,8 +83,8 @@ jobs:
             echo "::error::❌ No valid distribution certificate found. Automated renewal of certificates was skipped because the repository variable ENABLE_NUKE_CERTS is not set to 'true'."
             exit 1
           fi
-          # Check if vars.FORCE_NUKE_CERTS is not set to true
-          if [ vars.FORCE_NUKE_CERTS = "true" ]; then
+          # Check if FORCE_NUKE_CERTS is set to true
+          if [ "$FORCE_NUKE_CERTS" = "true" ]; then
             echo "::warning::‼️ Nuking of certificates was forced because the repository variable FORCE_NUKE_CERTS is set to 'true'."
           fi
   # Nuke Certs if needed, and if the repository variable ENABLE_NUKE_CERTS is set to 'true', or if FORCE_NUKE_CERTS is set to 'true', which will always force certs to be nuked
