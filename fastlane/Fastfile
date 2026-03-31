@@ -10,7 +10,6 @@
 #     https://docs.fastlane.tools/plugins/available-plugins
 #
 
-
 default_platform(:ios)
 
 TEAMID = ENV["TEAMID"]
@@ -204,7 +203,7 @@ platform :ios do
       end
     end
 
-    loop_app_group_identifier = "group.com.#{TEAMID}.loopkit.LoopGroup"
+    loop_app_group_identifier = "group.com.#{TEAMID}.loopkit.Loop"
 
     loop_bundle = configure_bundle_id("Loop", "com.#{TEAMID}.loopkit.Loop", [
       Spaceship::ConnectAPI::BundleIdCapability::Type::APP_GROUPS,
