@@ -65,7 +65,6 @@ PROJECTS=( \
     LoopKit:AmplitudeService:dev \
     LoopKit:CGMBLEKit:dev \
     LoopKit:dexcom-share-client-swift:dev \
-    loopandlearn:DanaKit:dev \
     LoopKit:G7SensorKit:main \
     LoopKit:LibreTransmitter:main \
     LoopKit:LogglyService:dev \
