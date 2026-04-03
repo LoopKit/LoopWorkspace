@@ -13,6 +13,7 @@
 default_platform(:ios)
 
 TEAMID = ENV["TEAMID"]
+TEAMID_SUFFIX = ENV["TEAMID_SUFFIX"].to_s.empty? ? "#{ENV["TEAMID"]}" : "#{ENV["TEAMID"]}-#{ENV["TEAMID_SUFFIX"]}"
 GH_PAT = ENV["GH_PAT"]
 GITHUB_WORKSPACE = ENV["GITHUB_WORKSPACE"]
 GITHUB_REPOSITORY_OWNER = ENV["GITHUB_REPOSITORY_OWNER"]
@@ -40,7 +41,7 @@ platform :ios do
     )
 
     previous_build_number = latest_testflight_build_number(
-      app_identifier: "com.#{TEAMID}.loopkit.Loop",
+      app_identifier: "com.#{TEAMID_SUFFIX}.loopkit.Loop",
       api_key: api_key,
     )
 
@@ -55,12 +56,12 @@ platform :ios do
       type: "appstore",
       git_basic_authorization: Base64.strict_encode64("#{GITHUB_REPOSITORY_OWNER}:#{GH_PAT}"),
       app_identifier: [
-        "com.#{TEAMID}.loopkit.Loop", 
-        "com.#{TEAMID}.loopkit.Loop.statuswidget", 
-        "com.#{TEAMID}.loopkit.Loop.LoopWatch.watchkitextension", 
-        "com.#{TEAMID}.loopkit.Loop.LoopWatch", 
-        "com.#{TEAMID}.loopkit.Loop.Loop-Intent-Extension",
-        "com.#{TEAMID}.loopkit.Loop.LoopWidgetExtension"
+        "com.#{TEAMID_SUFFIX}.loopkit.Loop", 
+        "com.#{TEAMID_SUFFIX}.loopkit.Loop.statuswidget", 
+        "com.#{TEAMID_SUFFIX}.loopkit.Loop.LoopWatch.watchkitextension", 
+        "com.#{TEAMID_SUFFIX}.loopkit.Loop.LoopWatch", 
+        "com.#{TEAMID_SUFFIX}.loopkit.Loop.Loop-Intent-Extension",
+        "com.#{TEAMID_SUFFIX}.loopkit.Loop.LoopWidgetExtension"
       ]
     )
 
@@ -70,7 +71,7 @@ platform :ios do
 
     update_code_signing_settings(
       path: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
-      profile_name: mapping["com.#{TEAMID}.loopkit.Loop"],
+      profile_name: mapping["com.#{TEAMID_SUFFIX}.loopkit.Loop"],
       code_sign_identity: "iPhone Distribution",
       targets: ["Loop"]
     )
@@ -83,35 +84,35 @@ platform :ios do
 
     update_code_signing_settings(
       path: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
-      profile_name: mapping["com.#{TEAMID}.loopkit.Loop.statuswidget"],
+      profile_name: mapping["com.#{TEAMID_SUFFIX}.loopkit.Loop.statuswidget"],
       code_sign_identity: "iPhone Distribution",
       targets: ["Loop Status Extension"]
     )
     
     update_code_signing_settings(
       path: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
-      profile_name: mapping["com.#{TEAMID}.loopkit.Loop.LoopWatch.watchkitextension"],
+      profile_name: mapping["com.#{TEAMID_SUFFIX}.loopkit.Loop.LoopWatch.watchkitextension"],
       code_sign_identity: "iPhone Distribution",
       targets: ["WatchApp Extension"]
     )
     
     update_code_signing_settings(
       path: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
-      profile_name: mapping["com.#{TEAMID}.loopkit.Loop.LoopWatch"],
+      profile_name: mapping["com.#{TEAMID_SUFFIX}.loopkit.Loop.LoopWatch"],
       code_sign_identity: "iPhone Distribution",
       targets: ["WatchApp"]
     )
     
     update_code_signing_settings(
       path: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
-      profile_name: mapping["com.#{TEAMID}.loopkit.Loop.Loop-Intent-Extension"],
+      profile_name: mapping["com.#{TEAMID_SUFFIX}.loopkit.Loop.Loop-Intent-Extension"],
       code_sign_identity: "iPhone Distribution",
       targets: ["Loop Intent Extension"]
     )
     
     update_code_signing_settings(
       path: "#{GITHUB_WORKSPACE}/Loop/Loop.xcodeproj",
-      profile_name: mapping["com.#{TEAMID}.loopkit.Loop.LoopWidgetExtension"],
+      profile_name: mapping["com.#{TEAMID_SUFFIX}.loopkit.Loop.LoopWidgetExtension"],
       code_sign_identity: "iPhone Distribution",
       targets: ["Loop Widget Extension"]
     )
@@ -122,7 +123,8 @@ platform :ios do
       output_name: "Loop.ipa",
       configuration: "Release",
       destination: 'generic/platform=iOS',
-      buildlog_path: 'buildlog'
+      buildlog_path: 'buildlog',
+      xcargs: "MAIN_APP_BUNDLE_IDENTIFIER=com.#{TEAMID_SUFFIX}.loopkit.Loop"
     )
 
     copy_artifacts(
@@ -170,7 +172,7 @@ platform :ios do
       end
     end
 
-    configure_bundle_id("Loop", "com.#{TEAMID}.loopkit.Loop", [
+    configure_bundle_id("Loop", "com.#{TEAMID_SUFFIX}.loopkit.Loop", [
       Spaceship::ConnectAPI::BundleIdCapability::Type::APP_GROUPS,
       Spaceship::ConnectAPI::BundleIdCapability::Type::HEALTHKIT,
       Spaceship::ConnectAPI::BundleIdCapability::Type::PUSH_NOTIFICATIONS,
@@ -178,22 +180,22 @@ platform :ios do
       Spaceship::ConnectAPI::BundleIdCapability::Type::NFC_TAG_READING
     ])
 
-    configure_bundle_id("Loop Intent Extension", "com.#{TEAMID}.loopkit.Loop.Loop-Intent-Extension", [
+    configure_bundle_id("Loop Intent Extension", "com.#{TEAMID_SUFFIX}.loopkit.Loop.Loop-Intent-Extension", [
       Spaceship::ConnectAPI::BundleIdCapability::Type::APP_GROUPS
     ])
 
-    configure_bundle_id("Loop Status Extension", "com.#{TEAMID}.loopkit.Loop.statuswidget", [
+    configure_bundle_id("Loop Status Extension", "com.#{TEAMID_SUFFIX}.loopkit.Loop.statuswidget", [
       Spaceship::ConnectAPI::BundleIdCapability::Type::APP_GROUPS
     ])
 
-    configure_bundle_id("WatchApp", "com.#{TEAMID}.loopkit.Loop.LoopWatch", [])
+    configure_bundle_id("WatchApp", "com.#{TEAMID_SUFFIX}.loopkit.Loop.LoopWatch", [])
 
-    configure_bundle_id("WatchApp Extension", "com.#{TEAMID}.loopkit.Loop.LoopWatch.watchkitextension", [
+    configure_bundle_id("WatchApp Extension", "com.#{TEAMID_SUFFIX}.loopkit.Loop.LoopWatch.watchkitextension", [
       Spaceship::ConnectAPI::BundleIdCapability::Type::HEALTHKIT,
       Spaceship::ConnectAPI::BundleIdCapability::Type::SIRIKIT
     ])
 
-    configure_bundle_id("Loop Widget Extension", "com.#{TEAMID}.loopkit.Loop.LoopWidgetExtension", [
+    configure_bundle_id("Loop Widget Extension", "com.#{TEAMID_SUFFIX}.loopkit.Loop.LoopWidgetExtension", [
       Spaceship::ConnectAPI::BundleIdCapability::Type::APP_GROUPS
     ])
     
@@ -216,12 +218,12 @@ platform :ios do
       verbose: true,
       git_basic_authorization: Base64.strict_encode64("#{GITHUB_REPOSITORY_OWNER}:#{GH_PAT}"),
       app_identifier: [
-        "com.#{TEAMID}.loopkit.Loop", 
-        "com.#{TEAMID}.loopkit.Loop.statuswidget", 
-        "com.#{TEAMID}.loopkit.Loop.LoopWatch.watchkitextension", 
-        "com.#{TEAMID}.loopkit.Loop.LoopWatch", 
-        "com.#{TEAMID}.loopkit.Loop.Loop-Intent-Extension",
-        "com.#{TEAMID}.loopkit.Loop.LoopWidgetExtension",
+        "com.#{TEAMID_SUFFIX}.loopkit.Loop", 
+        "com.#{TEAMID_SUFFIX}.loopkit.Loop.statuswidget", 
+        "com.#{TEAMID_SUFFIX}.loopkit.Loop.LoopWatch.watchkitextension", 
+        "com.#{TEAMID_SUFFIX}.loopkit.Loop.LoopWatch", 
+        "com.#{TEAMID_SUFFIX}.loopkit.Loop.Loop-Intent-Extension",
+        "com.#{TEAMID_SUFFIX}.loopkit.Loop.LoopWidgetExtension",
       ]
     )
   end
@@ -241,7 +243,7 @@ platform :ios do
       bundle_id = Spaceship::ConnectAPI::BundleId.find(identifier)
     end
 
-    find_bundle_id("com.#{TEAMID}.loopkit.Loop")
+    find_bundle_id("com.#{TEAMID_SUFFIX}.loopkit.Loop")
 
     match(
       type: "appstore",
@@ -264,7 +266,7 @@ platform :ios do
     
     match_nuke(
       type: "appstore",
-      team_id: "#{TEAMID}",
+      team_id: "#{TEAMID_SUFFIX}",
       skip_confirmation: true,
       git_basic_authorization: Base64.strict_encode64("#{GITHUB_REPOSITORY_OWNER}:#{GH_PAT}")
     )
