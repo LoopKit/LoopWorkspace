@@ -90,7 +90,7 @@ jobs:
         if: |
           steps.workflow-permission.outputs.has_permission == 'true' &&
           (vars.SCHEDULED_BUILD != 'false' || vars.SCHEDULED_SYNC != 'false')
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           token: ${{ secrets.GH_PAT }}
 
@@ -178,7 +178,7 @@ jobs:
         run: "sudo xcode-select --switch /Applications/Xcode_26.2.app/Contents/Developer"
 
       - name: Checkout Repo for building
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           token: ${{ secrets.GH_PAT }}
           submodules: recursive
@@ -255,7 +255,7 @@ jobs:
       # Upload Build artifacts
       - name: Upload build log, IPA and Symbol artifacts
         if: always()
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: build-artifacts
           path: |
