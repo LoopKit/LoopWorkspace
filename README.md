@@ -13,7 +13,7 @@ The GitHub Build Instructions are at this [link](fastlane/testflight.md) and fur
 
 The rest of this README contains information needed for Mac/Xcode build. Additonal instructions are found in [LoopDocs: Mac/Xcode Build](https://loopkit.github.io/loopdocs/build/overview/).
 
-### Clone
+
 
 This repository uses git submodules to pull in the various workspace dependencies.
 
