@@ -60,10 +60,10 @@
 	url = https://github.com/LoopKit/LibreTransmitter.git
 [submodule "EversenseKit"]
 	path = EversenseKit
-	url = https://github.com/loopandlearn/EversenseKit
+	url = https://github.com/bastiaanv/EversenseKit
 [submodule "MedtrumKit"]
 	path = MedtrumKit
-	url = https://github.com/loopandlearn/MedtrumKit.git
+	url = https://github.com/jbr7rr/MedtrumKit.git
 [submodule "DanaKit"]
 	path = DanaKit
-	url = https://github.com/loopandlearn/DanaKit
+	url = https://github.com/bastiaanv/DanaKit
