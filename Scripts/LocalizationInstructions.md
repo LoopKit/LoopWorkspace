@@ -19,6 +19,7 @@ Table of Contents:
     * [Prepare xliff_out folder](#prepare-xliff_out-folder)
     * [Update lokalise strings](#update-lokalise-strings)
 * [Utility Scripts](#utility-scripts)
+    * [Additional Utility Scripts](#additional-utility-scripts)
 * [Questions and notes](#questions-and-notes)
 
 ## Overview
@@ -313,6 +314,42 @@ The define_common.sh is used by other scripts to provide a single source for the
 * PROJECTS (all the submodules for LoopWorkspace to localize with owners and branches)
 
 If you need to start over but don't want to lose prior work, use archive_translations.sh. However, this is probably no longer necessary with the optional arguments available with the manual scripts.
+
+### Additional Utility Scripts
+
+These scripts are used for several purposes but are not part of the Localization process.
+
+They are documented here for convenience. The alphabetic list is provided here.
+
+* open_selected_url.sh
+* reconfigure_remotes.sh
+* update_loopandlearn_forks.sh
+* update_submodule_refs.sh
+
+#### update_submodules_refs
+
+This is used to checkout the most recent branch for each submodule in the workspace.  It is used as a final step after the translation is completed but also is used to bring in other updates from the submodules into the workspace.
+
+After running this script, use `git status` to determine which submodules were updated so the modifications can be tested and committed.
+
+#### reconfigure_remotes
+
+This is a helper script for a LoopWorkspace clone for use when the .gitmodules path name changes for any reason, and the local clone needs to be updated.
+
+This change was made because (2026 April 30) the translation work for feature branches and the submodule update work were using different paths and it was just too confusing and error prone. By using the upstream fork in .gitmodules and in the translations scripts, life is simpler.
+
+* The path for DanaKit, EversenseKit and MedtrumKit was changed from loopandlearn to the respective upstream repositories
+* If a local clone has any submodules pointing to loopandlearn as the remote named `origin`, run this script to update it
+
+There is no harm running the script even if all submodules are properly configured.
+
+### Trio Utility Scripts
+
+These are Trio support utilities run within a LoopWorkspace clone to sync the loopandlearn forks for use with Trio. They require appropriate permissions.
+
+We support Trio with some of the submodules. To enable Trio to use a slightly modified version of the repositories, Trio uses loopandlearn, not the upstream repos in their `.gitmodule` list. In order to keep the loopandlearn forks up to date, the `update_loopandlearn_forks.sh` automatically updates all the submodules used by Trio so that loopandlearn forks match the upstream forks for the appropriate branches.
+
+When there are submodules where Trio uses a slightly different version of code, a `trio` branch is created. In that case, the update is done manually. To assist in the process, the script `open_selected_url.sh` is called from within the `update_loopandlearn_forks.sh` script.
 
 ## Questions and notes
 

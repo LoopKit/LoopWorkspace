@@ -9,7 +9,7 @@ section_divider
 echo "You are running ${0}"
 echo
 echo "  This automatically updates the downstream loopandlearn forks at GitHub"
-echo "    to match their upstream LoopKit counterparts."
+echo "    to match their respective upstream counterparts at LoopKit, bastiaanv and jbr7rr."
 echo "  Next, the forks that need to be manually managed will be opened so you"
 echo "    can handle the process at GitHub."
 echo
@@ -18,14 +18,9 @@ echo " Running the script without privileges yields error messages; no harm occu
 
 continue_or_quit ${0}
 
-
 # define the TRIO_PROJECT_FORKS to be updated
 #   these branches in loopandlearn should match the branches in the upstream repositories
-
-# note that the OmniBLE pod-keep-alive branch is a temporary addition and must come
-# before the nominal OmniBLE dev branch in the list below
 TRIO_PROJECT_FORKS=( \
-    LoopKit:OmniBLE:pod-keep-alive \
     LoopKit:CGMBLEKit:dev \
     LoopKit:dexcom-share-client-swift:dev \
     LoopKit:G7SensorKit:main \
@@ -35,6 +30,9 @@ TRIO_PROJECT_FORKS=( \
     LoopKit:OmniKit:main \
     LoopKit:RileyLinkKit:dev \
     LoopKit:TidepoolService:dev \
+    bastiaanv:DanaKit:dev \
+    bastiaanv:EversenseKit:dev \
+    jbr7rr:MedtrumKit:dev \
 )
 
 # This script uses remotes with the indicated nickname for the downstream repository
@@ -43,7 +41,7 @@ DOWNSTREAM_GITHUB_NAME="loopandlearn"
 DOWNSTREAM_NICKNAME="lal"
 
 section_divider
-echo "  ////////////// Automatically push updates from LoopKit to loopandlearn ////////////"
+echo "  ////////////// Automatically push updates from upstream repository to loopandlearn ////////////"
 echo
 for project in ${TRIO_PROJECT_FORKS}; do
   IFS=":" read user dir branch <<< "$project"

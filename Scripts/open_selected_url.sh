@@ -10,18 +10,15 @@ echo
 echo "  This automatically opens forks that need to be manually managed in your browser so you"
 echo "    can handle the process at GitHub."
 
-# There are repositories that use loopandlearn in .gitmodules but the upstream forks come 
-#   from the original authors. They are handled maually for both Loop and Trio.
-# These URL are the same for Loop and Trio.
 # At the moment, LoopKit/LoopKit has commits used by Trio that require manual sync
 #   so it is added to the SPECIAL_PROJECT_FORKS list. (This is here for convenience.)
+#
+# Later - if Trio needs a different version than Loop for some of the repositories,
+#   additional trio branches will be created and added to this script
 DOWNSTREAM_GITHUB_NAME="loopandlearn"
 
 SPECIAL_PROJECT_FORKS=( \
     loopandlearn:LoopKit:dev:trio \
-    bastiaanv:DanaKit:dev:dev \
-    bastiaanv:EversenseKit:dev:dev \
-    jbr7rr:MedtrumKit:dev:dev \
 )
 
 section_divider
