@@ -1,71 +1,77 @@
 # Tidepool → LoopKit Sync Progress
 
-**Sync branch:** `tidepool-sync/2026-03-10`
+**Sync branch:** `tidepool-sync/2026-05-11`
 **Source:** `tidepool-org/<repo>/dev` (or `main`)
 **Target:** `LoopKit/<repo>/dev` (or `main`)
-**Started:** 2026-03-10
-**Completed:** 2026-03-10
-**Last updated:** 2026-03-10
+**Started:** 2026-05-11
+**Last updated:** 2026-05-11
 
 **Process doc:** [LOOPKIT_SYNC_PROCESS.md](LOOPKIT_SYNC_PROCESS.md)
+**Sync log:** [docs/tidepool-sync-2026-05-11.md](docs/tidepool-sync-2026-05-11.md)
+**Previous sync:** [SYNC_PROGRESS history for 2026-03-10](#) — branch merged to dev across all 18 repos
 
 ---
 
-## Status: ✅ ALL REPOS COMPLETE
+## Status: ✅ ALL REPOS MERGED (build verification pending)
 
-18 repos synced, 0 conflicts remaining, ready for compile test & PR.
+17 repos merged, 1 noop (MixpanelService already current). All conflicts resolved; build verification in progress.
 
 ---
 
 ## Full Repo Status
 
-Work proceeded in **Core → App → Plugins** order (see process doc for rationale).
+| # | Repo | Base | Tidepool commits | Conflicts | Submodule commit | Status |
+|---|------|------|------------------|-----------|------------------|--------|
+| — | **LoopAlgorithm** | `main` | 4 (test-only) | — (pin bump) | pin → `bd1a879` | ✅ Done |
+| 1 | **LoopKit** | `dev` | 409 | 18 source + 19 pbxproj | `bd30c463` | ✅ Done |
+| 2 | **Loop** | `dev` | 14 | 0 source + 3 pbxproj | `76b6b1e3` | ✅ Done |
+| 3 | **CGMBLEKit** | `dev` | 13 | pbxproj only (4) | `69562e7` | ✅ Done |
+| 4 | **G7SensorKit** | `main` | 15 | pbxproj only (2) | `d024513` | ✅ Done |
+| 5 | **dexcom-share-client-swift** | `dev` | 15 | pbxproj only (3, + orphan cleanup) | `541de2f` | ✅ Done |
+| 6 | **NightscoutRemoteCGM** | `dev` | 13 | pbxproj only (2) | `b1ea9ee` | ✅ Done |
+| 7 | **LibreTransmitter** | `main` | 14 | pbxproj only (3) | `c99daf1` | ✅ Done |
+| 8 | **RileyLinkKit** | `dev` | 3 | pbxproj only (2) | `19f5ae8` | ✅ Done |
+| 9 | **OmniKit** | `main` | 18 | OmnipodPumpManager (6 regions) + pbxproj | `b3b6080` | ✅ Done |
+| 10 | **OmniBLE** | `dev` | 20 | OmniBLEPumpManager (8 regions) + pbxproj | `645e0fc` | ✅ Done |
+| 11 | **MinimedKit** | `main` | 18 | MinimedPumpManager + 1 trivial + pbxproj | `f994d6e` | ✅ Done |
+| 12 | **TidepoolService** | `dev` | 45 | DoseEntry + pbxproj | `5f6a064` | ✅ Done |
+| 13 | **NightscoutService** | `dev` | 22 | NightscoutService + pbxproj | `1b5cded` | ✅ Done |
+| 14 | **AmplitudeService** | `dev` | 6 | pbxproj only (2) | `77dae3e` | ✅ Done |
+| 15 | **LogglyService** | `dev` | 6 | pbxproj only (2) | `8e18081` | ✅ Done |
+| 16 | **LoopSupport** | `dev` | 11 | pbxproj only (2) | `a312dfb` | ✅ Done |
+| 17 | **LoopOnboarding** | `dev` | 28 | pbxproj only (2) | `fd7e410` | ✅ Done |
+| — | **MixpanelService** | `main` | 0 | — | unchanged | ✅ Noop |
 
-| # | Repo | Base | Key Conflicts | Status | Doc |
-|---|------|------|---------------|--------|-----|
-| 1 | **LoopAlgorithm** | `main` | none (fast-forward) | ✅ Done | [doc](sync-docs/LoopAlgorithm.md) |
-| 2 | **LoopKit** | `dev` | 16 conflicts: HK→LoopUnit types, pbxproj, .strings cleanup | ✅ Done | [doc](sync-docs/LoopKit.md) |
-| 3 | **Loop** | `dev` | 33 conflicts + Swift Concurrency migration | ✅ Done | [doc](sync-docs/Loop.md) |
-| 4 | **TidepoolService** | `dev` | pbxproj + DoseEntry (`import LoopAlgorithm` removed, `decisionId`) | ✅ Done | — |
-| 5 | **NightscoutService** | `dev` | pbxproj + NightscoutService (RemoteNotificationResponseManager preserved, `decisionId` added) | ✅ Done | — |
-| 6 | **MinimedKit** | `main` | pbxproj + MinimedPumpManager (`decisionId`, async Task, `updateLastEventDates` preserved) | ✅ Done | — |
-| 7 | **LibreTransmitter** | `main` | pbxproj + `inSignalLoss`/`isInoperable` properties added | ✅ Done | — |
-| 8 | **OmniBLE** | `dev` | pbxproj + OmniBLEPumpManager (6 hunks) + PodState | ✅ Done | — |
-| 9 | **OmniKit** | `main` | pbxproj + OmnipodPumpManager (4 hunks) + PodCommsSessionTests | ✅ Done | — |
-| 10 | **CGMBLEKit** | `dev` | pbxproj only | ✅ Done | — |
-| 11 | **G7SensorKit** | `main` | pbxproj only | ✅ Done | — |
-| 12 | **dexcom-share-client-swift** | `dev` | pbxproj only | ✅ Done | — |
-| 13 | **NightscoutRemoteCGM** | `dev` | pbxproj only | ✅ Done | — |
-| 14 | **RileyLinkKit** | `dev` | pbxproj only | ✅ Done | — |
-| 15 | **LoopSupport** | `dev` | pbxproj only | ✅ Done | — |
-| 16 | **LoopOnboarding** | `dev` | pbxproj only | ✅ Done | — |
-| 17 | **AmplitudeService** | `dev` | pbxproj only | ✅ Done | — |
-| 18 | **LogglyService** | `dev` | pbxproj only | ✅ Done | — |
-| — | **MixpanelService** | `main` | already in sync, noop | ✅ Noop | — |
+LoopWorkspace superproject commit: `3d4432c` ("Bump submodule pins to tidepool-sync/2026-05-11 heads").
 
 ---
 
 ## Next Steps
 
-1. **Compile test** — open `LoopWorkspace.xcworkspace` in Xcode and build
-2. **Fix any compile errors** that surface (type mismatches, missing parameters, etc.)
-3. **Push branches** — requires `GH_TOKEN` with repo write access
-4. **Open PRs** — one per repo, `tidepool-sync/2026-03-10` → `dev` (or `main`)
+1. **Compile test** — `xcodebuild build -workspace LoopWorkspace.xcworkspace -scheme Loop -destination 'platform=iOS Simulator,name=iPhone 17'`
+2. **Fix any compile errors** that surface
+3. **Push branches** to `loopkitdev/<repo>`
+4. **Open PRs** — one per repo, `tidepool-sync/2026-05-11` → `dev` (or `main`)
 
 ---
 
-## Key Architectural Decisions
-
-See [LOOPKIT_SYNC_PROCESS.md](LOOPKIT_SYNC_PROCESS.md) for the full Golden Rule and process.
+## DIY Divergences Established This Sync
 
 | Decision | Detail |
 |---|---|
-| No `import LoopAlgorithm` in TidepoolService | DIY gets types from LoopKit; LoopAlgorithm not in workspace |
-| `decisionId: UUID?` added everywhere | LOOP-5295: pump events now carry a decision ID |
-| `pumpInoperable` state | LOOP-4801: LibreTransmitter, OmniBLE, OmniKit all got `inSignalLoss`/`isInoperable` |
-| `acknowledgeAlert` → `async throws` | OmniBLE + OmniKit: migrated from completion to async |
-| OmniBLE `slot6SuspendTimeExpired` guard | DIY safety: don't ack if pod suspended; pod beeps until resumed |
-| `updateLastEventDates` preserved in MinimedKit | DIY cannula/insulin age tracking |
-| `RemoteNotificationResponseManager` preserved | DIY feature: remote command feedback notifications |
-| Live Activity wired via `updateDisplayState()` | LoopDataManager Concurrency migration complete |
-| `.strings` refs stripped from all pbxprojs | Tidepool doesn't maintain translations; DIY uses `.xcstrings` |
+| `BasalRateScheduleEditor` enforces max basal | DIY rejects tidepool/LoopKit PR #734 (LOOP-5767). Keep `maximumBasalRate: therapySettings.maximumBasalRatePerHour`, not `nil`. See [`memory/divergence_basal_max_filter.md`](../memory/divergence_basal_max_filter.md). The DIY user-reported bug (max basal not respected on OmniBLE/Dash) is what surfaced this. |
+| OmniBLE/OmniKit reentrant-lock fix | DIY's `isSignalLost(at:lastPumpDataReportDate:)` signature is preserved over Tidepool's `isSignalLost(at: Date = Date())` to avoid reentrant lock crashes under rapid status polling. |
+| OmniBLE Pod Keep Alive suspend special case | DIY's `slot6SuspendTimeExpired` skip-ack guard preserved during the migration to `mutateState`. |
+| MinimedKit CAGE/IAGE | DIY's `updateLastEventDates(from:)` for cannula and insulin age tracking preserved; Tidepool has no equivalent. |
+| NightscoutService APNS response feature | DIY's `RemoteNotificationResponseManager` + JWT-managed return notifications preserved; Tidepool's simpler version dropped. |
+| OmniBLE temp basal error handling | Kept DIY's `completion(.communication(error))` style; did not adopt Tidepool's `do { ... } catch` refactor because it cannot be cleanly applied to the conflict region alone. decisionId tracking already present in DIY. |
+
+---
+
+## Key Patterns Carried Forward from 2026-03-10
+
+| Decision | Detail |
+|---|---|
+| LoopAlgorithm as Swift Package | DIY pulls `tidepool-org/LoopAlgorithm` via workspace `Package.resolved`. Do not re-add `XCRemoteSwiftPackageReference "LoopAlgorithm"` to per-repo `.pbxproj` files. |
+| `.xcstrings` over `.strings` | DIY uses Xcode 15+ string catalogs; always drop Tidepool's `.strings` PBXFileReferences and variant-group children during pbxproj conflict resolution. |
+| Preserve `LOCALIZATION_PREFERS_STRING_CATALOGS = YES` | Always keep DIY side of this XCBuildConfiguration setting. |
