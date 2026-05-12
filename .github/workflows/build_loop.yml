@@ -90,7 +90,7 @@ jobs:
         if: |
           steps.workflow-permission.outputs.has_permission == 'true' &&
           (vars.SCHEDULED_BUILD != 'false' || vars.SCHEDULED_SYNC != 'false')
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.GH_PAT }}
 
@@ -100,7 +100,7 @@ jobs:
           steps.workflow-permission.outputs.has_permission == 'true' &&
           vars.SCHEDULED_SYNC != 'false' && github.repository_owner != 'LoopKit'
         id: sync
-        uses: aormsby/Fork-Sync-With-Upstream-action@v3.4.2
+        uses: aormsby/Fork-Sync-With-Upstream-action@v3.4.1
         with:
           target_sync_branch: ${{ env.TARGET_BRANCH }}
           shallow_since: 6 months ago
@@ -165,7 +165,7 @@ jobs:
   build:
     name: Build
     needs: [check_certs, check_status]
-    runs-on: macos-26
+    runs-on: macos-15
     permissions:
       contents: write
     if:
@@ -175,10 +175,10 @@ jobs:
         (vars.SCHEDULED_SYNC != 'false' && needs.check_status.outputs.NEW_COMMITS == 'true' )
     steps:
       - name: Select Xcode version
-        run: "sudo xcode-select --switch /Applications/Xcode_26.2.app/Contents/Developer"
+        run: "sudo xcode-select --switch /Applications/Xcode_16.4.app/Contents/Developer"
 
       - name: Checkout Repo for building
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.GH_PAT }}
           submodules: recursive
@@ -212,6 +212,28 @@ jobs:
           # Adding comments (#) may be useful to easily tell the individual patches apart.
 
       # Patch Fastlane Match to not print tables
+      # The lines below add the customizations listed using the CustomizationSelect script
+          # The "\" is a continuation character 
+          #   the line following a "\" should not be blank
+          /bin/bash -c "$(curl -fsSL \
+          https://raw.githubusercontent.com/loopandlearn/lnl-scripts/main/CustomizationSelect.sh)" \
+          future_carbs_4h \
+          low_carb_limit \
+          high_carb_limit \
+          override_sens \
+          now_line \
+          lnl_icon \
+          watch_title \
+          2hlollipop \
+          meal_days \
+          meal_week \
+          profiles \
+          basal_lock \
+          negative_insulin \
+          remote_window
+
+          # the final customization listed above CANNOT have a continuation character
+          # more customizations can be pasted after this line
       - name: Patch Match Tables
         run: |
           TABLE_PRINTER_PATH=$(ruby -e 'puts Gem::Specification.find_by_name("fastlane").gem_dir')/match/lib/match/table_printer.rb
@@ -255,7 +277,7 @@ jobs:
       # Upload Build artifacts
       - name: Upload build log, IPA and Symbol artifacts
         if: always()
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
           path: |
