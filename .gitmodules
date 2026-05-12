@@ -58,3 +58,6 @@
 [submodule "LibreTransmitter"]
 	path = LibreTransmitter
 	url = https://github.com/loopkitdev/LibreTransmitter.git
+[submodule "LibreLoop"]
+	path = LibreLoop
+	url = https://github.com/loopkitdev/LibreLoop.git

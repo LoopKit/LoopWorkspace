@@ -294,6 +294,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "40D441014F200DF4BC779F34"
+               BuildableName = "LibreLoopPlugin.loopplugin"
+               BlueprintName = "LibreLoopPlugin"
+               ReferencedContainer = "container:LibreLoop/LibreLoop.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "C1BDBAE72A4397E200A787D1"
                BuildableName = "LibreDemoPlugin.loopplugin"
                BlueprintName = "LibreDemoPlugin"
