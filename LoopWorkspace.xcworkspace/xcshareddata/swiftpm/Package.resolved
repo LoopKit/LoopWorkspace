@@ -1,5 +1,5 @@
 {
-  "originHash" : "c9ff5a71b535b2309dec0c117628eb3a95dc416581be2cdedf4df33b71dfb536",
+  "originHash" : "f800a471f08fea932371fd46cfbf78358bc2745de47f3acd78557b5fa737b943",
   "pins" : [
     {
       "identity" : "amplitude-ios",
@@ -100,6 +100,15 @@
       }
     },
     {
+      "identity" : "loopalgorithm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tidepool-org/LoopAlgorithm",
+      "state" : {
+        "branch" : "main",
+        "revision" : "bd1a879ef5942c18630429d25294a473c03b426c"
+      }
+    },
+    {
       "identity" : "mixpanel-swift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mixpanel/mixpanel-swift.git",
@@ -184,8 +193,7 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/LoopKit/ZIPFoundation.git",
       "state" : {
-        "branch" : "stream-entry",
-        "revision" : "ad465ee2545392153a64c0976d6e59227d0c1c70"
+        "revision" : "c67b7509ec82ee2b4b0ab3f97742b94ed9692494"
       }
     }
   ],
