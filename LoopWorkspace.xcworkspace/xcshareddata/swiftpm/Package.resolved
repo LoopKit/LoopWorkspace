@@ -1,5 +1,5 @@
 {
-  "originHash" : "9fa433ef5fce7eff885b44f4dea36e033d61f148853051ee0494bf4e79200676",
+  "originHash" : "c9ff5a71b535b2309dec0c117628eb3a95dc416581be2cdedf4df33b71dfb536",
   "pins" : [
     {
       "identity" : "amplitude-ios",
@@ -83,21 +83,20 @@
       }
     },
     {
+      "identity" : "librecrkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/airedev326/LibreCRKit.git",
+      "state" : {
+        "revision" : "f690013632712b6d28e843c774d19cfd1c662898"
+      }
+    },
+    {
       "identity" : "loggerapi",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Kitura/LoggerAPI.git",
       "state" : {
         "revision" : "4e6b45e850ffa275e8e26a24c6454fd709d5b6ac",
         "version" : "2.0.0"
-      }
-    },
-    {
-      "identity" : "loopalgorithm",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/tidepool-org/LoopAlgorithm",
-      "state" : {
-        "branch" : "main",
-        "revision" : "bd1a879ef5942c18630429d25294a473c03b426c"
       }
     },
     {
@@ -185,7 +184,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/LoopKit/ZIPFoundation.git",
       "state" : {
-        "revision" : "c67b7509ec82ee2b4b0ab3f97742b94ed9692494"
+        "branch" : "stream-entry",
+        "revision" : "ad465ee2545392153a64c0976d6e59227d0c1c70"
       }
     }
   ],
