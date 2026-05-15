@@ -43,15 +43,17 @@ jobs:
           echo "has_permission=true" >> $GITHUB_OUTPUT
 
       - name: Checkout target repo
-        if: steps.workflow-permission.outputs.has_permission == 'true'
-        uses: actions/checkout@v4
+        if: |
+          steps.workflow-permission.outputs.has_permission == 'true' &&
+          (vars.SCHEDULED_BUILD != 'false' || vars.SCHEDULED_SYNC != 'false')
+        uses: actions/checkout@v5
         with:
           token: ${{ secrets.GH_PAT }}
 
       - name: Sync upstream changes
         if: steps.workflow-permission.outputs.has_permission == 'true' && github.repository_owner != 'LoopKit'
         id: sync
-        uses: aormsby/Fork-Sync-With-Upstream-action@v3.4.1
+        uses: aormsby/Fork-Sync-With-Upstream-action@v3.4.2
         with:
           target_sync_branch: ${{ env.TARGET_BRANCH }}
           shallow_since: 6 months ago
@@ -83,17 +85,17 @@ jobs:
   build:
     name: Build
     needs: [check_certs, check_status]
-    runs-on: macos-15
+    runs-on: macos-26
     permissions:
       contents: write
     if: github.event_name == 'workflow_dispatch'
 
     steps:
       - name: Select Xcode version
-        run: sudo xcode-select --switch /Applications/Xcode_16.4.app/Contents/Developer
+run: "sudo xcode-select --switch /Applications/Xcode_26.2.app/Contents/Developer"
 
       - name: Checkout Repo for building
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           token: ${{ secrets.GH_PAT }}
           submodules: recursive
@@ -134,7 +136,7 @@ jobs:
 
       - name: Upload build artifacts
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: build-artifacts
           path: |
