@@ -87,7 +87,7 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/loopkitdev/LibreCRKit.git",
       "state" : {
-        "revision" : "2082321c86cdbcc2231bdd212d6a992bd8b111fe"
+        "revision" : "51be6941f0b97a914517d2a8d030c52c6231f797"
       }
     },
     {
