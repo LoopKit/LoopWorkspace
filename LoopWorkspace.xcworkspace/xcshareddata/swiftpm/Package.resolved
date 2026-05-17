@@ -1,5 +1,5 @@
 {
-  "originHash" : "f800a471f08fea932371fd46cfbf78358bc2745de47f3acd78557b5fa737b943",
+  "originHash" : "23846d3770420848dd5adbad776664c7e8de33bf591df0dd637f8adfc29f4814",
   "pins" : [
     {
       "identity" : "amplitude-ios",
@@ -85,9 +85,9 @@
     {
       "identity" : "librecrkit",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/airedev326/LibreCRKit.git",
+      "location" : "https://github.com/loopkitdev/LibreCRKit.git",
       "state" : {
-        "revision" : "60df7ec88441f43fb1105199666072e4567973e7"
+        "revision" : "2082321c86cdbcc2231bdd212d6a992bd8b111fe"
       }
     },
     {
