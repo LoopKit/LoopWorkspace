@@ -235,6 +235,7 @@ jobs:
         run: bundle exec fastlane build_loop
         env:
           TEAMID: ${{ secrets.TEAMID }}
+          TEAMID_SUFFIX: ${{ vars.TEAMID_SUFFIX }}
           GH_PAT: ${{ secrets.GH_PAT }}
           FASTLANE_KEY_ID: ${{ secrets.FASTLANE_KEY_ID }}
           FASTLANE_ISSUER_ID: ${{ secrets.FASTLANE_ISSUER_ID }}
@@ -246,6 +247,7 @@ jobs:
         run: bundle exec fastlane release
         env:
           TEAMID: ${{ secrets.TEAMID }}
+          TEAMID_SUFFIX: ${{ vars.TEAMID_SUFFIX }}
           GH_PAT: ${{ secrets.GH_PAT }}
           FASTLANE_KEY_ID: ${{ secrets.FASTLANE_KEY_ID }}
           FASTLANE_ISSUER_ID: ${{ secrets.FASTLANE_ISSUER_ID }}
