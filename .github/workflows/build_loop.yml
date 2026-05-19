@@ -165,7 +165,7 @@ jobs:
   build:
     name: Build
     needs: [check_certs, check_status]
-    runs-on: macos-26
+    runs-on: macos-latest
     permissions:
       contents: write
     if:
