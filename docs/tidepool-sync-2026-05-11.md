@@ -197,3 +197,32 @@ and a divergence comment was added to defend it on future syncs.
 - **Lokalise translations:** `InsulinType.swift` lost DIY's detailed insulin
   descriptions in favor of Tidepool's simpler combined Fiasp/Lyumjev case. Next
   Lokalise pull should repopulate.
+
+---
+
+## 5. Upgrading is a one-way operation (Core Data)
+
+**You cannot revert to `dev` after upgrading to the sync build.**
+
+The shared LoopKit Core Data store (glucose, dose, carb, dosing decisions — all in one
+`Model.sqlite` in the app group) is migrated forward from **Modelv4** to **Modelv6** on
+first launch of the sync build. `dev` only ships model versions up to **Modelv4** (it has
+no v5/v6 model), and Core Data migrations are forward-only, so a `dev` build cannot open a
+v6 store: `addPersistentStore` fails and `PersistenceController` lands in an `.error` state.
+
+Consequences of going back to `dev` after upgrading:
+- `dev`'s data stores won't load — the app is non-functional (no cached glucose/dose/carb,
+  looping won't run).
+- The v6 data is **not** wiped from disk, so reinstalling the sync build reads it again.
+- To actually use `dev` again you must delete + reinstall it, which wipes the local cache;
+  it then rebuilds from HealthKit (the long-term history lives there, not in this store).
+
+This is inherent Core Data forward-migration behavior, not specific to any one change.
+
+**Forward migration preserves insulin data.** The v4→v6 mapping originally dropped the
+old single `value` attribute (auto-generated, name-based mappings had no destination),
+zeroing cached bolus/basal amounts and understating IOB. `CachedInsulinDeliveryObjectMigrationPolicy`
+now copies `value` → `deliveredUnits` (and `programmedUnits` for boluses); basal *rates*
+already carry over via `scheduledBasalRate`/`programmedTempBasalRate`. Note this only fixes
+the forward path — installs that already migrated on a build *without* the policy have
+already-dropped values that this cannot recover (they read as 0).
