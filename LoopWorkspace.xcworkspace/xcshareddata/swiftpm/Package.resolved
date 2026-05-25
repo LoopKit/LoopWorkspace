@@ -1,5 +1,5 @@
 {
-  "originHash" : "9fa433ef5fce7eff885b44f4dea36e033d61f148853051ee0494bf4e79200676",
+  "originHash" : "022dd750637857e01bb9d5a686f612a656b7e41972a6c0b5144ddb9bf2d2303c",
   "pins" : [
     {
       "identity" : "amplitude-ios",
@@ -89,15 +89,6 @@
       "state" : {
         "revision" : "4e6b45e850ffa275e8e26a24c6454fd709d5b6ac",
         "version" : "2.0.0"
-      }
-    },
-    {
-      "identity" : "loopalgorithm",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/LoopKit/LoopAlgorithm",
-      "state" : {
-        "branch" : "main",
-        "revision" : "2f5c630084aa0d72b8d14999e1e0f7c836b0c341"
       }
     },
     {
