@@ -200,24 +200,36 @@ and a divergence comment was added to defend it on future syncs.
 
 ---
 
-## 5. Upgrading is a one-way operation (Core Data)
-
-**You cannot revert to `dev` after upgrading to the sync build.**
+## 5. Reverting to `dev` after upgrading (Core Data) — usually works, but data-dependent
 
 The shared LoopKit Core Data store (glucose, dose, carb, dosing decisions — all in one
 `Model.sqlite` in the app group) is migrated forward from **Modelv4** to **Modelv6** on
-first launch of the sync build. `dev` only ships model versions up to **Modelv4** (it has
-no v5/v6 model), and Core Data migrations are forward-only, so a `dev` build cannot open a
-v6 store: `addPersistentStore` fails and `PersistenceController` lands in an `.error` state.
+first launch of the sync build. `dev` only ships model versions up to **Modelv4**.
 
-Consequences of going back to `dev` after upgrading:
-- `dev`'s data stores won't load — the app is non-functional (no cached glucose/dose/carb,
-  looping won't run).
-- The v6 data is **not** wiped from disk, so reinstalling the sync build reads it again.
-- To actually use `dev` again you must delete + reinstall it, which wipes the local cache;
-  it then rebuilds from HealthKit (the long-term history lives there, not in this store).
+Contrary to an earlier "forward-only / can't go back" assumption, **`dev` can open the
+v6 store in place**: Core Data's automatic lightweight migration *downgrades* it back to
+`dev`'s Modelv4. The v6→v4 changes are inferrable — the v6-only attributes (`programmedUnits`,
+`decisionId`, `id`, …) are optional and simply dropped, and `deliveredUnits` shares the
+underlying `ZVALUE` column with v4's `value` via `elementID="value"`. (Verified with a
+Core Data round-trip: create a v4 store → migrate to v6 with the sync model → open with the
+dev model — succeeds.)
 
-This is inherent Core Data forward-migration behavior, not specific to any one change.
+**The catch — it's data-dependent.** `dev`'s `CachedInsulinDeliveryObject.value` is
+**mandatory**; v6's `deliveredUnits` is **optional**. The inferred downgrade maps
+`deliveredUnits → value`, so:
+- A store that was **just upgraded** (every row migrated from v4, where `value` was required
+  and non-null) downgrades cleanly — `dev` opens it. *This is why a tester who upgraded and
+  immediately went back to `dev` in place saw it "just work."*
+- Once the sync build **records a dose with a null `deliveredUnits`** (e.g. in-progress/mutable
+  or programmed-only entries), the downgrade fails: Core Data throws `NSCocoaErrorDomain`
+  **134110** — *"missing attribute values on mandatory destination attribute"* —
+  `addPersistentStore` fails and `PersistenceController` lands in `.error`, leaving the app
+  non-functional. You then must **delete + reinstall** `dev`, which wipes the local cache; it
+  rebuilds from HealthKit (the long-term history lives there, not in this store).
+
+So going back to `dev` in place is fine right after upgrading, but gets unreliable the longer
+the sync build runs (more chance of a null-`deliveredUnits` row). The v6 data is never wiped
+from disk, so reinstalling the sync build always reads it again.
 
 **Forward migration preserves insulin data.** The v4→v6 mapping originally dropped the
 old single `value` attribute (auto-generated, name-based mappings had no destination),
