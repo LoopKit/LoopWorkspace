@@ -65,6 +65,7 @@ LoopWorkspace superproject commit: `3d4432c` ("Bump submodule pins to tidepool-s
 | MinimedKit CAGE/IAGE | DIY's `updateLastEventDates(from:)` for cannula and insulin age tracking preserved; Tidepool has no equivalent. |
 | NightscoutService APNS response feature | DIY's `RemoteNotificationResponseManager` + JWT-managed return notifications preserved; Tidepool's simpler version dropped. |
 | OmniBLE temp basal error handling | Kept DIY's `completion(.communication(error))` style; did not adopt Tidepool's `do { ... } catch` refactor because it cannot be cleanly applied to the conflict region alone. decisionId tracking already present in DIY. |
+| CachedInsulinDeliveryObject bolus-without-units | Dropped the `assertionFailure` in `CachedInsulinDeliveryObject.dose` for a `.bolus` with neither programmedUnits nor deliveredUnits — legacy rows from an upgraded DIY install can have neither and trapped debug builds on read. Falls back to 0 (release behavior). Upstream keeps the assertion (fresh installs only); re-remove on future LoopKit syncs. |
 
 ---
 

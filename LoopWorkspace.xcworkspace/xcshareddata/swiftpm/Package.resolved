@@ -1,5 +1,5 @@
 {
-  "originHash" : "23846d3770420848dd5adbad776664c7e8de33bf591df0dd637f8adfc29f4814",
+  "originHash" : "022dd750637857e01bb9d5a686f612a656b7e41972a6c0b5144ddb9bf2d2303c",
   "pins" : [
     {
       "identity" : "amplitude-ios",
@@ -97,15 +97,6 @@
       "state" : {
         "revision" : "4e6b45e850ffa275e8e26a24c6454fd709d5b6ac",
         "version" : "2.0.0"
-      }
-    },
-    {
-      "identity" : "loopalgorithm",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/tidepool-org/LoopAlgorithm",
-      "state" : {
-        "branch" : "main",
-        "revision" : "bd1a879ef5942c18630429d25294a473c03b426c"
       }
     },
     {

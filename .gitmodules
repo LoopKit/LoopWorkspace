@@ -61,3 +61,6 @@
 [submodule "LibreLoop"]
 	path = LibreLoop
 	url = https://github.com/loopkitdev/LibreLoop.git
+[submodule "LoopAlgorithm"]
+	path = LoopAlgorithm
+	url = https://github.com/LoopKit/LoopAlgorithm.git

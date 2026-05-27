@@ -7,6 +7,21 @@ This document describes the changes introduced by syncing the Tidepool fork of L
 back into DIY, the conflicts encountered during that merge, and the
 decisions made to resolve them.
 
+> **Update (2026-05-20) — read before relying on the LoopAlgorithm decisions below.**
+> A follow-up sync landed on 2026-05-11; see
+> [`tidepool-sync-2026-05-11.md`](tidepool-sync-2026-05-11.md) for that round.
+>
+> One major decision recorded in this doc has since been **reversed**: §3 states that
+> DIY keeps LoopAlgorithm embedded *inline* inside LoopKit and *omits* the
+> `XCRemoteSwiftPackageReference "LoopAlgorithm"` (see "TidepoolService: import
+> LoopAlgorithm — Removed" and the pbxproj rules table). As of the 2026-05-11 sync, DIY
+> instead consumes the **`tidepool-org/LoopAlgorithm` Swift package** directly — pinned
+> in the workspace `Package.resolved` — and the inline `LoopKit/LoopAlgorithm/` copies
+> (`LoopAlgorithm.swift`, `LoopPredictionOutput.swift`, `ExponentialInsulinModel.swift`)
+> were deleted (LOOP-4781). `import LoopAlgorithm` is therefore present again where this
+> doc says it was removed. Where the two docs disagree on LoopAlgorithm packaging, the
+> 2026-05-11 doc is authoritative.
+
 ---
 
 ## Table of Contents
