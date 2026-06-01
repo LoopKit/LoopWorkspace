@@ -154,6 +154,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D889B2382D2B4BFE00C8E64C"
+               BuildableName = "OmnipodKitPlugin.loopplugin"
+               BlueprintName = "OmnipodKitPlugin"
+               ReferencedContainer = "container:OmnipodKit/OmnipodKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "C124021629C7D93D00B32844"
                BuildableName = "OmniKitPlugin.loopplugin"
                BlueprintName = "OmniKitPlugin"
@@ -537,6 +551,16 @@
                BuildableName = "RileyLinkBLEKitTests.xctest"
                BlueprintName = "RileyLinkBLEKitTests"
                ReferencedContainer = "container:RileyLinkKit/RileyLinkKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D8D0ED172D74EF41000B0AF4"
+               BuildableName = "OmniTests.xctest"
+               BlueprintName = "OmniTests"
+               ReferencedContainer = "container:OmnipodKit/OmnipodKit.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
