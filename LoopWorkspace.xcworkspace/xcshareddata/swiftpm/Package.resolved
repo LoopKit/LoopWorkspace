@@ -1,5 +1,5 @@
 {
-  "originHash" : "022dd750637857e01bb9d5a686f612a656b7e41972a6c0b5144ddb9bf2d2303c",
+  "originHash" : "975d155ecb687b7f956d6545b16da633ff716d7d3e1a390dd9aff2c69c7ddd83",
   "pins" : [
     {
       "identity" : "amplitude-ios",
@@ -85,9 +85,9 @@
     {
       "identity" : "librecrkit",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/loopkitdev/LibreCRKit.git",
+      "location" : "https://github.com/airedev326/LibreCRKit.git",
       "state" : {
-        "revision" : "ae52535fbdfe332898b14fe4815a721a812f35eb"
+        "revision" : "45a892d46e1e86d893db18a9f79be5ac6ac0ef3f"
       }
     },
     {
@@ -176,7 +176,7 @@
       "location" : "https://github.com/tidepool-org/TidepoolKit",
       "state" : {
         "branch" : "dev",
-        "revision" : "4f4747ff647d836c5a27cc1b9c275e5717901e83"
+        "revision" : "290bd0431c55e8d0e0e542b163de13b1f07b77d9"
       }
     },
     {
