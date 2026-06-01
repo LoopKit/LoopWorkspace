@@ -1,5 +1,5 @@
 {
-  "originHash" : "022dd750637857e01bb9d5a686f612a656b7e41972a6c0b5144ddb9bf2d2303c",
+  "originHash" : "3074fb13e969eeb07af13d2659671d107eac739de84ccaff57f73a4b6201e10f",
   "pins" : [
     {
       "identity" : "amplitude-ios",
@@ -168,7 +168,7 @@
       "location" : "https://github.com/tidepool-org/TidepoolKit",
       "state" : {
         "branch" : "dev",
-        "revision" : "4f4747ff647d836c5a27cc1b9c275e5717901e83"
+        "revision" : "290bd0431c55e8d0e0e542b163de13b1f07b77d9"
       }
     },
     {
