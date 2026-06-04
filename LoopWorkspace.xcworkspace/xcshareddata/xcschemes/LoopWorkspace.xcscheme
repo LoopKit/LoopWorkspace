@@ -577,6 +577,16 @@
                ReferencedContainer = "container:OmnipodKit/OmnipodKit.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B7D3A8D92C148CC4002EE003"
+               BuildableName = "MedtrumKitTests.xctest"
+               BlueprintName = "MedtrumKitTests"
+               ReferencedContainer = "container:MedtrumKit/MedtrumKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
