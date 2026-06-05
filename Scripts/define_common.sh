@@ -78,10 +78,10 @@ PROJECTS=( \
     LoopKit:OmniKit:main \
     LoopKit:RileyLinkKit:dev \
     LoopKit:TidepoolService:dev \
-    bastiaanv:DanaKit:dev \
+    loopandlearn:OmnipodKit:main \
     bastiaanv:EversenseKit:dev \
     jbr7rr:MedtrumKit:dev \
-    loopandlearn:OmnipodKit:main \
+    bastiaanv:DanaKit:dev \
 )
 
 function section_divider() {

@@ -58,15 +58,15 @@
 [submodule "LibreTransmitter"]
 	path = LibreTransmitter
 	url = https://github.com/LoopKit/LibreTransmitter.git
-[submodule "EversenseKit"]
-	path = EversenseKit
-	url = https://github.com/bastiaanv/EversenseKit
-[submodule "MedtrumKit"]
-	path = MedtrumKit
-	url = https://github.com/jbr7rr/MedtrumKit.git
-[submodule "DanaKit"]
-	path = DanaKit
-	url = https://github.com/bastiaanv/DanaKit
 [submodule "OmnipodKit"]
 	path = OmnipodKit
 	url = https://github.com/loopandlearn/OmnipodKit
+[submodule "MedtrumKit"]
+	path = MedtrumKit
+	url = https://github.com/jbr7rr/MedtrumKit
+[submodule "EversenseKit"]
+	path = EversenseKit
+	url = https://github.com/bastiaanv/EversenseKit
+[submodule "DanaKit"]
+	path = DanaKit
+	url = https://github.com/bastiaanv/DanaKit

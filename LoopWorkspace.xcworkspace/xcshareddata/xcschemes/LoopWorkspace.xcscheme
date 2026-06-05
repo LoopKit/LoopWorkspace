@@ -140,6 +140,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "3E767D422D67B790004B1971"
+               BuildableName = "MedtrumKitPlugin.loopplugin"
+               BlueprintName = "MedtrumKitPlugin"
+               ReferencedContainer = "container:MedtrumKit/MedtrumKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "C1E34B5A29C7AD01009A50A5"
                BuildableName = "MinimedKitPlugin.loopplugin"
                BlueprintName = "MinimedKitPlugin"
@@ -158,20 +172,6 @@
                BuildableName = "OmnipodKitPlugin.loopplugin"
                BlueprintName = "OmnipodKitPlugin"
                ReferencedContainer = "container:OmnipodKit/OmnipodKit.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3E767D422D67B790004B1971"
-               BuildableName = "MedtrumKitPlugin.loopplugin"
-               BlueprintName = "MedtrumKitPlugin"
-               ReferencedContainer = "container:MedtrumKit/MedtrumKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -609,10 +609,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3EFE70822E08434B00CF6B9E"
-               BuildableName = "EversenseKitTests.xctest"
-               BlueprintName = "EversenseKitTests"
-               ReferencedContainer = "container:EversenseKit/EversenseKit.xcodeproj">
+               BlueprintIdentifier = "B7D3A8D92C148CC4002EE003"
+               BuildableName = "MedtrumKitTests.xctest"
+               BlueprintName = "MedtrumKitTests"
+               ReferencedContainer = "container:MedtrumKit/MedtrumKit.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
