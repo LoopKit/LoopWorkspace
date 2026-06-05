@@ -601,16 +601,6 @@
                ReferencedContainer = "container:MedtrumKit/MedtrumKit.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3EFE70822E08434B00CF6B9E"
-               BuildableName = "EversenseKitTests.xctest"
-               BlueprintName = "EversenseKitTests"
-               ReferencedContainer = "container:EversenseKit/EversenseKit.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
