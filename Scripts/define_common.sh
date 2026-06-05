@@ -79,6 +79,8 @@ PROJECTS=( \
     LoopKit:RileyLinkKit:dev \
     LoopKit:TidepoolService:dev \
     loopandlearn:OmnipodKit:main \
+    bastiaanv:EversenseKit:dev \
+    jbr7rr:MedtrumKit:dev \
 )
 
 function section_divider() {
