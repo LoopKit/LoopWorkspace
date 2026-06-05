@@ -182,20 +182,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C124021629C7D93D00B32844"
-               BuildableName = "OmniKitPlugin.loopplugin"
-               BlueprintName = "OmniKitPlugin"
-               ReferencedContainer = "container:OmniKit/OmniKit.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "C187C196279086A8006E3557"
                BuildableName = "OmniBLEPlugin.loopplugin"
                BlueprintName = "OmniBLEPlugin"
@@ -559,16 +545,6 @@
                BuildableName = "MinimedKitTests.xctest"
                BlueprintName = "MinimedKitTests"
                ReferencedContainer = "container:MinimedKit/MinimedKit.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C12ED9C929C7DBA900435701"
-               BuildableName = "OmniKitTests.xctest"
-               BlueprintName = "OmniKitTests"
-               ReferencedContainer = "container:OmniKit/OmniKit.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
