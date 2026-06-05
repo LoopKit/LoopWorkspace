@@ -31,9 +31,6 @@
 [submodule "LogglyService"]
 	path = LogglyService
 	url = https://github.com/LoopKit/LogglyService.git
-[submodule "OmniBLE"]
-	path = OmniBLE
-	url = https://github.com/LoopKit/OmniBLE.git
 [submodule "NightscoutRemoteCGM"]
 	path = NightscoutRemoteCGM
 	url = https://github.com/LoopKit/NightscoutRemoteCGM.git
@@ -46,9 +43,6 @@
 [submodule "TidepoolService"]
 	path = TidepoolService
 	url = https://github.com/LoopKit/TidepoolService.git
-[submodule "OmniKit"]
-	path = OmniKit
-	url = https://github.com/LoopKit/OmniKit.git
 [submodule "MinimedKit"]
 	path = MinimedKit
 	url = https://github.com/LoopKit/MinimedKit.git
@@ -58,3 +52,12 @@
 [submodule "LibreTransmitter"]
 	path = LibreTransmitter
 	url = https://github.com/LoopKit/LibreTransmitter.git
+[submodule "OmnipodKit"]
+	path = OmnipodKit
+	url = https://github.com/loopandlearn/OmnipodKit
+[submodule "MedtrumKit"]
+	path = MedtrumKit
+	url = https://github.com/jbr7rr/MedtrumKit
+[submodule "EversenseKit"]
+	path = EversenseKit
+	url = https://github.com/bastiaanv/EversenseKit
