@@ -24,12 +24,13 @@ Table of Contents:
 
 ## Overview
 
-> As of 18 Feb 2026, the translations for these repositories are added to lokalise
+> The translations for these repositories are added to lokalise
 > * DanaKit
 > * EversenseKit
 > * MedtrumKit
+> * OmnipodKit
 
-> In order to manage those localization strings, the translation work will be done in the feat/eversense branch, which includes those 3 repositories.
+> In order to manage those localization strings, the translation work will be done in the feat/all-managers branch, which includes all repositories.
 
 > The Scripts needed to handle these new repositories are found on in this branch (for now).
 
@@ -317,7 +318,7 @@ If you need to start over but don't want to lose prior work, use archive_transla
 
 ### Additional Utility Scripts
 
-These scripts are used for several purposes but are not part of the Localization process.
+These scripts, currently found in feat/all-managers, are used for several purposes but are not part of the Localization process.
 
 They are documented here for convenience. The alphabetic list is provided here.
 
