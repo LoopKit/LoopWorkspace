@@ -72,7 +72,7 @@ GEM
     faraday_middleware (1.2.1)
       faraday (~> 1.0)
     fastimage (2.4.0)
-    fastlane (2.234.0)
+    fastlane (2.235.0)
       CFPropertyList (>= 2.3, < 5.0.0)
       abbrev (~> 0.1)
       addressable (>= 2.8, < 3.0.0)
@@ -81,7 +81,7 @@ GEM
       babosa (>= 1.0.3, < 2.0.0)
       base64 (~> 0.2)
       benchmark (>= 0.1.0)
-      bundler (>= 1.17.3, < 5.0.0)
+      bundler (>= 2.4.0, < 5.0.0)
       colored (~> 1.2)
       commander (~> 4.6)
       csv (~> 3.3)
@@ -96,12 +96,12 @@ GEM
       gh_inspector (>= 1.1.2, < 2.0.0)
       google-apis-androidpublisher_v3 (~> 0.3)
       google-apis-playcustomapp_v1 (~> 0.1)
-      google-cloud-env (>= 1.6.0, <= 2.1.1)
+      google-cloud-env (>= 1.6.0, < 2.3.0)
       google-cloud-storage (~> 1.31)
       highline (~> 2.0)
       http-cookie (~> 1.0.5)
       json (< 3.0.0)
-      jwt (>= 2.1.0, < 3)
+      jwt (>= 2.1.0, < 4)
       logger (>= 1.6, < 2.0)
       mini_magick (>= 4.9.4, < 5.0.0)
       multipart-post (>= 2.0.0, < 3.0.0)
@@ -230,7 +230,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  fastlane (= 2.234.0)
+  fastlane (= 2.235.0)
 
 BUNDLED WITH
-  4.0.6
+  4.0.12

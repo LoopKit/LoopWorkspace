@@ -34,7 +34,6 @@ MESSAGE_FILE="xlate_message_file.txt"
 # matches lokalise order, en plus alphabetical order by language name in English
 LANGUAGES=(en \
     ar \
-    ce \
     zh-Hans \
     cs \
     da \
@@ -43,10 +42,10 @@ LANGUAGES=(en \
     fr \
     de \
     he \
-    hi \
     hu \
     it \
     ja \
+    ko \
     nb \
     pl \
     pt-BR \
@@ -75,10 +74,11 @@ PROJECTS=( \
     LoopKit:MinimedKit:main \
     LoopKit:NightscoutRemoteCGM:dev \
     LoopKit:NightscoutService:dev \
-    LoopKit:OmniBLE:dev \
-    LoopKit:OmniKit:main \
     LoopKit:RileyLinkKit:dev \
     LoopKit:TidepoolService:dev \
+    loopandlearn:OmnipodKit:main \
+    bastiaanv:EversenseKit:dev \
+    jbr7rr:MedtrumKit:dev \
 )
 
 function section_divider() {
