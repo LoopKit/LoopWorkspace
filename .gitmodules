@@ -61,3 +61,6 @@
 [submodule "LoopAlgorithm"]
 	path = LoopAlgorithm
 	url = https://github.com/LoopKit/LoopAlgorithm.git
+[submodule "OmnipodKit"]
+	path = OmnipodKit
+	url = https://github.com/loopandlearn/OmnipodKit
