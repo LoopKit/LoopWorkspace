@@ -31,9 +31,6 @@
 [submodule "LogglyService"]
 	path = LogglyService
 	url = https://github.com/loopkitdev/LogglyService.git
-[submodule "OmniBLE"]
-	path = OmniBLE
-	url = https://github.com/loopkitdev/OmniBLE.git
 [submodule "NightscoutRemoteCGM"]
 	path = NightscoutRemoteCGM
 	url = https://github.com/loopkitdev/NightscoutRemoteCGM.git
@@ -46,9 +43,6 @@
 [submodule "TidepoolService"]
 	path = TidepoolService
 	url = https://github.com/loopkitdev/TidepoolService.git
-[submodule "OmniKit"]
-	path = OmniKit
-	url = https://github.com/loopkitdev/OmniKit.git
 [submodule "MinimedKit"]
 	path = MinimedKit
 	url = https://github.com/loopkitdev/MinimedKit.git
