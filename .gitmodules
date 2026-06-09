@@ -64,3 +64,11 @@
 [submodule "OmnipodKit"]
 	path = OmnipodKit
 	url = https://github.com/loopandlearn/OmnipodKit
+[submodule "EversenseKit"]
+	path = EversenseKit
+	url = https://github.com/LoopKit/EversenseKit.git
+	branch = loop-next-dev
+[submodule "MedtrumKit"]
+	path = MedtrumKit
+	url = https://github.com/loopkitdev/MedtrumKit.git
+	branch = loop-next-dev
