@@ -52,9 +52,15 @@
 [submodule "LibreTransmitter"]
 	path = LibreTransmitter
 	url = https://github.com/loopkitdev/LibreTransmitter.git
+[submodule "LibreLoop"]
+	path = LibreLoop
+	url = https://github.com/loopkitdev/LibreLoop.git
 [submodule "LoopAlgorithm"]
 	path = LoopAlgorithm
 	url = https://github.com/LoopKit/LoopAlgorithm.git
+[submodule "LibreCRKit"]
+	path = LibreCRKit
+	url = https://github.com/airedev326/LibreCRKit.git
 [submodule "OmnipodKit"]
 	path = OmnipodKit
 	url = https://github.com/loopandlearn/OmnipodKit
