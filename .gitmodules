@@ -1,21 +1,21 @@
 [submodule "Loop"]
 	path = Loop
-	url = https://github.com/LoopKit/Loop.git
+	url = https://github.com/loopkitdev/Loop.git
 [submodule "LoopKit"]
 	path = LoopKit
-	url = https://github.com/LoopKit/LoopKit.git
+	url = https://github.com/loopkitdev/LoopKit.git
 [submodule "CGMBLEKit"]
 	path = CGMBLEKit
-	url = https://github.com/LoopKit/CGMBLEKit.git
+	url = https://github.com/loopkitdev/CGMBLEKit.git
 [submodule "dexcom-share-client-swift"]
 	path = dexcom-share-client-swift
-	url = https://github.com/LoopKit/dexcom-share-client-swift.git
+	url = https://github.com/loopkitdev/dexcom-share-client-swift.git
 [submodule "RileyLinkKit"]
 	path = RileyLinkKit
-	url = https://github.com/LoopKit/RileyLinkKit
+	url = https://github.com/loopkitdev/RileyLinkKit
 [submodule "NightscoutService"]
 	path = NightscoutService
-	url = https://github.com/LoopKit/NightscoutService.git
+	url = https://github.com/loopkitdev/NightscoutService.git
 [submodule "Minizip"]
 	path = Minizip
 	url = https://github.com/LoopKit/Minizip.git
@@ -24,40 +24,52 @@
 	url = https://github.com/LoopKit/TrueTime.swift.git
 [submodule "LoopOnboarding"]
 	path = LoopOnboarding
-	url = https://github.com/LoopKit/LoopOnboarding.git
+	url = https://github.com/loopkitdev/LoopOnboarding.git
 [submodule "AmplitudeService"]
 	path = AmplitudeService
-	url = https://github.com/LoopKit/AmplitudeService.git
+	url = https://github.com/loopkitdev/AmplitudeService.git
 [submodule "LogglyService"]
 	path = LogglyService
-	url = https://github.com/LoopKit/LogglyService.git
+	url = https://github.com/loopkitdev/LogglyService.git
 [submodule "NightscoutRemoteCGM"]
 	path = NightscoutRemoteCGM
-	url = https://github.com/LoopKit/NightscoutRemoteCGM.git
+	url = https://github.com/loopkitdev/NightscoutRemoteCGM.git
 [submodule "LoopSupport"]
 	path = LoopSupport
-	url = https://github.com/LoopKit/LoopSupport
+	url = https://github.com/loopkitdev/LoopSupport
 [submodule "G7SensorKit"]
 	path = G7SensorKit
-	url = https://github.com/LoopKit/G7SensorKit.git
+	url = https://github.com/loopkitdev/G7SensorKit.git
 [submodule "TidepoolService"]
 	path = TidepoolService
-	url = https://github.com/LoopKit/TidepoolService.git
+	url = https://github.com/loopkitdev/TidepoolService.git
 [submodule "MinimedKit"]
 	path = MinimedKit
-	url = https://github.com/LoopKit/MinimedKit.git
+	url = https://github.com/loopkitdev/MinimedKit.git
 [submodule "MixpanelService"]
 	path = MixpanelService
-	url = https://github.com/LoopKit/MixpanelService
+	url = https://github.com/loopkitdev/MixpanelService
 [submodule "LibreTransmitter"]
 	path = LibreTransmitter
-	url = https://github.com/LoopKit/LibreTransmitter.git
+	url = https://github.com/loopkitdev/LibreTransmitter.git
+[submodule "LibreLoop"]
+	path = LibreLoop
+	url = https://github.com/LoopKit/LibreLoop.git
+[submodule "LoopAlgorithm"]
+	path = LoopAlgorithm
+	url = https://github.com/LoopKit/LoopAlgorithm.git
+[submodule "LibreCRKit"]
+	path = LibreCRKit
+	url = https://github.com/airedev326/LibreCRKit.git
 [submodule "OmnipodKit"]
 	path = OmnipodKit
-	url = https://github.com/loopandlearn/OmnipodKit
-[submodule "MedtrumKit"]
-	path = MedtrumKit
-	url = https://github.com/jbr7rr/MedtrumKit
+	url = https://github.com/loopkitdev/OmnipodKit.git
+	branch = loop-next-dev
 [submodule "EversenseKit"]
 	path = EversenseKit
-	url = https://github.com/bastiaanv/EversenseKit
+	url = https://github.com/LoopKit/EversenseKit.git
+	branch = loop-next-dev
+[submodule "MedtrumKit"]
+	path = MedtrumKit
+	url = https://github.com/loopkitdev/MedtrumKit.git
+	branch = loop-next-dev

@@ -1,18 +1,23 @@
 jobs:
   build_and_test:
     macos:
-      xcode: 16.4
+      xcode: 26.4
     steps:
       - checkout
       - run:
           name: Checkout submodules
           command: git submodule update --init --recursive --depth 1
       - run:
+          name: Install xcbeautify
+          command: brew list xcbeautify >/dev/null 2>&1 || brew install xcbeautify
+      - run:
           name: Build Loop
-          command: set -o pipefail && time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme 'LoopWorkspace' -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.5' build | xcpretty
+          command: set -o pipefail && time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme 'LoopWorkspace' -destination 'platform=iOS Simulator,name=iPhone 17' build | xcbeautify
       - run:
           name: Run Tests
-          command: set -o pipefail && time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme 'LoopWorkspace' -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.5' test | xcpretty
+          command: set -o pipefail && time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme 'LoopWorkspace' -destination 'platform=iOS Simulator,name=iPhone 17' test | xcbeautify --report junit --report-path test-results/results.xml
+      - store_test_results:
+          path: test-results
 workflows:
   version: 2
   build_and_test:
