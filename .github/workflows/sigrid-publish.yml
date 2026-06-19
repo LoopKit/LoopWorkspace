@@ -1,0 +1,22 @@
+name: Publish to Sigrid
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sigridci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Sigrid CI
+        uses: Software-Improvement-Group/sigridci@main
+        with:
+          customer: Miles
+          system: ${{ github.event.repository.name }}
+          publishonly: true
+        env:
+          SIGRID_CI_TOKEN: "${{ secrets.SIGRID_CI_TOKEN }}"

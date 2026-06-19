@@ -1,0 +1,27 @@
+name: Sigrid pull request feedback
+on: [pull_request]
+
+jobs:
+  sigridci:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Sigrid CI
+        uses: Software-Improvement-Group/sigridci@main
+        with:
+          customer: Miles
+          system: ${{ github.event.repository.name }}
+        env:
+          SIGRID_CI_TOKEN: "${{ secrets.SIGRID_CI_TOKEN }}"
+      - name: "Sigrid pull request feedback"
+        uses: mshick/add-pr-comment@v2
+        if: always()
+        with:
+          message-id: sigrid
+          message-path: sigrid-ci-output/*feedback.md
