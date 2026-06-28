@@ -5,10 +5,10 @@
       location = "group:Scripts"
       name = "Scripts">
       <FileRef
-         location = "group:update_submodule_refs.sh">
+         location = "group:sync.swift">
       </FileRef>
       <FileRef
-         location = "group:sync.swift">
+         location = "group:LocalizationInstructions.md">
       </FileRef>
       <FileRef
          location = "group:export_localizations.sh">
@@ -16,9 +16,45 @@
       <FileRef
          location = "group:import_localizations.sh">
       </FileRef>
+      <FileRef
+         location = "group:update_submodule_refs.sh">
+      </FileRef>
+      <FileRef
+         location = "group:define_common.sh">
+      </FileRef>
+      <FileRef
+         location = "group:manual_download_from_lokalise.sh">
+      </FileRef>
+      <FileRef
+         location = "group:manual_import_localizations.sh">
+      </FileRef>
+      <FileRef
+         location = "group:manual_review_translations.sh">
+      </FileRef>
+      <FileRef
+         location = "group:manual_finalize_translations.sh">
+      </FileRef>
+      <FileRef
+         location = "group:manual_LoopWorkspace_prepare_pr.sh">
+      </FileRef>
+      <FileRef
+         location = "group:manual_export_localizations.sh">
+      </FileRef>
+      <FileRef
+         location = "group:manual_upload_to_lokalise.sh">
+      </FileRef>
+      <FileRef
+         location = "group:archive_translations.sh">
+      </FileRef>
+      <FileRef
+         location = "group:manual_cleanup.sh">
+      </FileRef>
    </Group>
    <FileRef
       location = "container:LoopConfigOverride.xcconfig">
+   </FileRef>
+   <FileRef
+      location = "group:VersionOverride.xcconfig">
    </FileRef>
    <Group
       location = "group:fastlane"
@@ -73,16 +109,19 @@
       location = "group:TrueTime.swift/TrueTime.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:OmniBLE/OmniBLE.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:OmniKit/OmniKit.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:RileyLinkKit/RileyLinkKit.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:MinimedKit/MinimedKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:OmnipodKit/OmnipodKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:MedtrumKit/MedtrumKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:EversenseKit/EversenseKit.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:G7SensorKit/G7SensorKit.xcodeproj">
