@@ -42,9 +42,10 @@ LANGUAGES=(en \
     fr \
     de \
     he \
-    hi ]
+    hu \
     it \
     ja \
+    ko \
     nb \
     pl \
     pt-BR \
@@ -54,6 +55,7 @@ LANGUAGES=(en \
     es \
     sv \
     tr \
+    uk \
     vi \
 )
 
@@ -62,7 +64,6 @@ PROJECTS=( \
     LoopKit:AmplitudeService:dev \
     LoopKit:CGMBLEKit:dev \
     LoopKit:dexcom-share-client-swift:dev \
-    loopandlearn:DanaKit:dev \
     LoopKit:G7SensorKit:main \
     LoopKit:LibreTransmitter:main \
     LoopKit:LogglyService:dev \
@@ -73,10 +74,11 @@ PROJECTS=( \
     LoopKit:MinimedKit:main \
     LoopKit:NightscoutRemoteCGM:dev \
     LoopKit:NightscoutService:dev \
-    LoopKit:OmniBLE:dev \
-    LoopKit:OmniKit:main \
     LoopKit:RileyLinkKit:dev \
     LoopKit:TidepoolService:dev \
+    loopandlearn:OmnipodKit:main \
+    bastiaanv:EversenseKit:dev \
+    jbr7rr:MedtrumKit:dev \
 )
 
 function section_divider() {
