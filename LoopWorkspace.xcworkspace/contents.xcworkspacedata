@@ -79,6 +79,12 @@
       location = "group:Loop/Loop.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:LoopAlgorithm">
+   </FileRef>
+   <FileRef
+      location = "group:LibreCRKit">
+   </FileRef>
+   <FileRef
       location = "group:LoopKit/LoopKit.xcodeproj">
    </FileRef>
    <FileRef
@@ -128,6 +134,9 @@
    </FileRef>
    <FileRef
       location = "group:LibreTransmitter/LibreTransmitter.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:LibreLoop/LibreLoop.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:LoopSupport/LoopSupport.xcodeproj">

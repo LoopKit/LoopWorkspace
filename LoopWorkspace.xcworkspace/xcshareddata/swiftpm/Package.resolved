@@ -1,5 +1,5 @@
 {
-  "originHash" : "7645108625333b4ec60e0e439db0c0dc8a91ad0942d36797c6b66208a9082ea2",
+  "originHash" : "3074fb13e969eeb07af13d2659671d107eac739de84ccaff57f73a4b6201e10f",
   "pins" : [
     {
       "identity" : "amplitude-ios",
@@ -65,6 +65,15 @@
       }
     },
     {
+      "identity" : "json-logic-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/advantagefse/json-logic-swift",
+      "state" : {
+        "revision" : "9088eed1b26937fe13d248aa24d7632a51be28e2",
+        "version" : "1.2.4"
+      }
+    },
+    {
       "identity" : "kituracontracts",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Kitura/KituraContracts.git",
@@ -88,7 +97,7 @@
       "location" : "https://github.com/mixpanel/mixpanel-swift.git",
       "state" : {
         "branch" : "master",
-        "revision" : "c676a9737c76e127e3ae5776247b226bc6d7652d"
+        "revision" : "b4cb3f6e3e3084e1637c4dfe06c2dcda169ff523"
       }
     },
     {
@@ -159,7 +168,7 @@
       "location" : "https://github.com/tidepool-org/TidepoolKit",
       "state" : {
         "branch" : "dev",
-        "revision" : "54045c2e7d720dcd8a0909037772dcd6f54f0158"
+        "revision" : "290bd0431c55e8d0e0e542b163de13b1f07b77d9"
       }
     },
     {
@@ -167,7 +176,6 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/LoopKit/ZIPFoundation.git",
       "state" : {
-        "branch" : "stream-entry",
         "revision" : "c67b7509ec82ee2b4b0ab3f97742b94ed9692494"
       }
     }
