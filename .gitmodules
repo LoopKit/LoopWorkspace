@@ -63,7 +63,7 @@
 	url = https://github.com/airedev326/LibreCRKit.git
 [submodule "OmnipodKit"]
 	path = OmnipodKit
-	url = https://github.com/LoopKit/OmnipodKit.git
+	url = https://github.com/loopandlearn/OmnipodKit.git
 	branch = next-dev
 [submodule "EversenseKit"]
 	path = EversenseKit
