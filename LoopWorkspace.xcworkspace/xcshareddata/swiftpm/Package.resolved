@@ -1,5 +1,5 @@
 {
-  "originHash" : "f836b48cd037fa8ebaa7e21f3928c887e562a18575a07207302cddc978706adf",
+  "originHash" : "3074fb13e969eeb07af13d2659671d107eac739de84ccaff57f73a4b6201e10f",
   "pins" : [
     {
       "identity" : "amplitude-ios",
@@ -151,6 +151,15 @@
       "state" : {
         "revision" : "2778fd4e5a12a8aaa30a3ee8285f4ce54c5f3181",
         "version" : "1.9.1"
+      }
+    },
+    {
+      "identity" : "swiftcharts",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ivanschuetz/SwiftCharts",
+      "state" : {
+        "branch" : "master",
+        "revision" : "c354c1945bb35a1f01b665b22474f6db28cba4a2"
       }
     },
     {
