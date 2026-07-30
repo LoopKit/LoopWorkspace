@@ -1,7 +1,11 @@
-name: 4. Build Loop Manual
-run-name: Build Loop Manual (${{ github.ref_name }})
+name: 4. Build Loop Auto 
+run-name: Build Loop Auto (${{ github.ref_name }})
 on:
   workflow_dispatch:
+  schedule:
+    # Check for updates every Sunday
+    #   Later logic builds if there are updates or if it is the 2nd Sunday of the month
+    - cron: "33 7 * * 0" # Sunday at UTC 7:33
 
 env:
   GH_PAT: ${{ secrets.GH_PAT }}
@@ -144,6 +148,30 @@ jobs:
             echo "is_second_instance=false" >> "$GITHUB_OUTPUT"
           fi
 
+  # When a scheduled run finds nothing new to build, cancel the run so it shows
+  # as "cancelled" instead of "success" — a green check should always mean a
+  # new build was made.
+  cancel_when_no_build:
+    needs: check_status
+    name: Cancel run when there is nothing to build
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    if: |
+      github.event_name == 'schedule' &&
+        !(vars.SCHEDULED_BUILD != 'false' && needs.check_status.outputs.IS_SECOND_IN_MONTH == 'true') &&
+        !(vars.SCHEDULED_SYNC != 'false' && needs.check_status.outputs.NEW_COMMITS == 'true')
+    steps:
+      - name: Cancel the run
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo "Repository is up to date and no monthly build is due — cancelling this run so it is not reported as a successful build." >> "$GITHUB_STEP_SUMMARY"
+          gh run cancel ${{ github.run_id }} --repo ${{ github.repository }}
+          # Keep the job alive until the cancellation lands, so the run ends as
+          # "cancelled" rather than completing successfully first.
+          sleep 300
+
   # Checks if Distribution certificate is present and valid, optionally nukes and
   # creates new certs if the repository variable ENABLE_NUKE_CERTS == 'true'
   # only run if a build is planned
@@ -171,7 +199,7 @@ jobs:
         (vars.SCHEDULED_SYNC != 'false' && needs.check_status.outputs.NEW_COMMITS == 'true' )
     steps:
       - name: Select Xcode version
-        run: "sudo xcode-select --switch /Applications/Xcode_26.4.app/Contents/Developer"
+        run: "sudo xcode-select --switch /Applications/Xcode_26.5.app/Contents/Developer"
 
       - name: Checkout Repo for building
         uses: actions/checkout@v5
