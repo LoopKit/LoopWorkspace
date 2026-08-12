@@ -9,7 +9,7 @@
 	url = https://github.com/LoopKit/CGMBLEKit.git
 [submodule "dexcom-share-client-swift"]
 	path = dexcom-share-client-swift
-	url = https://github.com/LoopKit/dexcom-share-client-swift.git
+	url = https://github.com/Camji55/dexcom-share-client-swift.git
 [submodule "RileyLinkKit"]
 	path = RileyLinkKit
 	url = https://github.com/LoopKit/RileyLinkKit
@@ -39,13 +39,13 @@
 	url = https://github.com/LoopKit/LoopSupport
 [submodule "G7SensorKit"]
 	path = G7SensorKit
-	url = https://github.com/LoopKit/G7SensorKit.git
+	url = https://github.com/Camji55/G7SensorKit.git
 [submodule "TidepoolService"]
 	path = TidepoolService
 	url = https://github.com/LoopKit/TidepoolService.git
 [submodule "MinimedKit"]
 	path = MinimedKit
-	url = https://github.com/LoopKit/MinimedKit.git
+	url = https://github.com/Camji55/MinimedKit.git
 [submodule "MixpanelService"]
 	path = MixpanelService
 	url = https://github.com/LoopKit/MixpanelService
