@@ -63,7 +63,7 @@ Loop is a collaborative project, and contributions of all kinds are welcome. Whe
 
 - Update docstrings when your change affects setup, configuration, behavior, workflows, or troubleshooting.
 - Keep documentation changes clear and practical.
-- ocumentation contributions are just as valuable as code contributions.
+- Documentation contributions are just as valuable as code contributions.
 
 ## Branches, commits, and pull requests
 
