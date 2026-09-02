@@ -74,8 +74,6 @@ PROJECTS=( \
     LoopKit:MinimedKit:main \
     LoopKit:NightscoutRemoteCGM:dev \
     LoopKit:NightscoutService:dev \
-    LoopKit:OmniBLE:dev \
-    LoopKit:OmniKit:main \
     LoopKit:RileyLinkKit:dev \
     LoopKit:TidepoolService:dev \
     loopandlearn:OmnipodKit:main \

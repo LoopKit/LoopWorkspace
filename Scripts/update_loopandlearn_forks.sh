@@ -26,8 +26,6 @@ TRIO_PROJECT_FORKS=( \
     LoopKit:G7SensorKit:main \
     LoopKit:LibreTransmitter:main \
     LoopKit:MinimedKit:main \
-    LoopKit:OmniBLE:dev \
-    LoopKit:OmniKit:main \
     LoopKit:RileyLinkKit:dev \
     LoopKit:TidepoolService:dev \
     bastiaanv:DanaKit:dev \
