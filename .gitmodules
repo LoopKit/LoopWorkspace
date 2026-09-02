@@ -31,9 +31,6 @@
 [submodule "LogglyService"]
 	path = LogglyService
 	url = https://github.com/LoopKit/LogglyService.git
-[submodule "OmniBLE"]
-	path = OmniBLE
-	url = https://github.com/LoopKit/OmniBLE.git
 [submodule "NightscoutRemoteCGM"]
 	path = NightscoutRemoteCGM
 	url = https://github.com/LoopKit/NightscoutRemoteCGM.git
