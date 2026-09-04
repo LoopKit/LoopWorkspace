@@ -139,6 +139,9 @@
       location = "group:LibreLoop/LibreLoop.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:AccuChekKit/AccuChekKit.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:LoopSupport/LoopSupport.xcodeproj">
    </FileRef>
    <FileRef

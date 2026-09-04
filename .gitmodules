@@ -73,3 +73,7 @@
 	path = MedtrumKit
 	url = https://github.com/LoopKit/MedtrumKit.git
 	branch = next-dev
+[submodule "AccuChekKit"]
+	path = AccuChekKit
+	url = https://github.com/loopandlearn/AccuChekKit
+	branch = loop-next-dev
