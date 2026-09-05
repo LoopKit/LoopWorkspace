@@ -13,7 +13,7 @@ source Scripts/define_common.sh
 argstring="${LANGUAGES[@]/#/-exportLanguage }"
 IFS=" "; args=( $=argstring )
 
-xcodebuild -scheme LoopWorkspace -exportLocalizations -localizationPath xclocs $args
+xcodebuild -scheme LoopWorkspace -destination 'generic/platform=iOS' -exportLocalizations -localizationPath xclocs $args
 
 mkdir -p xliff_out
 find xclocs -name '*.xliff' -exec cp {} xliff_out \;
