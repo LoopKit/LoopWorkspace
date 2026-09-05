@@ -60,14 +60,14 @@ for project in ${PROJECTS}; do
 done
 
 # Build Loop
-set -o pipefail && time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme 'LoopWorkspace' build | xcpretty
+set -o pipefail && time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme 'LoopWorkspace' -destination 'generic/platform=iOS' build | xcpretty
 
 # Apply translations
 foreach file in xliff_in/*.xliff
   section_divider
   echo " importing ${file}"
   section_divider
-  /usr/bin/time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme "LoopWorkspace" -importLocalizations -localizationPath $file
+  /usr/bin/time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme "LoopWorkspace" -destination 'generic/platform=iOS' -importLocalizations -localizationPath $file
 end
 
 section_divider
