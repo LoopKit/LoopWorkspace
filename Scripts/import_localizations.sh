@@ -27,7 +27,11 @@ lokalise2 \
     --replace-breaks=false \
     --unzip-to ./xliff_in
 
-PROJECTS=(LoopKit:AmplitudeService:dev LoopKit:CGMBLEKit:dev LoopKit:G7SensorKit:main LoopKit:LogglyService:dev LoopKit:Loop:dev LoopKit:LoopKit:dev LoopKit:LoopOnboarding:dev LoopKit:LoopSupport:dev LoopKit:NightscoutRemoteCGM:dev LoopKit:NightscoutService:dev LoopKit:OmniBLE:dev LoopKit:TidepoolService:dev LoopKit:dexcom-share-client-swift:dev LoopKit:RileyLinkKit:dev LoopKit:OmniKit:main LoopKit:MinimedKit:main LoopKit:LibreTransmitter:main)
+# PROJECTS (and LANGUAGES) are defined in one place so this list cannot drift again.
+# The copy that used to live here still named OmniBLE and OmniKit, which have not been
+# submodules since they were replaced by OmnipodKit -- with `set -e`, `cd OmniBLE` aborted
+# this script outright.
+source Scripts/define_common.sh
 
 for project in ${PROJECTS}; do
   echo "Prepping $project"
@@ -42,12 +46,12 @@ for project in ${PROJECTS}; do
 done
 
 # Build Loop
-set -o pipefail && time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme 'LoopWorkspace' build | xcpretty
+set -o pipefail && time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme 'LoopWorkspace' -destination 'generic/platform=iOS' build | xcpretty
 
 
 # Apply translations
 foreach file in xliff_in/*.xliff
-  xcodebuild -workspace LoopWorkspace.xcworkspace -scheme "LoopWorkspace" -importLocalizations -localizationPath $file
+  xcodebuild -workspace LoopWorkspace.xcworkspace -scheme "LoopWorkspace" -destination 'generic/platform=iOS' -importLocalizations -localizationPath $file
 end
 
 
