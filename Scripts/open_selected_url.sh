@@ -10,15 +10,20 @@ echo
 echo "  This automatically opens forks that need to be manually managed in your browser so you"
 echo "    can handle the process at GitHub."
 
-# At the moment, LoopKit/LoopKit has commits used by Trio that require manual sync
+# At one point, LoopKit/LoopKit had commits used by Trio that require manual sync
 #   so it is added to the SPECIAL_PROJECT_FORKS list. (This is here for convenience.)
 #
 # Later - if Trio needs a different version than Loop for some of the repositories,
 #   additional trio branches will be created and added to this script
+#   The LibreCRKit, LibreLoop and LoopAlgorithm are added to Trio (but only in next-dev for Loop)
+#   Trio needs a special branch for LibreLoop, these others match upstream repos
 DOWNSTREAM_GITHUB_NAME="loopandlearn"
 
 SPECIAL_PROJECT_FORKS=( \
     loopandlearn:LoopKit:dev:trio \
+    loopandlearn:LibreCRKit:main:main \
+    loopandlearn:LibreLoop:main:trio \
+    loopandlearn:LoopAlgorithm:main:main \
 )
 
 section_divider
