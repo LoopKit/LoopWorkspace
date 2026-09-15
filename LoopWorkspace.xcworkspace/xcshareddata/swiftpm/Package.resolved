@@ -1,5 +1,5 @@
 {
-  "originHash" : "7645108625333b4ec60e0e439db0c0dc8a91ad0942d36797c6b66208a9082ea2",
+  "originHash" : "8ea6e3a03561298c71ae41233e1f296e560815044250ac4de43a3e5985502b43",
   "pins" : [
     {
       "identity" : "amplitude-ios",
@@ -106,7 +106,7 @@
       "location" : "https://github.com/LoopKit/NightscoutKit",
       "state" : {
         "branch" : "main",
-        "revision" : "ca8e2cea82ab465282cd180ce01d64c1cf25478d"
+        "revision" : "4ec9fd12a16b5d6c2de4f11870511361d42e1b7f"
       }
     },
     {
