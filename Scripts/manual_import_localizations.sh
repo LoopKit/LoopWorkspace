@@ -60,7 +60,7 @@ for project in ${PROJECTS}; do
 done
 
 # Build Loop
-set -o pipefail && time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme 'LoopWorkspace' -destination 'generic/platform=iOS' build | xcpretty
+set -o pipefail && time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme 'LoopWorkspace' -destination 'generic/platform=iOS' build | xcbeautify
 
 # Apply translations
 foreach file in xliff_in/*.xliff
