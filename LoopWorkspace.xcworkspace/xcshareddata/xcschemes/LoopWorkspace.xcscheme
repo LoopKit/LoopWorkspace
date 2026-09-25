@@ -336,7 +336,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "40D441014F200DF4BC779F34"
+               BlueprintIdentifier = "B2EABFEC645A3969B0B548ED"
                BuildableName = "LibreLoopPlugin.loopplugin"
                BlueprintName = "LibreLoopPlugin"
                ReferencedContainer = "container:LibreLoop/LibreLoop.xcodeproj">
@@ -354,6 +354,20 @@
                BuildableName = "LibreDemoPlugin.loopplugin"
                BlueprintName = "LibreDemoPlugin"
                ReferencedContainer = "container:LibreTransmitter/LibreTransmitter.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "3E5A3B962F42246100D498DB"
+               BuildableName = "AccuChekKitPlugin.loopplugin"
+               BlueprintName = "AccuChekKitPlugin"
+               ReferencedContainer = "container:AccuChekKit/AccuChekKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
