@@ -47,7 +47,10 @@ set -o pipefail && time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme 
 
 # Apply translations
 foreach file in xliff_in/*.xliff
-  xcodebuild -workspace LoopWorkspace.xcworkspace -scheme "LoopWorkspace" -importLocalizations -localizationPath $file
+  # SUPPORTS_MACCATALYST=NO: -importLocalizations builds every target for all
+  # supported platforms; skip Mac Catalyst (not shipped, and fails under Xcode
+  # 27 with an unsupported macOS 10.15 deployment target).
+  xcodebuild -workspace LoopWorkspace.xcworkspace -scheme "LoopWorkspace" -importLocalizations -localizationPath $file SUPPORTS_MACCATALYST=NO
 end
 
 
