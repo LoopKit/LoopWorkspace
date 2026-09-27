@@ -67,7 +67,7 @@ foreach file in xliff_in/*.xliff
   section_divider
   echo " importing ${file}"
   section_divider
-  /usr/bin/time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme "LoopWorkspace" -destination 'generic/platform=iOS' -importLocalizations -localizationPath $file
+  /usr/bin/time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme "LoopWorkspace" -destination 'generic/platform=iOS' -importLocalizations -localizationPath $file SUPPORTS_MACCATALYST=NO
 end
 
 section_divider
