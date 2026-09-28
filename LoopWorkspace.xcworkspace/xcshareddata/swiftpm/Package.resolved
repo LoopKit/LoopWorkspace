@@ -1,5 +1,5 @@
 {
-  "originHash" : "3074fb13e969eeb07af13d2659671d107eac739de84ccaff57f73a4b6201e10f",
+  "originHash" : "314166521c26477a20d5dfc31a03d7a49cebb38cb1e8f6216b37653113ca8e28",
   "pins" : [
     {
       "identity" : "amplitude-ios",
@@ -20,12 +20,30 @@
       }
     },
     {
+      "identity" : "asn1",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/leif-ibsen/ASN1",
+      "state" : {
+        "revision" : "e38d1b8b43d8b53ffadde9836f34289176bb7a0c",
+        "version" : "2.7.0"
+      }
+    },
+    {
       "identity" : "base32",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mattrubin/Base32.git",
       "state" : {
         "branch" : "1.1.2+spm",
         "revision" : "d185e44c8b355d34d5c6c6ad502c60cba4599f69"
+      }
+    },
+    {
+      "identity" : "bigint",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/leif-ibsen/BigInt",
+      "state" : {
+        "revision" : "7c7b1be2f6714ce03833879b0aab4b20293c0207",
+        "version" : "1.24.0"
       }
     },
     {
