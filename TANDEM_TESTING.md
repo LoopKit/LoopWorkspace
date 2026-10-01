@@ -21,10 +21,10 @@ a Tandem Mobi and know how to use it. If you don't provide that information, you
 If you are accepted to the closed beta group, you will get a reply to your DM with additional information.
 
 
-## Getting the branch into your fork
+## Building the app
 
-Both of these routes end with a `feat/tandem-closed-beta` branch on your fork. Pick
-whichever you prefer.
+Both of these routes end with version of Loop that can use the Tandem Mobi.  The browser
+build version adds a `feat/tandem-closed-beta` branch on your fork. Pick whichever you prefer.
 
 ### Building in the browser
 
