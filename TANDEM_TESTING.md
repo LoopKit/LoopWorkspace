@@ -59,3 +59,16 @@ If you put your Apple Developer Team ID two directory levels above the workspace
 LOOP_DEVELOPMENT_TEAM = ABCDE12345
 ```
 Be sure to remove the `#` comment symbol from the beginning of the line. 
+
+## Pairing the Mobi with Loop
+
+Your Tandem Mobi pump can only be paired with one app on your phone - either Tandem's official Mobi app, or Loop.  Thus, if you have already paired your Mobi with the Tandem app, you need to first un-pair your pump before using it with Loop. If you have not previously paired your pump with the Mobi app, skip to step 3.
+1. Open the Mobi app and unpair your pump by following the [instructions on Tandem's website](https://www.tandemdiabetes.com/support-center/software-and-apps/tandem-mobi-mobile-app/article/pair-tandem-mobi-mobile-app-to-pump#unpair-phone).
+2. Quit the Mobi app by swiping up.
+3. Go to iPhone Settings -> Bluetooth and see if a device called "Tandem Mobi" is present. If it is, click the "i" and delete the device.
+4. Open Loop, and click the area in the upper right to add a new pump.  Follow the instructions to pair your Mobi to Loop.  Note that you will need to have the wireless charging pad in order to put the Mobi into pairing mode.
+
+#### Keep the Mobi app on your phone
+As we are testing Mobi integration, you may find it helpful to keep the Tandem Mobi app installed on your phone.  During testing we have occasionally seen the pump get into a state where the status in Loop does not reflect the pump's actual state.  In these cases, unpairing from Loop and re-pairing with the Mobi app can be helpful to diagnose what is happening with the pump.  
+
+Any time you switch the pump from one app to the other, be sure to quit the first app, delete the Mobi device from Bluetooth settings, and then pair using the other app. 
