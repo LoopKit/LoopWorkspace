@@ -82,7 +82,7 @@
       location = "group:LoopAlgorithm">
    </FileRef>
    <FileRef
-      location = "group:LibreCRKit">
+      location = "group:RoundWhiteDiscKit">
    </FileRef>
    <FileRef
       location = "group:LoopKit/LoopKit.xcodeproj">
