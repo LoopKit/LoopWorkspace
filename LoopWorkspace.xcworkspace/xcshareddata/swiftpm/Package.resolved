@@ -1,5 +1,5 @@
 {
-  "originHash" : "2ab94441b2fa4d3d3e9dcddf07b8e233d26125383977384ce360662a07b8aa43",
+  "originHash" : "7edeb7e51155f00989056948959af2eb4604bf96ee2d612aa4e31cbafcba3d8a",
   "pins" : [
     {
       "identity" : "amplitude-ios",
@@ -124,14 +124,6 @@
       "location" : "https://github.com/mattrubin/OneTimePassword",
       "state" : {
         "revision" : "8e4022f2852d77240d0a17482cbfe325354aac70"
-      }
-    },
-    {
-      "identity" : "roundwhitedisckit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/airedev326/RoundWhiteDiscKit.git",
-      "state" : {
-        "revision" : "dccf013622cc6f6fa67751894d5255e09dc3b2a6"
       }
     },
     {
