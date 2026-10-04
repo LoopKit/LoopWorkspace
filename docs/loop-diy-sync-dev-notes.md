@@ -229,8 +229,10 @@ noted; workspace gitlinks bumped on `LoopKit/LoopWorkspace next-dev`.
   BLE pairing/stability, reconnect backoff + re-scan prompt, backfill of missed readings
   (Libre 3 CCCD/data-plane arming — the `0xFD` fix, full-response-set re-arm), 5-minute
   backfill grid thinning, sensor-failure UI, mg/dL vs mmol/L display, module-scoped
-  localization (String Catalogs), and a Glucose Streams debug view. `LibreCRKit` tracks
-  upstream `airedev326/LibreCRKit` — contribute via patch/PR, bump the pin when merged.
+  localization (String Catalogs), and a Glucose Streams debug view. `LibreCRKit` has since
+  been replaced by the `RoundWhiteDiscKit` submodule (`airedev326/RoundWhiteDiscKit`), which
+  ships without its lookup tables: LibreLoop downloads them from Arweave once and the package
+  pins their digest, so bump the submodule and LibreLoop's Arweave txid together.
 
 ### 7.2 New user-facing features (see What's New for the user framing)
 
