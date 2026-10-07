@@ -19,7 +19,7 @@ jobs:
             set -o pipefail && time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme 'LoopWorkspace' -destination 'platform=iOS Simulator,name=iPhone 17' build 2>&1 | tee logs/build.log | xcbeautify
       - run:
           name: Run Tests
-          command: set -o pipefail && time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme 'LoopWorkspace' -destination 'platform=iOS Simulator,name=iPhone 17' test 2>&1 | tee logs/test.log | xcbeautify --report junit --report-path test-results/results.xml
+          command: set -o pipefail && time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme 'LoopWorkspace' -destination 'platform=iOS Simulator,name=iPhone 17' -collect-test-diagnostics never test 2>&1 | tee logs/test.log | xcbeautify --report junit --report-path test-results/results.xml
       - store_test_results:
           path: test-results
       - store_artifacts:
