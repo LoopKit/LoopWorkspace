@@ -24,6 +24,9 @@ jobs:
           path: test-results
       - store_artifacts:
           path: logs
+      - store_artifacts:
+          path: /Users/distiller/Library/Logs/DiagnosticReports
+          destination: crashes
 
 workflows:
   build_and_test:
