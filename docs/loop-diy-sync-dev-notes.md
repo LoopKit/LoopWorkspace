@@ -19,6 +19,7 @@ conflicts, resolutions, testing, and gotchas.
 |---|---|---|
 | **2026-03-10** | `tidepool-sync/2026-03-10` | The large rebase: LoopAlgorithm package extraction, Swift Concurrency migration, HealthKit → LoopUnit migration, presets overhaul. 18 repos. |
 | **2026-05-11** | `tidepool-sync/2026-05-11` | Follow-up absorbing ~2 months of incremental Tidepool work. 17 repos + LoopAlgorithm pin bump. ~660 Tidepool commits total. |
+| **2026-10-12** | `tidepool-sync/2026-10-12` | Small catch-up: only Loop (18 commits), LoopKit (14) and LoopAlgorithm (2) had new Tidepool work. Merged via LoopKit/Loop#2571, LoopKit/LoopKit#642, LoopKit/LoopAlgorithm#9. |
 
 Commits absorbed in the 2026-05-11 sync (largest first): LoopKit 409, TidepoolService 45,
 LoopOnboarding 28, NightscoutService 22, OmniBLE 20, OmniKit/MinimedKit 18 each,
@@ -167,6 +168,8 @@ silently reverted some of them before — each carries an inline defending comme
 | **RemoteNotificationResponseManager** | NightscoutService | Remote-command feedback (remote bolus/basal); core DIY feature. |
 | **Mock debug settings views** | LoopKit (MockKitUI) | `MockCGMManagerSettingsView` / `MockPumpManagerSettingsView` gated by `allowDebugFeatures`. |
 | **Reentrant-lock fixes** | OmniKit / OmniBLE | `isSignalLost` reentrancy (`924f10d` / `e9425ad`). |
+| **Watch Last Loop when the phone is unreachable** | Loop | DIY does not take LOOP-5733 (tidepool-org/Loop#930), which replaces the last loop time with "- - -" whenever `WCSession` is unreachable. Dropped on 2026-10-12. |
+| **Minimum iOS 17.6** | Loop | Tidepool moved to 18.6 (tidepool-org/Loop#931). DIY keeps 17.6 in `Loop.xcconfig`; the per-project `IPHONEOS_DEPLOYMENT_TARGET` settings are gone, as upstream. |
 | **`.xcstrings` localization** | all | DIY uses Xcode 15+ string catalogs; do **not** re-add `.strings` refs. Tidepool doesn't maintain translations. |
 
 ---
