@@ -21,8 +21,8 @@ DOWNSTREAM_GITHUB_NAME="loopandlearn"
 
 SPECIAL_PROJECT_FORKS=( \
     loopandlearn:LoopKit:dev:trio \
-    loopandlearn:LibreCRKit:main:main \
-    loopandlearn:LibreLoop:main:trio \
+    loopandlearn:RoundWhiteDiscKit:main:main \
+    loopandlearn:LibreLoop:main:legacy-loopkit-compat \
     loopandlearn:LoopAlgorithm:main:main \
 )
 
