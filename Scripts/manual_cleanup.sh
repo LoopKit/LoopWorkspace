@@ -42,7 +42,7 @@ for project in ${PROJECTS}; do
     echo "  already on $TRANSLATION_BRANCH, take no action"
   elif [ -n "$(git branch --list "$TRANSLATION_BRANCH")" ]; then
     echo "  Local branch '$TRANSLATION_BRANCH' exists, deleting it."
-    git branch -D "${TRANSLATION_BRANCH}"
+    git branch -D ${TRANSLATION_BRANCH}
   else
     echo "  no branch named $TRANSLATION_BRANCH exists, take no action"
   fi

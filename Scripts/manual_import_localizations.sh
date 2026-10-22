@@ -60,16 +60,14 @@ for project in ${PROJECTS}; do
 done
 
 # Build Loop
-set -o pipefail && time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme 'LoopWorkspace' build | xcpretty
+set -o pipefail && time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme 'LoopWorkspace' -destination 'generic/platform=iOS' build | xcbeautify
 
 # Apply translations
 foreach file in xliff_in/*.xliff
   section_divider
   echo " importing ${file}"
   section_divider
-  # SUPPORTS_MACCATALYST=NO: skip the Mac Catalyst variant builds (not shipped,
-  # and fail under Xcode 27 with an unsupported macOS 10.15 deployment target).
-  /usr/bin/time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme "LoopWorkspace" -importLocalizations -localizationPath $file SUPPORTS_MACCATALYST=NO
+  /usr/bin/time xcodebuild -workspace LoopWorkspace.xcworkspace -scheme "LoopWorkspace" -destination 'generic/platform=iOS' -importLocalizations -localizationPath $file SUPPORTS_MACCATALYST=NO
 end
 
 section_divider
