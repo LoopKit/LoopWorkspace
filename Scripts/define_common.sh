@@ -76,7 +76,7 @@ PROJECTS=( \
     LoopKit:NightscoutService:dev \
     LoopKit:RileyLinkKit:dev \
     LoopKit:TidepoolService:dev \
-    loopandlearn:OmnipodKit:main \
+    loopandlearn:OmnipodKit:dev \
     bastiaanv:EversenseKit:dev \
     jbr7rr:MedtrumKit:dev \
 )

@@ -236,9 +236,9 @@ If you choose not to have automatic building enabled, be sure the `GH_PAT` has `
 
 ### Modify scheduled building and synchronization
 
-You can modify the automation by creating and using some variables.
+You can modify the automation by creating and using repository variables.
 
-To configure the automated build more granularly involves creating up to two environment variables: `SCHEDULED_BUILD` and/or `SCHEDULED_SYNC`. See [How to configure a variable](#how-to-configure-a-variable). 
+To configure the automated build more granularly, create up to two repository variables: `SCHEDULED_BUILD` and/or `SCHEDULED_SYNC`. See [How to configure a variable](#how-to-configure-a-variable).
 
 Note that the weekly build actions will continue, but the actions are modified if one or more of these variables is set to false. **A successful Action Log will still appear, even if no automatic activity happens**.
 
@@ -264,9 +264,9 @@ Note that the weekly build actions will continue, but the actions are modified i
     - Type `SCHEDULED_BUILD` in the "Name" field
     - Type `false` in the "Value" field
     - Click the green `Add variable` button to save.
-7. To disable scheduled syncing, add a variable:
+6. To disable scheduled syncing, add a variable:
     - Click on the green `New repository variable` button (upper right)
-    - - Type `SCHEDULED_SYNC` in the "Name" field
+    - Type `SCHEDULED_SYNC` in the "Name" field
     - Type `false` in the "Value" field
     - Click the green `Add variable` button to save
   
@@ -276,8 +276,8 @@ Your build will run on the following conditions:
         - If updates are detected, it will update your repository and build
         - If it is the second Sunday of the month, it will build even when no changes are detected
 - If you disable any automation (both variables set to `false`), no updates or building happens when the build action runs
-- If you disabled just scheduled synchronization (`SCHEDULED_SYNC` set to`false`), it will still build once a month, but no update will happen
-- If you disabled just scheduled build (`SCHEDULED_BUILD` set to`false`), it will run once weekly, to check for changes; if there are changes, it will update and build
+- If you disabled just scheduled synchronization (`SCHEDULED_SYNC` set to `false`), it will still build once a month, but no update will happen
+- If you disabled just scheduled build (`SCHEDULED_BUILD` set to `false`), it will run once weekly, to check for changes; if there are changes, it will update and build
 
 ## What if I build using more than one GitHub username
 

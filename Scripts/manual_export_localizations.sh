@@ -13,9 +13,7 @@ source Scripts/define_common.sh
 argstring="${LANGUAGES[@]/#/-exportLanguage }"
 IFS=" "; args=( $=argstring )
 
-# SUPPORTS_MACCATALYST=NO: skip the Mac Catalyst variant builds, which Loop
-# does not ship and which fail under Xcode 27 (unsupported macOS 10.15 default).
-xcodebuild -scheme LoopWorkspace -exportLocalizations -localizationPath xclocs SUPPORTS_MACCATALYST=NO $args
+xcodebuild -scheme LoopWorkspace -destination 'generic/platform=iOS' -exportLocalizations -localizationPath xclocs SUPPORTS_MACCATALYST=NO $args
 
 mkdir -p xliff_out
 find xclocs -name '*.xliff' -exec cp {} xliff_out \;
