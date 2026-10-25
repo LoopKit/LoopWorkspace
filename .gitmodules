@@ -52,12 +52,24 @@
 [submodule "LibreTransmitter"]
 	path = LibreTransmitter
 	url = https://github.com/LoopKit/LibreTransmitter.git
+[submodule "LibreLoop"]
+	path = LibreLoop
+	url = https://github.com/LoopKit/LibreLoop.git
+[submodule "LoopAlgorithm"]
+	path = LoopAlgorithm
+	url = https://github.com/LoopKit/LoopAlgorithm.git
 [submodule "OmnipodKit"]
 	path = OmnipodKit
-	url = https://github.com/loopandlearn/OmnipodKit
-[submodule "MedtrumKit"]
-	path = MedtrumKit
-	url = https://github.com/jbr7rr/MedtrumKit
+	url = https://github.com/loopandlearn/OmnipodKit.git
+	branch = next-dev
 [submodule "EversenseKit"]
 	path = EversenseKit
-	url = https://github.com/bastiaanv/EversenseKit
+	url = https://github.com/LoopKit/EversenseKit.git
+	branch = loop-next-dev
+[submodule "MedtrumKit"]
+	path = MedtrumKit
+	url = https://github.com/LoopKit/MedtrumKit.git
+	branch = next-dev
+[submodule "RoundWhiteDiscKit"]
+	path = RoundWhiteDiscKit
+	url = https://github.com/airedev326/RoundWhiteDiscKit.git

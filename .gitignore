@@ -18,12 +18,15 @@ xcuserdata/
 *.xcscmblueprint
 *.xcuserstate
 .DS_Store
+.claude
 
 ## Obj-C/Swift specific
 *.hmap
 *.ipa
 
+
 ## Playgrounds
 *.playground
 playground.xcworkspace
 timeline.xctimeline
+
