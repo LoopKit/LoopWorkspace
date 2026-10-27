@@ -1,9 +1,9 @@
 # Loop DIY — What's New
 
-*User-facing guide to the changes on the `next-dev` line, from the two Tidepool → DIY
-syncs (2026-03-10 and 2026-05-11) plus everything DIY has added since.*
+*User-facing guide to the changes on the `next-dev` line, from the Tidepool → DIY
+syncs (2026-03-10, 2026-05-11 and 2026-10-12) plus everything DIY has added since.*
 
-Last updated: 2026-07-14.
+Last updated: 2026-10-26.
 
 This document explains **what changed for you as a user**. For merge mechanics,
 conflict resolutions, testing checklists, and data-migration internals, see the
@@ -17,17 +17,21 @@ DIY Loop absorbed roughly two years of Tidepool's work on Loop, then kept going 
 DIY-only features on top. The headline user-visible changes:
 
 - **Presets are completely redesigned** — typed presets (Pre-Meal / Activity / Custom),
-  evidence-based activity presets, day-of-week scheduling, safety guardrails, and a
-  short required training before you can create custom presets.
+  evidence-based activity presets you can hide, day-of-week scheduling, safety guardrails,
+  and a short required training before you can create custom presets.
 - **A new Glucose Alerts system** — your own high/low/urgent-low/predicted-low
-  thresholds with selectable alert sounds, shown and edited in **your** glucose unit
-  (mg/dL *or* mmol/L), plus true critical alerts on iOS 26 without a special entitlement.
+  thresholds with purpose-made alarm sounds, shown and edited in **your** glucose unit
+  (mg/dL *or* mmol/L), alarms that play through silent mode, and true critical alerts on
+  iOS 26 without a special entitlement.
 - **A Statistics page** — a standard Ambulatory Glucose Profile (AGP) report with
-  time-in-range, GMI, and glucose variability over 7–90 days.
+  time-in-range, GMI, and glucose variability over 7–90 days, plus daily insulin totals.
 - **More devices** — Omnipod, Medtrum, Eversense, and FreeStyle Libre 3 are all
-  supported alongside the existing pumps and CGMs.
-- **A smarter forecast and a cleaner algorithm** under the hood.
-- **A redesigned main screen**, plus Apple Watch, HUD, and history improvements.
+  supported alongside the existing pumps and CGMs, and a Dexcom G7 can be paired directly,
+  without the Dexcom app, and read by the Apple Watch.
+- **A smarter forecast and a cleaner algorithm** under the hood, plus opt-in
+  **Algorithm Experiments**.
+- **A redesigned main screen** with display options, plus Apple Watch, HUD, history, and
+  support improvements.
 
 ---
 
@@ -62,6 +66,11 @@ Four ready-made activity presets ship for everyone (customizable, not deletable)
 "Insulin needs" is a single control that scales basal, carb ratio, and ISF together —
 so *"give me 21% of normal insulin"* is one number instead of three. If you change a
 preset from its defaults, it's marked as **modified**.
+
+**Don't want them?** Turn off **Show Activity Presets** in the Options section of the
+Presets screen. They disappear from the phone and watch preset lists, their scheduled
+reminders stop, and the exercise chapter of the training becomes optional. History and a
+preset that's already running keep their names.
 
 ### New safety behavior
 
@@ -101,24 +110,53 @@ A new glucose-alert system, styled after standalone-receiver alerts:
 - **Your own thresholds** for **Urgent Low**, **Low**, **High**, and **Predicted Low**.
 - **Displayed and edited in your glucose unit** — mg/dL or mmol/L, matching every other
   screen. The picker steps by 1 mg/dL or 0.1 mmol/L as appropriate.
-- **Selectable alert sounds** per alert, and a **"Delay 1st Alert"** option for highs so
-  you aren't nagged the moment you cross the line.
+- **A "Delay 1st Alert"** option for highs, so you aren't nagged the moment you cross the
+  line.
 - **Only the most severe low-side alert fires** — you won't get a Low and an Urgent Low
   buzzing at the same time, and a predicted-low alert is suppressed if you're already
   at or below your Low threshold.
+- **A test alert on every alarm**, so you can hear exactly what it will sound like.
+
+### Alarm sounds
+
+Each glucose alarm has its own purpose-made sounds, contributed by @dnzxy from Trio, where
+they replaced a much-complained-about tone set:
+
+- **Acoustic** and **Electronic** sets, each at **Mild**, **Medium** or **Harsh**. Every
+  level is its own recording, not the same file made louder, and each alarm's set is
+  written for that alarm, so you can tell Urgent Low from High by ear.
+- **Voice** alerts in a male or female voice.
+- **New default: Acoustic Medium** for all four alarms. If you never picked a sound,
+  you'll hear the new one after updating; if you did pick one, you keep it. All the
+  previous tones (and a few new ones) are under **Other Sounds** in the picker.
+
+### Alarms through silent mode
+
+Low, High and Predicted Low each have a **Play Through Silent Mode** switch next to their
+sound. With it on, Loop plays the sound itself, so the ring/silent switch doesn't mute it.
+It's on by default for Low and Predicted Low and off for High. Urgent Low already broke
+through silent mode and is unchanged. All alarms are also normalized to an even loudness.
 
 ### Critical alerts on iOS 26 without an entitlement
 
 DIY builds don't have Apple's official critical-alert entitlement. On **iOS 26 and
 later**, Loop now uses Apple's **AlarmKit** to deliver true critical alerts that break
 through silent mode and Focus — no entitlement required. When it can't, it falls back to
-boosting system volume and playing a bundled critical sound. Tapping **Stop** on the
-alarm acknowledges the underlying Loop alert. Builds without the entitlement include an
-in-app FAQ explaining how alerts behave.
+boosting system volume and playing the whole alarm sound. Tapping **Stop** on the alarm
+acknowledges the underlying Loop alert, and alarms are stopped correctly after Loop
+relaunches. Builds without the entitlement include an in-app FAQ explaining how alerts
+behave.
+
+### Alert History
+
+**Settings → Alert Management → History** lists every alert Loop has recorded over the
+last ~90 days, grouped by day, with when it was issued, acknowledged or retracted.
 
 ---
 
-## Statistics — Ambulatory Glucose Profile (DIY, new since the sync)
+## Statistics (DIY, new since the sync)
+
+### Ambulatory Glucose Profile
 
 **Settings → Statistics** opens a standard **AGP report**:
 
@@ -133,25 +171,49 @@ in-app FAQ explaining how alerts behave.
 This is powered by a longer on-device glucose history (now kept for **90 days**), so the
 report has enough data to be meaningful without waiting on slow HealthKit queries.
 
+### Daily insulin
+
+A **Daily Insulin** section shows your average total per day, today so far, and the split
+between basal and bolus (and how much of the bolus was automatic), with a chart of each
+day. **"Usually X U by <time>"** compares today against the median of your last 14 days
+up to the same clock time, so you can see in the morning whether the day is running ahead
+of normal. The same line appears in the Insulin Delivery Log.
+
+Today's total also no longer counts a bolus logged late the previous evening, which could
+make Loop's total read higher than Apple Health's.
+
 ---
 
 ## More devices
 
-Device support expanded well beyond the original sync set.
+Device support expanded well beyond the original sync set. Adding a device now opens a
+full-screen chooser that groups devices by manufacturer and services by category, with an
+icon and a list of supported models for each.
 
 ### Pumps
 - **Omnipod** (Eros, DASH, and **Omnipod 5**) — now via the consolidated **OmnipodKit**
-  driver, which adds Omnipod 5 support.
+  driver, which adds Omnipod 5 support, plus many connection-reliability fixes.
 - **Medtrum** (Nano / TouchCare) — **new**.
 - **Medtronic (Minimed)** — retained, including DIY's cannula-age / insulin-age tracking.
 
 ### CGMs
-- **FreeStyle Libre 3** — **new**, via the native **LibreLoop** integration (direct BLE
-  pairing, backfill of missed readings, and sensor-failure guidance UI). Readings and
-  settings respect your mg/dL vs mmol/L preference.
+- **Dexcom G7, ONE+ and Stelo, paired directly** — **new**. Pair the sensor with its
+  4-digit code; the Dexcom app isn't needed. Loop handles warm-up, backfill, calibration
+  and sensor-lifecycle alerts, and can upload readings to **Dexcom Share** for your
+  followers (manage followers in the Dexcom Follow app). Using the Dexcom app alongside
+  Loop is still supported.
+- **G7 on the Apple Watch** — with **Read on Apple Watch** on in the G7 settings, the
+  watch reads the sensor itself, so readings carry on when your phone is out of range.
+- **FreeStyle Libre 3 / 3 Plus** — **new**, via the native **LibreLoop** integration
+  (direct BLE pairing, backfill of missed readings, and sensor-failure guidance UI).
+  Readings and settings respect your mg/dL vs mmol/L preference.
 - **Eversense** (Senseonics E3 / 365) — **new**, via **EversenseKit**.
-- **Dexcom G6/G7**, **older Libre (via LibreTransmitter)**, and **Nightscout-as-CGM** —
+- **Dexcom G6**, **older Libre (via LibreTransmitter)**, and **Nightscout-as-CGM** —
   all retained.
+
+Readings a CGM recovers after a gap are now marked as **backfill**, and sensor starts and
+states without reliable glucose (such as a failed or temporarily unreliable sensor) are
+recorded as CGM events and uploaded to Nightscout as notes.
 
 Every pump command is now tagged with the algorithm **decision** that produced it, which
 improves troubleshooting and the accuracy of what's uploaded to Nightscout/Tidepool.
@@ -173,14 +235,36 @@ means faster, more predictable behavior and some concrete improvements Tidepool 
   sensitivity *timeline*, so if your ISF changes while an earlier dose is still absorbing,
   the remaining effect of that dose is recalculated at the new sensitivity — more accurate
   insulin-effect and IOB accounting across ISF changes.
+- **Your correction range is checked at each point of the forecast** — if your range
+  changes partway through the forecast (a schedule boundary), each point is compared with
+  the range in effect at that time, which can change dosing near the boundary.
 - **A "gradual transitions" guard against noisy CGM data** — if your glucose readings jump
   sharply from one reading to the next (more than ~40 mg/dL between consecutive readings),
   the algorithm skips **glucose momentum and retrospective correction** for that cycle.
   Those two effects extrapolate your recent short-term trend, so on a big jump — a sensor
   glitch, a compression low, or a one-off spike — they'd amplify the noise instead of
   reflecting a real trend. Skipping them keeps dosing steadier through jumpy data.
+- **Manual glucose entries and calibrations don't drive momentum** — they're kept out of
+  momentum and insulin counteraction, and show as a slightly larger red dot on the phone
+  and watch charts.
 - **The display forecast now projects ongoing suspends and manual temp basals**, so the
   prediction curve reflects what the pump is actually doing.
+
+### Algorithm Experiments (opt-in)
+
+**Settings → Algorithm Experiments** has optional changes to the algorithm, all **off by
+default**, listed in order of how much they improved time in range in testing:
+
+- **Guard + Runway** — **new**. Aimed at people who enter fewer meals. It lowers the first
+  two hours of the forecast when your glucose has been volatile, so Loop is more careful
+  about lows; adds a little more automatic insulin when you're high, calm and have no
+  carbs on board; and, for 12 hours after a low, weakens the rebound's effect on
+  retrospective correction. When it's on, the Predicted Glucose screen shows what it did.
+- **Glucose Based Partial Application** and **Integral Retrospective Correction** — as
+  before.
+
+The experiments in effect are recorded with each dosing decision and uploaded to
+Nightscout and Tidepool.
 
 ---
 
@@ -198,19 +282,39 @@ means faster, more predictable behavior and some concrete improvements Tidepool 
   details, including the dosing decision that produced it, and log a manual (non-pump) dose
   from the same screen. (When no pump is set up, the classic event-history screen is shown
   instead, since the new log relies on live pump state.)
+- **Settings → Display** — an optional **Now Line** on each chart, a **Fixed** glucose
+  scale (40–400 mg/dL / 2–22 mmol/L) instead of Auto, and a **Time Window** of 3, 6 or 12
+  hours instead of the full forecast. The defaults match the previous behavior.
+- **Automatic boluses show progress** on the status screen, so you can stop one there.
+  Stopping one offers to explain why Loop bolused and to send an issue report.
+- **Wider screens** — layouts adapt to iPhone Duo's inner display and rotation.
+- **VoiceOver labels** on many more controls in Loop and the device settings.
 
 ### Watch, HUD, and history
 - **Watch** refreshes glucose the moment you raise your wrist / open the app, and backfills
-  from the latest stored reading.
+  from the latest stored reading. Bolus recommendations after a carb entry from the watch
+  no longer double, and a carbs-only entry no longer sends a 0 U bolus to the pump.
 - **Manual temp basal** now pauses looping while it runs and is clearly surfaced in the
   status HUD, so it's obvious when the loop is intentionally paused.
 - **Longer history** — the app keeps 90 days of glucose locally (up from a shorter window),
   feeding the new Statistics page.
-- **App version** moved into the Settings → Support section.
+- **Glucose stays in Apple Health** — Loop no longer deletes its own readings from Health
+  when no other app (such as the Dexcom app) has written a copy.
 - **Clearer alert-permission warnings** — instead of one generic "notifications off"
   message, the app tells you specifically which permission (notifications, critical
   alerts, or time-sensitive) is disabled.
 - **Required app-update flow** — the app can prompt you when a mandatory update is needed.
+- **Minimum iOS 17.6** (watchOS 10.6).
+
+### Support and reporting problems
+- **Settings → Support** shows the app version, branch, revision, any build
+  customizations, and when Loop was launched.
+- **Report a Problem** offers four options: send a report straight to the Loop developers
+  (anonymous by default, with optional screenshots and diagnostic report), share the
+  diagnostic report yourself, open a GitHub issue, or export critical event logs. You can
+  view the diagnostic report before sending it.
+- **Analytics** is version-only by default; you can opt in to share more. Analytics never
+  includes health data.
 
 ---
 
