@@ -321,9 +321,7 @@ Nightscout and Tidepool.
 ## If you're moving between DIY `dev` and this build
 
 Upgrading to a `next-dev` build migrates your local data store forward automatically.
-**Going back to a `dev` build in place is not guaranteed** — it works right after
-upgrading, but becomes unreliable the longer you run the newer build, and can leave `dev`
-unable to open the store (requiring a delete-and-reinstall). Your long-term history lives
-in Apple Health and is rebuilt on reinstall, but **if you plan to switch back and forth,
-don't rely on an in-place downgrade.** See the Developer / Sync Notes for the exact
-mechanism.
+**Going back to a `dev` or `main` build in place also works** — it migrates the store
+back down and keeps your glucose, carbs, insulin and dosing history. Only the details
+added by the newer build are dropped, such as backfill flags and when each reading was
+received. See the Developer / Sync Notes for the mechanism.
