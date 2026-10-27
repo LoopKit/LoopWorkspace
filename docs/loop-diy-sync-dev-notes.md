@@ -188,7 +188,7 @@ silently reverted some of them before — each carries an inline defending comme
 
 ---
 
-## 6. Core Data v4 → v6 migration & downgrade caveat
+## 6. Core Data migration & downgrade
 
 The shared LoopKit store (`Model.sqlite`, app group) migrates **Modelv4 → Modelv6** on
 first launch of a sync build. `dev` only ships up to Modelv4.
@@ -199,19 +199,12 @@ first launch of a sync build. `dev` only ships up to Modelv4.
   v4→v6 mapping dropped the single `value` attribute and zeroed cached bolus/basal amounts
   (understating IOB). **Only the forward path is fixed** — installs that already migrated on
   a policy-less build have already-dropped values that read as 0 and can't be recovered.
-- **Downgrading back to `dev` is data-dependent.** `dev` *can* open a v6 store via
-  lightweight migration **immediately after upgrading** (v6-only attributes are optional
-  and dropped; `deliveredUnits` shares the `ZVALUE` column with v4's `value` via
-  `elementID="value"`). **But** `dev`'s `CachedInsulinDeliveryObject.value` is *mandatory*
-  while v6's `deliveredUnits` is *optional* — once the sync build records a dose with a
-  **null `deliveredUnits`** (in-progress/mutable or programmed-only), the downgrade throws
-  `NSCocoaErrorDomain 134110` ("missing attribute values on mandatory destination
-  attribute"), `addPersistentStore` fails, `PersistenceController` lands in `.error`, and
-  `dev` is non-functional until delete + reinstall (which rebuilds the cache from HealthKit).
-  The v6 data on disk is never wiped, so reinstalling the sync build always reads it again.
-
-**Practical guidance:** in-place downgrade to `dev` is fine right after upgrading, gets
-unreliable the longer the sync build runs. Don't rely on it for round-tripping.
+- **Downgrading back to `dev` or `main` keeps the shared data.** Core Data stores the
+  store's model inside the store, so an older build migrates a newer store (now Modelv8)
+  down to Modelv4 and keeps glucose, carbs, insulin and dosing history. Attributes added
+  since Modelv4, such as backfill flags and receive times, are dropped. LoopKit/LoopKit#650
+  briefly made `PersistenceController` refuse a store from a newer model;
+  LoopKit/LoopKit#652 reverted it.
 
 ---
 
@@ -313,4 +306,4 @@ noted; workspace gitlinks bumped on `LoopKit/LoopWorkspace next-dev`.
 - [ ] Basal schedule editor (OmniBLE/Dash): entries above configured max are **not** selectable.
 - [ ] Diagnostic support report includes submodule SHAs.
 - [ ] Unit suites pass: `LoopAlgorithmTests`, `LoopKitTests`, `LoopTests`.
-- [ ] Core Data v4→v6 migration preserves insulin amounts; downgrade caveat understood (§6).
+- [ ] Core Data v4→v6 migration preserves insulin amounts; downgrade to dev keeps history (§6).
