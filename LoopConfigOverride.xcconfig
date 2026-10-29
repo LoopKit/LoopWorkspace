@@ -13,7 +13,14 @@
 //LOOP_LOCAL_CACHE_DURATION_DAYS = 90
 
 // Features
-SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) EXPERIMENTAL_FEATURES_ENABLED SIMULATORS_ENABLED ALLOW_ALGORITHM_EXPERIMENTS DEBUG_FEATURES_ENABLED
+SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) SPORT_MODE_ENABLED EXPERIMENTAL_FEATURES_ENABLED SIMULATORS_ENABLED ALLOW_ALGORITHM_EXPERIMENTS DEBUG_FEATURES_ENABLED
+// Sport Mode signs the watch with HealthKit and time-sensitive notifications.
+LOOP_WATCH_ENTITLEMENTS = $(SRCROOT)/WatchApp Extension/SportMode.entitlements
+
+// The split debug build of the watch app crash-loops on the watch.
+ENABLE_DEBUG_DYLIB = NO
+// Eager-linking stubs can lack the watch's architecture.
+EAGER_LINKING = NO
 
 // Put your team id here for signing
 //LOOP_DEVELOPMENT_TEAM = UY678SP37Q

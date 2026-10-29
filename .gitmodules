@@ -1,9 +1,9 @@
 [submodule "Loop"]
 	path = Loop
-	url = https://github.com/LoopKit/Loop.git
+	url = https://github.com/jeremybarnum/Loop.git
 [submodule "LoopKit"]
 	path = LoopKit
-	url = https://github.com/LoopKit/LoopKit.git
+	url = https://github.com/jeremybarnum/LoopKit.git
 [submodule "CGMBLEKit"]
 	path = CGMBLEKit
 	url = https://github.com/LoopKit/CGMBLEKit.git
@@ -15,7 +15,7 @@
 	url = https://github.com/LoopKit/RileyLinkKit
 [submodule "NightscoutService"]
 	path = NightscoutService
-	url = https://github.com/LoopKit/NightscoutService.git
+	url = https://github.com/jeremybarnum/NightscoutService.git
 [submodule "Minizip"]
 	path = Minizip
 	url = https://github.com/LoopKit/Minizip.git
@@ -42,7 +42,7 @@
 	url = https://github.com/LoopKit/G7SensorKit.git
 [submodule "TidepoolService"]
 	path = TidepoolService
-	url = https://github.com/LoopKit/TidepoolService.git
+	url = https://github.com/jeremybarnum/TidepoolService.git
 [submodule "MinimedKit"]
 	path = MinimedKit
 	url = https://github.com/LoopKit/MinimedKit.git
@@ -60,8 +60,7 @@
 	url = https://github.com/LoopKit/LoopAlgorithm.git
 [submodule "OmnipodKit"]
 	path = OmnipodKit
-	url = https://github.com/loopandlearn/OmnipodKit.git
-	branch = next-dev
+	url = https://github.com/jeremybarnum/OmnipodKit.git
 [submodule "EversenseKit"]
 	path = EversenseKit
 	url = https://github.com/LoopKit/EversenseKit.git
