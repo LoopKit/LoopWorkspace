@@ -322,6 +322,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9957C3874D28E7BE1F83FBD7"
+               BuildableName = "LupedSmartwatchPlugin.loopplugin"
+               BlueprintName = "LupedSmartwatchPlugin"
+               ReferencedContainer = "container:LupedSmartwatchKit/LupedSmartwatchKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "B40BF25D23ABD47400A43CEE"
                BuildableName = "LibreTransmitterPlugin.loopplugin"
                BlueprintName = "LibreTransmitterPlugin"

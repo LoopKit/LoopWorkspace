@@ -1,5 +1,5 @@
 {
-  "originHash" : "3074fb13e969eeb07af13d2659671d107eac739de84ccaff57f73a4b6201e10f",
+  "originHash" : "4f012abb426e0a201e0484d769e08540f8897a224b27c26e9c9c1f233e02e75e",
   "pins" : [
     {
       "identity" : "amplitude-ios",
@@ -62,6 +62,15 @@
       "state" : {
         "revision" : "eee9ad754926c40a0f7e73f152357d37b119b7fa",
         "version" : "1.7.1"
+      }
+    },
+    {
+      "identity" : "elbbeptransport",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/dabear/elbbepTransport.git",
+      "state" : {
+        "revision" : "22a718082e975e393f189c56903da14b0244fd87",
+        "version" : "0.3.59"
       }
     },
     {
