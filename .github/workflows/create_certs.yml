@@ -52,15 +52,18 @@ jobs:
       
       # Create or update Distribution certificate and provisioning profiles
       - name: Check and create or update Distribution certificate and profiles if needed
-        run: |
-          echo "Running Fastlane certs lane..."
-          bundle exec fastlane certs || true # ignore and continue on errors without annotating an exit code
+        id: provision_certs
+        # Let the renewal check run before deciding whether a Match failure is fatal.
+        continue-on-error: true
+        run: bundle exec fastlane certs
       - name: Check Distribution certificate and launch Nuke certificates if needed
         run: bundle exec fastlane check_and_renew_certificates
         id: check_certs
 
       - name: Set output and annotations based on Fastlane result
         id: set_output
+        env:
+          PROVISION_CERTS_OUTCOME: ${{ steps.provision_certs.outcome }}
         run: |
           CERT_STATUS_FILE="${{ github.workspace }}/fastlane/new_certificate_needed.txt"
           ENABLE_NUKE_CERTS=$(echo "${{ vars.ENABLE_NUKE_CERTS }}" | tr '[:upper:]' '[:lower:]')
@@ -86,6 +89,9 @@ jobs:
           # Check if FORCE_NUKE_CERTS is set to true
           if [ "$FORCE_NUKE_CERTS" = "true" ]; then
             echo "::warning::‼️ Nuking of certificates was forced because the repository variable FORCE_NUKE_CERTS is set to 'true'."
+          elif [ "$CERT_STATUS" != "true" ] && [ "$PROVISION_CERTS_OUTCOME" = "failure" ]; then
+            echo "::error::Fastlane could not prepare the signing certificate and profiles from Match-Secrets. See the earlier certificate setup step for the original error."
+            exit 1
           fi
   # Nuke Certs if needed, and if the repository variable ENABLE_NUKE_CERTS is set to 'true', or if FORCE_NUKE_CERTS is set to 'true', which will always force certs to be nuked
   nuke_certs:
