@@ -182,6 +182,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "3EEECBD62EC902F90063D7BC"
+               BuildableName = "TandemKitPlugin.loopplugin"
+               BlueprintName = "TandemKitPlugin"
+               ReferencedContainer = "container:TandemKit/TandemKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "3E767D422D67B790004B1971"
                BuildableName = "MedtrumKitPlugin.loopplugin"
                BlueprintName = "MedtrumKitPlugin"

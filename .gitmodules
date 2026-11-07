@@ -73,3 +73,7 @@
 [submodule "RoundWhiteDiscKit"]
 	path = RoundWhiteDiscKit
 	url = https://github.com/airedev326/RoundWhiteDiscKit.git
+[submodule "TandemKit"]
+	path = TandemKit
+	url = https://github.com/jwoglom/TandemKit
+	branch = loop-next-dev-current-loopkit
