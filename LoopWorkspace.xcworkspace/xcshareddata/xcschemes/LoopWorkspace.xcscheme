@@ -581,6 +581,56 @@
                ReferencedContainer = "container:MedtrumKit/MedtrumKit.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A9DAAD0622E7987800E76C9F"
+               BuildableName = "TidepoolServiceKitTests.xctest"
+               BlueprintName = "TidepoolServiceKitTests"
+               ReferencedContainer = "container:TidepoolService/TidepoolService.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "3EFE70822E08434B00CF6B9E"
+               BuildableName = "EversenseKitTests.xctest"
+               BlueprintName = "EversenseKitTests"
+               ReferencedContainer = "container:EversenseKit/EversenseKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DBC1BA591653686BF48EE7C1"
+               BuildableName = "LibreLoopTests.xctest"
+               BlueprintName = "LibreLoopTests"
+               ReferencedContainer = "container:LibreLoop/LibreLoop.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "LoopAlgorithmTests"
+               BuildableName = "LoopAlgorithmTests"
+               BlueprintName = "LoopAlgorithmTests"
+               ReferencedContainer = "container:LoopAlgorithm">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "RoundWhiteDiscKitTests"
+               BuildableName = "RoundWhiteDiscKitTests"
+               BlueprintName = "RoundWhiteDiscKitTests"
+               ReferencedContainer = "container:RoundWhiteDiscKit">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
