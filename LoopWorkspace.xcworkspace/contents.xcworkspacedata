@@ -100,6 +100,9 @@
       location = "group:TidepoolService/TidepoolService.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:GlookoServiceKit/GlookoServiceKit.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:NightscoutRemoteCGM/NightscoutRemoteCGM.xcodeproj">
    </FileRef>
    <FileRef

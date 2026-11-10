@@ -61,3 +61,7 @@
 [submodule "EversenseKit"]
 	path = EversenseKit
 	url = https://github.com/bastiaanv/EversenseKit
+[submodule "GlookoServiceKit"]
+	path = GlookoServiceKit
+	url = https://github.com/hvsio/GlookoServiceKit.git
+	branch = loop-workspace-integration

@@ -224,6 +224,48 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ECB66D3D937AA5896ED269AE"
+               BuildableName = "GlookoServiceKit.framework"
+               BlueprintName = "GlookoServiceKit"
+               ReferencedContainer = "container:GlookoServiceKit/GlookoServiceKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "89B0F88A6A442F805BE6B958"
+               BuildableName = "GlookoServiceKitUI.framework"
+               BlueprintName = "GlookoServiceKitUI"
+               ReferencedContainer = "container:GlookoServiceKit/GlookoServiceKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2068E1037A9A8132EE49B525"
+               BuildableName = "GlookoServiceKitPlugin.loopplugin"
+               BlueprintName = "GlookoServiceKitPlugin"
+               ReferencedContainer = "container:GlookoServiceKit/GlookoServiceKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "B4D40D3D23A428BC00D7ECB5"
                BuildableName = "CGMBLEKitG5Plugin.loopplugin"
                BlueprintName = "CGMBLEKitG5Plugin"
