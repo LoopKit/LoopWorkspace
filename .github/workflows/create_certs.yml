@@ -95,7 +95,7 @@ jobs:
           fi
           # Fail if the certificate setup failed and no renewal will replace it
           if [ "${{ steps.certs.outputs.certs_failed }}" = "true" ] && [ "$CERT_STATUS" != "true" ] && [ "$FORCE_NUKE_CERTS" != "true" ]; then
-            echo "::error::❌ Certificate setup failed, but no expired or missing Distribution certificate was found, so automated renewal will not run. See the Fastlane Match error in the 'Check and create or update Distribution certificate and profiles if needed' step: it is about the certificate stored in your Match-Secrets repository."
+            echo "::error::❌ Fastlane Match could not use the Distribution certificate in your Match-Secrets repository, and automated renewal will not run because another valid certificate exists. Delete https://github.com/${{ github.repository_owner }}/Match-Secrets and run action again: https://loopkit.github.io/loopdocs/browser/bb-errors/#delete-match-secrets"
             exit 1
           fi
   # Nuke Certs if needed, and if the repository variable ENABLE_NUKE_CERTS is set to 'true', or if FORCE_NUKE_CERTS is set to 'true', which will always force certs to be nuked
