@@ -11,6 +11,7 @@ env:
   FASTLANE_KEY_ID: ${{ secrets.FASTLANE_KEY_ID }}
   FASTLANE_ISSUER_ID: ${{ secrets.FASTLANE_ISSUER_ID }}
   FASTLANE_KEY: ${{ secrets.FASTLANE_KEY }}
+  FASTLANE_SKIP_UPDATE_CHECK: true
 
 jobs:
   validate:
