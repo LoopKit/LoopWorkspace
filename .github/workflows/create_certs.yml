@@ -11,6 +11,7 @@ env:
   FASTLANE_KEY_ID: ${{ secrets.FASTLANE_KEY_ID }}
   FASTLANE_ISSUER_ID: ${{ secrets.FASTLANE_ISSUER_ID }}
   FASTLANE_KEY: ${{ secrets.FASTLANE_KEY }}
+  FASTLANE_SKIP_UPDATE_CHECK: true
 
 jobs:
   validate:
@@ -52,9 +53,15 @@ jobs:
       
       # Create or update Distribution certificate and provisioning profiles
       - name: Check and create or update Distribution certificate and profiles if needed
+        id: certs
         run: |
           echo "Running Fastlane certs lane..."
-          bundle exec fastlane certs || true # ignore and continue on errors without annotating an exit code
+          # Continue on errors without annotating an exit code; set_output fails the job if no renewal follows
+          if bundle exec fastlane certs; then
+            echo "certs_failed=false" >> $GITHUB_OUTPUT
+          else
+            echo "certs_failed=true" >> $GITHUB_OUTPUT
+          fi
       - name: Check Distribution certificate and launch Nuke certificates if needed
         run: bundle exec fastlane check_and_renew_certificates
         id: check_certs
@@ -86,6 +93,11 @@ jobs:
           # Check if FORCE_NUKE_CERTS is set to true
           if [ "$FORCE_NUKE_CERTS" = "true" ]; then
             echo "::warning::‼️ Nuking of certificates was forced because the repository variable FORCE_NUKE_CERTS is set to 'true'."
+          fi
+          # Fail if the certificate setup failed and no renewal will replace it
+          if [ "${{ steps.certs.outputs.certs_failed }}" = "true" ] && [ "$CERT_STATUS" != "true" ] && [ "$FORCE_NUKE_CERTS" != "true" ]; then
+            echo "::error::❌ Fastlane Match could not use the Distribution certificate in your Match-Secrets repository, and automated renewal will not run because another valid certificate exists. Delete https://github.com/${{ github.repository_owner }}/Match-Secrets and run action again: https://loopkit.github.io/loopdocs/browser/bb-errors/#delete-match-secrets"
+            exit 1
           fi
   # Nuke Certs if needed, and if the repository variable ENABLE_NUKE_CERTS is set to 'true', or if FORCE_NUKE_CERTS is set to 'true', which will always force certs to be nuked
   nuke_certs:

@@ -3,6 +3,9 @@ run-name: Add Identifiers (${{ github.ref_name }})
 on:
   workflow_dispatch:
 
+env:
+  FASTLANE_SKIP_UPDATE_CHECK: true
+
 jobs:
   validate:
     name: Validate
