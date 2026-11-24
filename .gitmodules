@@ -73,3 +73,6 @@
 [submodule "RoundWhiteDiscKit"]
 	path = RoundWhiteDiscKit
 	url = https://github.com/airedev326/RoundWhiteDiscKit.git
+[submodule "GlookoService"]
+	path = GlookoService
+	url = https://github.com/Nutcasey/GlookoService.git

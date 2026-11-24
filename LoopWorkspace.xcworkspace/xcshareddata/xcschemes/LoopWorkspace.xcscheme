@@ -140,6 +140,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "0B09CAA91AE6F898645417CB"
+               BuildableName = "GlookoServiceKitPlugin.loopplugin"
+               BlueprintName = "GlookoServiceKitPlugin"
+               ReferencedContainer = "container:GlookoService/GlookoService.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "3E767D422D67B790004B1971"
                BuildableName = "MedtrumKitPlugin.loopplugin"
                BlueprintName = "MedtrumKitPlugin"
