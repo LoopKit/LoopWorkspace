@@ -3,6 +3,9 @@ run-name: Add Identifiers (${{ github.ref_name }})
 on:
   workflow_dispatch:
 
+env:
+  FASTLANE_SKIP_UPDATE_CHECK: true
+
 jobs:
   validate:
     name: Validate
@@ -12,7 +15,7 @@ jobs:
   identifiers:
     name: Add Identifiers
     needs: validate
-    runs-on: macos-26
+    runs-on: xcode-27
     steps:
       # Checks-out the repo
       - name: Checkout Repo
